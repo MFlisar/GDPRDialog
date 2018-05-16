@@ -37,11 +37,19 @@ dependencies {
 ```groovy
 GDPR.getInstance().init(this);
 ```
-2. call following in your activities `onCreate`:
+2. call following in your activities `onCreate`
 ```groovy
 GDPR.getInstance().showIfNecessary(this, new GDPRSetup(GDPR.ADMOB_NETWORK));
 ```
 3. implement the `GDPR.IGDPRActivity` in your activity
+```
+public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRActivity {
+    @Override
+    public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState) {
+        // handle consent here
+    }
+}
+```
 
 Check out the demo for a full working example
 

@@ -53,6 +53,6 @@ Check out the demo for a full working example
 
 Additional things todo:
 
-* maybe improve texts (e.g. the current dialog title is not that good imho)
+* maybe improve texts
 * ad more network strings, currently only AdMob is existing
 * more???

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GDPR.getInstance().showIfNecessary(this,
                 new GDPRSetup(GDPR.ADMOB_NETWORK)
                 // use this to allow to use the app without any consent as well
-//                    .withAllowUsageWithoutConsent(true)
+                    .withAllowUsageWithoutConsent(true)
         );
     }
 

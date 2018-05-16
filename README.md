@@ -11,8 +11,8 @@ Simple reusable `DialogFragment`. Texts are based on [MoPub Workflow Image](http
 This library offers following:
 
 * it manages the user's selected consent decision
-* it closes the app (if desired) if the user did not give any consent
-* it automatically reshows the dialog if the user did not give any consent or if the setup defines that the app is not allowed to be used without ads and the user has not accepted ads at allowed
+* it closes the app if the user did not give any consent (i.e if the user clicks the back button in the dialog)
+* it automatically reshows the dialog if the user did not give any consent or if the setup defines that the app is not allowed to be used without ads and the user has not accepted ads at all yet
 * works with a dialog fragment, so rotation and remembering intermediate state is done in the library
 * uses soft opt in
 

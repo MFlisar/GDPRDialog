@@ -1,8 +1,6 @@
 ### GDPRDialog [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog)
 
-Simple reusable `DialogFragment`. Texts are based on 
-https://media.mopub.com/media/filer_public/3c/fa/3cfa8de2-e517-4b27-ad83-d997d6c0ceab/flow3_v3.png 
-and are a little adjusted and extended.
+Simple reusable `DialogFragment`. Texts are based on [MoPub Workflow Image](https://media.mopub.com/media/filer_public/3c/fa/3cfa8de2-e517-4b27-ad83-d997d6c0ceab/flow3_v3.png) and are a little adjusted and extended.
 
 ![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/workflow.png "Workflow")
 

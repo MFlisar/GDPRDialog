@@ -47,9 +47,9 @@ Check out the demo for a full working example
 
 ### TODO
 
-[ ] correct the AdMob Link
-[ ] resize dialog after each step
-[ ] translations => german will be done by my until the first release
+* [ ] correct the AdMob Link
+* [ ] resize dialog after each step
+* [ ] translations => german will be done by my until the first release
 
 Additional things todo:
 

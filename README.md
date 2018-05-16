@@ -39,7 +39,7 @@ Check out the demo for a full working example
 
 ### TODO
 
-* maybe improve texts
+* maybe improve texts (e.g. the current dialog title is not that good imho)
 * translations => german will be done by my until the first release
 * ad more network strings, currently only AdMob is existing
 * more???

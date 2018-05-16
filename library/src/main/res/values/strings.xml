@@ -1,15 +1,22 @@
 <resources>
 
+    <!-- *********** -->
     <!-- Preferences -->
+    <!-- *********** -->
+
     <string name="gdpr_preference_file">gdpr</string>
     <string name="gdpr_preference">gdpr_consent</string>
 
+    <!-- ****** -->
     <!-- Dialog -->
+    <!-- ****** -->
+
     <string name="gdpr_dialog_title">Data Protection Consent</string>
     <string name="gdpr_dialog_text">This app uses following services: %1$s&lt;br/>&lt;br/>Depending on your privacy settings, those services (including partners) may collect and process personal data such as device identifieres, location data and other demographic and interest data about you to provide you a personalized experience.&lt;br/>&lt;br/>By agreeing, you are confirming that you are over the age of 16 and would like this personalized experience.</string>
 
     <string name="gdpr_dialog_text_after_accepted_personal">Great.&lt;br/>&lt;br/>We hope you enjoy your personalized app experience.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
-    <string name="gdpr_dialog_text_after_accepted_non_personal">No problem.&lt;br/>&lt;br/>&lt;i>%1$ss&lt;/i> (including partners) won\'t collect your data through this app for a personalized app experience.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
+    <string name="gdpr_dialog_text_after_accepted_non_personal">No problem.&lt;br/>&lt;br/>%1$s (including partners) won\'t collect your data through this app for a personalized app experience.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
+    <string name="gdpr_dialog_text_after_accepted_nothing">No problem.&lt;br/>&lt;br/>You can still use this app.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
 
     <string name="gdpr_dialog_agree">Yes, I agree</string>
     <string name="gdpr_dialog_disagree">No, thank you</string>
@@ -19,12 +26,14 @@
     <string name="gdpr_list_seperator">\u00A0,</string>
     <string name="gdpr_last_list_seperator">\u00A0and\u00A0</string>
 
+    <!-- *********** -->
     <!-- Ad Networks -->
+    <!-- *********** -->
+
     <string name="gdpr_network_admob">AdMob</string>
     <string name="gdpr_network_admob_link">https://support.google.com/admob/answer/9012903</string>
 
     <string name="gdpr_network_firebase">Firebase</string>
     <string name="gdpr_network_firebase_link">https://firebase.google.com/support/privacy/</string>
-    <!--<string name="">Firebase stores your mobile ad ID, android ID, instance ID and Analytics App Instance IDs. ID specific data is deleted after 60 days.</string>-->
 
 </resources>

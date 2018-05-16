@@ -44,6 +44,15 @@ public class GDPRSetup implements Parcelable {
         return mAllowUsageWithoutConsent;
     }
 
+    public boolean containsAdNetwork() {
+        for (GDPRNetwork network : mAdNetworks) {
+            if (network.isAdNetwork()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // ----------------
     // Parcelable
     // ----------------

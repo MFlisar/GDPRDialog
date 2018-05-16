@@ -16,7 +16,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1">
 
             <TextView
@@ -42,6 +42,7 @@
             android:text="@string/gdpr_dialog_disagree"/>
 
         <TextView
+            android:id="@+id/tvAdsInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -69,7 +70,7 @@
             android:id="@+id/tvTextPersonalAccepted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/gdpr_dialog_text_after_accepted_personal"/>
 
         <Button
@@ -92,7 +93,7 @@
             android:id="@+id/tvTextNonPersonalAccepted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/gdpr_dialog_text_after_accepted_non_personal"/>
 
         <Button
@@ -112,11 +113,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvTextNoAdsAccepted"
+            android:id="@+id/tvTextNothingAccepted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="@string/gdpr_dialog_text_after_accepted_non_personal"/>
+            android:layout_marginBottom="8dp"
+            android:text="@string/gdpr_dialog_text_after_accepted_nothing"/>
 
         <Button
             android:id="@+id/btCloseNoAds"

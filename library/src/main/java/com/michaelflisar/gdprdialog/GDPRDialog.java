@@ -88,9 +88,16 @@ public class GDPRDialog extends AppCompatDialogFragment
         final TextView tvText = view.findViewById(R.id.tvText);
         final TextView tvTextNonPersonalAccepted = view.findViewById(R.id.tvTextNonPersonalAccepted);
         final TextView tvTextPersonalAccepted = view.findViewById(R.id.tvTextPersonalAccepted);
+        final TextView tvTextNothingAccepted = view.findViewById(R.id.tvTextNothingAccepted);
+        final TextView tvAdsInfo = view.findViewById(R.id.tvAdsInfo);
         tvText.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text, mSetup.getNetworksCommaSeperated(inflater.getContext(), true))));
         tvTextNonPersonalAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(inflater.getContext(),false))));
         tvTextPersonalAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_personal)));
+        tvTextNothingAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_nothing)));
+
+        if (!mSetup.containsAdNetwork()) {
+            tvAdsInfo.setVisibility(View.GONE);
+        }
 
         tvText.setMovementMethod(LinkMovementMethod.getInstance());
         tvTextNonPersonalAccepted.setMovementMethod(LinkMovementMethod.getInstance());

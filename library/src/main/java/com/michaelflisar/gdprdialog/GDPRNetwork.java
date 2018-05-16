@@ -11,16 +11,20 @@ public class GDPRNetwork implements Parcelable {
     private String mName;
     private String mLink;
     private boolean mIsCollection;
+    private boolean mIsAdNetwork;
 
-    public GDPRNetwork(Context context, int name, int link, boolean isCollection) {
+    public GDPRNetwork(Context context, int name, int link, boolean isCollection, boolean isAdNetwork) {
         mName = context.getString(name);
         mLink = context.getString(link);
         mIsCollection = isCollection;
+        mIsAdNetwork = isAdNetwork;
     }
 
-    public GDPRNetwork(String name, String link) {
+    public GDPRNetwork(String name, String link, boolean isCollection, boolean isAdNetwork) {
         mName = name;
         mLink = link;
+        mIsCollection = isCollection;
+        mIsAdNetwork = isAdNetwork;
     }
 
     // ----------------
@@ -39,6 +43,10 @@ public class GDPRNetwork implements Parcelable {
         return mIsCollection;
     }
 
+    public boolean isAdNetwork() {
+        return mIsAdNetwork;
+    }
+
     public String getHtmlLink() {
         return "<a href=\"" + mLink + "\">" + mName + "</a>";
     }
@@ -51,6 +59,7 @@ public class GDPRNetwork implements Parcelable {
         mName = in.readString();
         mLink = in.readString();
         mIsCollection = in.readByte() == 1;
+        mIsAdNetwork = in.readByte() == 1;
     }
 
     @Override
@@ -63,6 +72,7 @@ public class GDPRNetwork implements Parcelable {
         dest.writeString(mName);
         dest.writeString(mLink);
         dest.writeByte(mIsCollection ? (byte)1 : 0);
+        dest.writeByte(mIsAdNetwork ? (byte)1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

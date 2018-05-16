@@ -1,11 +1,15 @@
 package com.michaelflisar.gdprdialog;
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 import android.widget.ViewSwitcher;
@@ -22,7 +26,6 @@ public class GDPRDialog extends AppCompatDialogFragment
         Bundle args = new Bundle();
         args.putParcelable(ARG_SETUP, setup);
         dlg.setArguments(args);
-        dlg.setCancelable(false);
         return dlg;
     }
 
@@ -56,6 +59,12 @@ public class GDPRDialog extends AppCompatDialogFragment
     }
 
     @Override
+    public void onDismiss(DialogInterface dialogInterface) {
+        onSaveConsentAndCloseDialog();
+        super.onDismiss(dialogInterface);
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_STEP, mCurrentStep);
@@ -75,11 +84,16 @@ public class GDPRDialog extends AppCompatDialogFragment
         View view = inflater.inflate(R.layout.gdpr_dialog, container, false);
 
         final ViewFlipper vfFlipper = view.findViewById(R.id.vfFlipper);
-        ((TextView )view.findViewById(R.id.tvText)).setText(inflater.getContext().getString(R.string.gdpr_dialog_text, mSetup.getNetworksCommaSeperated()));
-        ((TextView )view.findViewById(R.id.tvTextPersonalDeclined)).setText(inflater.getContext().getString(R.string.gdpr_dialog_text_after_declined_personal, mSetup.getNetworksCommaSeperated()));
-        ((TextView )view.findViewById(R.id.tvTextNonPersonalAccepted)).setText(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated()));
+        final Button btNoAdsPlease = view.findViewById(R.id.btNoAdsPlease);
+        final TextView tvText = view.findViewById(R.id.tvText);
+        final TextView tvTextNonPersonalAccepted = view.findViewById(R.id.tvTextNonPersonalAccepted);
+        tvText.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text, mSetup.getNetworksCommaSeperated(true), mSetup.getNetworksCommaSeperated(false))));
+        tvTextNonPersonalAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(false))));
 
-        vfFlipper.setDisplayedChild(mCurrentStep);
+        tvText.setMovementMethod(LinkMovementMethod.getInstance());
+        tvTextNonPersonalAccepted.setMovementMethod(LinkMovementMethod.getInstance());
+
+        updateSelectedPage(vfFlipper, view);
 
         // ------------------
         // Step 0 - Info Page
@@ -88,13 +102,24 @@ public class GDPRDialog extends AppCompatDialogFragment
         view.findViewById(R.id.btAgree).setOnClickListener(v -> {
             mSelectedConsent = GDPRConsent.PERSONAL_CONSENT;
             mCurrentStep = 1;
-            vfFlipper.setDisplayedChild(mCurrentStep);
+            updateSelectedPage(vfFlipper, view);
         });
 
         view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
+            mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
             mCurrentStep = 2;
-            vfFlipper.setDisplayedChild(mCurrentStep);
+            updateSelectedPage(vfFlipper, view);
         });
+
+        if (!mSetup.isAllowUsageWithoutConsent()) {
+            btNoAdsPlease.setVisibility(View.GONE);
+        } else {
+            btNoAdsPlease.setOnClickListener(v -> {
+                mSelectedConsent = GDPRConsent.NO_CONSENT;
+                mCurrentStep = 3;
+                updateSelectedPage(vfFlipper, view);
+            });
+        }
 
         // ------------------
         // Step 1 - User accepted personal ads page
@@ -103,23 +128,7 @@ public class GDPRDialog extends AppCompatDialogFragment
         view.findViewById(R.id.btCloseAccepted).setOnClickListener(v -> onSaveConsentAndCloseDialog());
 
         // ------------------
-        // Step 2 - User did NOT accept personal ads page
-        // ------------------
-
-        view.findViewById(R.id.btAgreeNonPersonal).setOnClickListener(v -> {
-            mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
-            mCurrentStep = 3;
-            vfFlipper.setDisplayedChild(mCurrentStep);
-        });
-
-        view.findViewById(R.id.btDisagree2).setOnClickListener(v -> {
-            mSelectedConsent = GDPRConsent.NO_CONSENT;
-            mCurrentStep = 4;
-            vfFlipper.setDisplayedChild(mCurrentStep);
-        });
-
-        // ------------------
-        // Step 3 - User did accept NON personal ads page
+        // Step 2 - User did not accept personal ads page
         // ------------------
 
         view.findViewById(R.id.btCloseAcceptedNonPersonal).setOnClickListener(v -> {
@@ -127,21 +136,28 @@ public class GDPRDialog extends AppCompatDialogFragment
         });
 
         // ------------------
-        // Step 4 - User DIDN'T ACCEPT ANYTHING ads page
+        // Step 3 - User did not accept any ads page
         // ------------------
 
-        view.findViewById(R.id.btCloseAcceptedNothing).setOnClickListener(v -> {
+        view.findViewById(R.id.btCloseNoAds).setOnClickListener(v -> {
             onSaveConsentAndCloseDialog();
         });
-
 
         return view;
     }
 
+    private void updateSelectedPage(ViewFlipper vfFlipper, View view) {
+        vfFlipper.setDisplayedChild(mCurrentStep);
+        // TODO: resize dialog...
+        // view.requestLayout();
+    }
+
     private void onSaveConsentAndCloseDialog() {
-        GDPR.getInstance().setConsent(mSelectedConsent);
-        mCallback.onConsentInfoUpdate(mSelectedConsent, true);
-        if (mSelectedConsent != null && mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.isAllowUsageWithoutConsent()) {
+        if (mSelectedConsent != null) {
+            GDPR.getInstance().setConsent(mSelectedConsent);
+            mCallback.onConsentInfoUpdate(mSelectedConsent, true);
+        }
+        if (mSelectedConsent == null || (mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.isAllowUsageWithoutConsent())) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 getActivity().finishAndRemoveTask();
             } else {

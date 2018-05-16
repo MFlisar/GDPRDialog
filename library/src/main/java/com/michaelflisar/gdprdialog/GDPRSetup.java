@@ -1,32 +1,17 @@
 package com.michaelflisar.gdprdialog;
 
-import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GDPRSetup implements Parcelable {
     private boolean mAllowUsageWithoutConsent = false;
-    private List<String> mAdNetworks = new ArrayList<>();
+    private GDPRNetwork mAdNetworks[] = null;
 
-    public GDPRSetup(Context context, int... adNetwork) {
-        if (adNetwork.length == 0) {
+    public GDPRSetup(GDPRNetwork... adNetworks) {
+        if (adNetworks == null || adNetworks.length == 0) {
             throw new RuntimeException("At least one ad network must be provided, otherwise this setup does not make any sense.");
         }
-        for (int i = 0; i < adNetwork.length; i++) {
-            mAdNetworks.add(context.getString(adNetwork[i]));
-        }
-    }
-
-    public GDPRSetup(String... adNetwork) {
-        if (adNetwork.length == 0) {
-            throw new RuntimeException("At least one ad network must be provided, otherwise this setup does not make any sense.");
-        }
-        for (int i = 0; i < adNetwork.length; i++) {
-            mAdNetworks.add(adNetwork[i]);
-        }
+        mAdNetworks = adNetworks;
     }
 
     public GDPRSetup withAllowUsageWithoutConsent(boolean allowUsageWithoutConsent) {
@@ -38,10 +23,14 @@ public class GDPRSetup implements Parcelable {
     // Functions
     // ----------------
 
-    public String getNetworksCommaSeperated() {
-        String networks = mAdNetworks.get(0);
-        for (int i = 1; i < mAdNetworks.size(); i++) {
-            networks += ", " + mAdNetworks.get(i);
+    public String getNetworksCommaSeperated(boolean withLinks) {
+        String networks = withLinks ? mAdNetworks[0].getHtmlLink() : mAdNetworks[0].getName();
+        for (int i = 1; i < mAdNetworks.length; i++) {
+            if (withLinks) {
+                networks += ", " + mAdNetworks[i].getHtmlLink();
+            } else {
+                networks += ", " + mAdNetworks[i].getName();
+            }
         }
         return networks;
     }
@@ -56,7 +45,7 @@ public class GDPRSetup implements Parcelable {
 
     public GDPRSetup(Parcel in) {
         mAllowUsageWithoutConsent = in.readByte() == 1;
-        in.readStringList(mAdNetworks);
+        mAdNetworks = (GDPRNetwork[]) in.readParcelableArray(GDPRNetwork.class.getClassLoader());
     }
 
     @Override
@@ -67,7 +56,7 @@ public class GDPRSetup implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(mAllowUsageWithoutConsent ? (byte) 1 : 0);
-        dest.writeStringList(mAdNetworks);
+        dest.writeParcelableArray(mAdNetworks, 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

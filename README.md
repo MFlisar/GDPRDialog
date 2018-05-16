@@ -14,6 +14,7 @@ This library offers following:
 * it closes the app (if desired) if the user did not give any consent
 * it automatically reshows the dialog if the user did not give any consent or if the setup defines that the app is not allowed to be used without ads and the user has not accepted ads at allowed
 * works with a dialog fragment, so rotation and remembering intermediate state is done in the library
+* uses soft opt in
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))
 
@@ -38,7 +39,7 @@ GDPR.getInstance().init(this);
 ```
 2. call following in your activities `onCreate`:
 ```groovy
-GDPR.getInstance().showIfNecessary(this, new GDPRSetup(this, R.string.gdpr_network_admob));
+GDPR.getInstance().showIfNecessary(this, new GDPRSetup(GDPR.ADMOB_NETWORK));
 ```
 3. implement the `GDPR.IGDPRActivity` in your activity
 
@@ -46,7 +47,12 @@ Check out the demo for a full working example
 
 ### TODO
 
+[ ] correct the AdMob Link
+[ ] resize dialog after each step
+[ ] translations => german will be done by my until the first release
+
+Additional things todo:
+
 * maybe improve texts (e.g. the current dialog title is not that good imho)
-* translations => german will be done by my until the first release
 * ad more network strings, currently only AdMob is existing
 * more???

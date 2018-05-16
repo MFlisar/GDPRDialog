@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ScrollView
@@ -41,13 +41,28 @@
             android:layout_height="wrap_content"
             android:text="@string/gdpr_dialog_disagree"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="italic"
+            android:gravity="center_horizontal"
+            android:text="@string/gdpr_dialog_disagree_info"/>
+
+        <Button
+            android:id="@+id/btNoAdsPlease"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_disagree_no_ads"/>
+
     </LinearLayout>
 
     <!-- 1 - User accepted personal ads page -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -65,49 +80,11 @@
 
     </LinearLayout>
 
-    <!-- 2 - User did NOT accept personal ads page -->
+    <!-- 2 - User did not accept personal ads page -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvTextPersonalDeclined"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="@string/gdpr_dialog_text_after_declined_personal"/>
-
-        <Button
-            android:id="@+id/btAgreeNonPersonal"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gdpr_dialog_agree"/>
-
-        <Button
-            android:id="@+id/btDisagree2"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gdpr_dialog_disagree"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textStyle="italic"
-            android:gravity="center_horizontal"
-            android:text="@string/gdpr_dialog_disagree_totally_info_if_app_is_closed_without_consent"/>
-
-    </LinearLayout>
-
-    <!-- 3 - User did accept NON personal ads page -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -126,21 +103,22 @@
 
     </LinearLayout>
 
-    <!-- 4 - User DIDN'T ACCEPT ANYTHING ads page-->
+    <!-- 3 - User did not accept any ads page -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvTextNoAdsAccepted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/gdpr_dialog_text_after_accepted_nothing"/>
+            android:text="@string/gdpr_dialog_text_after_no_ads_accepted"/>
 
         <Button
-            android:id="@+id/btCloseAcceptedNothing"
+            android:id="@+id/btCloseNoAds"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

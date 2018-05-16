@@ -2,9 +2,12 @@
 
 Simple reusable `DialogFragment`.
 
-![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/workflow.png "Workflow")
+![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/demo1.gif "demo1")
+![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/demo2.gif "demo2")
 
-**For now, simply use `compile 'com.github.MFlisar:GDPRDialog:-SNAPSHOT'`, I'll make a release reliably on 24.05, one day before the the new GDPR is valid.**
+### Workflow
+
+![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/workflow.png "Workflow")
 
 ### What it offers
 
@@ -17,6 +20,8 @@ This library offers following:
 * uses soft opt in
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))
+
+**For now, simply use `compile 'com.github.MFlisar:GDPRDialog:-SNAPSHOT'`, I'll make a release reliably on 24.05, one day before the the new GDPR is valid.**
 
 1. add jitpack to your project's `build.gradle`:
 ```groovy

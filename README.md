@@ -4,7 +4,7 @@ Simple reusable `DialogFragment`. Texts are based on [MoPub Workflow Image](http
 
 ![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/workflow.png "Workflow")
 
-**For now, simply use `compile 'com.github.MFlisar:GDPRDialog:anyBranch-SNAPSHOT'`, I'll make a release reliably on 24.05, one day before the the new GDPR is valid.**
+**For now, simply use `compile 'com.github.MFlisar:GDPRDialog:-SNAPSHOT'`, I'll make a release reliably on 24.05, one day before the the new GDPR is valid.**
 
 ### What it offers
 

@@ -41,3 +41,5 @@ Check out the demo for a full working example
 
 * maybe improve texts
 * translations => german will be done by my until the first release
+* ad more network strings, currently only AdMob is existing
+* more???

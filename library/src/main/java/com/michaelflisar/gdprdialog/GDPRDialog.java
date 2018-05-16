@@ -140,7 +140,7 @@ public class GDPRDialog extends AppCompatDialogFragment
     private void onSaveConsentAndCloseDialog() {
         GDPR.getInstance().setConsent(mSelectedConsent);
         mCallback.onConsentInfoUpdate(mSelectedConsent, true);
-        if (!mSetup.isAllowUsageWithoutConsent()) {
+        if (mSelectedConsent != null && mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.isAllowUsageWithoutConsent()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 getActivity().finishAndRemoveTask();
             } else {

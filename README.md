@@ -8,6 +8,15 @@ and are a little adjusted and extended.
 
 **For now, simply use `compile 'com.github.MFlisar:GDPRDialog:anyBranch-SNAPSHOT'`, I'll make a release reliably on 24.05, one day before the the new GDPR is valid.**
 
+### What it offers
+
+This library offers following:
+
+* it manages the user's selected consent decision
+* it closes the app (if desired) if the user did not give any consent
+* it automatically reshows the dialog if the user did not give any consent or if the setup defines that the app is not allowed to be used without ads and the user has not accepted ads at allowed
+* works with a dialog fragment, so rotation and remembering intermediate state is done in the library
+
 ### Gradle (via [JitPack.io](https://jitpack.io/))
 
 1. add jitpack to your project's `build.gradle`:

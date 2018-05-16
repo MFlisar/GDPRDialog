@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Preferences -->
+    <string name="gdpr_preference_file">gdpr</string>
+    <string name="gdpr_preference">gdpr_consent</string>
+
+    <!-- Dialog -->
+    <string name="gdpr_dialog_title">Personalise Your Experience</string>
+    <string name="gdpr_dialog_text">This app personalizes your advertising experience through <i>%1$s</i>. By consenting to this enhanced ad experience, you\'ll see ads that the ad providers and it\'s partners believe are more relevant to you. Depending on your privacy settings, <i>%1$s</i> and its partners may collect and process personal data such as device identigfieres, location data and other demographic and interest data about you to provide this personalized advertising experience.\n\nBy agreeing, you are confirming that you are over the age of 16 and would like a personalized ad experience.</string>
+
+    <string name="gdpr_dialog_text_after_accepted_personal">Great. We hope you enjoy your personalized ad experience, but if you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
+    <string name="gdpr_dialog_text_after_declined_personal">No problem.\n\nYou will see ads, but they may not be as relevant to your interests. By consenting to this you will only see non personalized ads and <i>%1$s</i> and its partners won\'t collect any data about.\n\nBy agreeing, you are confirming that you are over the age of 16 and would like the non personalized ad experience.</string>
+    <string name="gdpr_dialog_text_after_accepted_non_personal">No problem. <i>%1$s</i> and it\'s partners won\'t collect your data through this app for personalized advertising. If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
+    <string name="gdpr_dialog_text_after_accepted_nothing">No problem, we understand your decision.\n\nStill you must understand us too, under this circumstances you are not allowed to use this app.</string>
+
+    <string name="gdpr_dialog_agree">Yes, I agree</string>
+    <string name="gdpr_dialog_disagree">No, thank you</string>
+    <string name="gdpr_dialog_close">Close</string>
+
+    <string name="gdpr_dialog_disagree_info"></string>
+    <string name="gdpr_dialog_disagree_totally_info_if_app_is_closed_without_consent">Not accepting any ads will result in not being able to use this app.</string>
+
+    <!-- Ad Networks -->
+    <string name="gdpr_network_admob">AdMob</string>
+
+</resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper
+    android:id="@+id/vfFlipper"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="?dialogPreferredPadding">
+
+    <!-- 0 - Info page -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gdpr_dialog_text"/>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btAgree"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_agree"/>
+
+        <Button
+            android:id="@+id/btDisagree"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_disagree"/>
+
+    </LinearLayout>
+
+    <!-- 1 - User accepted personal ads page -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/gdpr_dialog_text_after_accepted_personal"/>
+
+        <Button
+            android:id="@+id/btCloseAccepted"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_close"/>
+
+    </LinearLayout>
+
+    <!-- 2 - User did NOT accept personal ads page -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTextPersonalDeclined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/gdpr_dialog_text_after_declined_personal"/>
+
+        <Button
+            android:id="@+id/btAgreeNonPersonal"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_agree"/>
+
+        <Button
+            android:id="@+id/btDisagree2"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_disagree"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="italic"
+            android:gravity="center_horizontal"
+            android:text="@string/gdpr_dialog_disagree_totally_info_if_app_is_closed_without_consent"/>
+
+    </LinearLayout>
+
+    <!-- 3 - User did accept NON personal ads page -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/gdpr_dialog_text_after_accepted_non_personal"/>
+
+        <Button
+            android:id="@+id/btCloseAcceptedNonPersonal"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_close"/>
+
+    </LinearLayout>
+
+    <!-- 4 - User DIDN'T ACCEPT ANYTHING ads page-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/gdpr_dialog_text_after_accepted_nothing"/>
+
+        <Button
+            android:id="@+id/btCloseAcceptedNothing"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gdpr_dialog_close"/>
+
+    </LinearLayout>
+
+</ViewFlipper>

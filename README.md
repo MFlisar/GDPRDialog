@@ -36,3 +36,8 @@ GDPR.getInstance().showIfNecessary(this, new GDPRSetup(this, R.string.gdpr_netwo
 3. implement the `GDPR.IGDPRActivity` in your activity
 
 Check out the demo for a full working example
+
+### TODO
+
+* maybe improve texts
+* translations => german will be done by my until the first release

@@ -4,6 +4,8 @@ Simple reusable `DialogFragment`. Texts are based on
 https://media.mopub.com/media/filer_public/3c/fa/3cfa8de2-e517-4b27-ad83-d997d6c0ceab/flow3_v3.png 
 and are a little adjusted and extended.
 
+![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/workflow.png "Workflow")
+
 **For now, simply use `compile 'com.github.MFlisar:GDPRDialog:anyBranch-SNAPSHOT'`, I'll make a release reliably on 24.05, one day before the the new GDPR is valid.**
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))

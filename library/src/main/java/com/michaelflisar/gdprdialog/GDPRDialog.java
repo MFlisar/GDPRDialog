@@ -77,6 +77,7 @@ public class GDPRDialog extends AppCompatDialogFragment
         final ViewFlipper vfFlipper = view.findViewById(R.id.vfFlipper);
         ((TextView )view.findViewById(R.id.tvText)).setText(inflater.getContext().getString(R.string.gdpr_dialog_text, mSetup.getNetworksCommaSeperated()));
         ((TextView )view.findViewById(R.id.tvTextPersonalDeclined)).setText(inflater.getContext().getString(R.string.gdpr_dialog_text_after_declined_personal, mSetup.getNetworksCommaSeperated()));
+        ((TextView )view.findViewById(R.id.tvTextNonPersonalAccepted)).setText(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated()));
 
         vfFlipper.setDisplayedChild(mCurrentStep);
 

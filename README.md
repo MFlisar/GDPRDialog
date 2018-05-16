@@ -42,7 +42,7 @@ GDPR.getInstance().init(this);
 GDPR.getInstance().showIfNecessary(this, new GDPRSetup(GDPR.ADMOB_NETWORK));
 ```
 3. implement the `GDPR.IGDPRActivity` in your activity
-```
+```groovy
 public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRActivity {
     @Override
     public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState) {

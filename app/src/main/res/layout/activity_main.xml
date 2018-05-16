@@ -21,4 +21,16 @@
         android:onClick="onClick"
         android:text="Withdraw consent"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current consent:"/>
+
+    <TextView
+        android:id="@+id/tvCurrentConsent"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
 </LinearLayout>

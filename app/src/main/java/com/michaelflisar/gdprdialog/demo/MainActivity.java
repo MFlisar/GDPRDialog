@@ -3,6 +3,7 @@ package com.michaelflisar.gdprdialog.demo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
+
+        ((TextView)findViewById(R.id.tvCurrentConsent)).setText(consentState.name());
     }
 
     private void onConsentKnown(boolean allowsPersonalAds) {

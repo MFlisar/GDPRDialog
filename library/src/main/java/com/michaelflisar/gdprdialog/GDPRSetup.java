@@ -1,5 +1,6 @@
 package com.michaelflisar.gdprdialog;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -23,13 +24,17 @@ public class GDPRSetup implements Parcelable {
     // Functions
     // ----------------
 
-    public String getNetworksCommaSeperated(boolean withLinks) {
+    public String getNetworksCommaSeperated(Context context, boolean withLinks) {
         String networks = withLinks ? mAdNetworks[0].getHtmlLink() : mAdNetworks[0].getName();
+        String innerSep = context.getString(R.string.gdpr_list_seperator);
+        String lastSep = context.getString(R.string.gdpr_last_list_seperator);
+        String sep;
         for (int i = 1; i < mAdNetworks.length; i++) {
+            sep = i == mAdNetworks.length - 1 ? lastSep : innerSep;
             if (withLinks) {
-                networks += ", " + mAdNetworks[i].getHtmlLink();
+                networks += sep + mAdNetworks[i].getHtmlLink();
             } else {
-                networks += ", " + mAdNetworks[i].getName();
+                networks += sep + mAdNetworks[i].getName();
             }
         }
         return networks;

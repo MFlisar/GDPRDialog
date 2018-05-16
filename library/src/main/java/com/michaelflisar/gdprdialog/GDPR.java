@@ -22,12 +22,6 @@ public class GDPR
     }
 
     // ------------------
-    // Networks
-    // ------------------
-
-    public static GDPRNetwork ADMOB_NETWORK = null;
-
-    // ------------------
     // Variables
     // ------------------
 
@@ -44,7 +38,7 @@ public class GDPR
         mPreferences = context.getSharedPreferences(context.getString(R.string.gdpr_preference_file), Context.MODE_PRIVATE);
 
         // Init networks
-        ADMOB_NETWORK = new GDPRNetwork(context, R.string.gdpr_network_admob, R.string.gdpr_network_admob_link);
+        GDPRDefinitions.init(context);
     }
 
     // ------------------

@@ -87,8 +87,10 @@ public class GDPRDialog extends AppCompatDialogFragment
         final Button btNoAdsPlease = view.findViewById(R.id.btNoAdsPlease);
         final TextView tvText = view.findViewById(R.id.tvText);
         final TextView tvTextNonPersonalAccepted = view.findViewById(R.id.tvTextNonPersonalAccepted);
-        tvText.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text, mSetup.getNetworksCommaSeperated(true), mSetup.getNetworksCommaSeperated(false))));
-        tvTextNonPersonalAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(false))));
+        final TextView tvTextPersonalAccepted = view.findViewById(R.id.tvTextPersonalAccepted);
+        tvText.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text, mSetup.getNetworksCommaSeperated(inflater.getContext(), true))));
+        tvTextNonPersonalAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(inflater.getContext(),false))));
+        tvTextPersonalAccepted.setText(Html.fromHtml(inflater.getContext().getString(R.string.gdpr_dialog_text_after_accepted_personal)));
 
         tvText.setMovementMethod(LinkMovementMethod.getInstance());
         tvTextNonPersonalAccepted.setMovementMethod(LinkMovementMethod.getInstance());
@@ -158,10 +160,12 @@ public class GDPRDialog extends AppCompatDialogFragment
             mCallback.onConsentInfoUpdate(mSelectedConsent, true);
         }
         if (mSelectedConsent == null || (mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.isAllowUsageWithoutConsent())) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getActivity().finishAndRemoveTask();
-            } else {
-                getActivity().finishAffinity();
+            if (getActivity() != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    getActivity().finishAndRemoveTask();
+                } else {
+                    getActivity().finishAffinity();
+                }
             }
         } else {
             dismiss();

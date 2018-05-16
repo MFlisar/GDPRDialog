@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRDefinitions;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, GDPR.IGDPRActivity
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // show GDPR Dialog if necessary, the library takes fully care about if and how to show it
         GDPR.getInstance().showIfNecessary(this,
-                new GDPRSetup(GDPR.ADMOB_NETWORK)
+                new GDPRSetup(GDPRDefinitions.ADMOB, GDPRDefinitions.FIREBASE)
                 // use this to allow to use the app without any consent as well
 //                    .withAllowUsageWithoutConsent(true)
         );
@@ -79,6 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         GDPR.getInstance().resetConsent();
         // reshow dialog instantly
-        GDPR.getInstance().showIfNecessary(this, new GDPRSetup(GDPR.ADMOB_NETWORK));
+        GDPR.getInstance().showIfNecessary(this, new GDPRSetup(GDPRDefinitions.ADMOB, GDPRDefinitions.FIREBASE));
     }
 }

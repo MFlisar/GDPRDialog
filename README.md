@@ -65,7 +65,7 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
 }
 ```
 
-Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/MainActivity.java) for a full working example
+Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) for a full working example
 
 ### TODO
 

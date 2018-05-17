@@ -18,6 +18,10 @@ This library offers following:
 * it automatically reshows the dialog if the user did not give any consent or if the setup defines that the app is not allowed to be used without ads and the user has not accepted ads at all yet
 * works with a dialog fragment, so rotation and remembering intermediate state is done in the library
 * uses soft opt in
+* allows setups like following:
+  * allow/disallow app usage if the user gives no consent
+  * optioanlly explicitly ask for the users age (it's saver according to a data security expert I know)
+  * allow to handle fallback to paid app instead of not personalised ads and also allows to offer personalised/non personalised/paid no ads version
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))
 
@@ -44,11 +48,16 @@ GDPR.getInstance().init(this);
 ```
 2. call following in your activities `onCreate`
 ```groovy
-GDPR.getInstance().showIfNecessary(this, new GDPRSetup(GDPR.ADMOB_NETWORK));
+GDPRSetup setup = new GDPRSetup(GDPR.ADMOB_NETWORK);
+// optionally change setup:
+// setup.withAllowNoConsent(true);
+// setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
+// setup.withAskForAge(true);
+GDPR.getInstance().showIfNecessary(this, setup);
 ```
-3. implement the `GDPR.IGDPRActivity` in your activity
+3. implement the `GDPR.IGDPRCallback` in your activity
 ```groovy
-public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRActivity {
+public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCallback {
     @Override
     public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState) {
         // handle consent here

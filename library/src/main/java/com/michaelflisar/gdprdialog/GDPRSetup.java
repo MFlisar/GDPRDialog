@@ -5,8 +5,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class GDPRSetup implements Parcelable {
-    private boolean mAllowUsageWithoutConsent = false;
-    private GDPRNetwork mAdNetworks[] = null;
+
+    private boolean mHasPaidVersion = false;
+    private boolean mAllowNonPersonalisedForPaidVersion = false;
+    private boolean mAllowNoConsent = false;
+    private GDPRNetwork mAdNetworks[];
+
+    private boolean mAskForAge = false;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -15,8 +20,19 @@ public class GDPRSetup implements Parcelable {
         mAdNetworks = adNetworks;
     }
 
-    public GDPRSetup withAllowUsageWithoutConsent(boolean allowUsageWithoutConsent) {
-        mAllowUsageWithoutConsent = allowUsageWithoutConsent;
+    public GDPRSetup withPaidVersion(boolean alsoProvideNonPersonalisedOption) {
+        mHasPaidVersion = true;
+        mAllowNonPersonalisedForPaidVersion = alsoProvideNonPersonalisedOption;
+        return this;
+    }
+
+    public GDPRSetup withAllowNoConsent(boolean allowNoConsent) {
+        mAllowNoConsent = allowNoConsent;
+        return this;
+    }
+
+    public GDPRSetup withAskForAge(boolean askForAge) {
+        mAskForAge = askForAge;
         return this;
     }
 
@@ -40,8 +56,20 @@ public class GDPRSetup implements Parcelable {
         return networks;
     }
 
-    public boolean isAllowUsageWithoutConsent() {
-        return mAllowUsageWithoutConsent;
+    public boolean hasPaidVersion() {
+        return mHasPaidVersion;
+    }
+
+    public boolean allowNonPersonalisedForPaidVersion() {
+        return mAllowNonPersonalisedForPaidVersion;
+    }
+
+    public boolean allowNoConsent() {
+        return mAllowNoConsent || mAllowNonPersonalisedForPaidVersion;
+    }
+
+    public boolean askForAge() {
+        return mAskForAge;
     }
 
     public boolean containsAdNetwork() {
@@ -58,8 +86,15 @@ public class GDPRSetup implements Parcelable {
     // ----------------
 
     public GDPRSetup(Parcel in) {
-        mAllowUsageWithoutConsent = in.readByte() == 1;
-        mAdNetworks = (GDPRNetwork[]) in.readParcelableArray(GDPRNetwork.class.getClassLoader());
+        mHasPaidVersion = in.readByte() == 1;
+        mAllowNonPersonalisedForPaidVersion = in.readByte() == 1;
+        mAllowNoConsent = in.readByte() == 1;
+        Parcelable[] adNetworks = in.readParcelableArray(GDPRNetwork.class.getClassLoader());
+        mAdNetworks = new GDPRNetwork[adNetworks.length];
+        for (int i = 0; i < adNetworks.length; i++) {
+            mAdNetworks[i] = (GDPRNetwork)adNetworks[i];
+        }
+        mAskForAge = in.readByte() == 1;
     }
 
     @Override
@@ -69,8 +104,11 @@ public class GDPRSetup implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByte(mAllowUsageWithoutConsent ? (byte) 1 : 0);
+        dest.writeInt(mHasPaidVersion ? (byte) 1 : 0);
+        dest.writeInt(mAllowNonPersonalisedForPaidVersion ? (byte) 1 : 0);
+        dest.writeInt(mAllowNoConsent ? (byte) 1 : 0);
         dest.writeParcelableArray(mAdNetworks, 0);
+        dest.writeByte(mAskForAge ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

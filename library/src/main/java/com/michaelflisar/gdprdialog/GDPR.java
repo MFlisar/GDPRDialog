@@ -1,9 +1,7 @@
 package com.michaelflisar.gdprdialog;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 public class GDPR
@@ -45,24 +43,34 @@ public class GDPR
     // GDPR - public functions
     // ------------------
 
-    public <T extends AppCompatActivity & IGDPRActivity> void showIfNecessary(T activity, GDPRSetup setup) {
+    public <T extends AppCompatActivity & IGDPRCallback> boolean shouldBeShown(T activity, GDPRSetup setup) {
         checkIsInitialised();
 
         GDPRConsent consent = getConsent();
         switch (consent) {
             case UNKNOWN:
-                showDialog(activity, setup);
-                break;
+                return true;
             case NO_CONSENT:
-                if (!setup.isAllowUsageWithoutConsent()) {
-                    showDialog(activity, setup);
+                if (!setup.allowNoConsent()) {
+                    return true;
                 }
+                break;
             case NON_PERSONAL_CONSENT_ONLY:
             case PERSONAL_CONSENT:
                 // nothing to do, we already know the users decision!
                 // simple forward this information to the listener
                 activity.onConsentInfoUpdate(consent, false);
                 break;
+        }
+
+        return false;
+    }
+
+    public <T extends AppCompatActivity & IGDPRCallback> void showIfNecessary(T activity, GDPRSetup setup) {
+        checkIsInitialised();
+
+        if (shouldBeShown(activity, setup)) {
+            showDialog(activity, setup);
         }
     }
 
@@ -107,7 +115,7 @@ public class GDPR
     // Callback interfaces
     // ------------------
 
-    public interface IGDPRActivity
+    public interface IGDPRCallback
     {
         /**
          * Callback that will inform about which consent state the user has selected

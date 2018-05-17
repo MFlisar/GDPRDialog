@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".DemoActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Style"/>
+
+    <CheckBox
+        android:id="@+id/cbShowAsActivity"
+        android:text="Use an activity instead of a dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Used services"/>
+
+    <CheckBox
+        android:id="@+id/cbAdServiceOnly"
+        android:text="Only use ad service (deselect to use more services)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paid version"/>
+
+    <CheckBox
+        android:id="@+id/cbHasPaidVersion"
+        android:text="Has paid version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/cbAllowNonPersonalisedForPaidVersions"
+        android:text="Allow to use non personalised data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No consent handling"/>
+
+    <CheckBox
+        android:id="@+id/cbAllowNoConsent"
+        android:text="Allow to use the app without any consent (either personal nor non personal)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Age handling"/>
+
+    <CheckBox
+        android:id="@+id/cbAskForAge"
+        android:text="Explicitly ask for users age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btTest"
+        android:onClick="onClick"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show test activity with above settings"/>
+
+
+</LinearLayout>

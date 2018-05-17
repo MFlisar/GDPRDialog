@@ -23,9 +23,29 @@
                 android:id="@+id/tvText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_text"/>
+                android:text="@string/gdpr_dialog_text_part1"/>
 
         </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/llAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/gdpr_age"/>
+
+            <Spinner
+                android:id="@+id/spAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btAgree"
@@ -39,19 +59,19 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/gdpr_dialog_disagree"/>
+            android:text="@string/gdpr_dialog_disagree_no_thanks"/>
 
         <TextView
             android:id="@+id/tvAdsInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textStyle="italic"
             android:gravity="center_horizontal"
-            android:text="@string/gdpr_dialog_disagree_info"/>
+            android:text="@string/gdpr_dialog_disagree_info"
+            android:textStyle="italic"/>
 
         <Button
-            android:id="@+id/btNoAdsPlease"
+            android:id="@+id/btNoConsentAtAll"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,7 +140,7 @@
             android:text="@string/gdpr_dialog_text_after_accepted_nothing"/>
 
         <Button
-            android:id="@+id/btCloseNoAds"
+            android:id="@+id/btCloseAfterNoConsentAccepted"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

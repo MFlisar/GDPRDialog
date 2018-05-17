@@ -47,9 +47,9 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == DEMO_GDPR_ACTIVITY_REQUEST_CODE) {
+        if (requestCode == DEMO_GDPR_ACTIVITY_REQUEST_CODE) {
             GDPRConsent consentState = GDPR.getInstance().getConsent();
-            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState.name());
+            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState != null ? consentState.name() : "");
         }
     }
 

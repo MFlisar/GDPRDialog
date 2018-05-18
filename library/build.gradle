@@ -4,10 +4,20 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.MFlisar'
 
 android {
-    compileSdkVersion 27
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 27
+    if (project.hasProperty('setup.compileSdk')) {
+        compileSdkVersion setup.compileSdk
+        buildToolsVersion setup.buildTools
+        defaultConfig {
+            minSdkVersion setup.minSdk
+            targetSdkVersion setup.targetSdk
+        }
+    } else {
+        compileSdkVersion 27
+        buildToolsVersion "27.0.3"
+        defaultConfig {
+            minSdkVersion 16
+            targetSdkVersion 27
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -19,10 +29,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    if (project.hasProperty('versions.supportLib')) {
+        implementation "com.android.support:appcompat-v7:$rootProject.versions.supportLib"
+    } else {
+        implementation 'com.android.support:appcompat-v7:27.1.1'
+    }
 
 }

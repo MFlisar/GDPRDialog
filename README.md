@@ -22,6 +22,17 @@ This library offers following:
   * allow/disallow app usage if the user gives no consent
   * optioanlly explicitly ask for the users age (it's saver according to a data security expert I know)
   * allow to handle fallback to paid app instead of not personalised ads and also allows to offer personalised/non personalised/paid no ads version
+  
+### GDPR and law safety
+
+Such dialogs must always be adjusted to the user case in general, although this one should be fine in most cases. Following is important (talked with a lawyer I know of who is a GDPR specialist):
+
+* user must be asked for consent for personalised data
+* user must not be asked for non personalised data directly, the soft opt in like implemented in this library is ok ("cookie method")
+* it's probably ok to disallow the usage of the app if the user does not want to use personalised data, but this is not sure yet. But in general, if you don't have a monopol and your app is not necessary for everyone, you have the right to decide yourself whom you sell or give the app. But this is something that is not 100% predictable currently in the app scene yet, maybe one day we have some reference cases and know for sure.
+* following methods are GDPR compliant for sure:
+  * allow the user to use the app with personalised ads only or offer him the ability to buy an ad free version
+  * allow the user to use the app with personalised ads or alternatively use it with non personalised ads via soft opt in
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))
 

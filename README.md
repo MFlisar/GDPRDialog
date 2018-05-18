@@ -25,11 +25,12 @@ This library offers following:
   
 ### GDPR and law safety
 
-Such dialogs must always be adjusted to the user case in general, although this one should be fine in most cases. Following is important (talked with a lawyer I know of who is a GDPR specialist):
+Such dialogs must always be adjusted to the user case in general, although this one should be fine in most cases. Following is important (talked with a lawyer I know of who is a GDPR specialist). I'm no lawyer, so don't take everything I write for granted. Check out the the [EU GDPR](https://www.eugdpr.org/) yourself for more informations.
 
 * user must be asked for consent for personalised data
 * user must not be asked for non personalised data directly, the soft opt in like implemented in this library is ok ("cookie method")
 * it's probably ok to disallow the usage of the app if the user does not want to use personalised data, but this is not sure yet. But in general, if you don't have a monopol and your app is not necessary for everyone, you have the right to decide yourself whom you sell or give the app. But this is something that is not 100% predictable currently in the app scene yet, maybe one day we have some reference cases and know for sure.
+* you must provide the links of all privacy policies of the services you use and those services must listed in the consent dialog (name + link to privacy policy is fine)
 * following methods are GDPR compliant for sure:
   * allow the user to use the app with personalised ads only or offer him the ability to buy an ad free version
   * allow the user to use the app with personalised ads or alternatively use it with non personalised ads via soft opt in

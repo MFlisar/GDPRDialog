@@ -29,16 +29,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-
 }
 
 dependencies {
-
     if (project.hasProperty('versions.supportLib')) {
         implementation "com.android.support:appcompat-v7:$rootProject.versions.supportLib"
     } else {
         implementation 'com.android.support:appcompat-v7:27.1.1'
     }
-
 }

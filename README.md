@@ -83,6 +83,7 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 * [ ] resize dialog after each step
 * [ ] translations => german will be done by my until the first release
+* [ ] offer bottom dialog layout as well
 
 Additional things todo:
 

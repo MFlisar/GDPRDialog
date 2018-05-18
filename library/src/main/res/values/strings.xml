@@ -40,6 +40,7 @@
     <string name="gdpr_not_old_enough">Sorry, you\'re not old enough to use this app. You must be at least 16 years!</string>
     <string name="gdpr_select_your_age">Please select your age</string>
     <string name="gdpr_buy_app">Buy app</string>
+    <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>
 
     <!-- *********** -->
     <!-- Ad Networks -->

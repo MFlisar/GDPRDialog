@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
@@ -82,6 +83,9 @@ public class GDPRViewManager
     }
 
     public void init(Activity activity, View view, IOnFinishView onFinishViewListener) {
+        final Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setVisibility(mSetup.noToolbarTheme() ? View.VISIBLE : View.GONE);
+        toolbar.setTitle(R.string.gdpr_dialog_title);
         final ViewFlipper vfFlipper = view.findViewById(R.id.vfFlipper);
         final Button btDisagree = view.findViewById(R.id.btDisagree);
         final Button btNoConsentAtAll = view.findViewById(R.id.btNoConsentAtAll);

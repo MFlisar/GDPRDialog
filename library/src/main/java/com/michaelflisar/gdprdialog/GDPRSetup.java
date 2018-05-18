@@ -12,6 +12,7 @@ public class GDPRSetup implements Parcelable {
     private GDPRNetwork mAdNetworks[];
 
     private boolean mAskForAge = false;
+    private boolean mNoToolbarTheme = false;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -33,6 +34,11 @@ public class GDPRSetup implements Parcelable {
 
     public GDPRSetup withAskForAge(boolean askForAge) {
         mAskForAge = askForAge;
+        return this;
+    }
+
+    public GDPRSetup withNoToolbarTheme(boolean noToolbarTheme) {
+        mNoToolbarTheme = noToolbarTheme;
         return this;
     }
 
@@ -72,6 +78,10 @@ public class GDPRSetup implements Parcelable {
         return mAskForAge;
     }
 
+    public boolean noToolbarTheme() {
+        return mNoToolbarTheme;
+    }
+
     public boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
@@ -95,6 +105,7 @@ public class GDPRSetup implements Parcelable {
             mAdNetworks[i] = (GDPRNetwork)adNetworks[i];
         }
         mAskForAge = in.readByte() == 1;
+        mNoToolbarTheme = in.readByte() == 1;
     }
 
     @Override
@@ -109,6 +120,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeInt(mAllowNoConsent ? (byte) 1 : 0);
         dest.writeParcelableArray(mAdNetworks, 0);
         dest.writeByte(mAskForAge ? (byte) 1 : 0);
+        dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

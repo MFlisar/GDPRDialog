@@ -62,7 +62,9 @@ public class GDPRDialog extends AppCompatDialogFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = initView(inflater, container);
-        getDialog().setTitle(R.string.gdpr_dialog_title);
+        if (!mViewManager.getSetup().noToolbarTheme()) {
+            getDialog().setTitle(R.string.gdpr_dialog_title);
+        }
         return view;
     }
 

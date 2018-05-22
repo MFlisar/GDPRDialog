@@ -18,6 +18,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox cbHasPaidVersion;
     private CheckBox cbAllowNonPersonalisedForPaidVersions;
     private CheckBox cbAskForAge;
+    private CheckBox cbCheckRequestLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbHasPaidVersion = findViewById(R.id.cbHasPaidVersion);
         cbAllowNonPersonalisedForPaidVersions = findViewById(R.id.cbAllowNonPersonalisedForPaidVersions);
         cbAskForAge = findViewById(R.id.cbAskForAge);
+        cbCheckRequestLocation = findViewById(R.id.cbCheckRequestLocation);
 
         cbAllowNonPersonalisedForPaidVersions.setEnabled(cbHasPaidVersion.isChecked());
         cbHasPaidVersion.setOnCheckedChangeListener((buttonView, isChecked) -> cbAllowNonPersonalisedForPaidVersions.setEnabled(isChecked));
@@ -45,6 +47,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbHasPaidVersion = null;
         cbAllowNonPersonalisedForPaidVersions = null;
         cbAskForAge = null;
+        cbCheckRequestLocation = null;
         super.onDestroy();
     }
 
@@ -70,6 +73,9 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         }
         if (cbAskForAge.isChecked()) {
             setup.withAskForAge(true);
+        }
+        if (cbCheckRequestLocation.isChecked()) {
+            setup.withCheckRequestLocation(true);
         }
 
         intent.putExtra("setup", setup);

@@ -28,39 +28,40 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
         // get setup from intent
         mSetup = getIntent().getParcelableExtra("setup");
 
-        // show GDPR Dialog if necessary, the library takes fully care about if and how to show it
+        // show GDPR Dialog if necessary, the library takes care about if and how to show it
+        showGDPRIfNecessary();
+    }
+
+    @Override
+    public void onClick(View v) {
+        GDPR.getInstance().resetConsent();
+        // reshow dialog instantly
         showGDPRIfNecessary();
     }
 
     private void showGDPRIfNecessary() {
+        GDPR.getInstance().checkIfNeedsToBeShown(this, mSetup);
+    }
+
+    // --------------------
+    //  GDPR.IGDPRCallback
+    // --------------------
+
+    @Override
+    public void onConsentNeedsToBeRequested() {
         if (App.USE_ACTIVITY) {
-            if (GDPR.getInstance().shouldBeShown(this, mSetup)) {
-                DemoGDPRActivity.startActivityForResult(this, mSetup, DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
-            }
+            DemoGDPRActivity.startActivityForResult(this, mSetup, DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
         } else {
-            GDPR.getInstance().showIfNecessary(this, mSetup);
-        }
-    }
-
-    // Only necessaqry for the activity demo!!!
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == DEMO_GDPR_ACTIVITY_REQUEST_CODE) {
-            GDPRConsent consentState = GDPR.getInstance().getConsent();
-            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState != null ? consentState.name() : "");
+            // default: forward the result and show the dialog
+            GDPR.getInstance().showDialog(this, mSetup);
         }
     }
 
     @Override
-    public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState)
-    {
-        if (isNewState)
-        {
+    public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState) {
+        if (isNewState) {
             // user just selected this consent, do whatever you want...
-            switch (consentState)
-            {
+            switch (consentState) {
                 case UNKNOWN:
                     // never happens!
                     break;
@@ -76,11 +77,8 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                     onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
                     break;
             }
-        }
-        else
-        {
-            switch (consentState)
-            {
+        } else {
+            switch (consentState) {
                 case UNKNOWN:
                     // never happens!
                     break;
@@ -98,17 +96,21 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
         ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState.name());
     }
 
-    private void onConsentKnown(boolean allowsPersonalAds)
-    {
+    private void onConsentKnown(boolean allowsPersonalAds) {
         // TODO:
         // init your ads based on allowsPersonalAds
     }
 
+    // --------------------
+    // Only necessaqry for the activity demo!!!
+    // --------------------
+
     @Override
-    public void onClick(View v)
-    {
-        GDPR.getInstance().resetConsent();
-        // reshow dialog instantly
-        showGDPRIfNecessary();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == DEMO_GDPR_ACTIVITY_REQUEST_CODE) {
+            GDPRConsent consentState = GDPR.getInstance().getConsent();
+            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState != null ? consentState.name() : "");
+        }
     }
 }

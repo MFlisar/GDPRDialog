@@ -47,6 +47,11 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
         mViewManager.save(outState);
     }
 
+    @Override
+    public void onConsentNeedsToBeRequested() {
+        // ignored in activity, must be checked befroe starting the activity!
+    }
+
     private View initView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.gdpr_dialog, container, false);
         mViewManager.init(this, view, () -> onSaveConsentAndCloseActivity());

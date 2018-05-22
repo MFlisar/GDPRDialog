@@ -113,7 +113,7 @@ public class GDPRViewManager
             tvTextNothingAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_nothing)));
         }
 
-        if (!mSetup.containsAdNetwork()) {
+        if (!mSetup.containsAdNetwork() || (mSetup.hasPaidVersion() && !mSetup.allowNonPersonalisedForPaidVersion())) {
             tvAdsInfo.setVisibility(View.GONE);
         }
 

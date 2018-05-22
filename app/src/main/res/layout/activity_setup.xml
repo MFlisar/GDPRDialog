@@ -61,11 +61,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Age handling"/>
+        android:text="Special settings"/>
 
     <CheckBox
         android:id="@+id/cbAskForAge"
         android:text="Explicitly ask for users age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/cbCheckRequestLocation"
+        android:text="Check if request location is in EAA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

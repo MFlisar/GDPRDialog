@@ -13,6 +13,7 @@ public class GDPRSetup implements Parcelable {
 
     private boolean mAskForAge = false;
     private boolean mNoToolbarTheme = false;
+    private boolean mCheckRequestLocation = false;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -42,11 +43,16 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation) {
+        mCheckRequestLocation = checkRequestLocation;
+        return this;
+    }
+
     // ----------------
     // Functions
     // ----------------
 
-    public String getNetworksCommaSeperated(Context context, boolean withLinks) {
+    public final String getNetworksCommaSeperated(Context context, boolean withLinks) {
         String networks = withLinks ? mAdNetworks[0].getHtmlLink() : mAdNetworks[0].getName();
         String innerSep = context.getString(R.string.gdpr_list_seperator);
         String lastSep = context.getString(R.string.gdpr_last_list_seperator);
@@ -62,27 +68,31 @@ public class GDPRSetup implements Parcelable {
         return networks;
     }
 
-    public boolean hasPaidVersion() {
+    public final boolean hasPaidVersion() {
         return mHasPaidVersion;
     }
 
-    public boolean allowNonPersonalisedForPaidVersion() {
+    public final boolean allowNonPersonalisedForPaidVersion() {
         return mAllowNonPersonalisedForPaidVersion;
     }
 
-    public boolean allowNoConsent() {
+    public final boolean allowNoConsent() {
         return mAllowNoConsent || mAllowNonPersonalisedForPaidVersion;
     }
 
-    public boolean askForAge() {
+    public final boolean askForAge() {
         return mAskForAge;
     }
 
-    public boolean noToolbarTheme() {
+    public final boolean noToolbarTheme() {
         return mNoToolbarTheme;
     }
 
-    public boolean containsAdNetwork() {
+    public final boolean checkRequestLocation() {
+        return mCheckRequestLocation;
+    }
+
+    public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
                 return true;
@@ -106,6 +116,7 @@ public class GDPRSetup implements Parcelable {
         }
         mAskForAge = in.readByte() == 1;
         mNoToolbarTheme = in.readByte() == 1;
+        mCheckRequestLocation = in.readByte() == 1;
     }
 
     @Override
@@ -121,6 +132,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeParcelableArray(mAdNetworks, 0);
         dest.writeByte(mAskForAge ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
+        dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

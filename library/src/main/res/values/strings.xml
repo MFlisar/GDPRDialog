@@ -4,8 +4,8 @@
     <!-- Preferences -->
     <!-- *********** -->
 
-    <string name="gdpr_preference_file">gdpr</string>
-    <string name="gdpr_preference">gdpr_consent</string>
+    <string name="gdpr_preference_file" translatable="false">gdpr</string>
+    <string name="gdpr_preference" translatable="false">gdpr_consent</string>
 
     <!-- ****** -->
     <!-- Dialog -->
@@ -34,13 +34,17 @@
     <string name="gdpr_dialog_close">Close</string>
     <string name="gdpr_dialog_disagree_no_ads">No ads at all, please</string>
     <string name="gdpr_dialog_disagree_info">I understand that I still see ads, but they may not be as relevant to my interests.</string>
-    <string name="gdpr_list_seperator">\u00A0,</string>
-    <string name="gdpr_last_list_seperator">\u00A0and\u00A0</string>
+    <string name="gdpr_list_seperator" translatable="false">\u00A0,</string>
+    <string name="gdpr_last_list_seperator" translatable="false">\u00A0and\u00A0</string>
     <string name="gdpr_select_age">- select your age -</string>
     <string name="gdpr_not_old_enough">Sorry, you\'re not old enough to use this app. You must be at least 16 years!</string>
     <string name="gdpr_select_your_age">Please select your age</string>
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>
+
+    <!-- Others -->
+    <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors</string>
+    <string name="gdpr_googles_check_json_field_is_request_in_eea_or_unknown" translatable="false">is_request_in_eea_or_unknown</string>
 
     <!-- *********** -->
     <!-- Ad Networks -->

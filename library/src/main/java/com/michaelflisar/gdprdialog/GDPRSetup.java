@@ -14,6 +14,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mExplicitAgeConfirmation = false;
     private boolean mNoToolbarTheme = false;
     private boolean mCheckRequestLocation = false;
+    private boolean mExplicitConsentForEachService = false;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -48,6 +49,11 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    public GDPRSetup withExplicitConsentForEachService(boolean explicitConsentForEachService) {
+        mExplicitConsentForEachService = explicitConsentForEachService;
+        return this;
+    }
+
     // ----------------
     // Functions
     // ----------------
@@ -68,6 +74,9 @@ public class GDPRSetup implements Parcelable {
         return networks;
     }
 
+    public final GDPRNetwork[] networks() {
+        return mAdNetworks;
+    }
     public final boolean hasPaidVersion() {
         return mHasPaidVersion;
     }
@@ -96,6 +105,10 @@ public class GDPRSetup implements Parcelable {
         return mCheckRequestLocation;
     }
 
+    public final boolean explicitConsentForEachService() {
+        return mExplicitConsentForEachService;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
@@ -121,6 +134,7 @@ public class GDPRSetup implements Parcelable {
         mExplicitAgeConfirmation = in.readByte() == 1;
         mNoToolbarTheme = in.readByte() == 1;
         mCheckRequestLocation = in.readByte() == 1;
+        mExplicitConsentForEachService = in.readByte() == 1;
     }
 
     @Override
@@ -137,6 +151,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mExplicitAgeConfirmation ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
         dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
+        dest.writeByte(mExplicitConsentForEachService ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

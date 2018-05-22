@@ -19,6 +19,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox cbAllowNonPersonalisedForPaidVersions;
     private CheckBox cbAskForAge;
     private CheckBox cbCheckRequestLocation;
+    private CheckBox cbExplicitConsentForEachService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbAllowNonPersonalisedForPaidVersions = findViewById(R.id.cbAllowNonPersonalisedForPaidVersions);
         cbAskForAge = findViewById(R.id.cbAskForAge);
         cbCheckRequestLocation = findViewById(R.id.cbCheckRequestLocation);
+        cbExplicitConsentForEachService = findViewById(R.id.cbExplicitConsentForEachService);
 
         cbAllowNonPersonalisedForPaidVersions.setEnabled(cbHasPaidVersion.isChecked());
         cbHasPaidVersion.setOnCheckedChangeListener((buttonView, isChecked) -> cbAllowNonPersonalisedForPaidVersions.setEnabled(isChecked));
@@ -48,6 +50,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbAllowNonPersonalisedForPaidVersions = null;
         cbAskForAge = null;
         cbCheckRequestLocation = null;
+        cbExplicitConsentForEachService = null;
         super.onDestroy();
     }
 
@@ -77,7 +80,9 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         if (cbCheckRequestLocation.isChecked()) {
             setup.withCheckRequestLocation(true);
         }
-
+        if (cbExplicitConsentForEachService.isChecked()) {
+            setup.withExplicitConsentForEachService(true);
+        }
         intent.putExtra("setup", setup);
         startActivity(intent);
     }

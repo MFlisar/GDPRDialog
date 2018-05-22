@@ -46,7 +46,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```groovy
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:0.3'
+     implementation 'com.github.MFlisar:GDPRDialog:0.4'
 }
 ```
 
@@ -64,6 +64,7 @@ GDPRSetup setup = new GDPRSetup(GDPR.ADMOB_NETWORK); // add all networks you use
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
 // setup.withExplicitAgeConfirmation(true);
 // setup.withCheckRequestLocation(true);
+// setup.withExplicitConsentForEachService(true)
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity
@@ -92,4 +93,5 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   * [x] german
   * [ ] others
 * [ ] offer bottom dialog layout as well
+* [ ] if `withExplicitConsentForEachService` is used, the user currently needs to accept every service => could be improved to define some as optional
 * add more networks (dropbox, ...)

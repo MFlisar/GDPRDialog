@@ -14,11 +14,10 @@
     <string name="gdpr_dialog_title">Data Protection Consent</string>
 
     <!-- Dialog - MAIN PAGE TEXTS -->
-    <string name="gdpr_dialog_text_part1">This app uses following services: %1$s&lt;br/>&lt;br/>Depending on your privacy settings, those services (including partners) may collect and process personal data such as device identifieres, location data and other demographic and interest data about you to provide you a personalized experience.</string>
-    <string name="gdpr_dialog_text_part2_with_age">&lt;br/>&lt;br/>By agreeing, you are confirming that you are over the age of 16 and would like this personalized experience.</string>
-    <string name="gdpr_dialog_text_part2_no_age">&lt;br/>&lt;br/>By agreeing, you are confirming that you would like this personalized experience.</string>
-
-    <!-- Dialog - BUY APP PAGE TEXTS -->
+    <string name="gdpr_dialog_text_part1">This app uses following services:</string>
+    <string name="gdpr_dialog_text_part2">Depending on your privacy settings, those services (including partners) may collect and process personal data such as device identifieres, location data and other demographic and interest data about you to provide you a personalized experience.&lt;br/>&lt;br/>%1$s</string>
+    <string name="gdpr_dialog_text_part2_addon_with_age">By agreeing, you are confirming that you are over the age of 16 and would like this personalized experience.</string>
+    <string name="gdpr_dialog_text_part2_addon_no_age">By agreeing, you are confirming that you would like this personalized experience.</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_after_accepted_personal">Great.&lt;br/>&lt;br/>%1$s</string>
@@ -26,7 +25,7 @@
     <string name="gdpr_dialog_text_after_accepted_nothing">No problem.&lt;br/>&lt;br/>You can still use this app.&lt;br/>&lt;br/>%1$s</string>
     <string name="gdpr_dialog_text_after_accepted_nothing_paid_version_needed">No problem.&lt;br/>&lt;br/>You can still use this app, if you buy it.</string>
     <string name="gdpr_withdraw_consent_info_addon">&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
-    <string name="gdpr_dialog_confirm_age">I confirm, that I\'m 16 years or older</string>
+    <string name="gdpr_dialog_confirm_age">Additionally I confirm, that I\'m 16 years or older</string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
     <string name="gdpr_age">Age</string>
@@ -41,6 +40,8 @@
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>
     <string name="gdpr_age_not_confirmed">Please confirm your age before continuing</string>
+    <string name="gdpr_not_all_services_accepted">Please accept all services before continuing</string>
+    <string name="gdpr_link">Link</string>
 
     <!-- Others -->
     <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors</string>

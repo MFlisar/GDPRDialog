@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +64,7 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 finishAndRemoveTask();
             } else {
-                finishAffinity();
+                ActivityCompat.finishAffinity(this);
             }
         } else {
             finish();

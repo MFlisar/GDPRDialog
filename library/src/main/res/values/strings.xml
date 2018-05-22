@@ -16,8 +16,8 @@
     <!-- Dialog - MAIN PAGE TEXTS -->
     <string name="gdpr_dialog_text_part1">This app uses following services:</string>
     <string name="gdpr_dialog_text_part2">Depending on your privacy settings, those services (including partners) may collect and process personal data such as device identifieres, location data and other demographic and interest data about you to provide you a personalized experience.&lt;br/>&lt;br/>%1$s</string>
-    <string name="gdpr_dialog_text_part2_addon_with_age">By agreeing, you are confirming that you are over the age of 16 and would like this personalized experience.</string>
-    <string name="gdpr_dialog_text_part2_addon_no_age">By agreeing, you are confirming that you would like this personalized experience.</string>
+    <string name="gdpr_dialog_text_part2_with_age">By agreeing, you are confirming that you are over the age of 16 and would like this personalized experience.</string>
+    <string name="gdpr_dialog_text_part2_no_age">By agreeing, you are confirming that you would like this personalized experience.</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_after_accepted_personal">Great.&lt;br/>&lt;br/>%1$s</string>

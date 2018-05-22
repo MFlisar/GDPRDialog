@@ -173,7 +173,7 @@ public class GDPRViewManager
         // ------------------
 
         view.findViewById(R.id.btAgree).setOnClickListener(v -> {
-            if (!isAgeValid(v.getContext(), true) || !isAllConsentGiven(v.getContext())) {
+            if (!isAgeValid(v.getContext(), true) || !isAllConsentGiven(v.getContext(), true)) {
                 return;
             }
             mSelectedConsent = GDPRConsent.PERSONAL_CONSENT;
@@ -182,7 +182,7 @@ public class GDPRViewManager
         });
 
         view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
-            if (!isAgeValid(v.getContext(), false)  || !isAllConsentGiven(v.getContext())) {
+            if (!isAgeValid(v.getContext(), false)  || !isAllConsentGiven(v.getContext(), false)) {
                 return;
             }
             if (mSetup.hasPaidVersion()) {
@@ -253,8 +253,8 @@ public class GDPRViewManager
         return true;
     }
 
-    private boolean isAllConsentGiven(Context context) {
-        if (mSetup.explicitConsentForEachService()) {
+    private boolean isAllConsentGiven(Context context, boolean agree) {
+        if (mSetup.explicitConsentForEachService() && agree) {
             int consentsGiven = 0;
             for (int i = 0; i < mExplicitlyConfirmedServices.size(); i++) {
                 if (mExplicitlyConfirmedServices.get(i) == 1) {

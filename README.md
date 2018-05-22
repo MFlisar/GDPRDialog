@@ -64,7 +64,7 @@ GDPRSetup setup = new GDPRSetup(GDPR.ADMOB_NETWORK); // add all networks you use
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
 // setup.withAskForAge(true);
 // setup.withCheckRequestLocation(true);
-GDPR.getInstance().showIfNecessary(this, setup);
+GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity
 ```groovy

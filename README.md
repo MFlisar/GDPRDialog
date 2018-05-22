@@ -90,6 +90,6 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 * [ ] translations
   * [x] english
   * [x] german
-  * [ ] other
+  * [ ] others
 * [ ] offer bottom dialog layout as well
 * add more networks (dropbox, ...)

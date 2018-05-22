@@ -2,17 +2,13 @@ package com.michaelflisar.gdprdialog.helper;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -22,14 +18,12 @@ import com.michaelflisar.gdprdialog.GDPRConsent;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.R;
 
-import java.util.ArrayList;
-
 public class GDPRViewManager
 {
     public static String ARG_SETUP = "ARG_SETUP";
 
     private static String KEY_STEP = "KEY_STEP";
-    private static String KEY_AGE = "KEY_AGE";
+    private static String KEY_AGE_CONFIRMED = "KEY_AGE_CONFIRMED";
     private static String KEY_SELECTED_CONSENT = "KEY_SELECTED_CONSENT";
 
     private GDPRSetup mSetup;
@@ -37,7 +31,7 @@ public class GDPRViewManager
 
     private int mCurrentStep = 0;
     private GDPRConsent mSelectedConsent = null;
-    private int mCurrentSelectedAge = 0;
+    private boolean mAgeConfirmed = false;
 
     public GDPRViewManager(Bundle args, Bundle savedInstanceState) {
         mSetup = args.getParcelable(ARG_SETUP);
@@ -46,7 +40,7 @@ public class GDPRViewManager
             if (savedInstanceState.containsKey(KEY_SELECTED_CONSENT)) {
                 mSelectedConsent = GDPRConsent.values()[savedInstanceState.getInt(KEY_SELECTED_CONSENT)];
             }
-            mCurrentSelectedAge = savedInstanceState.getInt(KEY_AGE);
+            mAgeConfirmed = savedInstanceState.getBoolean(KEY_AGE_CONFIRMED);
         }
     }
 
@@ -55,7 +49,7 @@ public class GDPRViewManager
         if (mSelectedConsent != null) {
             outState.putInt(KEY_SELECTED_CONSENT, mSelectedConsent.ordinal());
         }
-        outState.putInt(KEY_AGE, mCurrentSelectedAge);
+        outState.putBoolean(KEY_AGE_CONFIRMED, mAgeConfirmed);
     }
 
     public void setCallback(Object callback) {
@@ -95,48 +89,33 @@ public class GDPRViewManager
         final TextView tvTextPersonalAccepted = view.findViewById(R.id.tvTextPersonalAccepted);
         final TextView tvTextNothingAccepted = view.findViewById(R.id.tvTextNothingAccepted);
         final TextView tvAdsInfo = view.findViewById(R.id.tvAdsInfo);
-        final Spinner spAge = view.findViewById(R.id.spAge);
-        final LinearLayout llAge = view.findViewById(R.id.llAge);
+        final CheckBox cbAge = view.findViewById(R.id.cbAge);
         String text = activity.getString(R.string.gdpr_dialog_text_part1, mSetup.getNetworksCommaSeperated(activity, true));
-        if (mSetup.askForAge()) {
+        if (mSetup.askForAgeConfirmation()) {
             text += activity.getString(R.string.gdpr_dialog_text_part2_no_age);
         } else {
             text += activity.getString(R.string.gdpr_dialog_text_part2_with_age);
         }
+        final String withdrawConsentInfoAddon = activity.getString(R.string.gdpr_withdraw_consent_info_addon);
         tvText.setText(Html.fromHtml(text));
-        tvTextNonPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(activity,false))));
-        tvTextPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_personal)));
+        tvTextNonPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(activity,false), withdrawConsentInfoAddon)));
+        tvTextPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_personal, withdrawConsentInfoAddon)));
         if (mSetup.hasPaidVersion()) {
             tvTextNothingAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_nothing_paid_version_needed)));
             btCloseAfterNoConsentAccepted.setText(R.string.gdpr_buy_app);
         } else {
-            tvTextNothingAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_nothing)));
+            tvTextNothingAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_nothing, withdrawConsentInfoAddon)));
         }
 
         if (!mSetup.containsAdNetwork() || (mSetup.hasPaidVersion() && !mSetup.allowNonPersonalisedForPaidVersion())) {
             tvAdsInfo.setVisibility(View.GONE);
         }
 
-        if (!mSetup.askForAge()) {
-            llAge.setVisibility(View.GONE);
+        if (!mSetup.askForAgeConfirmation()) {
+            cbAge.setVisibility(View.GONE);
         } else {
-            ArrayList<String> list = new ArrayList<>();
-            list.add(activity.getString(R.string.gdpr_select_age));
-            for (int i = 6; i < 100; i++) {
-                list.add(String.valueOf(i));
-            }
-            spAge.setAdapter(new ArrayAdapter<>(activity, R.layout.support_simple_spinner_dropdown_item, list));
-            spAge.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    mCurrentSelectedAge = position;
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
+            cbAge.setChecked(mAgeConfirmed);
+            cbAge.setOnCheckedChangeListener((buttonView, isChecked) -> mAgeConfirmed = isChecked);
         }
 
         if (mSetup.hasPaidVersion()) {
@@ -227,12 +206,9 @@ public class GDPRViewManager
     // ---------------
 
     private boolean isAgeValid(Context context) {
-        if (mSetup.askForAge()) {
-            if (mCurrentSelectedAge == 0) {
-                Toast.makeText(context, R.string.gdpr_select_your_age, Toast.LENGTH_LONG).show();
-                return false;
-            } else if (mCurrentSelectedAge < 11) {
-                Toast.makeText(context, R.string.gdpr_not_old_enough, Toast.LENGTH_LONG).show();
+        if (mSetup.askForAgeConfirmation()) {
+            if (!mAgeConfirmed) {
+                Toast.makeText(context, R.string.gdpr_age_not_confirmed, Toast.LENGTH_LONG).show();
                 return false;
             }
         }

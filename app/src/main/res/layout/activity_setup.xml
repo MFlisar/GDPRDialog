@@ -65,7 +65,7 @@
 
     <CheckBox
         android:id="@+id/cbAskForAge"
-        android:text="Explicitly ask for users age"
+        android:text="Explicitly ask for users age confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

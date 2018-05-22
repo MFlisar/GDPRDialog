@@ -38,25 +38,11 @@
 
             </ScrollView>
 
-            <LinearLayout
-                android:id="@+id/llAge"
+            <CheckBox
+                android:id="@+id/cbAge"
+                android:text="@string/gdpr_dialog_confirm_age"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/gdpr_age" />
-
-                <Spinner
-                    android:id="@+id/spAge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btAgree"

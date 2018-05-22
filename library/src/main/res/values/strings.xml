@@ -21,10 +21,12 @@
     <!-- Dialog - BUY APP PAGE TEXTS -->
 
     <!-- Dialog - SUB PAGE TEXTS -->
-    <string name="gdpr_dialog_text_after_accepted_personal">Great.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
-    <string name="gdpr_dialog_text_after_accepted_non_personal">No problem.&lt;br/>&lt;br/>%1$s (including partners) won\'t collect your data through this app for a personalized app experience.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
-    <string name="gdpr_dialog_text_after_accepted_nothing">No problem.&lt;br/>&lt;br/>You can still use this app.&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
+    <string name="gdpr_dialog_text_after_accepted_personal">Great.&lt;br/>&lt;br/>%1$s</string>
+    <string name="gdpr_dialog_text_after_accepted_non_personal">No problem.&lt;br/>&lt;br/>%1$s (including partners) won\'t collect your data through this app for a personalized app experience.&lt;br/>&lt;br/>%2$s</string>
+    <string name="gdpr_dialog_text_after_accepted_nothing">No problem.&lt;br/>&lt;br/>You can still use this app.&lt;br/>&lt;br/>%1$s</string>
     <string name="gdpr_dialog_text_after_accepted_nothing_paid_version_needed">No problem.&lt;br/>&lt;br/>You can still use this app, if you buy it.</string>
+    <string name="gdpr_withdraw_consent_info_addon">&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
+    <string name="gdpr_dialog_confirm_age">I confirm, that I\'m 16 years or older</string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
     <string name="gdpr_age">Age</string>
@@ -36,11 +38,9 @@
     <string name="gdpr_dialog_disagree_info">I understand that I still see ads, but they may not be as relevant to my interests.</string>
     <string name="gdpr_list_seperator" translatable="false">\u00A0,</string>
     <string name="gdpr_last_list_seperator" translatable="false">\u00A0and\u00A0</string>
-    <string name="gdpr_select_age">- select your age -</string>
-    <string name="gdpr_not_old_enough">Sorry, you\'re not old enough to use this app. You must be at least 16 years!</string>
-    <string name="gdpr_select_your_age">Please select your age</string>
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>
+    <string name="gdpr_age_not_confirmed">Please confirm your age before continuing</string>
 
     <!-- Others -->
     <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors</string>

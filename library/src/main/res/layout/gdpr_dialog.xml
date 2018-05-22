@@ -11,8 +11,9 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize" />
 
-    <ViewFlipper
-        android:id="@+id/vfFlipper"
+    <LinearLayout
+        android:id="@+id/llPages"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="?dialogPreferredPadding">
@@ -20,6 +21,7 @@
         <!-- 0 - Info page -->
 
         <LinearLayout
+            android:id="@+id/llPage0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -103,6 +105,7 @@
         <!-- 1 - User accepted personal ads page -->
 
         <LinearLayout
+            android:id="@+id/llPage1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -126,6 +129,7 @@
         <!-- 2 - User did not accept personal ads page -->
 
         <LinearLayout
+            android:id="@+id/llPage2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -149,6 +153,7 @@
         <!-- 3 - User did not accept any ads page -->
 
         <LinearLayout
+            android:id="@+id/llPage3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -169,5 +174,5 @@
 
         </LinearLayout>
 
-    </ViewFlipper>
+    </LinearLayout>
 </LinearLayout>

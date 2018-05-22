@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
@@ -95,7 +93,11 @@ public class GDPRViewManager
         final Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setVisibility(mSetup.noToolbarTheme() ? View.VISIBLE : View.GONE);
         toolbar.setTitle(R.string.gdpr_dialog_title);
-        final ViewFlipper vfFlipper = view.findViewById(R.id.vfFlipper);
+        final List<LinearLayout> pages = new ArrayList<>();
+        pages.add(view.findViewById(R.id.llPage0));
+        pages.add(view.findViewById(R.id.llPage1));
+        pages.add(view.findViewById(R.id.llPage2));
+        pages.add(view.findViewById(R.id.llPage3));
         final Button btDisagree = view.findViewById(R.id.btDisagree);
         final Button btNoConsentAtAll = view.findViewById(R.id.btNoConsentAtAll);
         final Button btCloseAfterNoConsentAccepted = view.findViewById(R.id.btCloseAfterNoConsentAccepted);
@@ -166,7 +168,7 @@ public class GDPRViewManager
         tvServices.setMovementMethod(LinkMovementMethod.getInstance());
         tvTextNonPersonalAccepted.setMovementMethod(LinkMovementMethod.getInstance());
 
-        updateSelectedPage(vfFlipper, view);
+        updateSelectedPage(pages, view);
 
         // ------------------
         // Step 0 - Info Page
@@ -178,7 +180,7 @@ public class GDPRViewManager
             }
             mSelectedConsent = GDPRConsent.PERSONAL_CONSENT;
             mCurrentStep = 1;
-            updateSelectedPage(vfFlipper, view);
+            updateSelectedPage(pages, view);
         });
 
         view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
@@ -198,7 +200,7 @@ public class GDPRViewManager
                 mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
                 mCurrentStep = 2;
             }
-            updateSelectedPage(vfFlipper, view);
+            updateSelectedPage(pages, view);
         });
 
         if (!mSetup.allowAnyNoConsent()) {
@@ -207,7 +209,7 @@ public class GDPRViewManager
             btNoConsentAtAll.setOnClickListener(v -> {
                 mSelectedConsent = GDPRConsent.NO_CONSENT;
                 mCurrentStep = 3;
-                updateSelectedPage(vfFlipper, view);
+                updateSelectedPage(pages, view);
             });
         }
 
@@ -272,8 +274,10 @@ public class GDPRViewManager
         }
     }
 
-    private void updateSelectedPage(ViewFlipper vfFlipper, View view) {
-        vfFlipper.setDisplayedChild(mCurrentStep);
+    private void updateSelectedPage(List<LinearLayout> pages, View view) {
+        for (int i = 0; i < pages.size(); i++) {
+            pages.get(i).setVisibility(i == mCurrentStep ? View.VISIBLE : View.GONE);
+        }
         // TODO: resize dialog...
         // view.requestLayout();
     }

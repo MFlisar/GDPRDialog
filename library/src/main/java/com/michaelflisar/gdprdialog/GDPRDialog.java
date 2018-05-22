@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -80,7 +82,7 @@ public class GDPRDialog extends AppCompatDialogFragment
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     getActivity().finishAndRemoveTask();
                 } else {
-                    getActivity().finishAffinity();
+                    ActivityCompat.finishAffinity(getActivity());
                 }
             }
         } else {

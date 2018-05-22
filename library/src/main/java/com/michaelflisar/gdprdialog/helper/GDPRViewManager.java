@@ -1,8 +1,8 @@
 package com.michaelflisar.gdprdialog.helper;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
@@ -22,8 +21,7 @@ import com.michaelflisar.gdprdialog.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GDPRViewManager
-{
+public class GDPRViewManager {
     public static String ARG_SETUP = "ARG_SETUP";
 
     private static String KEY_STEP = "KEY_STEP";
@@ -39,6 +37,8 @@ public class GDPRViewManager
     private boolean mAgeConfirmed = false;
     private ArrayList<Integer> mExplicitlyConfirmedServices = new ArrayList<>();
 
+    private Snackbar mSnackbar = null;
+
     public GDPRViewManager(Bundle args, Bundle savedInstanceState) {
         mSetup = args.getParcelable(ARG_SETUP);
         if (savedInstanceState != null) {
@@ -50,7 +50,7 @@ public class GDPRViewManager
             mExplicitlyConfirmedServices = savedInstanceState.getIntegerArrayList(KEY_EXPLICITLY_CONFIRMED_SERVICES);
         } else {
             mExplicitlyConfirmedServices.clear();
-            for (int i = 0; i< mSetup.networks().length; i++) {
+            for (int i = 0; i < mSetup.networks().length; i++) {
                 mExplicitlyConfirmedServices.add(0);
             }
         }
@@ -116,7 +116,7 @@ public class GDPRViewManager
         final String withdrawConsentInfoAddon = activity.getString(R.string.gdpr_withdraw_consent_info_addon);
         tvText1.setText(Html.fromHtml(text1));
         tvText2.setText(Html.fromHtml(text2));
-        tvTextNonPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(activity,false), withdrawConsentInfoAddon)));
+        tvTextNonPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_non_personal, mSetup.getNetworksCommaSeperated(activity, false), withdrawConsentInfoAddon)));
         tvTextPersonalAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_personal, withdrawConsentInfoAddon)));
         if (mSetup.hasPaidVersion()) {
             tvTextNothingAccepted.setText(Html.fromHtml(activity.getString(R.string.gdpr_dialog_text_after_accepted_nothing_paid_version_needed)));
@@ -129,7 +129,7 @@ public class GDPRViewManager
         if (mSetup.explicitConsentForEachService() && mSetup.networks().length > 1) {
             tvServices.setVisibility(View.GONE);
             LayoutInflater inflater = LayoutInflater.from(activity);
-            for (int i = 0; i< mSetup.networks().length; i++) {
+            for (int i = 0; i < mSetup.networks().length; i++) {
                 View row = inflater.inflate(R.layout.gdpr_consent_row, null);
                 CheckBox cb = row.findViewById(R.id.cbCheckbox);
                 cb.setChecked(mExplicitlyConfirmedServices.get(i) == 1);
@@ -168,23 +168,23 @@ public class GDPRViewManager
         tvServices.setMovementMethod(LinkMovementMethod.getInstance());
         tvTextNonPersonalAccepted.setMovementMethod(LinkMovementMethod.getInstance());
 
-        updateSelectedPage(pages, view);
+        updateSelectedPage(pages);
 
         // ------------------
         // Step 0 - Info Page
         // ------------------
 
         view.findViewById(R.id.btAgree).setOnClickListener(v -> {
-            if (!isAgeValid(v.getContext(), true) || !isAllConsentGiven(v.getContext(), true)) {
+            if (!isAgeValid(view, true) || !isAllConsentGiven(view, true)) {
                 return;
             }
             mSelectedConsent = GDPRConsent.PERSONAL_CONSENT;
             mCurrentStep = 1;
-            updateSelectedPage(pages, view);
+            updateSelectedPage(pages);
         });
 
         view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
-            if (!isAgeValid(v.getContext(), false)  || !isAllConsentGiven(v.getContext(), false)) {
+            if (!isAgeValid(view, false) || !isAllConsentGiven(view, false)) {
                 return;
             }
             if (mSetup.hasPaidVersion()) {
@@ -200,7 +200,7 @@ public class GDPRViewManager
                 mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
                 mCurrentStep = 2;
             }
-            updateSelectedPage(pages, view);
+            updateSelectedPage(pages);
         });
 
         if (!mSetup.allowAnyNoConsent()) {
@@ -209,7 +209,7 @@ public class GDPRViewManager
             btNoConsentAtAll.setOnClickListener(v -> {
                 mSelectedConsent = GDPRConsent.NO_CONSENT;
                 mCurrentStep = 3;
-                updateSelectedPage(pages, view);
+                updateSelectedPage(pages);
             });
         }
 
@@ -244,18 +244,18 @@ public class GDPRViewManager
     // Helper function
     // ---------------
 
-    private boolean isAgeValid(Context context, boolean agree) {
+    private boolean isAgeValid(View view, boolean agree) {
         if (mSetup.explicitAgeConfirmation()) {
             // we only need to check age for personalised ads
             if ((agree && !mAgeConfirmed)) {// || (!agree && mSetup.hasPaidVersion() && mSetup.allowNonPersonalisedForPaidVersion())) {
-                Toast.makeText(context, R.string.gdpr_age_not_confirmed, Toast.LENGTH_LONG).show();
+                showSnackbar(R.string.gdpr_age_not_confirmed, view);
                 return false;
             }
         }
         return true;
     }
 
-    private boolean isAllConsentGiven(Context context, boolean agree) {
+    private boolean isAllConsentGiven(View view, boolean agree) {
         if (mSetup.explicitConsentForEachService() && agree) {
             int consentsGiven = 0;
             for (int i = 0; i < mExplicitlyConfirmedServices.size(); i++) {
@@ -264,7 +264,7 @@ public class GDPRViewManager
                 }
             }
             if (mSetup.networks().length != consentsGiven) {
-                Toast.makeText(context, R.string.gdpr_not_all_services_accepted, Toast.LENGTH_LONG).show();
+                showSnackbar(R.string.gdpr_not_all_services_accepted, view);
                 return false;
             } else {
                 return true;
@@ -274,12 +274,14 @@ public class GDPRViewManager
         }
     }
 
-    private void updateSelectedPage(List<LinearLayout> pages, View view) {
+    private void updateSelectedPage(List<LinearLayout> pages) {
         for (int i = 0; i < pages.size(); i++) {
             pages.get(i).setVisibility(i == mCurrentStep ? View.VISIBLE : View.GONE);
         }
-        // TODO: resize dialog...
-        // view.requestLayout();
+        if (mSnackbar != null && mSnackbar.isShown()) {
+            mSnackbar.dismiss();
+            mSnackbar = null;
+        }
     }
 
     private void onFinish(IOnFinishView onFinishView) {
@@ -288,6 +290,12 @@ public class GDPRViewManager
             mCallback.onConsentInfoUpdate(mSelectedConsent, true);
         }
         onFinishView.onFinishView();
+    }
+
+    private void showSnackbar(int message, View view) {
+        mSnackbar = Snackbar
+                .make(view, message, Snackbar.LENGTH_LONG);
+        mSnackbar.show();
     }
 
     // ---------------

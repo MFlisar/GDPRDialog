@@ -34,7 +34,9 @@ android {
 dependencies {
     if (project.hasProperty('versions.supportLib')) {
         implementation "com.android.support:appcompat-v7:$rootProject.versions.supportLib"
+        implementation "com.android.support:design:$rootProject.versions.supportLib"
     } else {
         implementation 'com.android.support:appcompat-v7:27.1.1'
+        implementation 'com.android.support:design:27.1.1'
     }
 }

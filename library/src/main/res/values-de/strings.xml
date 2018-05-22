@@ -7,7 +7,7 @@
     <string name="gdpr_dialog_title">Datenschutz Einwilligung</string>
 
     <!-- Dialog - MAIN PAGE TEXTS -->
-    <string name="gdpr_dialog_text_part1">Diese Anwendung nutzt folgende Services: %1$s&lt;br/>&lt;br/>In Abhängigkeit von deinen Privatsphäreeinstellungen sammeln diese Services (inklusive deren Partner) eventuell persönliche Daten wie bspw. Device IDs, GPS Daten und andere demographische sowie interessante Daten über ich um dir eine personaliserte Leistung bieten zu können.</string>
+    <string name="gdpr_dialog_text_part1">Diese Anwendung nutzt folgende Services: %1$s&lt;br/>&lt;br/>In Abhängigkeit deiner Privatsphäreeinstellungen sammeln diese Services (inklusive deren Partner) eventuell persönliche Daten wie bspw. Device IDs, GPS Daten und andere demographische sowie interessante Daten über dich um dir eine personaliserte Leistung bieten zu können.</string>
     <string name="gdpr_dialog_text_part2_with_age">&lt;br/>&lt;br/>Durch deine Zustimmung bestätigst du, dass du über 16 bist and dass die diesen personlisierten Service haben willst.</string>
     <string name="gdpr_dialog_text_part2_no_age">&lt;br/>&lt;br/>Durch deine Zustimmung bestätigst du, dass du diesen personlisierten Service haben willst</string>
 
@@ -23,7 +23,7 @@
     <string name="gdpr_age">Alter</string>
     <string name="gdpr_dialog_agree">Ja, ich stimme zu</string>
     <string name="gdpr_dialog_disagree_no_thanks">Nein danke</string>
-    <string name="gdpr_dialog_disagree_buy_add">Nein danke, ich will die Anwendung kaugen</string>
+    <string name="gdpr_dialog_disagree_buy_add">Nein danke, ich will die Anwendung kaufen</string>
     <string name="gdpr_dialog_close">Schließen</string>
     <string name="gdpr_dialog_disagree_no_ads">Bitte keine Werbung anzeigen</string>
     <string name="gdpr_dialog_disagree_info">Ich verstehe, dass ich trotzdem Werbung sehen werde, jedoch wird diese nicht so relevant für mich sein</string>

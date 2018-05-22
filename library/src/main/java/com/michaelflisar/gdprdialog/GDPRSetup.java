@@ -11,7 +11,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mAllowNoConsent = false;
     private GDPRNetwork mAdNetworks[];
 
-    private boolean mAskForAgeConfirmation = false;
+    private boolean mExplicitAgeConfirmation = false;
     private boolean mNoToolbarTheme = false;
     private boolean mCheckRequestLocation = false;
 
@@ -33,8 +33,8 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
-    public GDPRSetup withAskForAgeConfirmation(boolean askForAgeConfirmation) {
-        mAskForAgeConfirmation = askForAgeConfirmation;
+    public GDPRSetup withExplicitAgeConfirmation(boolean explicitAgeConfirmation) {
+        mExplicitAgeConfirmation = explicitAgeConfirmation;
         return this;
     }
 
@@ -77,11 +77,15 @@ public class GDPRSetup implements Parcelable {
     }
 
     public final boolean allowNoConsent() {
-        return mAllowNoConsent || mAllowNonPersonalisedForPaidVersion;
+        return mAllowNoConsent;
     }
 
-    public final boolean askForAgeConfirmation() {
-        return mAskForAgeConfirmation;
+    public final boolean allowAnyNoConsent() {
+        return mAllowNoConsent  || mAllowNonPersonalisedForPaidVersion;
+    }
+
+    public final boolean explicitAgeConfirmation() {
+        return mExplicitAgeConfirmation;
     }
 
     public final boolean noToolbarTheme() {
@@ -114,7 +118,7 @@ public class GDPRSetup implements Parcelable {
         for (int i = 0; i < adNetworks.length; i++) {
             mAdNetworks[i] = (GDPRNetwork)adNetworks[i];
         }
-        mAskForAgeConfirmation = in.readByte() == 1;
+        mExplicitAgeConfirmation = in.readByte() == 1;
         mNoToolbarTheme = in.readByte() == 1;
         mCheckRequestLocation = in.readByte() == 1;
     }
@@ -130,7 +134,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeInt(mAllowNonPersonalisedForPaidVersion ? (byte) 1 : 0);
         dest.writeInt(mAllowNoConsent ? (byte) 1 : 0);
         dest.writeParcelableArray(mAdNetworks, 0);
-        dest.writeByte(mAskForAgeConfirmation ? (byte) 1 : 0);
+        dest.writeByte(mExplicitAgeConfirmation ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
         dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
     }

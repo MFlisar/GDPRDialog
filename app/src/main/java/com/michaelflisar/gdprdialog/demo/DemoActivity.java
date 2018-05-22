@@ -66,7 +66,7 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                     // never happens!
                     break;
                 case NO_CONSENT:
-                    Toast.makeText(this, "User does NOT accept ANY ads - depending on oyur setup he may want to buy the app though, handle this!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "User does NOT accept ANY ads - depending on your setup he may want to buy the app though, handle this!", Toast.LENGTH_LONG).show();
                     break;
                 case NON_PERSONAL_CONSENT_ONLY:
                     Toast.makeText(this, "User accepts NON PERSONAL ads", Toast.LENGTH_LONG).show();

@@ -65,7 +65,7 @@ public class GDPR
                 checkConsent = true;
                 break;
             case NO_CONSENT:
-                if (!setup.allowNoConsent()) {
+                if (!setup.allowAnyNoConsent()) {
                     checkConsent = true;
                     break;
                 }

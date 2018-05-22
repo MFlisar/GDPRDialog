@@ -72,7 +72,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
             setup.withPaidVersion(cbAllowNonPersonalisedForPaidVersions.isChecked());
         }
         if (cbAskForAge.isChecked()) {
-            setup.withAskForAgeConfirmation(true);
+            setup.withExplicitAgeConfirmation(true);
         }
         if (cbCheckRequestLocation.isChecked()) {
             setup.withCheckRequestLocation(true);

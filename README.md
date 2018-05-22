@@ -46,7 +46,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```groovy
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:0.2'
+     implementation 'com.github.MFlisar:GDPRDialog:0.3'
 }
 ```
 
@@ -62,7 +62,7 @@ GDPRSetup setup = new GDPRSetup(GDPR.ADMOB_NETWORK); // add all networks you use
 // optionally change setup:
 // setup.withAllowNoConsent(true);
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
-// setup.withAskForAge(true);
+// setup.withExplicitAgeConfirmation(true);
 // setup.withCheckRequestLocation(true);
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```

@@ -73,7 +73,7 @@ public class GDPRViewManager
     }
 
     public boolean shouldCloseApp() {
-        return mSelectedConsent == null || (mSelectedConsent == GDPRConsent.NO_CONSENT && mSetup.allowNoConsent());
+        return mSelectedConsent == null || (mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.allowAnyNoConsent());
     }
 
     public void init(Activity activity, View view, IOnFinishView onFinishViewListener) {
@@ -91,7 +91,7 @@ public class GDPRViewManager
         final TextView tvAdsInfo = view.findViewById(R.id.tvAdsInfo);
         final CheckBox cbAge = view.findViewById(R.id.cbAge);
         String text = activity.getString(R.string.gdpr_dialog_text_part1, mSetup.getNetworksCommaSeperated(activity, true));
-        if (mSetup.askForAgeConfirmation()) {
+        if (mSetup.explicitAgeConfirmation()) {
             text += activity.getString(R.string.gdpr_dialog_text_part2_no_age);
         } else {
             text += activity.getString(R.string.gdpr_dialog_text_part2_with_age);
@@ -111,7 +111,7 @@ public class GDPRViewManager
             tvAdsInfo.setVisibility(View.GONE);
         }
 
-        if (!mSetup.askForAgeConfirmation()) {
+        if (!mSetup.explicitAgeConfirmation()) {
             cbAge.setVisibility(View.GONE);
         } else {
             cbAge.setChecked(mAgeConfirmed);
@@ -136,7 +136,7 @@ public class GDPRViewManager
         // ------------------
 
         view.findViewById(R.id.btAgree).setOnClickListener(v -> {
-            if (!isAgeValid(v.getContext())) {
+            if (!isAgeValid(v.getContext(), true)) {
                 return;
             }
             mSelectedConsent = GDPRConsent.PERSONAL_CONSENT;
@@ -145,7 +145,7 @@ public class GDPRViewManager
         });
 
         view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
-            if (!isAgeValid(v.getContext())) {
+            if (!isAgeValid(v.getContext(), false)) {
                 return;
             }
             if (mSetup.hasPaidVersion()) {
@@ -164,7 +164,7 @@ public class GDPRViewManager
             updateSelectedPage(vfFlipper, view);
         });
 
-        if (!mSetup.allowNoConsent()) {
+        if (!mSetup.allowAnyNoConsent()) {
             btNoConsentAtAll.setVisibility(View.GONE);
         } else {
             btNoConsentAtAll.setOnClickListener(v -> {
@@ -205,9 +205,10 @@ public class GDPRViewManager
     // Helper function
     // ---------------
 
-    private boolean isAgeValid(Context context) {
-        if (mSetup.askForAgeConfirmation()) {
-            if (!mAgeConfirmed) {
+    private boolean isAgeValid(Context context, boolean agree) {
+        if (mSetup.explicitAgeConfirmation()) {
+            // we only need to check age for personalised ads
+            if ((agree && !mAgeConfirmed)) {// || (!agree && mSetup.hasPaidVersion() && mSetup.allowNonPersonalisedForPaidVersion())) {
                 Toast.makeText(context, R.string.gdpr_age_not_confirmed, Toast.LENGTH_LONG).show();
                 return false;
             }

@@ -15,9 +15,12 @@ This library offers following:
 
 * supports multiple services, already defined ones are AdMob and Firebase
 * supports custom service definitions
-* is set up via a setup class that allows you to select which possibilities you give the user - any combination of *personalised ads*, *non personalised ads* and *paid version*, depending on what you want => fallback from *personalised ads* to *paid app* is easy possible e.g.
+* is set up via a setup class that allows you to select which possibilities you give the user - any combination of *personalised ads*, *non personalised ads* and *paid version*, depending on what you want. Examples:
+  * allow *personalised ads* or *paid version* only
+  * allow *personalised ads*, *non personalised ads* or *paid or free version*
+  * combine whatever you want here...
 * optionally enable google's check if user is requesting consent form within the EAA (be careful when using this)
-* optionally ads a `Spinner` for age selection
+* optionally adds a `Spinner` for age selection
 * uses soft opt in by default if you offer e.g. a *personalised ads* vs *non personalised ads* version
 * it closes the app if the user did not give any consent (i.e if the user clicks the back button in the dialog)
 * it manages the user's selected consent decision and remembers it

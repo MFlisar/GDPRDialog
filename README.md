@@ -87,6 +87,7 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 ### TODO
 
+* [ ] better landscape layout
 * [ ] resize dialog after each step
 * [ ] translations
   * [x] english

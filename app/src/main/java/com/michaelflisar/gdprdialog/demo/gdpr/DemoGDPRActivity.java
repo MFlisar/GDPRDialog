@@ -39,7 +39,7 @@ public class DemoGDPRActivity extends GDPRActivity
                     // never happens!
                     break;
                 case NO_CONSENT:
-                    // with the default setup, the dialog will shown in this case again anyways!
+                    // with the default setup, the dialog will be shown again in this case anyways!
                     break;
                 case NON_PERSONAL_CONSENT_ONLY:
                 case PERSONAL_CONSENT:

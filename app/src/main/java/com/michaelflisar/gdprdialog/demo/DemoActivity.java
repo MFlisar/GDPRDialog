@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.demo.app.App;
 import com.michaelflisar.gdprdialog.demo.gdpr.DemoGDPRActivity;
@@ -27,6 +28,16 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
 
         // get setup from intent
         mSetup = getIntent().getParcelableExtra("setup");
+
+        // init state texts
+        GDPRConsent consent = GDPR.getInstance().getConsent();
+        GDPRLocation location = GDPR.getInstance().getRequestLocation();
+        if (consent != null) {
+            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consent.name());
+        }
+        if (location != null) {
+            ((TextView) findViewById(R.id.tvCurrentLocation)).setText(location.name());
+        }
 
         // show GDPR Dialog if necessary, the library takes care about if and how to show it
         showGDPRIfNecessary();
@@ -48,13 +59,15 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     // --------------------
 
     @Override
-    public void onConsentNeedsToBeRequested() {
+    public void onConsentNeedsToBeRequested(GDPRLocation location) {
         if (App.USE_ACTIVITY) {
             DemoGDPRActivity.startActivityForResult(this, mSetup, DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
         } else {
             // default: forward the result and show the dialog
-            GDPR.getInstance().showDialog(this, mSetup);
+            GDPR.getInstance().showDialog(this, mSetup, location);
         }
+
+        ((TextView) findViewById(R.id.tvCurrentLocation)).setText(location.name());
     }
 
     @Override

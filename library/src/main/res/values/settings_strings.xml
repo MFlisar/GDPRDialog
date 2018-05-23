@@ -7,6 +7,7 @@
 
     <string name="gdpr_preference_file" translatable="false">gdpr</string>
     <string name="gdpr_preference" translatable="false">gdpr_consent</string>
+    <string name="gdpr_preference_is_in_eea_or_unknown" translatable="false">gdpr_preference_is_in_eea_or_unknown</string>
 
     <!-- ****** -->
     <!-- Google -->

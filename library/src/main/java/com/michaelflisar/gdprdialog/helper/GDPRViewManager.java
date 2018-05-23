@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.R;
 
@@ -31,6 +32,7 @@ import java.util.List;
 
 public class GDPRViewManager {
     public static String ARG_SETUP = "ARG_SETUP";
+    public static String ARG_LOCATION = "ARG_LOCATION";
 
     private static String KEY_STEP = "KEY_STEP";
     private static String KEY_AGE_CONFIRMED = "KEY_AGE_CONFIRMED";
@@ -38,6 +40,7 @@ public class GDPRViewManager {
     private static String KEY_EXPLICITLY_CONFIRMED_SERVICES = "KEY_EXPLICITLY_CONFIRMED_SERVICES";
 
     private GDPRSetup mSetup;
+    private GDPRLocation mLocation;
     private GDPR.IGDPRCallback mCallback = null;
 
     private int mCurrentStep = 0;
@@ -51,6 +54,7 @@ public class GDPRViewManager {
 
     public GDPRViewManager(Bundle args, Bundle savedInstanceState) {
         mSetup = args.getParcelable(ARG_SETUP);
+        mLocation = GDPRLocation.values()[args.getInt(ARG_LOCATION)];
         if (savedInstanceState != null) {
             mCurrentStep = savedInstanceState.getInt(KEY_STEP);
             if (savedInstanceState.containsKey(KEY_SELECTED_CONSENT)) {
@@ -311,7 +315,7 @@ public class GDPRViewManager {
 
     private void onFinish(IOnFinishView onFinishView) {
         if (mSelectedConsent != null) {
-            GDPR.getInstance().setConsent(mSelectedConsent);
+            GDPR.getInstance().setConsent(mSelectedConsent, mLocation);
             mCallback.onConsentInfoUpdate(mSelectedConsent, true);
         }
         onFinishView.onFinishView();

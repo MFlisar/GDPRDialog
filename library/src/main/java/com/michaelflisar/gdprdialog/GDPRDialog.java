@@ -24,10 +24,11 @@ public class GDPRDialog extends AppCompatDialogFragment
 {
     private GDPRViewManager mViewManager;
 
-    public static GDPRDialog newInstance(GDPRSetup setup) {
+    public static GDPRDialog newInstance(GDPRSetup setup, GDPRLocation location) {
         GDPRDialog dlg = new GDPRDialog();
         Bundle args = new Bundle();
         args.putParcelable(GDPRViewManager.ARG_SETUP, setup);
+        args.putInt(GDPRViewManager.ARG_LOCATION, location.ordinal());
         dlg.setArguments(args);
         return dlg;
     }

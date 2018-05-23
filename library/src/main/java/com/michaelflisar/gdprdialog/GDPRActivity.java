@@ -60,8 +60,8 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
     }
 
     @Override
-    public void onConsentNeedsToBeRequested() {
-        // ignored in activity, must be checked befroe starting the activity!
+    public void onConsentNeedsToBeRequested(GDPRLocation location) {
+        // ignored in activity, must be checked before starting the activity!
     }
 
     private View initView(LayoutInflater inflater, ViewGroup container) {

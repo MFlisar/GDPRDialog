@@ -33,4 +33,16 @@
         android:layout_height="wrap_content"
         android:text=""/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current location:"/>
+
+    <TextView
+        android:id="@+id/tvCurrentLocation"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
 </LinearLayout>

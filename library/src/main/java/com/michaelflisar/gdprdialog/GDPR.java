@@ -6,14 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.michaelflisar.gdprdialog.helper.CheckLocationAsyncTask;
 
-public class GDPR
-{
+public class GDPR {
     // ------------------
     // Singleton
     // ------------------
 
     private static GDPR instance;
-    private GDPR () { }
+
+    private GDPR() {
+    }
+
     public static GDPR getInstance() {
         if (GDPR.instance == null) {
             GDPR.instance = new GDPR();
@@ -27,7 +29,9 @@ public class GDPR
 
     private Context mContext = null;
     private SharedPreferences mPreferences = null;
-    private GDPRConsent mCachedValue = null;
+
+    private GDPRConsent mCachedConsent = null;
+    private GDPRLocation mCachedIsInEaaOrUnknown = null;
 
     // ------------------
     // GDPR - init
@@ -47,12 +51,12 @@ public class GDPR
 
     /**
      * Checks if you must require consent from the user
-     *
+     * <p>
      * it will call the callback activity's::onConsentNeedsToBeRequested() function if the
      * user should be asked for consent, otherwise it will directly call the onConsentInfoUpdate(consent, isNewState) function
      *
      * @param activity the callback activity that implements the callback interface
-     * @param setup the setup
+     * @param setup    the setup
      * @return
      */
     public <T extends AppCompatActivity & IGDPRCallback> void checkIfNeedsToBeShown(T activity, GDPRSetup setup) {
@@ -79,7 +83,7 @@ public class GDPR
             if (setup.checkRequestLocation()) {
                 new CheckLocationAsyncTask(activity, consent).execute();
             } else {
-                activity.onConsentNeedsToBeRequested();
+                activity.onConsentNeedsToBeRequested(GDPRLocation.UNKNOWN);
             }
         } else {
             // nothing to do, we already know the users decision!
@@ -99,26 +103,41 @@ public class GDPR
     public GDPRConsent getConsent() {
         checkIsInitialised();
 
-        if (mCachedValue == null) {
+        if (mCachedConsent == null) {
             int value = mPreferences.getInt(mContext.getString(R.string.gdpr_preference), 0);
-            mCachedValue = GDPRConsent.values()[value];
+            mCachedConsent = GDPRConsent.values()[value];
         }
-        return mCachedValue;
+        return mCachedConsent;
+    }
+
+    public GDPRLocation getRequestLocation() {
+        checkIsInitialised();
+
+        if (mCachedIsInEaaOrUnknown == null) {
+            int value = mPreferences.getInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), GDPRLocation.UNKNOWN.ordinal());
+            mCachedIsInEaaOrUnknown = GDPRLocation.values()[value];
+        }
+        return mCachedIsInEaaOrUnknown;
     }
 
     public void resetConsent() {
         checkIsInitialised();
-        setConsent(GDPRConsent.UNKNOWN);
+        setConsent(GDPRConsent.UNKNOWN, GDPRLocation.UNKNOWN);
     }
 
-    public boolean setConsent(GDPRConsent consent) {
-        mCachedValue = consent;
-        return mPreferences.edit().putInt(mContext.getString(R.string.gdpr_preference), consent.ordinal()).commit();
+    public boolean setConsent(GDPRConsent consent, GDPRLocation location) {
+        mCachedConsent = consent;
+        mCachedIsInEaaOrUnknown = location;
+        return mPreferences
+                .edit()
+                .putInt(mContext.getString(R.string.gdpr_preference), consent.ordinal())
+                .putInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), location.ordinal())
+                .commit();
     }
 
-    public void showDialog(AppCompatActivity activity, GDPRSetup setup) {
+    public void showDialog(AppCompatActivity activity, GDPRSetup setup, GDPRLocation location) {
         if (activity.getSupportFragmentManager().findFragmentByTag(GDPRDialog.class.getName()) == null) {
-            GDPRDialog dlg = GDPRDialog.newInstance(setup);
+            GDPRDialog dlg = GDPRDialog.newInstance(setup, location);
             dlg.show(activity.getSupportFragmentManager(), GDPRDialog.class.getName());
         }
     }
@@ -137,19 +156,20 @@ public class GDPR
     // Callback interfaces
     // ------------------
 
-    public interface IGDPRCallback
-    {
+    public interface IGDPRCallback {
         /**
          * Callback to request consent
          * Comes after the flag in settings have been checked and (depednign on the GDPRSetup), the users location has been checked
+         *
+         * @param location location from where the request is comming from
          */
-        void onConsentNeedsToBeRequested();
+        void onConsentNeedsToBeRequested(GDPRLocation location);
 
         /**
          * Callback that will inform about which consent state the user has selected
          *
          * @param consentState the current consent state
-         * @param isNewState flag that indicates if a old consent state was loaded or if this is the new consent state a user have just given
+         * @param isNewState   flag that indicates if a old consent state was loaded or if this is the new consent state a user have just given
          */
         void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState);
     }

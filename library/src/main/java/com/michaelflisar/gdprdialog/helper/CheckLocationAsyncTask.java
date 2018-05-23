@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.R;
 
 import org.json.JSONException;
@@ -38,7 +39,7 @@ public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCall
 
     protected void onPostExecute(Boolean result) {
         if (result != null && result) {
-            mActivity.onConsentNeedsToBeRequested();
+            mActivity.onConsentNeedsToBeRequested(result ? GDPRLocation.EAA : GDPRLocation.NOT_IN_EAA);
         } else {
             mActivity.onConsentInfoUpdate(mConsent, false);
         }

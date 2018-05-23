@@ -2,8 +2,9 @@
 
 Simple reusable `DialogFragment`.
 
-![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo1.gif "demo1")
-![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo2.gif "demo2")
+![GDPR Demo1](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo1.gif "demo1")
+![GDPR Demo2](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo2.gif "demo2")
+![GDPR Demo3](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo3.gif "demo3")
 
 ### What it offers
 

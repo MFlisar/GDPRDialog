@@ -1,5 +1,7 @@
 ### GDPRDialog [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog)
 
+**Release `v1.0` will come on 24.05.2018, at ~20 CET with all translations available until then**
+
 Simple reusable `DialogFragment`.
 
 ![GDPR Demo1](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo1.gif "demo1")

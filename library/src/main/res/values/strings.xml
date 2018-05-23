@@ -22,7 +22,7 @@
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_info1">We use following third party services in this app:</string>
-    <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy olicy%1$s.</string>
+    <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy policy%1$s.</string>
     <string name="gdpr_dialog_text_info3_privacy_policy_part">&#160;or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a></string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">We won\'t collect your data for personalized advertising. Although non-personalized ads don\'t use mobile ad identifiers for ad targeting, they do still use mobile identifiers for frequency capping and aggregated ad reporting as well as for combating fraud and abuse."</string>
 
@@ -36,7 +36,7 @@
     <string name="gdpr_dialog_back">Back</string>
     <string name="gdpr_dialog_disagree_no_ads">No ads at all, please</string>
     <string name="gdpr_dialog_disagree_info">I understand that I still see ads, but they may not be as relevant to my interests.</string>
-    <string name="gdpr_list_seperator" translatable="false">\u00A0,</string>
+    <string name="gdpr_list_seperator" translatable="false">,\u00A0</string>
     <string name="gdpr_last_list_seperator">\u00A0and\u00A0</string>
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>

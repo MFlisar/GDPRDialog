@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -44,9 +45,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/gdpr_big_padding"
                         android:text="@string/gdpr_dialog_text1"
-                        android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textSize="@dimen/gdpr_text_size_small"/>
+                        android:textSize="@dimen/gdpr_text_size_small"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvText2"
@@ -61,12 +62,12 @@
                         style="@style/TextAppearance.AppCompat.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/gdpr_big_padding"
                         android:layout_marginBottom="@dimen/gdpr_big_padding"
+                        android:layout_marginTop="@dimen/gdpr_big_padding"
                         android:text="@string/gdpr_dialog_question"
                         android:textAlignment="center"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/gdpr_text_size_big"/>
+                        android:textSize="@dimen/gdpr_text_size_big"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvText3"

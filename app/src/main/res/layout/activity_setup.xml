@@ -70,6 +70,12 @@
         android:text="Special settings"/>
 
     <CheckBox
+        android:id="@+id/cbAskNonPersonalised"
+        android:text="Explicitly ask for consent for non personalised data usage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
         android:id="@+id/cbAskForAge"
         android:text="Explicitly ask for users age confirmation"
         android:layout_width="match_parent"

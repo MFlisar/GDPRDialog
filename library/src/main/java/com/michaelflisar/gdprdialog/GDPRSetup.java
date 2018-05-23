@@ -16,6 +16,7 @@ public class GDPRSetup implements Parcelable {
     private GDPRNetwork mAdNetworks[];
 
     private boolean mExplicitAgeConfirmation = false;
+    private boolean mExplicitNonPersonalisedConfirmation = false;
     private boolean mNoToolbarTheme = false;
     private boolean mCheckRequestLocation = false;
     private boolean mUseBottomSheet = false;
@@ -53,6 +54,11 @@ public class GDPRSetup implements Parcelable {
 
     public GDPRSetup withExplicitAgeConfirmation(boolean explicitAgeConfirmation) {
         mExplicitAgeConfirmation = explicitAgeConfirmation;
+        return this;
+    }
+
+    public GDPRSetup withExplicitNonPersonalisedConfirmation(boolean explicitNonPersonalisedConfirmation) {
+        mExplicitNonPersonalisedConfirmation = explicitNonPersonalisedConfirmation;
         return this;
     }
 
@@ -122,6 +128,10 @@ public class GDPRSetup implements Parcelable {
 
     public final boolean explicitAgeConfirmation() {
         return mExplicitAgeConfirmation;
+    }
+
+    public final boolean explicitNonPersonalisedConfirmation() {
+        return mExplicitNonPersonalisedConfirmation;
     }
 
     public final boolean noToolbarTheme() {
@@ -194,6 +204,7 @@ public class GDPRSetup implements Parcelable {
             mAdNetworks[i] = (GDPRNetwork)adNetworks[i];
         }
         mExplicitAgeConfirmation = in.readByte() == 1;
+        mExplicitNonPersonalisedConfirmation = in.readByte() == 1;
         mNoToolbarTheme = in.readByte() == 1;
         mCheckRequestLocation = in.readByte() == 1;
         mUseBottomSheet = in.readByte() == 1;
@@ -213,6 +224,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeInt(mAllowNoConsent ? (byte) 1 : 0);
         dest.writeParcelableArray(mAdNetworks, 0);
         dest.writeByte(mExplicitAgeConfirmation ? (byte) 1 : 0);
+        dest.writeByte(mExplicitNonPersonalisedConfirmation ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
         dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
         dest.writeByte(mUseBottomSheet ? (byte) 1 : 0);

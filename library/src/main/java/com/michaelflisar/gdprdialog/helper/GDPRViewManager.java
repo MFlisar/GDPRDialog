@@ -96,7 +96,8 @@ public class GDPRViewManager {
     }
 
     public boolean shouldCloseApp() {
-        return mSelectedConsent == null || (mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.allowAnyNoConsent());
+        // only close app if nothing is selected, which means forceSelect is not enabled and user pressed back
+        return mSelectedConsent == null;// || (mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.hasPaidVersion());
     }
 
     public boolean shouldUseBottomSheet() {
@@ -110,6 +111,7 @@ public class GDPRViewManager {
 
         mPages.add(view.findViewById(R.id.llPage0));
         mPages.add(view.findViewById(R.id.llPage1));
+        mPages.add(view.findViewById(R.id.llPage2));
 
         // general page
         final Button btDisagree = view.findViewById(R.id.btDisagree);
@@ -148,6 +150,11 @@ public class GDPRViewManager {
             }
             if (mSetup.hasPaidVersion()) {
                 if (mSetup.allowNonPersonalisedForPaidVersion()) {
+                    if (mSetup.explicitNonPersonalisedConfirmation()) {
+                        mCurrentStep = 2;
+                        updateSelectedPage();
+                        return;
+                    }
                     mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
                     onFinish(onFinishViewListener);
                 } else {
@@ -155,6 +162,11 @@ public class GDPRViewManager {
                     onFinish(onFinishViewListener);
                 }
             } else {
+                if (mSetup.explicitNonPersonalisedConfirmation()) {
+                    mCurrentStep = 2;
+                    updateSelectedPage();
+                    return;
+                }
                 mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
                 onFinish(onFinishViewListener);
             }
@@ -176,6 +188,15 @@ public class GDPRViewManager {
         view.findViewById(R.id.btBack).setOnClickListener(v -> {
             mCurrentStep = 0;
             updateSelectedPage();
+        });
+
+        // ------------------
+        // Step 2 - expicit non personalised consent page
+        // ------------------
+
+        view.findViewById(R.id.btAgreeNonPersonalised).setOnClickListener(v -> {
+            mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
+            onFinish(onFinishViewListener);
         });
     }
 
@@ -321,7 +342,7 @@ public class GDPRViewManager {
 
     public boolean handleBackPress() {
         if (mCurrentStep > 0) {
-            mCurrentStep--;
+            mCurrentStep = 0;
             updateSelectedPage();
             return true;
         } else {

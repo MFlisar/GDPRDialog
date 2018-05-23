@@ -8,7 +8,8 @@
 
     <!-- Dialog - MAIN PAGE TEXTS -->
     <string name="gdpr_dialog_text1">&lt;b>Wir sorgen uns um deine Privatsphäre und Datensicherheit. Wir bemühen uns diese Anwendung %1$s zu halten durch Nutzung gewisser Drittanbieter Dienste.&lt;/b></string>
-    <string name="gdpr_dialog_text2">Wir benutzen %1$s in dieser Anwendung. %2$s %3$s (inkl. %6$s Partner) %4$s eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über %5$s %3$s und deine persönlichen Daten&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_singular">Wir benutzen %1$s in dieser Anwendung. Dieser Dienst (inkl. seiner Partner) sammelt eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über diesen Dienst und deine persönlichen Daten&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_plural">Wir benutzen %1$s in dieser Anwendung. Diese Dienste (inkl. deren Partner) sammeln eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über diese Dienste und deine persönlichen Daten&lt;/a>.</string>
     <string name="gdpr_dialog_text3">Durch deine Zustimmung bestätigst du, dass du über 16 Jahre alt bist.</string>
     <string name="gdpr_dialog_question">Dürfen wir weiterhin deine Daten für diese Zwecke nutzen?</string>
 
@@ -19,7 +20,7 @@
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">Wir sammeln keine Daten für personalisierte Werbung. Obwohl nicht personalisierte Werbung keine Telefon IDs für personalisierte Werbung nutzt, so benutzt sie diese jedoch um Häufigkeiten und aggregierte Werbereporte zu erstellen als auch um Betrug und Missbrauch zu vermeiden."</string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
-    <string name="gdpr_dialog_confirm_age">Ich bestätige zusätzlich, dass ich 16 Jahre oder älter bin</string>
+    <string name="gdpr_dialog_confirm_age">Ich bestätige, dass ich 16 Jahre oder älter bin</string>
     <string name="gdpr_age">Alter</string>
     <string name="gdpr_dialog_agree">Ja, ich stimme zu</string>
     <string name="gdpr_dialog_disagree_no_thanks">Nein danke</string>

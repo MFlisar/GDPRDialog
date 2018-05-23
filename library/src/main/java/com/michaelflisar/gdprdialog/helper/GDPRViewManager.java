@@ -209,12 +209,9 @@ public class GDPRViewManager {
 
         int typesCount = mSetup.getNetworkTypes().size();
         String types = mSetup.getNetworkTypesCommaSeperated(activity);
-        String thisOrThose = activity.getResources().getQuantityString(R.plurals.thisMiddle, typesCount);
-        String thisOrThoseBeginning = activity.getResources().getQuantityString(R.plurals.thisFirst, typesCount);
-        String serviceOrServices = activity.getResources().getQuantityString(R.plurals.service, typesCount);
-        String collectOrCollects = activity.getResources().getQuantityString(R.plurals.collect, typesCount);
-        String their = activity.getResources().getQuantityString(R.plurals.their, typesCount);
-        String text2 = activity.getString(R.string.gdpr_dialog_text2, types, thisOrThoseBeginning, serviceOrServices, collectOrCollects, thisOrThose, their);
+        String text2 = typesCount == 1 ?
+                activity.getString(R.string.gdpr_dialog_text2_singular, types) :
+                activity.getString(R.string.gdpr_dialog_text2_plural, types);
         CharSequence sequence2 = Html.fromHtml(text2);
         SpannableStringBuilder strBuilder2 = new SpannableStringBuilder(sequence2);
         URLSpan[] urls = strBuilder2.getSpans(0, sequence2.length(), URLSpan.class);

@@ -15,7 +15,8 @@
 
     <!-- Dialog - MAIN PAGE TEXTS -->
     <string name="gdpr_dialog_text1">&lt;b>We care about your privacy and data security. We keep this app %1$s by using third party services.&lt;/b></string>
-    <string name="gdpr_dialog_text2">We use %1$s in this app. %2$s %3$s (including %6$s partners) %4$s unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about %5$s %3$s and your personal data&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_singular">We use %1$s in this app. This service (including it\'s partners) collects unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about this service and your personal data&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_plural">We use %1$s in this app. Those services (including their partners) collect unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about those services and your personal data&lt;/a>.</string>
     <string name="gdpr_dialog_text3">By agreeing, you are confirming that you are over the age of 16.</string>
     <string name="gdpr_dialog_question">Can we continue to use your data for this purposes?</string>
 
@@ -26,7 +27,7 @@
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">We won\'t collect your data for personalized advertising. Although non-personalized ads don\'t use mobile ad identifiers for ad targeting, they do still use mobile identifiers for frequency capping and aggregated ad reporting as well as for combating fraud and abuse."</string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
-    <string name="gdpr_dialog_confirm_age">Additionally I confirm, that I\'m 16 years or older</string>
+    <string name="gdpr_dialog_confirm_age">I confirm, that I\'m 16 years or older</string>
     <string name="gdpr_age">Age</string>
     <string name="gdpr_dialog_agree">Yes, I agree</string>
     <string name="gdpr_dialog_disagree_no_thanks">No, thank you</string>

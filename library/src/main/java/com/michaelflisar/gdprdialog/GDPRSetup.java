@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 public class GDPRSetup implements Parcelable {
@@ -163,19 +164,11 @@ public class GDPRSetup implements Parcelable {
     // ----------------
 
     public final String getNetworksCommaSeperated(Context context, boolean withLinks) {
-        String networks = withLinks ? mAdNetworks[0].getHtmlLink() : mAdNetworks[0].getName();
-        String innerSep = context.getString(R.string.gdpr_list_seperator);
-        String lastSep = context.getString(R.string.gdpr_last_list_seperator);
-        String sep;
-        for (int i = 1; i < mAdNetworks.length; i++) {
-            sep = i == mAdNetworks.length - 1 ? lastSep : innerSep;
-            if (withLinks) {
-                networks += sep + mAdNetworks[i].getHtmlLink();
-            } else {
-                networks += sep + mAdNetworks[i].getName();
-            }
+        HashSet<String> uniqueNetworks = new HashSet<>();
+        for (GDPRNetwork network : mAdNetworks) {
+            uniqueNetworks.add(withLinks ? network.getHtmlLink() :network.getName());
         }
-        return networks;
+        return getCommaSeperatedString(context, uniqueNetworks);
     }
 
     public final String policyLink() {
@@ -248,20 +241,22 @@ public class GDPRSetup implements Parcelable {
     }
 
     public String getNetworkTypesCommaSeperated(Context context) {
-        HashSet<String> uniqueTypes = getNetworkTypes();
+        return getCommaSeperatedString(context, getNetworkTypes());
+    }
 
+    private String getCommaSeperatedString(Context context, Collection<String> values) {
         String innerSep = context.getString(R.string.gdpr_list_seperator);
         String lastSep = context.getString(R.string.gdpr_last_list_seperator);
         String sep;
 
         String types = "";
         int i = 0;
-        for (String type : uniqueTypes) {
+        for (String value : values) {
             if (i == 0) {
-                types = type;
+                types = value;
             } else {
-                sep = i == uniqueTypes.size() - 1 ? lastSep : innerSep;
-                types += sep + type;
+                sep = i == values.size() - 1 ? lastSep : innerSep;
+                types += sep + value;
             }
             i++;
         }

@@ -26,8 +26,8 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
     implementation project(':library')
-    //implementation 'com.github.MFlisar:GDPRDialog:-SNAPSHOT'
+//    implementation 'com.github.MFlisar:GDPRDialog:-SNAPSHOT'
+//    implementation 'com.github.MFlisar:GDPRDialog:0.5.1'
 }

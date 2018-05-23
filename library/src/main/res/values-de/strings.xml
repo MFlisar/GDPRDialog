@@ -8,7 +8,7 @@
 
     <!-- Dialog - MAIN PAGE TEXTS -->
     <string name="gdpr_dialog_text1">&lt;b>Wir sorgen uns um deine Privatsphäre und Datensicherheit. Wir bemühen uns diese Anwendung %1$s zu halten durch Nutzung gewisser Drittanbieter Dienste.&lt;/b></string>
-    <string name="gdpr_dialog_text2">Wir benutzen %1$s in dieser Anwendung. %2$s %3$s (inkl. %6$s Partner) %4$s eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. &lt;a href=\"\">Erfahre mehr über %5$s %3$s und deine persönlichen Daten&lt;/a>. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern.</string>
+    <string name="gdpr_dialog_text2">Wir benutzen %1$s in dieser Anwendung. %2$s %3$s (inkl. %6$s Partner) %4$s eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über %5$s %3$s und deine persönlichen Daten&lt;/a>.</string>
     <string name="gdpr_dialog_text3">Durch deine Zustimmung bestätigst du, dass du über 16 Jahre alt bist.</string>
     <string name="gdpr_dialog_question">Dürfen wir weiterhin deine Daten für diese Zwecke nutzen?</string>
 
@@ -44,6 +44,7 @@
 
     <string name="gdpr_type_ads">Werbung</string>
     <string name="gdpr_type_cloud_database">eine Cloud Datenbank</string>
-    <string name="gdpr_type_crash">Crash Analytics</string>
+    <string name="gdpr_type_crash">Absturzberichte</string>
+    <string name="gdpr_type_analytics">Analytikberichte</string>
 
 </resources>

@@ -21,6 +21,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mCheckRequestLocation = false;
     private boolean mUseBottomSheet = false;
     private boolean mForceSelection = false;
+    private int mCustomDialogTheme = 0;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -79,6 +80,11 @@ public class GDPRSetup implements Parcelable {
 
     public GDPRSetup withForceSelection(boolean forceSelection) {
         mForceSelection = forceSelection;
+        return this;
+    }
+
+    public GDPRSetup withCustomDialogTheme(int theme) {
+        mCustomDialogTheme = theme;
         return this;
     }
 
@@ -150,6 +156,10 @@ public class GDPRSetup implements Parcelable {
         return mForceSelection;
     }
 
+    public int customDialogTheme() {
+        return mCustomDialogTheme;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
@@ -209,6 +219,7 @@ public class GDPRSetup implements Parcelable {
         mCheckRequestLocation = in.readByte() == 1;
         mUseBottomSheet = in.readByte() == 1;
         mForceSelection = in.readByte() == 1;
+        mCustomDialogTheme = in.readInt();
     }
 
     @Override
@@ -229,6 +240,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
         dest.writeByte(mUseBottomSheet ? (byte) 1 : 0);
         dest.writeByte(mForceSelection ? (byte) 1 : 0);
+        dest.writeInt(mCustomDialogTheme);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

@@ -65,6 +65,8 @@ setup.withPrivacyPolicy("www.my-privacy-policy.com");   // provide your own priv
 // setup.withExplicitAgeConfirmation(true);
 // setup.withCheckRequestLocation(true);
 // setup.withBottomSheet(true);
+// setup.withForceSelection(true);
+// setup.withCustomDialogTheme(theme);
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity

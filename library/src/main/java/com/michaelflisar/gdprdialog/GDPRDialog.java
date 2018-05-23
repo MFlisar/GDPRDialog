@@ -1,6 +1,7 @@
 package com.michaelflisar.gdprdialog;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,8 +74,9 @@ public class GDPRDialog extends AppCompatDialogFragment
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
         if (mViewManager.shouldUseBottomSheet()) {
-            BottomSheetDialog dlg = new BottomSheetDialog(getContext(), getTheme()){
+            BottomSheetDialog dlg = new BottomSheetDialog(getContext(), mViewManager.getSetup().customDialogTheme()){
                 @Override
                 public void onBackPressed() {
                     if (mViewManager.handleBackPress()) {
@@ -110,9 +113,8 @@ public class GDPRDialog extends AppCompatDialogFragment
                 }
             });
             return dlg;
-        } else
-        {
-            return new AppCompatDialog(getActivity(), getTheme()) {
+        } else {
+            return new AppCompatDialog(getContext(), mViewManager.getSetup().customDialogTheme()) {
                 @Override
                 public void onBackPressed() {
                     if (mViewManager.handleBackPress()) {

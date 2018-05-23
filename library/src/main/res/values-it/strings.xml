@@ -25,7 +25,7 @@
     <string name="gdpr_age">Età</string>
     <string name="gdpr_dialog_agree">Sì, accetto</string>
     <string name="gdpr_dialog_disagree_no_thanks">No, grazie</string>
-    <string name="gdpr_dialog_disagree_buy_add">No grazie, voglio comprare l\'app</string>
+    <string name="gdpr_dialog_disagree_buy_app">No grazie, voglio comprare l\'app</string>
     <string name="gdpr_dialog_close">Chiudi</string>
     <string name="gdpr_dialog_back">Indietro</string>
     <string name="gdpr_dialog_disagree_no_ads">Nessuna pubblicità per favore</string>

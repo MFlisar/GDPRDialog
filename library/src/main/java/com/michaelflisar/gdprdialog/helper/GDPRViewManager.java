@@ -242,9 +242,9 @@ public class GDPRViewManager {
 
         if (mSetup.hasPaidVersion()) {
             if (!mSetup.allowNonPersonalisedForPaidVersion()) {
-                btDisagree.setText(R.string.gdpr_dialog_disagree_buy_add);
+                btDisagree.setText(R.string.gdpr_dialog_disagree_buy_app);
             } else {
-                btNoConsentAtAll.setText(R.string.gdpr_dialog_disagree_buy_add);
+                btNoConsentAtAll.setText(R.string.gdpr_dialog_disagree_buy_app);
             }
         } else {
             boolean hideAdsInfo = !mSetup.containsAdNetwork() || (mSetup.hasPaidVersion() && !mSetup.allowNonPersonalisedForPaidVersion());

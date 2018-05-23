@@ -25,7 +25,7 @@
     <string name="gdpr_age">Věk</string>
     <string name="gdpr_dialog_agree">Ano, souhlasím</string>
     <string name="gdpr_dialog_disagree_no_thanks">Ne, děkuji</string>
-    <string name="gdpr_dialog_disagree_buy_add">Ne, děkuji, raději koupím placenou verzi</string>
+    <string name="gdpr_dialog_disagree_buy_app">Ne, děkuji, raději koupím placenou verzi</string>
     <string name="gdpr_dialog_close">Zavřít</string>
     <string name="gdpr_dialog_back">Zpět</string>
     <string name="gdpr_dialog_disagree_no_ads">Prosím, vůbec žádné reklamy</string>

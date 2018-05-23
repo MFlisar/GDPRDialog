@@ -9,6 +9,7 @@ Simple reusable `DialogFragment`.
 
 This library offers following:
 
+* supports `DialogFragment` or `BottomSheetDialogFragment` style 
 * supports multiple services, already defined ones are AdMob and Firebase
 * supports custom service definitions
 * is set up via a setup class that allows you to select which possibilities you give the user - any combination of *personalised ads*, *non personalised ads* and *paid version*, depending on what you want. Examples:
@@ -42,7 +43,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```groovy
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:0.5.0'
+     implementation 'com.github.MFlisar:GDPRDialog:0.5.1'
 }
 ```
 

@@ -7,10 +7,10 @@
     <string name="gdpr_dialog_title">Souhlas ohledně GDPR</string>
 
     <!-- Dialog - MAIN PAGE TEXTS -->
-    <string name="gdpr_dialog_text1">&lt;b>Záleží nám na vašem soukromí a bezpečnosti vašich dat. Aby tako aplikace mohla být poskytována %1$s, potřebuje používat služby dalších firem.&lt;/b></string>
+    <string name="gdpr_dialog_text1">Záleží nám na vašem soukromí a bezpečnosti vašich dat. Aby tako aplikace mohla být poskytována %1$s, potřebuje používat služby dalších firem.</string>
     <string name="gdpr_dialog_text2_singular">V této aplikaci používáme %1$s. Tato služba (a její partneři) sbírá unikátní indentifikátory a další osobní data. Vaši volbu můžete kdykoliv změnit v nastavení aplikace. &lt;a href=\"\">Zde dozvíte více o této službě a tom, jak zpracovává osobní data&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">V této aplikaci používáme %1$s. Tyto služby (a jejich partneři) sbírají unikátní identifikátory a další osobní data. Vaši volbu můžete kdykoliv změnit v nastavení aplikace. &lt;a href=\"\">Zde dozvíte více o těchto službách a tom, jak zpracovávají osobní data&lt;/a>.</string>
-    <string name="gdpr_dialog_text3">&lt;i>Svoji volbu můžete kdykoliv změnit v nastavení aplikace.&lt;/i></string>
+    <string name="gdpr_dialog_text3">Svoji volbu můžete kdykoliv změnit v nastavení aplikace.</string>
     <string name="gdpr_dialog_question">Můžeme pokračovat v použití dat pro tyto účely?</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->

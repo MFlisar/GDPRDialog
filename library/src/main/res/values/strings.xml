@@ -22,7 +22,6 @@
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
     <string name="gdpr_dialog_confirm_age">I confirm, that I\'m 16 years or older</string>
-    <string name="gdpr_age">Age</string>
     <string name="gdpr_dialog_agree">Yes, I agree</string>
     <string name="gdpr_dialog_disagree_no_thanks">No, thank you</string>
     <string name="gdpr_dialog_disagree_buy_app">No thank you, I want to buy the app</string>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -118,10 +117,9 @@ public class GDPRViewManager {
         final TextView tvText1 = view.findViewById(R.id.tvText1);
         final TextView tvText2 = view.findViewById(R.id.tvText2);
         final TextView tvText3 = view.findViewById(R.id.tvText3);
-        final TextView tvText4 = view.findViewById(R.id.tvText4);
         final CheckBox cbAge = view.findViewById(R.id.cbAge);
 
-        initGeneralTexts(activity, tvText1, tvText2, tvText3, tvText4, cbAge, btDisagree, btNoConsentAtAll);
+        initGeneralTexts(activity, tvText1, tvText2, tvText3, cbAge, btDisagree, btNoConsentAtAll);
 
         // info page
         final TextView tvServiceInfo1 = view.findViewById(R.id.tvServiceInfo1);
@@ -181,7 +179,7 @@ public class GDPRViewManager {
         });
     }
 
-    private void initGeneralTexts(Activity activity, TextView tvText1, TextView tvText2, TextView tvText3, TextView tvText4, CheckBox cbAge, Button btDisagree, Button btNoConsentAtAll) {
+    private void initGeneralTexts(Activity activity, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge, Button btDisagree, Button btNoConsentAtAll) {
 
         String cheapOrFree = activity.getString(mSetup.hasPaidVersion() ? R.string.gdpr_cheap : R.string.gdpr_free);
         String text1 = activity.getString(R.string.gdpr_dialog_text1, cheapOrFree);
@@ -212,14 +210,10 @@ public class GDPRViewManager {
         tvText3.setText(Html.fromHtml(text3));
         tvText3.setMovementMethod(LinkMovementMethod.getInstance());
 
-        String text4 = activity.getString(R.string.gdpr_dialog_text4);
-        tvText4.setText(Html.fromHtml(text4));
-        tvText4.setMovementMethod(LinkMovementMethod.getInstance());
-
         if (!mSetup.explicitAgeConfirmation()) {
             cbAge.setVisibility(View.GONE);
         } else {
-            tvText4.setVisibility(View.GONE);
+            tvText3.setVisibility(View.GONE);
             cbAge.setChecked(mAgeConfirmed);
             cbAge.setOnCheckedChangeListener((buttonView, isChecked) -> mAgeConfirmed = isChecked);
         }

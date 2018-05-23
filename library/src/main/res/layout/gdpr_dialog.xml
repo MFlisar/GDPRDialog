@@ -56,22 +56,23 @@
                         android:textSize="@dimen/gdpr_text_size_normal"/>
 
                     <TextView
+                        android:id="@+id/tvQuestion"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/gdpr_big_info_padding"
+                        android:layout_marginBottom="@dimen/gdpr_big_info_padding"
+                        android:text="@string/gdpr_dialog_question"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/gdpr_text_size_big"/>
+
+                    <TextView
                         android:id="@+id/tvText3"
                         style="@style/TextAppearance.AppCompat.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/gdpr_small_info_padding"
-                        android:layout_marginTop="@dimen/gdpr_small_info_padding"
                         android:text="@string/gdpr_dialog_text3"
-                        android:textAlignment="center"
-                        android:textSize="@dimen/gdpr_text_size_normal"/>
-
-                    <TextView
-                        android:id="@+id/tvText4"
-                        style="@style/TextAppearance.AppCompat.Small"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/gdpr_dialog_text4"
                         android:textSize="@dimen/gdpr_text_size_normal"/>
 
                 </LinearLayout>

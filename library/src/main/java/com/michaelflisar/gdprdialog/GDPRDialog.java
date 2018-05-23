@@ -48,6 +48,9 @@ public class GDPRDialog extends AppCompatDialogFragment
         if (mViewManager.handleBackPress()) {
             return;
         }
+        if (mViewManager.getSetup().forceSelection()) {
+            return;
+        }
         onSaveConsentAndCloseDialog();
         super.onDismiss(dialogInterface);
     }
@@ -76,7 +79,9 @@ public class GDPRDialog extends AppCompatDialogFragment
                     if (mViewManager.handleBackPress()) {
                         return;
                     }
-                    dismiss();
+                    if (!mViewManager.getSetup().forceSelection()) {
+                        dismiss();
+                    }
                 }
             };
             dlg.setOnShowListener(dialog -> {
@@ -85,20 +90,24 @@ public class GDPRDialog extends AppCompatDialogFragment
                 BottomSheetBehavior behaviour = BottomSheetBehavior.from(bottomSheet);
                 // fully expand sheet and disable collapse state
                 behaviour.setState(BottomSheetBehavior.STATE_EXPANDED);
-                behaviour.setPeekHeight(0);
-                behaviour.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-                    @Override
-                    public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                        if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                            dismiss();
+                if (mViewManager.getSetup().forceSelection()) {
+                    behaviour.setPeekHeight(bottomSheet.getMeasuredHeight());
+                } else {
+                    behaviour.setPeekHeight(0);
+                    behaviour.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+                        @Override
+                        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                            if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                                dismiss();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                        @Override
+                        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
 
-                    }
-                });
+                        }
+                    });
+                }
             });
             return dlg;
         } else
@@ -109,7 +118,9 @@ public class GDPRDialog extends AppCompatDialogFragment
                     if (mViewManager.handleBackPress()) {
                         return;
                     }
-                    dismiss();
+                    if (!mViewManager.getSetup().forceSelection()) {
+                        dismiss();
+                    }
                 }
             };
         }

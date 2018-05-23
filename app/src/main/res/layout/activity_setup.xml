@@ -81,6 +81,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <CheckBox
+        android:id="@+id/cbForceSelection"
+        android:text="Force user to make a choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:id="@+id/btTest"
         android:onClick="onClick"

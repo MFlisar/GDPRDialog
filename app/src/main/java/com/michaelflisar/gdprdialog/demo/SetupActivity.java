@@ -20,6 +20,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox cbAskForAge;
     private CheckBox cbCheckRequestLocation;
     private CheckBox cbBottomSheet;
+    private CheckBox cbForceSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbAskForAge = findViewById(R.id.cbAskForAge);
         cbCheckRequestLocation = findViewById(R.id.cbCheckRequestLocation);
         cbBottomSheet = findViewById(R.id.cbBottomSheet);
+        cbForceSelection = findViewById(R.id.cbForceSelection);
 
         cbAllowNonPersonalisedForPaidVersions.setEnabled(cbHasPaidVersion.isChecked());
         cbHasPaidVersion.setOnCheckedChangeListener((buttonView, isChecked) -> cbAllowNonPersonalisedForPaidVersions.setEnabled(isChecked));
@@ -56,6 +58,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbAskForAge = null;
         cbCheckRequestLocation = null;
         cbBottomSheet = null;
+        cbForceSelection = null;
         super.onDestroy();
     }
 
@@ -90,6 +93,9 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         }
         if (cbBottomSheet.isChecked()) {
             setup.withBottomSheet(true);
+        }
+        if (cbForceSelection.isChecked()) {
+            setup.withForceSelection(true);
         }
         // our base theme has a toolbar, so wo do not need this
         // setup.withNoToolbarTheme(true);

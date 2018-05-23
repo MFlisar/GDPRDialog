@@ -19,6 +19,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mNoToolbarTheme = false;
     private boolean mCheckRequestLocation = false;
     private boolean mUseBottomSheet = false;
+    private boolean mForceSelection = false;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -67,6 +68,11 @@ public class GDPRSetup implements Parcelable {
 
     public GDPRSetup withBottomSheet(boolean useBottomSheet) {
         mUseBottomSheet = useBottomSheet;
+        return this;
+    }
+
+    public GDPRSetup withForceSelection(boolean forceSelection) {
+        mForceSelection = forceSelection;
         return this;
     }
 
@@ -130,6 +136,10 @@ public class GDPRSetup implements Parcelable {
         return mCheckRequestLocation;
     }
 
+    public final boolean forceSelection() {
+        return mForceSelection;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
@@ -187,6 +197,7 @@ public class GDPRSetup implements Parcelable {
         mNoToolbarTheme = in.readByte() == 1;
         mCheckRequestLocation = in.readByte() == 1;
         mUseBottomSheet = in.readByte() == 1;
+        mForceSelection = in.readByte() == 1;
     }
 
     @Override
@@ -205,6 +216,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
         dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
         dest.writeByte(mUseBottomSheet ? (byte) 1 : 0);
+        dest.writeByte(mForceSelection ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

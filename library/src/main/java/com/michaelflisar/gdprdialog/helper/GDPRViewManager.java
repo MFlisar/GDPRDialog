@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
@@ -301,9 +302,14 @@ public class GDPRViewManager {
     }
 
     private void showSnackbar(int message, View view) {
-        mSnackbar = Snackbar
-                .make(view, message, Snackbar.LENGTH_LONG);
-        mSnackbar.show();
+        // TODO: for some reason, the snackbar does not show in the bottom sheet
+        if (mSetup.useBottomSheet()) {
+            Toast.makeText(view.getContext(), message, Toast.LENGTH_LONG).show();
+        } else {
+            mSnackbar = Snackbar
+                    .make(view, message, Snackbar.LENGTH_LONG);
+            mSnackbar.show();
+        }
     }
 
     private void makeLinkClickable(SpannableStringBuilder strBuilder, final URLSpan span, Runnable runnable) {

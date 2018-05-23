@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- *********** -->
+    <!-- Ad Networks -->
+    <!-- *********** -->
+
+    <string name="gdpr_network_admob" translatable="false">AdMob</string>
+    <string name="gdpr_network_admob_link" translatable="false">https://support.google.com/admob/answer/9012903</string>
+
+    <string name="gdpr_network_firebase" translatable="false">Firebase</string>
+    <string name="gdpr_network_firebase_link" translatable="false">https://firebase.google.com/support/privacy/</string>
+
+</resources>

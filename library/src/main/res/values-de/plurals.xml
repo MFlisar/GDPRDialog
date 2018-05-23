@@ -1,0 +1,33 @@
+<resources>
+
+    <plurals name="service">
+        <item quantity="one">Dienst</item>
+        <item quantity="other">Dienste</item>
+    </plurals>
+
+    <plurals name="privacyPolicy">
+        <item quantity="one">Datenschutzrichtlinie</item>
+        <item quantity="other">Datenschutzrichtlinien</item>
+    </plurals>
+
+    <plurals name="thisFirst">
+        <item quantity="one">Dieser</item>
+        <item quantity="other">Diese</item>
+    </plurals>
+
+    <plurals name="thisMiddle">
+        <item quantity="one">diesen</item>
+        <item quantity="other">diese</item>
+    </plurals>
+
+    <plurals name="their">
+        <item quantity="one">dessen</item>
+        <item quantity="other">deren</item>
+    </plurals>
+
+    <plurals name="collect">
+        <item quantity="one">sammelt</item>
+        <item quantity="other">sammeln</item>
+    </plurals>
+
+</resources>

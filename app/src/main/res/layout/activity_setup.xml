@@ -64,12 +64,6 @@
         android:text="Special settings"/>
 
     <CheckBox
-        android:id="@+id/cbExplicitConsentForEachService"
-        android:text="Explicitly require consent for each service (only if more than one is used)"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <CheckBox
         android:id="@+id/cbAskForAge"
         android:text="Explicitly ask for users age confirmation"
         android:layout_width="match_parent"

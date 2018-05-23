@@ -10,19 +10,22 @@ import java.util.List;
 public class GDPRNetwork implements Parcelable {
     private String mName;
     private String mLink;
+    private String mType;
     private boolean mIsCollection;
     private boolean mIsAdNetwork;
 
-    public GDPRNetwork(Context context, int name, int link, boolean isCollection, boolean isAdNetwork) {
+    public GDPRNetwork(Context context, int name, int link, int type, boolean isCollection, boolean isAdNetwork) {
         mName = context.getString(name);
         mLink = context.getString(link);
+        mType = context.getString(type);
         mIsCollection = isCollection;
         mIsAdNetwork = isAdNetwork;
     }
 
-    public GDPRNetwork(String name, String link, boolean isCollection, boolean isAdNetwork) {
+    public GDPRNetwork(String name, String link, String type, boolean isCollection, boolean isAdNetwork) {
         mName = name;
         mLink = link;
+        mType = type;
         mIsCollection = isCollection;
         mIsAdNetwork = isAdNetwork;
     }
@@ -37,6 +40,10 @@ public class GDPRNetwork implements Parcelable {
 
     public String getLink() {
         return mLink;
+    }
+
+    public String getType() {
+        return mType;
     }
 
     public boolean isCollection() {
@@ -62,6 +69,7 @@ public class GDPRNetwork implements Parcelable {
     public GDPRNetwork(Parcel in) {
         mName = in.readString();
         mLink = in.readString();
+        mType = in.readString();
         mIsCollection = in.readByte() == 1;
         mIsAdNetwork = in.readByte() == 1;
     }
@@ -75,6 +83,7 @@ public class GDPRNetwork implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mName);
         dest.writeString(mLink);
+        dest.writeString(mType);
         dest.writeByte(mIsCollection ? (byte)1 : 0);
         dest.writeByte(mIsAdNetwork ? (byte)1 : 0);
     }

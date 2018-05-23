@@ -14,47 +14,45 @@
     <string name="gdpr_dialog_title">Data Protection Consent</string>
 
     <!-- Dialog - MAIN PAGE TEXTS -->
-    <string name="gdpr_dialog_text_part1">This app uses following services:</string>
-    <string name="gdpr_dialog_text_part2">Depending on your privacy settings, those services (including partners) may collect and process personal data such as device identifieres, location data and other demographic and interest data about you to provide you a personalized experience.&lt;br/>&lt;br/>%1$s</string>
-    <string name="gdpr_dialog_text_part2_with_age">By agreeing, you are confirming that you are over the age of 16 and would like this personalized experience.</string>
-    <string name="gdpr_dialog_text_part2_no_age">By agreeing, you are confirming that you would like this personalized experience.</string>
+    <string name="gdpr_dialog_text1">&lt;b>We care about your privacy and data security. We keep this app %1$s by using third party services.&lt;/b></string>
+    <string name="gdpr_dialog_text2">We use %1$s in this app. %2$s %3$s (including %6$s partners) %4$s unique identifiers and other personal data. &lt;a href=\"\">Learn more about %5$s %3$s and your personal data&lt;/a>.</string>
+    <string name="gdpr_dialog_text3">&lt;i>You can change your choice at anytime in the app settings.&lt;></string>
+    <string name="gdpr_dialog_text4">By agreeing, you are confirming that you are over the age of 16.</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->
-    <string name="gdpr_dialog_text_after_accepted_personal">Great.&lt;br/>&lt;br/>%1$s</string>
-    <string name="gdpr_dialog_text_after_accepted_non_personal">No problem.&lt;br/>&lt;br/>%1$s (including partners) won\'t collect your data through this app for a personalized app experience.&lt;br/>&lt;br/>%2$s</string>
-    <string name="gdpr_dialog_text_after_accepted_nothing">No problem.&lt;br/>&lt;br/>You can still use this app.&lt;br/>&lt;br/>%1$s</string>
-    <string name="gdpr_dialog_text_after_accepted_nothing_paid_version_needed">No problem.&lt;br/>&lt;br/>You can still use this app, if you buy it.</string>
-    <string name="gdpr_withdraw_consent_info_addon">&lt;br/>&lt;br/>If you ever change your mind, you can withdraw your consent in the app settings at any time.</string>
-    <string name="gdpr_dialog_confirm_age">Additionally I confirm, that I\'m 16 years or older</string>
+    <string name="gdpr_dialog_text_info1">We use following third party services in this app:</string>
+    <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy olicy or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a>.</string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
+    <string name="gdpr_dialog_confirm_age">Additionally I confirm, that I\'m 16 years or older</string>
     <string name="gdpr_age">Age</string>
     <string name="gdpr_dialog_agree">Yes, I agree</string>
     <string name="gdpr_dialog_disagree_no_thanks">No, thank you</string>
     <string name="gdpr_dialog_disagree_buy_add">No thank you, I want to buy the app</string>
     <string name="gdpr_dialog_close">Close</string>
+    <string name="gdpr_dialog_back">Back</string>
     <string name="gdpr_dialog_disagree_no_ads">No ads at all, please</string>
     <string name="gdpr_dialog_disagree_info">I understand that I still see ads, but they may not be as relevant to my interests.</string>
     <string name="gdpr_list_seperator" translatable="false">\u00A0,</string>
-    <string name="gdpr_last_list_seperator" translatable="false">\u00A0and\u00A0</string>
+    <string name="gdpr_last_list_seperator">\u00A0and\u00A0</string>
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>
     <string name="gdpr_age_not_confirmed">Please confirm your age before continuing</string>
     <string name="gdpr_not_all_services_accepted">Please accept all services before continuing</string>
     <string name="gdpr_link">Link</string>
+    <string name="gdpr_free">free</string>
+    <string name="gdpr_cheap">cheap</string>
 
     <!-- Others -->
     <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors</string>
     <string name="gdpr_googles_check_json_field_is_request_in_eea_or_unknown" translatable="false">is_request_in_eea_or_unknown</string>
 
-    <!-- *********** -->
-    <!-- Ad Networks -->
-    <!-- *********** -->
+    <!-- ************** -->
+    <!-- Networks types -->
+    <!-- ************** -->
 
-    <string name="gdpr_network_admob">AdMob</string>
-    <string name="gdpr_network_admob_link">https://support.google.com/admob/answer/9012903</string>
-
-    <string name="gdpr_network_firebase">Firebase</string>
-    <string name="gdpr_network_firebase_link">https://firebase.google.com/support/privacy/</string>
+    <string name="gdpr_type_ads">ads</string>
+    <string name="gdpr_type_cloud_database">a cloud database</string>
+    <string name="gdpr_type_crash">crash analytics</string>
 
 </resources>

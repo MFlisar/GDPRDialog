@@ -30,7 +30,10 @@ Such dialogs must always be adjusted to the user case in general, although this 
 
 To be on the safe side, I can give following advices:
 
-* show the dialog to everyone, not only to people within the EAA (especially if you from within the EAA yourself)
+* you are from within the EAA => show the dialog to anyone, not only to people from within the EAA
+* you are from outside the EAA
+  * you offer your product inside the EAA => show the dialog to anyone, not only to people from within the EAA
+  * you do *not* offer your product inside the EAA => you don't need to show the dialog to anyone, so actually you don't need this library at all
 * ask the user for the age explicitly (decide yourself here, I will do it implicitly but explicitly would be the way the industry is doing it in real life)
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))

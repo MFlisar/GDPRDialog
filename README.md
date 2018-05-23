@@ -82,7 +82,6 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 ### TODO
 
-* [ ] better landscape layout
 * [ ] translations
   * [x] english
   * [x] german

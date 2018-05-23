@@ -51,6 +51,8 @@ public class GDPRDialog extends AppCompatDialogFragment
 
     @Override
     public void onDismiss(DialogInterface dialogInterface) {
+        if (mViewManager.handleBackPress())
+            return;
         onSaveConsentAndCloseDialog();
         super.onDismiss(dialogInterface);
     }

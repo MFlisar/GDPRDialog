@@ -84,37 +84,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gdpr_dialog_confirm_age"/>
 
-            <Button
-                android:id="@+id/btAgree"
-                style="@style/Widget.AppCompat.Button.Colored"
+            <include
+                layout="@layout/gdpr_dialog_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_agree"/>
-
-            <Button
-                android:id="@+id/btDisagree"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_disagree_no_thanks"/>
-
-            <TextView
-                android:id="@+id/tvAdsInfo"
-                style="@style/TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:text="@string/gdpr_dialog_disagree_info"
-                android:textSize="@dimen/gdpr_text_size_small"
-                android:textStyle="italic"/>
-
-            <Button
-                android:id="@+id/btNoConsentAtAll"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_disagree_no_ads"/>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

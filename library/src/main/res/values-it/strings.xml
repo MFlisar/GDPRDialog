@@ -30,7 +30,7 @@
     <string name="gdpr_dialog_back">Indietro</string>
     <string name="gdpr_dialog_disagree_no_ads">Nessuna pubblicità per favore</string>
     <string name="gdpr_dialog_disagree_info">Capisco che continuerò a vedere la pubblicità, ma potrebbe non essere rilevante per i miei interessi.</string>
-    <string name="gdpr_last_list_seperator">e</string>
+    <string name="gdpr_last_list_seperator">\u0020e\u0020</string>
     <string name="gdpr_buy_app">Compra app</string>
     <string name="gdpr_withdraw_consent">Annulla il consenso al trattamento dei dati</string>
     <string name="gdpr_age_not_confirmed">Per favore conferma la tua età prima di continuare</string>

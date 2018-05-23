@@ -45,7 +45,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```groovy
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:0.5.2'
+     implementation 'com.github.MFlisar:GDPRDialog:0.5.3'
 }
 ```
 
@@ -77,7 +77,7 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
         // handle consent here
     }
 	
-	@Override
+    @Override
     public void onConsentNeedsToBeRequested() {
         // we need to get consent, so we show the dialog here
         GDPR.getInstance().showDialog(this, mSetup);

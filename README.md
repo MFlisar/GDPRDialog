@@ -26,7 +26,7 @@ This library offers following:
 
 ### GDPR and law safety
 
-[More here](https://github.com/MFlisar/GDPRDialog/README - GDPR.md)
+[More here](https://github.com/MFlisar/GDPRDialog/README-GDPR.md)
 
 Such dialogs must always be adjusted to the user case in general, although this one should be fine in most cases. Following is important (talked with a lawyer I know of who is a GDPR specialist). I'm no lawyer, so don't take everything I write for granted. Check out the the [EU GDPR](https://www.eugdpr.org/) yourself for more informations.
 

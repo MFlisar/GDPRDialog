@@ -92,4 +92,5 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 * [ ] translations
   * [x] english
   * [x] german
+  * [x] czech
   * [ ] others

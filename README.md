@@ -58,7 +58,8 @@ GDPR.getInstance().init(this);
 ```
 2. call following in your activities `onCreate`
 ```groovy
-GDPRSetup setup = new GDPRSetup("www.my-privacy-policy.com", GDPRDefinitions.ADMOB); // add all networks you use to the constructor
+GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB); // add all networks you use to the constructor, signature is `GDPRSetup(GDPRNetwork... adNetworks)`
+setup.withPrivacyPolicy("www.my-privacy-policy.com");   // provide your own privacy policy, optional but very recommended
 // optionally change setup:
 // setup.withAllowNoConsent(true);
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);

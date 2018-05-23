@@ -21,7 +21,8 @@
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_info1">We use following third party services in this app:</string>
-    <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy olicy or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a>.</string>
+    <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy olicy%1$s.</string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">&#160;or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a></string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
     <string name="gdpr_dialog_confirm_age">Additionally I confirm, that I\'m 16 years or older</string>

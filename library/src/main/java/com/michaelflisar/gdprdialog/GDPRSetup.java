@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class GDPRSetup implements Parcelable {
 
-    private String mPolicyLink;
+    private String mPolicyLink = null;
     private boolean mHasPaidVersion = false;
     private boolean mAllowNonPersonalisedForPaidVersion = false;
     private boolean mAllowNoConsent = false;
@@ -20,19 +20,23 @@ public class GDPRSetup implements Parcelable {
     private boolean mCheckRequestLocation = false;
     private boolean mUseBottomSheet = false;
 
-    public GDPRSetup(String policyLink, GDPRNetwork... adNetworks) {
+    public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
             throw new RuntimeException("At least one ad network must be provided, otherwise this setup does not make any sense.");
         }
+        mAdNetworks = adNetworks;
+    }
+
+    public GDPRSetup withPrivacyPolicy(String policyLink) {
         if (!policyLink.startsWith("https://") && !policyLink.startsWith("http://")) {
             policyLink = "http://" + policyLink;
         }
         mPolicyLink = policyLink;
-        mAdNetworks = adNetworks;
+        return this;
     }
 
-    public GDPRSetup(Context context, int policyLink, GDPRNetwork... adNetworks) {
-        this(context.getString(policyLink), adNetworks);
+    public GDPRSetup withPrivacyPolicy(Context context, int policyLink) {
+        return withPrivacyPolicy(context.getString(policyLink));
     }
 
     public GDPRSetup withPaidVersion(boolean alsoProvideNonPersonalisedOption) {

@@ -68,10 +68,12 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         String policyLink = "www.test.com"; // provide your apps policy link
         GDPRSetup setup;
         if (cbAdServiceOnly.isChecked()) {
-            setup = new GDPRSetup(policyLink, GDPRDefinitions.ADMOB);
+            setup = new GDPRSetup(GDPRDefinitions.ADMOB);
         } else {
-            setup = new GDPRSetup(policyLink, GDPRDefinitions.ADMOB, GDPRDefinitions.FIREBASE_DATABASE);
+            setup = new GDPRSetup(GDPRDefinitions.ADMOB, GDPRDefinitions.FIREBASE_DATABASE);
         }
+        // you should always provide your own policy as well...
+        setup.withPrivacyPolicy(policyLink);
 
         // following is all optional, default behaviour is to allow personalised or non personalised data only with no paid version
         if (cbAllowNoConsent.isChecked()) {

@@ -252,7 +252,8 @@ public class GDPRViewManager {
         tvServiceInfo2.setText(Html.fromHtml(textInfo2));
         tvServiceInfo2.setMovementMethod(LinkMovementMethod.getInstance());
 
-        String textInfo3 = activity.getString(R.string.gdpr_dialog_text_info3,  mSetup.policyLink());
+        String privacyPolicyPart = mSetup.policyLink() == null ? "" : activity.getString(R.string.gdpr_dialog_text_info3_privacy_policy_part, mSetup.policyLink());
+        String textInfo3 = activity.getString(R.string.gdpr_dialog_text_info3, privacyPolicyPart);
         tvServiceInfo3.setText(Html.fromHtml(textInfo3));
         tvServiceInfo3.setMovementMethod(LinkMovementMethod.getInstance());
     }

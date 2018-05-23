@@ -11,4 +11,36 @@
     <string name="gdpr_network_firebase" translatable="false">Firebase</string>
     <string name="gdpr_network_firebase_link" translatable="false">https://firebase.google.com/support/privacy/</string>
 
+    <string name="gdpr_network_aerserv" translatable="false">AerServ</string>
+    <string name="gdpr_network_aerserv_link" translatable="false">https://support.aerserv.com/hc/en-us/articles/360000781223</string>
+
+    <string name="gdpr_network_inmobi" translatable="false">InMobi</string>
+    <string name="gdpr_network_inmobi_link" translatable="false">https://support.inmobi.com/monetize/integration/gdpr-guide-for-publishers/</string>
+
+    <string name="gdpr_network_mopub" translatable="false">Mopub</string>
+    <string name="gdpr_network_mopub_link" translatable="false">https://www.mopub.com/resources/gdpr-faq/</string>
+
+    <string name="gdpr_network_vungle" translatable="false">Vungle</string>
+    <string name="gdpr_network_vungle_link" translatable="false">https://vungle.com/gdpr-faq/</string>
+
+    <string name="gdpr_network_adcolony" translatable="false">AdColony</string>
+    <string name="gdpr_network_adcolony_link" translatable="false">https://www.adcolony.com/gdpr/</string>
+
+    <string name="gdpr_network_unity" translatable="false">Unity</string>
+    <string name="gdpr_network_unity_link" translatable="false">https://unity3d.com/legal/gdpr</string>
+
+    <string name="gdpr_network_applovin" translatable="false">AppLovin</string>
+    <string name="gdpr_network_applovin_link" translatable="false">https://www.applovin.com/gdprfaqs/</string>
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

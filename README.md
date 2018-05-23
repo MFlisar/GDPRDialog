@@ -30,8 +30,8 @@ Such dialogs must always be adjusted to the use case in general, although this o
 
 Checkout following to find out more:
 
-Some infos I wrote together: [My GDPR ReadMe](README-GDPR.md)
-Check out this page for more: [EU GDPR](https://www.eugdpr.org/)
+* Some infos I wrote together: [My GDPR ReadMe](README-GDPR.md)
+* Check out this page for more: [EU GDPR](https://www.eugdpr.org/)
 
 *Just to make this clear, I'm no lawyer, so don't take anything I write for granted! It should be fine, but there is no guarantee.*
 

@@ -16,7 +16,7 @@
     <!-- Dialog - MAIN PAGE TEXTS -->
     <string name="gdpr_dialog_text1">&lt;b>We care about your privacy and data security. We keep this app %1$s by using third party services.&lt;/b></string>
     <string name="gdpr_dialog_text2">We use %1$s in this app. %2$s %3$s (including %6$s partners) %4$s unique identifiers and other personal data. &lt;a href=\"\">Learn more about %5$s %3$s and your personal data&lt;/a>. You can change your choice at anytime in the app settings.</string>
-    <string name="gdpr_dialog_text3">By agreeing, you are confirming additionally that you are over the age of 16.</string>
+    <string name="gdpr_dialog_text3">By agreeing, you are confirming that you are over the age of 16.</string>
     <string name="gdpr_dialog_question">Can we continue to use your data for this purposes?</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->

@@ -47,7 +47,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```groovy
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:0.5.3'
+     implementation 'com.github.MFlisar:GDPRDialog:1.0'
 }
 ```
 

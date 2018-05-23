@@ -16,7 +16,7 @@
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_info1">V aplikaci používáme tyto knihovny třetích stran:</string>
     <string name="gdpr_dialog_text_info3">Kliknutím na název služby se podíváte na její zásady ochrany osobních údajů%1$s</string>
-    <string name="gdpr_dialog_text_info3_privacy_policy_part">&#160; a kliknutím na tento link zjistíte &lt;a href=\"%1$s\">naše zásady ochrany osobních údajů&lt;/a>.</string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020a kliknutím na tento link zjistíte &lt;a href=\"%1$s\">naše zásady ochrany osobních údajů&lt;/a>.</string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">Nebudeme sbírat osobní data pro reklamy ušité přímo vám na míru. I když nejsou reklamy zacíleny přímo na vás osobně (čili nepoužívají osobní reklamní identifikátory ), stále používají identifikaci mobilního zařízení pro to, aby vám nezobrazovaly stále stejné reklamy, pro reportování a také pro boj proti zneužití reklamních systémů.</string>
 
 

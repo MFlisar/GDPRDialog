@@ -116,12 +116,13 @@ public class GDPRViewManager {
         // general page
         final Button btDisagree = view.findViewById(R.id.btDisagree);
         final Button btNoConsentAtAll = view.findViewById(R.id.btNoConsentAtAll);
+        final TextView tvQuestion = view.findViewById(R.id.tvQuestion);
         final TextView tvText1 = view.findViewById(R.id.tvText1);
         final TextView tvText2 = view.findViewById(R.id.tvText2);
         final TextView tvText3 = view.findViewById(R.id.tvText3);
         final CheckBox cbAge = view.findViewById(R.id.cbAge);
 
-        initGeneralTexts(activity, tvText1, tvText2, tvText3, cbAge, btDisagree, btNoConsentAtAll);
+        initGeneralTexts(activity, tvQuestion, tvText1, tvText2, tvText3, cbAge, btDisagree, btNoConsentAtAll);
 
         // info page
         final TextView tvServiceInfo1 = view.findViewById(R.id.tvServiceInfo1);
@@ -200,7 +201,10 @@ public class GDPRViewManager {
         });
     }
 
-    private void initGeneralTexts(Activity activity, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge, Button btDisagree, Button btNoConsentAtAll) {
+    private void initGeneralTexts(Activity activity, TextView tvQuestion, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge, Button btDisagree, Button btNoConsentAtAll) {
+
+        String question = activity.getString(R.string.gdpr_dialog_question, mSetup.containsAdNetwork() ? activity.getString(R.string.gdpr_dialog_question_ads_info) : "");
+        tvQuestion.setText(Html.fromHtml(question));
 
         String cheapOrFree = activity.getString(mSetup.hasPaidVersion() ? R.string.gdpr_cheap : R.string.gdpr_free);
         String text1 = activity.getString(R.string.gdpr_dialog_text1, cheapOrFree);

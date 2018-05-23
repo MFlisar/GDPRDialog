@@ -11,12 +11,13 @@
     <string name="gdpr_dialog_text2_singular">We use %1$s in this app. This service (including it\'s partners) collects unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about this service and your personal data&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">We use %1$s in this app. Those services (including their partners) collect unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about those services and your personal data&lt;/a>.</string>
     <string name="gdpr_dialog_text3">By agreeing, you are confirming that you are over the age of 16.</string>
-    <string name="gdpr_dialog_question">Can we continue to use your data for this purposes?</string>
+    <string name="gdpr_dialog_question">Can we continue to use your data for these purposes%1$s?</string>
+    <string name="gdpr_dialog_question_ads_info">\u0020as well as for showing personalized ads</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_info1">We use following third party services in this app:</string>
     <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy policy%1$s.</string>
-    <string name="gdpr_dialog_text_info3_privacy_policy_part">&#160;or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a></string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a></string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">We won\'t collect your data for personalized advertising. Although non-personalized ads don\'t use mobile ad identifiers for ad targeting, they do still use mobile identifiers for frequency capping and aggregated ad reporting as well as for combating fraud and abuse."</string>
 
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
@@ -29,8 +30,8 @@
     <string name="gdpr_dialog_back">Back</string>
     <string name="gdpr_dialog_disagree_no_ads">No ads at all, please</string>
     <string name="gdpr_dialog_disagree_info">I understand that I still see ads, but they may not be as relevant to my interests.</string>
-    <string name="gdpr_list_seperator" translatable="false">,\u00A0</string>
-    <string name="gdpr_last_list_seperator">\u00A0and\u00A0</string>
+    <string name="gdpr_list_seperator" translatable="false">,\u0020</string>
+    <string name="gdpr_last_list_seperator">and</string>
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>
     <string name="gdpr_age_not_confirmed">Please confirm your age before continuing</string>

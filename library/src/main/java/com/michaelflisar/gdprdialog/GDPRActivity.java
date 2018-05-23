@@ -44,6 +44,9 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
 
     @Override
     public void onBackPressed() {
+        if (mViewManager.handleBackPress()) {
+            return;
+        }
         if (mViewManager.getSetup().forceSelection() && mViewManager.getSelectedConsent() == null) {
             return;
         }

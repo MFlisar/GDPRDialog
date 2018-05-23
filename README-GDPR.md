@@ -17,4 +17,4 @@ In general,
 * ...you must inform the user that he can change his mind and withdraw his consent at any time
 * ...you must inform the user about each service you use and link the corresponding privacy policy when asking the user for consent
 
-Again, I'm no lawyer, so don't take anything I write for granted. Check out the [EU GDPR](https://www.eugdpr.org/) yourself for more informations.
+*Again, I'm no lawyer, so don't take anything I write for granted*. Check out the [EU GDPR](https://www.eugdpr.org/) yourself for more informations.

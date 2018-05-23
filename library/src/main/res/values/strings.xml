@@ -14,7 +14,7 @@
     <string name="gdpr_dialog_title">Data Protection Consent</string>
 
     <!-- Dialog - MAIN PAGE TEXTS -->
-    <string name="gdpr_dialog_text1">&lt;b>We care about your privacy and data security. We keep this app %1$s by using third party services.&lt;/b></string>
+    <string name="gdpr_dialog_text1">We care about your privacy and data security. We keep this app %1$s by using third party services.</string>
     <string name="gdpr_dialog_text2_singular">We use %1$s in this app. This service (including it\'s partners) collects unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about this service and your personal data&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">We use %1$s in this app. Those services (including their partners) collect unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about those services and your personal data&lt;/a>.</string>
     <string name="gdpr_dialog_text3">By agreeing, you are confirming that you are over the age of 16.</string>

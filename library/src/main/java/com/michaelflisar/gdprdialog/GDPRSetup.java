@@ -30,6 +30,12 @@ public class GDPRSetup implements Parcelable {
         mAdNetworks = adNetworks;
     }
 
+    /**
+     * set a custom policy link
+     *
+     * @param policyLink your custom policy link
+     * @return this
+     */
     public GDPRSetup withPrivacyPolicy(String policyLink) {
         if (!policyLink.startsWith("https://") && !policyLink.startsWith("http://")) {
             policyLink = "http://" + policyLink;
@@ -38,51 +44,115 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    /**
+     * set a custom policy link
+     *
+     * @param policyLink your custom policy link resource id
+     * @return this
+     */
     public GDPRSetup withPrivacyPolicy(Context context, int policyLink) {
         return withPrivacyPolicy(context.getString(policyLink));
     }
 
+    /**
+     * use this if you offer a paid version
+     *
+     * @param alsoProvideNonPersonalisedOption true, if the user can select between personalised, non personalised and paid app, false if he cannot select non persnalised ads
+     * @return this
+     */
     public GDPRSetup withPaidVersion(boolean alsoProvideNonPersonalisedOption) {
         mHasPaidVersion = true;
         mAllowNonPersonalisedForPaidVersion = alsoProvideNonPersonalisedOption;
         return this;
     }
 
+    /**
+     * use this to allow the user to also use your app without consent
+     * don't show ads in this case
+     *
+     * @param allowNoConsent true to allow the app usage without any consent, false otherwise
+     * @return this
+     */
     public GDPRSetup withAllowNoConsent(boolean allowNoConsent) {
         mAllowNoConsent = allowNoConsent;
         return this;
     }
 
+    /**
+     * use this to force the user to explicitly confirm his age with a checkbox
+     *
+     * @param explicitAgeConfirmation true, to force explicit age confirmation, false otherwise
+     * @return this
+     */
     public GDPRSetup withExplicitAgeConfirmation(boolean explicitAgeConfirmation) {
         mExplicitAgeConfirmation = explicitAgeConfirmation;
         return this;
     }
 
+    /**
+     * use this for ads only!
+     * use this to force the user to give explicit consent for non personalised data usage
+     * the user will see an information about ads and how they work
+     *
+     * @param explicitNonPersonalisedConfirmation true, to force explicit consent, false otherwise
+     * @return this
+     */
     public GDPRSetup withExplicitNonPersonalisedConfirmation(boolean explicitNonPersonalisedConfirmation) {
         mExplicitNonPersonalisedConfirmation = explicitNonPersonalisedConfirmation;
         return this;
     }
 
+    /**
+     * use thsi if you use an app theme without a toolbar as actionbar
+     *
+     * @param noToolbarTheme true, if you use a theme without a toolbar, false otherwise
+     * @return this
+     */
     public GDPRSetup withNoToolbarTheme(boolean noToolbarTheme) {
         mNoToolbarTheme = noToolbarTheme;
         return this;
     }
 
+    /**
+     * use this to check the user's location and check if it is within the EAA before requesting consent
+     * this uses a homepage form google and parses it's result
+     *
+     * @param checkRequestLocation true to check location, false otherwise
+     * @return this
+     */
     public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation) {
         mCheckRequestLocation = checkRequestLocation;
         return this;
     }
 
+    /**
+     * use this to show the dialog as a bottom sheet
+     *
+     * @param useBottomSheet true to use the bottom sheet style, false otherwise
+     * @return this
+     */
     public GDPRSetup withBottomSheet(boolean useBottomSheet) {
         mUseBottomSheet = useBottomSheet;
         return this;
     }
 
+    /**
+     * use this to disable closing the dialog (and app) with the back button
+     *
+     * @param forceSelection true to force user to select an option, false otherwise
+     * @return this
+     */
     public GDPRSetup withForceSelection(boolean forceSelection) {
         mForceSelection = forceSelection;
         return this;
     }
 
+    /**
+     * use this to provide a custom dialog theme
+     *
+     * @param theme the dialog theme to use
+     * @return this
+     */
     public GDPRSetup withCustomDialogTheme(int theme) {
         mCustomDialogTheme = theme;
         return this;

@@ -23,6 +23,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mUseBottomSheet = false;
     private boolean mForceSelection = false;
     private int mCustomDialogTheme = 0;
+    private boolean mShortQuestion = false;
 
     public GDPRSetup(GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -159,6 +160,18 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    /**
+     * use this to not explicitly show a text about personalised ads to keep the dialog a little smaller
+     * the info will still state that you use personalised data for ads, but not explicitly in the question
+     *
+     * @param shortQuestion true to show a short question only, false otherwise
+     * @return this
+     */
+    public GDPRSetup withShortQuestion(boolean shortQuestion) {
+        mShortQuestion = shortQuestion;
+        return this;
+    }
+
     // ----------------
     // Functions
     // ----------------
@@ -223,6 +236,10 @@ public class GDPRSetup implements Parcelable {
         return mCustomDialogTheme;
     }
 
+    public boolean shortQuestion() {
+        return mShortQuestion;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
@@ -285,6 +302,7 @@ public class GDPRSetup implements Parcelable {
         mUseBottomSheet = in.readByte() == 1;
         mForceSelection = in.readByte() == 1;
         mCustomDialogTheme = in.readInt();
+        mShortQuestion = in.readByte() == 1;
     }
 
     @Override
@@ -306,6 +324,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mUseBottomSheet ? (byte) 1 : 0);
         dest.writeByte(mForceSelection ? (byte) 1 : 0);
         dest.writeInt(mCustomDialogTheme);
+        dest.writeByte(mShortQuestion ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

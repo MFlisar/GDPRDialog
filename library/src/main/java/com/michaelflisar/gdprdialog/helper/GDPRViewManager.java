@@ -203,7 +203,7 @@ public class GDPRViewManager {
 
     private void initGeneralTexts(Activity activity, TextView tvQuestion, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge, Button btDisagree, Button btNoConsentAtAll) {
 
-        String question = activity.getString(R.string.gdpr_dialog_question, mSetup.containsAdNetwork() ? activity.getString(R.string.gdpr_dialog_question_ads_info) : "");
+        String question = activity.getString(R.string.gdpr_dialog_question, (mSetup.containsAdNetwork() && !mSetup.shortQuestion()) ? activity.getString(R.string.gdpr_dialog_question_ads_info) : "");
         tvQuestion.setText(Html.fromHtml(question));
 
         String cheapOrFree = activity.getString(mSetup.hasPaidVersion() ? R.string.gdpr_cheap : R.string.gdpr_free);

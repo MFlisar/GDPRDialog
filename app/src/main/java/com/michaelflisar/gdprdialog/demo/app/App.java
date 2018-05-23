@@ -1,8 +1,12 @@
 package com.michaelflisar.gdprdialog.demo.app;
 
 import android.app.Application;
+import android.content.res.Configuration;
+import android.os.Build;
 
 import com.michaelflisar.gdprdialog.GDPR;
+
+import java.util.Locale;
 
 public class App extends Application
 {

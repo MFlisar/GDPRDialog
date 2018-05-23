@@ -2,12 +2,8 @@
 
 Simple reusable `DialogFragment`.
 
-![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/demo1.gif "demo1")
-![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/demo2.gif "demo2")
-
-### Workflow
-
-![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/screenshots/workflow.png "Workflow")
+![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo1.gif "demo1")
+![GDPR Workflow](https://github.com/MFlisar/GDPRDialog/blob/master/demo/demo2.gif "demo2")
 
 ### What it offers
 
@@ -64,7 +60,6 @@ GDPRSetup setup = new GDPRSetup(GDPR.ADMOB_NETWORK); // add all networks you use
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
 // setup.withExplicitAgeConfirmation(true);
 // setup.withCheckRequestLocation(true);
-// setup.withExplicitConsentForEachService(true)
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity
@@ -93,5 +88,3 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   * [x] german
   * [ ] others
 * [ ] offer bottom dialog layout as well
-* [ ] if `withExplicitConsentForEachService` is used, the user currently needs to accept every service => could be improved to define some as optional
-* add more networks (dropbox, ...)

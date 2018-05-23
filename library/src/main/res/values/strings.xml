@@ -1,12 +1,5 @@
 <resources>
 
-    <!-- *********** -->
-    <!-- Preferences -->
-    <!-- *********** -->
-
-    <string name="gdpr_preference_file" translatable="false">gdpr</string>
-    <string name="gdpr_preference" translatable="false">gdpr_consent</string>
-
     <!-- ****** -->
     <!-- Dialog -->
     <!-- ****** -->
@@ -45,10 +38,6 @@
     <string name="gdpr_link">Link</string>
     <string name="gdpr_free">free</string>
     <string name="gdpr_cheap">cheap</string>
-
-    <!-- Others -->
-    <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors</string>
-    <string name="gdpr_googles_check_json_field_is_request_in_eea_or_unknown" translatable="false">is_request_in_eea_or_unknown</string>
 
     <!-- ************** -->
     <!-- Networks types -->

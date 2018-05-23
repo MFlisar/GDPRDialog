@@ -60,6 +60,7 @@ GDPRSetup setup = new GDPRSetup("www.my-privacy-policy.com", GDPRDefinitions.ADM
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
 // setup.withExplicitAgeConfirmation(true);
 // setup.withCheckRequestLocation(true);
+// setup.withBottomSheet(true);
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity
@@ -86,4 +87,3 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   * [x] english
   * [x] german
   * [ ] others
-* [ ] offer bottom dialog layout as well

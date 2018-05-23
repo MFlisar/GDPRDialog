@@ -19,6 +19,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox cbAllowNonPersonalisedForPaidVersions;
     private CheckBox cbAskForAge;
     private CheckBox cbCheckRequestLocation;
+    private CheckBox cbBottomSheet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +27,23 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_setup);
 
         cbShowAsActivity = findViewById(R.id.cbShowAsActivity);
-        cbShowAsActivity.setChecked(App.USE_ACTIVITY);
         cbAdServiceOnly = findViewById(R.id.cbAdServiceOnly);
         cbAllowNoConsent = findViewById(R.id.cbAllowNoConsent);
         cbHasPaidVersion = findViewById(R.id.cbHasPaidVersion);
         cbAllowNonPersonalisedForPaidVersions = findViewById(R.id.cbAllowNonPersonalisedForPaidVersions);
         cbAskForAge = findViewById(R.id.cbAskForAge);
         cbCheckRequestLocation = findViewById(R.id.cbCheckRequestLocation);
+        cbBottomSheet = findViewById(R.id.cbBottomSheet);
 
         cbAllowNonPersonalisedForPaidVersions.setEnabled(cbHasPaidVersion.isChecked());
         cbHasPaidVersion.setOnCheckedChangeListener((buttonView, isChecked) -> cbAllowNonPersonalisedForPaidVersions.setEnabled(isChecked));
-        cbShowAsActivity.setOnCheckedChangeListener((buttonView, isChecked) -> App.USE_ACTIVITY = isChecked);
+        cbShowAsActivity.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            App.USE_ACTIVITY = isChecked;
+            cbBottomSheet.setEnabled(!isChecked);
+        });
+
+        cbShowAsActivity.setChecked(App.USE_ACTIVITY);
+        cbBottomSheet.setEnabled(!App.USE_ACTIVITY);
     }
 
     @Override
@@ -48,6 +55,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         cbAllowNonPersonalisedForPaidVersions = null;
         cbAskForAge = null;
         cbCheckRequestLocation = null;
+        cbBottomSheet = null;
         super.onDestroy();
     }
 
@@ -78,6 +86,11 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         if (cbCheckRequestLocation.isChecked()) {
             setup.withCheckRequestLocation(true);
         }
+        if (cbBottomSheet.isChecked()) {
+            setup.withBottomSheet(true);
+        }
+        // our base theme has a toolbar, so wo do not need this
+        // setup.withNoToolbarTheme(true);
         intent.putExtra("setup", setup);
         startActivity(intent);
     }

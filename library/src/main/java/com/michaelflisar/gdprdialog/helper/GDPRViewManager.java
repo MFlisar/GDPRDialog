@@ -99,9 +99,13 @@ public class GDPRViewManager {
         return mSelectedConsent == null || (mSelectedConsent == GDPRConsent.NO_CONSENT && !mSetup.allowAnyNoConsent());
     }
 
+    public boolean shouldUseBottomSheet() {
+        return mSetup.useBottomSheet();
+    }
+
     public void init(Activity activity, View view, IOnFinishView onFinishViewListener) {
         final Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setVisibility(mSetup.noToolbarTheme() ? View.VISIBLE : View.GONE);
+        toolbar.setVisibility((shouldUseBottomSheet() || mSetup.noToolbarTheme()) ? View.VISIBLE : View.GONE);
         toolbar.setTitle(R.string.gdpr_dialog_title);
 
         mPages.add(view.findViewById(R.id.llPage0));

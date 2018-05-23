@@ -18,6 +18,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mExplicitAgeConfirmation = false;
     private boolean mNoToolbarTheme = false;
     private boolean mCheckRequestLocation = false;
+    private boolean mUseBottomSheet = false;
 
     public GDPRSetup(String policyLink, GDPRNetwork... adNetworks) {
         if (adNetworks == null || adNetworks.length == 0) {
@@ -57,6 +58,11 @@ public class GDPRSetup implements Parcelable {
 
     public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation) {
         mCheckRequestLocation = checkRequestLocation;
+        return this;
+    }
+
+    public GDPRSetup withBottomSheet(boolean useBottomSheet) {
+        mUseBottomSheet = useBottomSheet;
         return this;
     }
 
@@ -110,6 +116,10 @@ public class GDPRSetup implements Parcelable {
 
     public final boolean noToolbarTheme() {
         return mNoToolbarTheme;
+    }
+
+    public final boolean useBottomSheet() {
+        return mUseBottomSheet;
     }
 
     public final boolean checkRequestLocation() {
@@ -172,6 +182,7 @@ public class GDPRSetup implements Parcelable {
         mExplicitAgeConfirmation = in.readByte() == 1;
         mNoToolbarTheme = in.readByte() == 1;
         mCheckRequestLocation = in.readByte() == 1;
+        mUseBottomSheet = in.readByte() == 1;
     }
 
     @Override
@@ -189,6 +200,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mExplicitAgeConfirmation ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
         dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
+        dest.writeByte(mUseBottomSheet ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

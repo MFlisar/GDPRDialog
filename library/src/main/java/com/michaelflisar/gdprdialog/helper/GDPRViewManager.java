@@ -3,10 +3,12 @@ package com.michaelflisar.gdprdialog.helper;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.Layout;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -15,6 +17,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -267,6 +270,11 @@ public class GDPRViewManager {
                 btDisagree.setText(spannableText);
             }
         }
+
+        //GDPRUtils.justify(tvText1);
+        justifyText(tvText2);
+        //GDPRUtils.justify(tvText3);
+        //GDPRUtils.justify(tvQuestion);
     }
 
     private void initInfoTexts(Activity activity, TextView tvServiceInfo1, TextView tvServiceInfo2, TextView tvServiceInfo3) {
@@ -359,6 +367,36 @@ public class GDPRViewManager {
         }
     }
 
+    private void justifyText(TextView textView) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            textView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // not perfect, but better than nothing
+            textView.setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED);
+            // wrap content is not working with this strategy, so we wait for the layout
+            // and find the longest line and use it's width for the textview and then center the layout
+            textView.post(() -> {
+                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams)textView.getLayoutParams();
+                lp.width = (int)getMaxLineWidth(textView); //LinearLayout.LayoutParams.WRAP_CONTENT;
+                lp.gravity = Gravity.CENTER_HORIZONTAL;
+                textView.setLayoutParams(lp);
+            });
+        } else {
+            // sorry, not supported...
+        }
+    }
+
+    private float getMaxLineWidth(TextView textView) {
+        Layout layout = textView.getLayout();
+        float max_width = 0.0f;
+        int lines = layout.getLineCount();
+        for (int i = 0; i < lines; i++) {
+            if (layout.getLineWidth(i) > max_width) {
+                max_width = layout.getLineWidth(i);
+            }
+        }
+        return max_width;
+    }
 
     // ---------------
     // Interface

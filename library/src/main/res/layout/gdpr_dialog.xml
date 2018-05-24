@@ -43,7 +43,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/gdpr_big_padding"
-                        android:breakStrategy="balanced"
                         android:text="@string/gdpr_dialog_text1"
                         android:textAlignment="center"
                         android:textSize="@dimen/gdpr_text_size_small"
@@ -54,7 +53,6 @@
                         style="@style/TextAppearance.AppCompat.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:breakStrategy="balanced"
                         android:text="@string/gdpr_dialog_text2_singular"
                         android:textSize="@dimen/gdpr_text_size_normal" />
 
@@ -65,7 +63,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/gdpr_big_padding"
                         android:layout_marginTop="@dimen/gdpr_big_padding"
-                        android:breakStrategy="balanced"
                         android:text="@string/gdpr_dialog_question"
                         android:textAlignment="center"
                         android:textSize="@dimen/gdpr_text_size_big"
@@ -76,7 +73,6 @@
                         style="@style/TextAppearance.AppCompat.Small"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:breakStrategy="balanced"
                         android:text="@string/gdpr_dialog_text3"
                         android:textSize="@dimen/gdpr_text_size_normal" />
 

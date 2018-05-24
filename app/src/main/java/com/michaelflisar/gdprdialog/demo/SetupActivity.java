@@ -76,7 +76,12 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         if (cbAdServiceOnly.isChecked()) {
             setup = new GDPRSetup(GDPRDefinitions.ADMOB);
         } else {
-            setup = new GDPRSetup(GDPRDefinitions.ADMOB, GDPRDefinitions.FIREBASE_DATABASE, GDPRDefinitions.FIREBASE_CRASH, GDPRDefinitions.FIREBASE_ANALYTICS);
+            setup = new GDPRSetup(
+                    GDPRDefinitions.ADMOB,
+                    GDPRDefinitions.FIREBASE_DATABASE,
+                    GDPRDefinitions.FIREBASE_CRASH,
+                    GDPRDefinitions.FIREBASE_ANALYTICS,
+                    GDPRDefinitions.MOPUB);
         }
         // you should always provide your own policy as well...
         setup.withPrivacyPolicy(policyLink);

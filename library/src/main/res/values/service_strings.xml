@@ -17,7 +17,7 @@
     <string name="gdpr_network_inmobi" translatable="false">InMobi</string>
     <string name="gdpr_network_inmobi_link" translatable="false">https://www.inmobi.com/privacy-policy-for-eea/</string>
 
-    <string name="gdpr_network_mopub" translatable="false">Mopub</string>
+    <string name="gdpr_network_mopub" translatable="false">MoPub</string>
     <string name="gdpr_network_mopub_link" translatable="false">https://www.mopub.com/legal/privacy/</string>
 
     <string name="gdpr_network_vungle" translatable="false">Vungle</string>

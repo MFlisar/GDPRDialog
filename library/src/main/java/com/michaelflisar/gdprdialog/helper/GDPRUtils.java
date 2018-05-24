@@ -5,6 +5,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.telephony.TelephonyManager;
 
+import com.michaelflisar.gdprdialog.GDPRNetwork;
+import com.michaelflisar.gdprdialog.GDPRSubNetwork;
 import com.michaelflisar.gdprdialog.R;
 
 import org.json.JSONException;
@@ -15,6 +17,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.TimeZone;
 
 public class GDPRUtils
@@ -154,5 +159,63 @@ public class GDPRUtils
         }
 
         return error ? null : false;
+    }
+
+    /**
+     * returns a comma seperated string of all items passed in; additioanlly it uses the seperator and last seperator defined in the resources
+     *
+     * @param context context used to get seperators
+     * @param values a list of values that should be concatenated
+     * @return the comma seperated string
+     */
+    public static String getCommaSeperatedString(Context context, Collection<String> values) {
+        String innerSep = context.getString(R.string.gdpr_list_seperator);
+        String lastSep = context.getString(R.string.gdpr_last_list_seperator);
+        String sep;
+
+        String types = "";
+        int i = 0;
+        for (String value : values) {
+            if (i == 0) {
+                types = value;
+            } else {
+                sep = i == values.size() - 1 ? lastSep : innerSep;
+                types += sep + value;
+            }
+            i++;
+        }
+
+        return types;
+    }
+
+    public static String getNetworksString(GDPRNetwork[] networks, Context context, boolean withLinks, boolean showAsList) {
+        if (!showAsList) {
+            HashSet<String> uniqueNetworks = new HashSet<>();
+            for (GDPRNetwork network : networks) {
+                uniqueNetworks.add(withLinks ? network.getHtmlLink(context, true) : network.getName());
+            }
+            return GDPRUtils.getCommaSeperatedString(context, uniqueNetworks);
+        } else {
+            StringBuilder sb = new StringBuilder("");
+            HashSet<String> uniqueNetworks = new HashSet<>();
+            for (int i = 0; i < networks.length; i++) {
+                String text = withLinks ? networks[i].getHtmlLink(context, true) : networks[i].getName();
+                if (uniqueNetworks.add(text)) {
+                    if (sb.length() > 0) {
+                        sb.append("<br>");
+                    }
+                    sb
+                            .append("&#8226;&nbsp;")
+                            .append(withLinks ? networks[i].getHtmlLink(context, false) : networks[i].getName());
+                    for (GDPRSubNetwork subNetwork : networks[i].getSubNetworks()) {
+                        sb
+                                .append("<br>")
+                                .append("&nbsp;&nbsp;&#9702;&nbsp;")
+                                .append(withLinks ? subNetwork.getHtmlLink() : subNetwork.getName());
+                    }
+                }
+            }
+            return sb.toString();
+        }
     }
 }

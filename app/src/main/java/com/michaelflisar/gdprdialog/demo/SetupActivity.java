@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.michaelflisar.gdprdialog.GDPRDefinitions;
+import com.michaelflisar.gdprdialog.GDPRNetwork;
 import com.michaelflisar.gdprdialog.GDPRSetup;
+import com.michaelflisar.gdprdialog.GDPRSubNetwork;
 import com.michaelflisar.gdprdialog.demo.app.App;
 import com.michaelflisar.gdprdialog.demo.databinding.ActivitySetupBinding;
 
@@ -47,11 +49,31 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         // Setup GDPRSetup and pass it to the activity
         String policyLink = "www.test.com"; // provide your apps policy link
         GDPRSetup setup;
+
+        GDPRNetwork admobNetwork = GDPRDefinitions.ADMOB;
+        if (mBinding.cbAddSomeSubNetworksToAdMob.isChecked()) {
+            // like this you can add some sub networks for services that are intermediators;
+            // e.g. add all your ad providers from AdMob that you use
+            // for testing I add the same ad provider 10 times, there is no limit here!
+            admobNetwork = GDPRDefinitions.ADMOB.copy()
+                    .addSubNetwork(new GDPRSubNetwork("Google1", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google2", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google3", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google4", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google5", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google6", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google7", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google8", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google9", "https://policies.google.com/technologies/partner-sites"))
+                    .addSubNetwork(new GDPRSubNetwork("Google10", "https://policies.google.com/technologies/partner-sites"))
+                    ;
+        }
+
         if (mBinding.cbAdServiceOnly.isChecked()) {
-            setup = new GDPRSetup(GDPRDefinitions.ADMOB);
+            setup = new GDPRSetup(admobNetwork);
         } else {
             setup = new GDPRSetup(
-                    GDPRDefinitions.ADMOB,
+                    admobNetwork,
                     GDPRDefinitions.FIREBASE_DATABASE,
                     GDPRDefinitions.FIREBASE_CRASH,
                     GDPRDefinitions.FIREBASE_ANALYTICS,
@@ -84,6 +106,9 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         }
         if (mBinding.cbAskNonPersonalised.isChecked()) {
             setup.withExplicitNonPersonalisedConfirmation(true);
+        }
+        if (mBinding.cbShowServicesAsList.isChecked()) {
+            setup.withShowNetworksAsList(true);
         }
         // our base theme has a toolbar, so wo do not need this
         // setup.withNoToolbarTheme(true);

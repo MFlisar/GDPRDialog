@@ -4,7 +4,10 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.michaelflisar.gdprdialog.helper.GDPRUtils;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GDPRNetwork implements Parcelable {
@@ -13,6 +16,7 @@ public class GDPRNetwork implements Parcelable {
     private String mType;
     private boolean mIsCollection;
     private boolean mIsAdNetwork;
+    private ArrayList<GDPRSubNetwork> mSubNetworks;
 
     public GDPRNetwork(Context context, int name, int link, int type, boolean isCollection, boolean isAdNetwork) {
         mName = context.getString(name);
@@ -20,6 +24,7 @@ public class GDPRNetwork implements Parcelable {
         mType = context.getString(type);
         mIsCollection = isCollection;
         mIsAdNetwork = isAdNetwork;
+        mSubNetworks = new ArrayList<>();
     }
 
     public GDPRNetwork(String name, String link, String type, boolean isCollection, boolean isAdNetwork) {
@@ -28,6 +33,22 @@ public class GDPRNetwork implements Parcelable {
         mType = type;
         mIsCollection = isCollection;
         mIsAdNetwork = isAdNetwork;
+        mSubNetworks = new ArrayList<>();
+    }
+
+    public GDPRNetwork addSubNetwork(GDPRSubNetwork network) {
+        mSubNetworks.add(network);
+        return this;
+    }
+
+    public GDPRNetwork addSubNetworks(GDPRSubNetwork... networks) {
+        mSubNetworks.addAll(Arrays.asList(networks));
+        return this;
+    }
+
+    public GDPRNetwork copy() {
+        return new GDPRNetwork(mName, mLink, mType, mIsCollection, mIsAdNetwork)
+                .addSubNetworks(mSubNetworks.toArray(new GDPRSubNetwork[mSubNetworks.size()]));
     }
 
     // ----------------
@@ -54,8 +75,22 @@ public class GDPRNetwork implements Parcelable {
         return mIsAdNetwork;
     }
 
-    public String getHtmlLink() {
-        return "<a href=\"" + mLink + "\">" + mName + "</a>";
+    public ArrayList<GDPRSubNetwork> getSubNetworks() {
+        return mSubNetworks;
+    }
+
+    public String getHtmlLink(Context context, boolean withSubNetworks) {
+        String link = "<a href=\"" + mLink + "\">" + mName + "</a>";
+        if (withSubNetworks && mSubNetworks.size() > 0) {
+            link += " (";
+            List<String> values = new ArrayList<>();
+            for (GDPRSubNetwork subNetwork : mSubNetworks) {
+                values.add(subNetwork.getHtmlLink());
+            }
+            link += GDPRUtils.getCommaSeperatedString(context, values);
+            link += ")";
+        }
+        return link;
     }
 
     // ----------------
@@ -68,6 +103,12 @@ public class GDPRNetwork implements Parcelable {
         mType = in.readString();
         mIsCollection = in.readByte() == 1;
         mIsAdNetwork = in.readByte() == 1;
+        mSubNetworks = new ArrayList<>();
+        int subNetworks = in.readInt();
+        while (subNetworks > 0) {
+            mSubNetworks.add(in.readParcelable(GDPRSubNetwork.class.getClassLoader()));
+            subNetworks--;
+        }
     }
 
     @Override
@@ -80,8 +121,12 @@ public class GDPRNetwork implements Parcelable {
         dest.writeString(mName);
         dest.writeString(mLink);
         dest.writeString(mType);
-        dest.writeByte(mIsCollection ? (byte)1 : 0);
-        dest.writeByte(mIsAdNetwork ? (byte)1 : 0);
+        dest.writeByte(mIsCollection ? (byte) 1 : 0);
+        dest.writeByte(mIsAdNetwork ? (byte) 1 : 0);
+        dest.writeInt(mSubNetworks.size());
+        for (GDPRSubNetwork subNetwork : mSubNetworks) {
+            dest.writeParcelable(subNetwork, 0);
+        }
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

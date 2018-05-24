@@ -32,6 +32,12 @@
                     android:text="Use an activity instead of a dialog" />
 
                 <CheckBox
+                    android:id="@+id/cbShowServicesAsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Show all networks as a list in the details view" />
+
+                <CheckBox
                     android:id="@+id/cbBottomSheet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,6 +54,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Only use ad service (deselect to use more services)" />
+
+                <CheckBox
+                    android:id="@+id/cbAddSomeSubNetworksToAdMob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add a list of defined ad technology providers to AdMob service" />
 
                 <TextView
                     style="?android:attr/listSeparatorTextViewStyle"

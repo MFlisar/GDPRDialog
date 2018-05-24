@@ -4,7 +4,8 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Collection;
+import com.michaelflisar.gdprdialog.helper.GDPRUtils;
+
 import java.util.HashSet;
 
 public class GDPRSetup implements Parcelable {
@@ -13,7 +14,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mHasPaidVersion = false;
     private boolean mAllowNonPersonalisedForPaidVersion = false;
     private boolean mAllowNoConsent = false;
-    private GDPRNetwork mAdNetworks[];
+    private GDPRNetwork mNetworks[];
 
     private boolean mExplicitAgeConfirmation = false;
     private boolean mExplicitNonPersonalisedConfirmation = false;
@@ -25,12 +26,13 @@ public class GDPRSetup implements Parcelable {
     private boolean mForceSelection = false;
     private int mCustomDialogTheme = 0;
     private boolean mShortQuestion = false;
+    private boolean mShowNetworksAsList = false;
 
-    public GDPRSetup(GDPRNetwork... adNetworks) {
-        if (adNetworks == null || adNetworks.length == 0) {
+    public GDPRSetup(GDPRNetwork... networks) {
+        if (networks == null || networks.length == 0) {
             throw new RuntimeException("At least one ad network must be provided, otherwise this setup does not make any sense.");
         }
-        mAdNetworks = adNetworks;
+        mNetworks = networks;
     }
 
     /**
@@ -132,9 +134,9 @@ public class GDPRSetup implements Parcelable {
      * use this to check the user's location and check if it is within the EAA before requesting consent
      * this uses a homepage form google and parses it's result
      *
-     * @param checkRequestLocation true to check location, false otherwise
+     * @param checkRequestLocation                     true to check location, false otherwise
      * @param useLocationCheckTelephonyManagerFallback true to check location via the {@link android.telephony.TelephonyManager} if main check fails, false otherwise
-     * @param useLocationCheckTimezoneFallback true to check location via the {@link java.util.TimeZone} if main check fails, false otherwise
+     * @param useLocationCheckTimezoneFallback         true to check location via the {@link java.util.TimeZone} if main check fails, false otherwise
      * @return this
      */
     public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation, boolean useLocationCheckTelephonyManagerFallback, boolean useLocationCheckTimezoneFallback) {
@@ -189,16 +191,23 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    /**
+     * use this to show all networks as a list (each network on a seperate line)
+     *
+     * @param showNetworksAsList true to show networks as list, false otherwuse
+     * @return this
+     */
+    public GDPRSetup withShowNetworksAsList(boolean showNetworksAsList) {
+        mShowNetworksAsList = showNetworksAsList;
+        return this;
+    }
+
     // ----------------
     // Functions
     // ----------------
 
     public final String getNetworksCommaSeperated(Context context, boolean withLinks) {
-        HashSet<String> uniqueNetworks = new HashSet<>();
-        for (GDPRNetwork network : mAdNetworks) {
-            uniqueNetworks.add(withLinks ? network.getHtmlLink() :network.getName());
-        }
-        return getCommaSeperatedString(context, uniqueNetworks);
+        return GDPRUtils.getNetworksString(mNetworks, context, withLinks, mShowNetworksAsList);
     }
 
     public final String policyLink() {
@@ -206,7 +215,7 @@ public class GDPRSetup implements Parcelable {
     }
 
     public final GDPRNetwork[] networks() {
-        return mAdNetworks;
+        return mNetworks;
     }
 
     public final boolean hasPaidVersion() {
@@ -222,7 +231,7 @@ public class GDPRSetup implements Parcelable {
     }
 
     public final boolean allowAnyNoConsent() {
-        return mAllowNoConsent  || mAllowNonPersonalisedForPaidVersion;
+        return mAllowNoConsent || mAllowNonPersonalisedForPaidVersion;
     }
 
     public final boolean explicitAgeConfirmation() {
@@ -265,8 +274,12 @@ public class GDPRSetup implements Parcelable {
         return mUseLocationCheckTimezoneFallback;
     }
 
+    public boolean showNetworksAsList() {
+        return mShowNetworksAsList;
+    }
+
     public final boolean containsAdNetwork() {
-        for (GDPRNetwork network : mAdNetworks) {
+        for (GDPRNetwork network : mNetworks) {
             if (network.isAdNetwork()) {
                 return true;
             }
@@ -276,34 +289,14 @@ public class GDPRSetup implements Parcelable {
 
     public HashSet<String> getNetworkTypes() {
         HashSet<String> uniqueTypes = new HashSet<>();
-        for (GDPRNetwork network : mAdNetworks) {
+        for (GDPRNetwork network : mNetworks) {
             uniqueTypes.add(network.getType());
         }
         return uniqueTypes;
     }
 
     public String getNetworkTypesCommaSeperated(Context context) {
-        return getCommaSeperatedString(context, getNetworkTypes());
-    }
-
-    private String getCommaSeperatedString(Context context, Collection<String> values) {
-        String innerSep = context.getString(R.string.gdpr_list_seperator);
-        String lastSep = context.getString(R.string.gdpr_last_list_seperator);
-        String sep;
-
-        String types = "";
-        int i = 0;
-        for (String value : values) {
-            if (i == 0) {
-                types = value;
-            } else {
-                sep = i == values.size() - 1 ? lastSep : innerSep;
-                types += sep + value;
-            }
-            i++;
-        }
-
-        return types;
+        return GDPRUtils.getCommaSeperatedString(context, getNetworkTypes());
     }
 
     // ----------------
@@ -316,9 +309,9 @@ public class GDPRSetup implements Parcelable {
         mAllowNonPersonalisedForPaidVersion = in.readByte() == 1;
         mAllowNoConsent = in.readByte() == 1;
         Parcelable[] adNetworks = in.readParcelableArray(GDPRNetwork.class.getClassLoader());
-        mAdNetworks = new GDPRNetwork[adNetworks.length];
+        mNetworks = new GDPRNetwork[adNetworks.length];
         for (int i = 0; i < adNetworks.length; i++) {
-            mAdNetworks[i] = (GDPRNetwork)adNetworks[i];
+            mNetworks[i] = (GDPRNetwork) adNetworks[i];
         }
         mExplicitAgeConfirmation = in.readByte() == 1;
         mExplicitNonPersonalisedConfirmation = in.readByte() == 1;
@@ -330,6 +323,7 @@ public class GDPRSetup implements Parcelable {
         mShortQuestion = in.readByte() == 1;
         mUseLocationCheckTelephonyManagerFallback = in.readByte() == 1;
         mUseLocationCheckTimezoneFallback = in.readByte() == 1;
+        mShowNetworksAsList = in.readByte() == 1;
     }
 
     @Override
@@ -343,7 +337,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeInt(mHasPaidVersion ? (byte) 1 : 0);
         dest.writeInt(mAllowNonPersonalisedForPaidVersion ? (byte) 1 : 0);
         dest.writeInt(mAllowNoConsent ? (byte) 1 : 0);
-        dest.writeParcelableArray(mAdNetworks, 0);
+        dest.writeParcelableArray(mNetworks, 0);
         dest.writeByte(mExplicitAgeConfirmation ? (byte) 1 : 0);
         dest.writeByte(mExplicitNonPersonalisedConfirmation ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
@@ -354,6 +348,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mShortQuestion ? (byte) 1 : 0);
         dest.writeByte(mUseLocationCheckTelephonyManagerFallback ? (byte) 1 : 0);
         dest.writeByte(mUseLocationCheckTimezoneFallback ? (byte) 1 : 0);
+        dest.writeByte(mShowNetworksAsList ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

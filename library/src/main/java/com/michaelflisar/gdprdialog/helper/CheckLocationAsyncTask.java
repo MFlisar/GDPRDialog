@@ -34,7 +34,7 @@ public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCall
         try {
             T activity = mActivity.get();
             if (activity != null) {
-                return GDPRUtils.isRequestInEAAOrUnknown(activity);
+                return GDPRUtils.isRequestInEAAOrUnknown(activity.getApplicationContext());
             }
         } catch (Exception e) {
            e.printStackTrace();

@@ -1,26 +1,35 @@
 <resources>
 
-    <!-- ****** -->
-    <!-- Dialog -->
-    <!-- ****** -->
-
-    <string name="gdpr_dialog_title">Data Protection Consent</string>
-
+    <!-- ************************ -->
     <!-- Dialog - MAIN PAGE TEXTS -->
+    <!-- ************************ -->
+
+    <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
     <string name="gdpr_dialog_text1">We care about your privacy and data security. We keep this app %1$s by using third party services.</string>
+    <!-- %1$s is replaced with ONE service's name -->
     <string name="gdpr_dialog_text2_singular">We use %1$s in this app. This service (including it\'s partners) collects unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about this service and your personal data&lt;/a>.</string>
+    <!-- %1$s is replaced with a LIST of service name -->
     <string name="gdpr_dialog_text2_plural">We use %1$s in this app. Those services (including their partners) collect unique identifiers and other personal data. You can change your choice at anytime in the app settings. &lt;a href=\"\">Learn more about those services and your personal data&lt;/a>.</string>
     <string name="gdpr_dialog_text3">By agreeing, you are confirming that you are over the age of 16.</string>
+    <!-- %1$s is replaced with 'gdpr_dialog_question_ads_info' string if the setup contains an ad network, otherwise with an empty string -->
     <string name="gdpr_dialog_question">Can we continue to use your data for these purposes%1$s?</string>
     <string name="gdpr_dialog_question_ads_info">\u0020as well as for showing personalized ads</string>
 
+    <!-- *********************** -->
     <!-- Dialog - SUB PAGE TEXTS -->
+    <!-- *********************** -->
+
     <string name="gdpr_dialog_text_info1">We use following third party services in this app:</string>
+    <!-- %1$s is replaced with 'gdpr_dialog_text_info3_privacy_policy_part' if a policy is provided, otherwise with an empty string -->
     <string name="gdpr_dialog_text_info3">Click on a service to check out it\'s privacy policy%1$s.</string>
     <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020or click following to check out &lt;a href=\"%1$s\">our apps privacy policy&lt;/a></string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">We won\'t collect your data for personalized advertising. Although non-personalized ads don\'t use mobile ad identifiers for ad targeting, they do still use mobile identifiers for frequency capping and aggregated ad reporting as well as for combating fraud and abuse."</string>
 
+    <!-- ******************************** -->
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
+    <!-- ******************************** -->
+
+    <string name="gdpr_dialog_title">Data Protection Consent</string>
     <string name="gdpr_dialog_confirm_age">I confirm, that I\'m 16 years or older</string>
     <string name="gdpr_dialog_agree">Yes, I agree</string>
     <string name="gdpr_dialog_disagree_no_thanks">No, thank you</string>

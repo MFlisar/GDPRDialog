@@ -1,12 +1,9 @@
 <resources>
 
-    <!-- ****** -->
-    <!-- Dialog -->
-    <!-- ****** -->
-
-    <string name="gdpr_dialog_title">Souhlas ohledně GDPR</string>
-
+    <!-- ************************ -->
     <!-- Dialog - MAIN PAGE TEXTS -->
+    <!-- ************************ -->
+
     <string name="gdpr_dialog_text1">Záleží nám na vašem soukromí a bezpečnosti vašich dat. Aby tako aplikace mohla být poskytována %1$s, potřebuje používat služby dalších firem.</string>
     <string name="gdpr_dialog_text2_singular">V této aplikaci používáme %1$s. Tato služba (a její partneři) sbírá unikátní indentifikátory a další osobní data. Vaši volbu můžete kdykoliv změnit v nastavení aplikace. &lt;a href=\"\">Zde dozvíte více o této službě a tom, jak zpracovává osobní data&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">V této aplikaci používáme %1$s. Tyto služby (a jejich partneři) sbírají unikátní identifikátory a další osobní data. Vaši volbu můžete kdykoliv změnit v nastavení aplikace. &lt;a href=\"\">Zde dozvíte více o těchto službách a tom, jak zpracovávají osobní data&lt;/a>.</string>
@@ -14,13 +11,20 @@
     <string name="gdpr_dialog_question">Můžeme pokračovat v použití dat pro tyto účely%1$s?</string>
     <string name="gdpr_dialog_question_ads_info">\u0020 a stejně tak i pro zobrazení personalizovaných reklam</string>
 
+    <!-- *********************** -->
     <!-- Dialog - SUB PAGE TEXTS -->
+    <!-- *********************** -->
+
     <string name="gdpr_dialog_text_info1">V aplikaci používáme tyto knihovny třetích stran:</string>
     <string name="gdpr_dialog_text_info3">Kliknutím na název služby se podíváte na její zásady ochrany osobních údajů%1$s</string>
     <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020a kliknutím na tento link zjistíte &lt;a href=\"%1$s\">naše zásady ochrany osobních údajů&lt;/a>.</string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">Nebudeme sbírat osobní data pro reklamy ušité přímo vám na míru. I když nejsou reklamy zacíleny přímo na vás osobně (čili nepoužívají osobní reklamní identifikátory ), stále používají identifikaci mobilního zařízení pro to, aby vám nezobrazovaly stále stejné reklamy, pro reportování a také pro boj proti zneužití reklamních systémů.</string>
 
+    <!-- ******************************** -->
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
+    <!-- ******************************** -->
+
+    <string name="gdpr_dialog_title">Souhlas ohledně GDPR</string>
     <string name="gdpr_dialog_confirm_age">Tímto potvrzuji, že je mi nejméně 16 let.</string>
     <string name="gdpr_dialog_agree">Ano, souhlasím</string>
     <string name="gdpr_dialog_disagree_no_thanks">Ne, děkuji</string>

@@ -1,12 +1,9 @@
 <resources>
 
-    <!-- ****** -->
-    <!-- Dialog -->
-    <!-- ****** -->
-
-    <string name="gdpr_dialog_title">Consenso al trattamento dei dati</string>
-
+    <!-- ************************ -->
     <!-- Dialog - MAIN PAGE TEXTS -->
+    <!-- ************************ -->
+
     <string name="gdpr_dialog_text1">Ci teniamo alla tua privacy e alla sicurezza dei tuoi dati. Riusciamo a mantenere quest\'app %1$s usando servizi di terze parti.</string>
     <string name="gdpr_dialog_text2_singular">Usiamo %1$s in quest\'app. Questo servizio (inclusi i suoi partner) raccolgono identificatori univoci ed altri dati personali. Puoi cambiare la tua scelta in qualunque momento dalle impostazioni dell\'app. &lt;a href=\"\">Clicca qui per saperne di più su questo servizio e sui tuoi dati personali&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">Usaimo %1$s in quest\'app. Questi servizi (inclusi i loro partner) raccolgono identificatori univoci ed altri dati personali. Puoi cambiare la tua scelta in qualunque momento dalle impostazioni dell\'app. &lt;a href=\"\">Clicca qui per saperne di più su questi servizi e sui tuoi dati personali&lt;/a>.</string>
@@ -14,13 +11,20 @@
     <string name="gdpr_dialog_question">Possiamo continuare ad utilizzare i tuoi dati con questi scopi%1$s?</string>
     <string name="gdpr_dialog_question_ads_info">\u0020e per mostrare pubblicità personalizzata</string>
 
+    <!-- *********************** -->
     <!-- Dialog - SUB PAGE TEXTS -->
+    <!-- *********************** -->
+
     <string name="gdpr_dialog_text_info1">Utilizziamo i seguenti servizi di terze parti in questa app:</string>
     <string name="gdpr_dialog_text_info3">Clicca su un servizio per accedere alle sue informative sulla privacy%1$s.</string>
     <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020o clicca sul seguente link per accedere &lt;a href=\"%1$s\">alle informative sulla privacy di quest\'app&lt;/a></string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">Non raccoglieremo i tuoi dati per personalizzare la publicità. Nonostante la pubblicità non targhetizzata non utilizzi gli indentificatori per personalizzare la pubblicità, ne fanno comunque uso per limitarne la frequenza, per aggregare le statistiche e per combattere frodi e abusi."</string>
 
+    <!-- ******************************** -->
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
+    <!-- ******************************** -->
+
+    <string name="gdpr_dialog_title">Consenso al trattamento dei dati</string>
     <string name="gdpr_dialog_confirm_age">Confermo di avere almeno 16 anni</string>
     <string name="gdpr_dialog_agree">Sì, accetto</string>
     <string name="gdpr_dialog_disagree_no_thanks">No, grazie</string>

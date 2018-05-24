@@ -31,7 +31,7 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
         mSetup = getIntent().getParcelableExtra("setup");
 
         // init state texts
-        GDPRConsentState consent = GDPR.getInstance().getConsent();
+        GDPRConsentState consent = GDPR.getInstance().getConsentState();
         if (consent != null) {
             ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consent.logString() );
         }
@@ -117,7 +117,7 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == DEMO_GDPR_ACTIVITY_REQUEST_CODE) {
-            GDPRConsentState consentState = GDPR.getInstance().getConsent();
+            GDPRConsentState consentState = GDPR.getInstance().getConsentState();
             ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState != null ? consentState.logString() : "");
         }
     }

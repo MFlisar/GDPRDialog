@@ -63,7 +63,7 @@ public class GDPR {
     public <T extends AppCompatActivity & IGDPRCallback> void checkIfNeedsToBeShown(T activity, GDPRSetup setup) {
         checkIsInitialised();
 
-        GDPRConsentState consent = getConsent();
+        GDPRConsentState consent = getConsentState();
         boolean checkConsent = false;
         switch (consent.getConsent()) {
             case UNKNOWN:
@@ -101,7 +101,7 @@ public class GDPR {
         }
     }
 
-    public GDPRConsentState getConsent() {
+    public GDPRConsentState getConsentState() {
         checkIsInitialised();
 
         if (mCachedConsent == null) {
@@ -121,7 +121,7 @@ public class GDPR {
      * @return true, if we can collect personal informations, false otherwise
      */
     public boolean canCollectPersonalInformation(boolean alwaysAllowOutsideEAA) {
-        GDPRConsentState consentState = getConsent();
+        GDPRConsentState consentState = getConsentState();
         GDPRConsent consent = consentState.getConsent();
 
         // if user has given consent for personal data usage, we can collect personal information

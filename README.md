@@ -91,7 +91,7 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
 4. Other usages
 ```groovy
 // get current consent anywhere in the app after user has given consent
-GDPRConsentState consentState = GDPR.getInstance().getConsent();
+GDPRConsentState consentState = GDPR.getInstance().getConsentState();
 // get location, time, app version of given consent
 GDPRConsent consent = consentState.getConsent(); // the given constent
 GDPRLocation location = consentState.getLocation(); // where has the given consent been given

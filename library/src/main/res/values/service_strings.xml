@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- *********** -->
-    <!-- Ad Networks -->
-    <!-- *********** -->
+    <!-- ***************** -->
+    <!-- Networks/Services -->
+    <!-- ***************** -->
 
     <string name="gdpr_network_admob" translatable="false">AdMob</string>
     <string name="gdpr_network_admob_link" translatable="false">https://support.google.com/admob/answer/9012903</string>
@@ -31,16 +31,5 @@
 
     <string name="gdpr_network_applovin" translatable="false">AppLovin</string>
     <string name="gdpr_network_applovin_link" translatable="false">https://www.applovin.com/privacy/</string>
-
-
-
-
-
-
-
-
-
-
-
 
 </resources>

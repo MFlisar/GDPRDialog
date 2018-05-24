@@ -3,6 +3,7 @@ package com.michaelflisar.gdprdialog.helper;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.telephony.TelephonyManager;
 
 import com.michaelflisar.gdprdialog.R;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.TimeZone;
 
 public class GDPRUtils
 {
@@ -70,5 +72,87 @@ public class GDPRUtils
         br.close();
 
         return new JSONObject(sb.toString());
+    }
+
+    private enum EUCountry {
+        AT, BE, BG, HR, CY, CZ, DK, EE, FI, FR, DE, GR, HU, IE, IT, LV, LT, LU, MT, NL, PL, PT, RO, SK, SI, ES, SE, GB, //28 member states
+        GF, PF, TF, //French territories French Guiana,Polynesia,Southern Territories
+        EL, UK,  //alternative EU names for GR and GB
+        IS, LI, NO, //not EU but in EAA
+        CH, //not in EU or EAA but in single market
+        AL, BA, MK, XK, ME, RS, TR; //candidate countries
+
+        public static boolean contains(String s) {
+            for (EUCountry eucountry : values())
+                if (eucountry.name().equalsIgnoreCase(s))
+                    return true;
+            return false;
+        }
+    }
+
+    /**
+     * checks the location via {@link TelephonyManager}
+     *
+     * @param context context used to get {@link TelephonyManager}
+     * @return true, if location is within EAA, false if not and null in case of an error
+     */
+    public static boolean checkIsEAAWithTelephonyManager(Context context) {
+        boolean error = false;
+
+        /* is eu sim */
+        try {
+            final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            String simCountry = tm.getSimCountryIso();
+            if (simCountry != null && simCountry.length() == 2) {
+                simCountry = simCountry.toUpperCase();
+                if (EUCountry.contains(simCountry)) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            error = true;
+        }
+
+
+        /* is eu network */
+        try {
+            final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_NONE) {
+                String networkCountry = tm.getNetworkCountryIso();
+                if (networkCountry != null && networkCountry.length() == 2) {
+                    networkCountry = networkCountry.toUpperCase();
+                    if (EUCountry.contains(networkCountry)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            error = true;
+        }
+
+        return error ? null : false;
+    }
+
+    /**
+     * checks the location via {@link TimeZone}
+     *
+     * @return true, if location is within EAA, false if not and null in case of an error
+     */
+    public static Boolean checkIsEAAWithTimezone() {
+        boolean error = false;
+
+        /* is eu time zone id */
+        try {
+            String tz = TimeZone.getDefault().getID().toLowerCase();
+            if (tz.length() < 10) {
+                error = true;
+            } else if (tz.contains("euro")) {
+                return true;
+            }
+        } catch (Exception e) {
+            error = true;
+        }
+
+        return error ? null : false;
     }
 }

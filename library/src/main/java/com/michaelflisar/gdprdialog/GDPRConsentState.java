@@ -14,7 +14,7 @@ public class GDPRConsentState {
 
     public GDPRConsentState() {
         mConsent = GDPRConsent.UNKNOWN;
-        mLocation = GDPRLocation.UNKNOWN;
+        mLocation = GDPRLocation.UNDEFINED;
         mDate = -1;
         mVersion = -1;
     }

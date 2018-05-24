@@ -1,7 +1,7 @@
 package com.michaelflisar.gdprdialog;
 
 public enum GDPRLocation {
-    UNKNOWN,
-    EAA,
+    UNDEFINED,
+    IN_EAA_OR_UNKNOWN,
     NOT_IN_EAA
 }

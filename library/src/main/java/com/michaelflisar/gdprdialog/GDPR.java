@@ -81,10 +81,10 @@ public class GDPR {
 
         if (checkConsent) {
             if (setup.checkRequestLocation()) {
-                mCheckLocationAsyncTask = new CheckLocationAsyncTask(activity, consent);
+                mCheckLocationAsyncTask = new CheckLocationAsyncTask(activity);
                 mCheckLocationAsyncTask.execute();
             } else {
-                activity.onConsentNeedsToBeRequested(GDPRLocation.UNKNOWN);
+                activity.onConsentNeedsToBeRequested(GDPRLocation.UNDEFINED);
             }
         } else {
             // nothing to do, we already know the users decision!

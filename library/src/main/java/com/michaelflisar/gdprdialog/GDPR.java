@@ -124,7 +124,7 @@ public class GDPR {
         GDPRConsentState consentState = getConsent();
         GDPRConsent consent = consentState.getConsent();
 
-        // if user has given consent per personal data usage, we can collect personal information
+        // if user has given consent for personal data usage, we can collect personal information
         if (consent.equals(GDPRConsent.PERSONAL_CONSENT)) {
             return true;
         }

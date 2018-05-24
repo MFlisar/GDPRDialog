@@ -4,16 +4,17 @@ import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPRActivity;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRConsentState;
 
 public class DemoGDPRActivity extends GDPRActivity
 {
     @Override
-    public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState)
+    public void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState)
     {
         if (isNewState)
         {
             // user just selected this consent, do whatever you want...
-            switch (consentState)
+            switch (consentState.getConsent())
             {
                 case UNKNOWN:
                     // never happens!
@@ -23,17 +24,17 @@ public class DemoGDPRActivity extends GDPRActivity
                     break;
                 case NON_PERSONAL_CONSENT_ONLY:
                     Toast.makeText(this, "User accepts NON PERSONAL ads", Toast.LENGTH_LONG).show();
-                    onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
                 case PERSONAL_CONSENT:
                     Toast.makeText(this, "User accepts PERSONAL ads", Toast.LENGTH_LONG).show();
-                    onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
             }
         }
         else
         {
-            switch (consentState)
+            switch (consentState.getConsent())
             {
                 case UNKNOWN:
                     // never happens!
@@ -44,7 +45,7 @@ public class DemoGDPRActivity extends GDPRActivity
                 case NON_PERSONAL_CONSENT_ONLY:
                 case PERSONAL_CONSENT:
                     // user restarted activity and consent was already given...
-                    onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
             }
         }

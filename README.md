@@ -22,7 +22,7 @@ This library offers following:
 * optionally adds a `Checkbox` for age confirmation
 * uses soft opt in by default if you offer e.g. a *personalised ads* vs *non personalised ads* version
 * it closes the app if the user did not give any consent (i.e if the user clicks the back button in the dialog)
-* it manages the user's selected consent decision and remembers it
+* it manages the user's selected consent decision and remembers it (including location, date and app version)
 * it automatically reshows the dialog if the user did not give any consent or if the setup defines that the app is not allowed to be used without ads and the user has not accepted ads at all yet
 
 ### GDPR and law safety

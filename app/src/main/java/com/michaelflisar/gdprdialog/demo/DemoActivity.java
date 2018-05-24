@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRConsentState;
 import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.demo.app.App;
@@ -30,13 +31,9 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
         mSetup = getIntent().getParcelableExtra("setup");
 
         // init state texts
-        GDPRConsent consent = GDPR.getInstance().getConsent();
-        GDPRLocation location = GDPR.getInstance().getRequestLocation();
+        GDPRConsentState consent = GDPR.getInstance().getConsent();
         if (consent != null) {
-            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consent.name());
-        }
-        if (location != null) {
-            ((TextView) findViewById(R.id.tvCurrentLocation)).setText(location.name());
+            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consent.logString() );
         }
 
         // show GDPR Dialog if necessary, the library takes care about if and how to show it
@@ -66,15 +63,13 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
             // default: forward the result and show the dialog
             GDPR.getInstance().showDialog(this, mSetup, location);
         }
-
-        ((TextView) findViewById(R.id.tvCurrentLocation)).setText(location.name());
     }
 
     @Override
-    public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState) {
+    public void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState) {
         if (isNewState) {
             // user just selected this consent, do whatever you want...
-            switch (consentState) {
+            switch (consentState.getConsent()) {
                 case UNKNOWN:
                     // never happens!
                     break;
@@ -83,15 +78,15 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case NON_PERSONAL_CONSENT_ONLY:
                     Toast.makeText(this, "User accepts NON PERSONAL ads", Toast.LENGTH_LONG).show();
-                    onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
                 case PERSONAL_CONSENT:
                     Toast.makeText(this, "User accepts PERSONAL ads", Toast.LENGTH_LONG).show();
-                    onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
             }
         } else {
-            switch (consentState) {
+            switch (consentState.getConsent()) {
                 case UNKNOWN:
                     // never happens!
                     break;
@@ -101,12 +96,12 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                 case NON_PERSONAL_CONSENT_ONLY:
                 case PERSONAL_CONSENT:
                     // user restarted activity and consent was already given...
-                    onConsentKnown(consentState == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
             }
         }
 
-        ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState.name());
+        ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState.logString());
     }
 
     private void onConsentKnown(boolean allowsPersonalAds) {
@@ -122,8 +117,8 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == DEMO_GDPR_ACTIVITY_REQUEST_CODE) {
-            GDPRConsent consentState = GDPR.getInstance().getConsent();
-            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState != null ? consentState.name() : "");
+            GDPRConsentState consentState = GDPR.getInstance().getConsent();
+            ((TextView) findViewById(R.id.tvCurrentConsent)).setText(consentState != null ? consentState.logString() : "");
         }
     }
 }

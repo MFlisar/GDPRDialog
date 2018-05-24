@@ -30,8 +30,7 @@ public class GDPR {
     private Context mContext = null;
     private SharedPreferences mPreferences = null;
 
-    private GDPRConsent mCachedConsent = null;
-    private GDPRLocation mCachedIsInEaaOrUnknown = null;
+    private GDPRConsentState mCachedConsent = null;
 
     // ------------------
     // GDPR - init
@@ -62,9 +61,9 @@ public class GDPR {
     public <T extends AppCompatActivity & IGDPRCallback> void checkIfNeedsToBeShown(T activity, GDPRSetup setup) {
         checkIsInitialised();
 
-        GDPRConsent consent = getConsent();
+        GDPRConsentState consent = getConsent();
         boolean checkConsent = false;
-        switch (consent) {
+        switch (consent.getConsent()) {
             case UNKNOWN:
                 checkConsent = true;
                 break;
@@ -92,46 +91,32 @@ public class GDPR {
         }
     }
 
-//    public <T extends AppCompatActivity & IGDPRCallback> void showIfNecessary(T activity, GDPRSetup setup) {
-//        checkIsInitialised();
-//
-//        if (shouldBeShown(activity, setup)) {
-//            showDialog(activity, setup);
-//        }
-//    }
-
-    public GDPRConsent getConsent() {
+    public GDPRConsentState getConsent() {
         checkIsInitialised();
 
         if (mCachedConsent == null) {
-            int value = mPreferences.getInt(mContext.getString(R.string.gdpr_preference), 0);
-            mCachedConsent = GDPRConsent.values()[value];
+            int consent = mPreferences.getInt(mContext.getString(R.string.gdpr_preference), 0);
+            int location = mPreferences.getInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), 0);
+            long date = mPreferences.getLong(mContext.getString(R.string.gdpr_preference_date), 0);
+            int version = mPreferences.getInt(mContext.getString(R.string.gdpr_preference_app_version), 0);
+            mCachedConsent = new GDPRConsentState(GDPRConsent.values()[consent], GDPRLocation.values()[location], date, version);
         }
         return mCachedConsent;
     }
 
-    public GDPRLocation getRequestLocation() {
-        checkIsInitialised();
-
-        if (mCachedIsInEaaOrUnknown == null) {
-            int value = mPreferences.getInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), GDPRLocation.UNKNOWN.ordinal());
-            mCachedIsInEaaOrUnknown = GDPRLocation.values()[value];
-        }
-        return mCachedIsInEaaOrUnknown;
-    }
-
     public void resetConsent() {
         checkIsInitialised();
-        setConsent(GDPRConsent.UNKNOWN, GDPRLocation.UNKNOWN);
+        setConsent(new GDPRConsentState());
     }
 
-    public boolean setConsent(GDPRConsent consent, GDPRLocation location) {
-        mCachedConsent = consent;
-        mCachedIsInEaaOrUnknown = location;
+    public boolean setConsent(GDPRConsentState consentState) {
+        mCachedConsent = consentState;
         return mPreferences
                 .edit()
-                .putInt(mContext.getString(R.string.gdpr_preference), consent.ordinal())
-                .putInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), location.ordinal())
+                .putInt(mContext.getString(R.string.gdpr_preference), consentState.getConsent().ordinal())
+                .putInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), consentState.getLocation().ordinal())
+                .putLong(mContext.getString(R.string.gdpr_preference_date), consentState.getDate())
+                .putInt(mContext.getString(R.string.gdpr_preference_app_version), consentState.getVersion())
                 .commit();
     }
 
@@ -171,6 +156,6 @@ public class GDPR {
          * @param consentState the current consent state
          * @param isNewState   flag that indicates if a old consent state was loaded or if this is the new consent state a user have just given
          */
-        void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState);
+        void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState);
     }
 }

@@ -1,6 +1,7 @@
 package com.michaelflisar.gdprdialog.helper;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRConsentState;
 import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.R;
@@ -146,7 +148,7 @@ public class GDPRViewManager {
                 return;
             }
             mSelectedConsent = GDPRConsent.PERSONAL_CONSENT;
-            onFinish(onFinishViewListener);
+            onFinish(activity, onFinishViewListener);
         });
 
         view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
@@ -161,10 +163,10 @@ public class GDPRViewManager {
                         return;
                     }
                     mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
-                    onFinish(onFinishViewListener);
+                    onFinish(activity, onFinishViewListener);
                 } else {
                     mSelectedConsent = GDPRConsent.NO_CONSENT;
-                    onFinish(onFinishViewListener);
+                    onFinish(activity, onFinishViewListener);
                 }
             } else {
                 if (mSetup.explicitNonPersonalisedConfirmation()) {
@@ -173,7 +175,7 @@ public class GDPRViewManager {
                     return;
                 }
                 mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
-                onFinish(onFinishViewListener);
+                onFinish(activity, onFinishViewListener);
             }
         });
 
@@ -182,7 +184,7 @@ public class GDPRViewManager {
         } else {
             btNoConsentAtAll.setOnClickListener(v -> {
                 mSelectedConsent = GDPRConsent.NO_CONSENT;
-                onFinish(onFinishViewListener);
+                onFinish(activity, onFinishViewListener);
             });
         }
 
@@ -201,7 +203,7 @@ public class GDPRViewManager {
 
         view.findViewById(R.id.btAgreeNonPersonalised).setOnClickListener(v -> {
             mSelectedConsent = GDPRConsent.NON_PERSONAL_CONSENT_ONLY;
-            onFinish(onFinishViewListener);
+            onFinish(activity, onFinishViewListener);
         });
     }
 
@@ -313,10 +315,11 @@ public class GDPRViewManager {
         }
     }
 
-    private void onFinish(IOnFinishView onFinishView) {
+    private void onFinish(Context context, IOnFinishView onFinishView) {
         if (mSelectedConsent != null) {
-            GDPR.getInstance().setConsent(mSelectedConsent, mLocation);
-            mCallback.onConsentInfoUpdate(mSelectedConsent, true);
+            GDPRConsentState consentState = new GDPRConsentState(context, mSelectedConsent, mLocation);
+            GDPR.getInstance().setConsent(consentState);
+            mCallback.onConsentInfoUpdate(consentState, true);
         }
         onFinishView.onFinishView();
     }

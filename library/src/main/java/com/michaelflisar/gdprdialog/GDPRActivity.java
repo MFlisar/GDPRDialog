@@ -37,7 +37,6 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
 
     @Override
     public void onDestroy() {
-        GDPR.getInstance().cancelRunningTasks();
         onSaveConsentAndCloseActivity();
         super.onDestroy();
     }

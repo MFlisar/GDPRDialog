@@ -74,6 +74,12 @@ public class GDPRDialog extends AppCompatDialogFragment
     }
 
     @Override
+    public void onDestroy() {
+        mViewManager.reset();
+        super.onDestroy();
+    }
+
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         if (mViewManager.shouldUseBottomSheet()) {

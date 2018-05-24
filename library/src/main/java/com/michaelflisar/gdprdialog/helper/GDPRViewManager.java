@@ -282,6 +282,7 @@ public class GDPRViewManager {
     }
 
     public void reset() {
+        GDPR.getInstance().cancelRunningTasks();
         mCallback = null;
         mPages.clear();
     }

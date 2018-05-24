@@ -41,12 +41,6 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    protected void onDestroy() {
-        GDPR.getInstance().cancelRunningTasks();
-        super.onDestroy();
-    }
-
-    @Override
     public void onClick(View v) {
         GDPR.getInstance().resetConsent();
         // reshow dialog instantly

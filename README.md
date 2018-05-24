@@ -75,16 +75,6 @@ GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDP
 3. implement the `GDPR.IGDPRCallback` in your activity
 ```groovy
 public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCallback {
-
-    @Override
-    protected void onDestroy() {
-        // necessary if you use setup.withCheckRequestLocation(true);
-        // this will cancel the location check which is a AsyncTask and holds a reference to this activity
-        // async task is using a WeakReference to gracefully handle the case where you forget this!
-        GDPR.getInstance().cancelRunningChecks();
-        super.onDestroy();
-    }
-	
     @Override
     public void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState) {
         // handle consent here

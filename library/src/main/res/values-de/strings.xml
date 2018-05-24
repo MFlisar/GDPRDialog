@@ -12,7 +12,7 @@
     <string name="gdpr_dialog_text2_plural">Wir benutzen %1$s in dieser Anwendung. Diese Dienste (inkl. deren Partner) sammeln eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über diese Dienste und deine persönlichen Daten&lt;/a>.</string>
     <string name="gdpr_dialog_text3">Durch deine Zustimmung bestätigst du, dass du über 16 Jahre alt bist.</string>
     <string name="gdpr_dialog_question">Dürfen wir weiterhin deine Daten für diese Zwecke%1$s nutzen?</string>
-    <string name="gdpr_dialog_question_ads_info">\u0020als auch um personalisierte Werbung anzeigen zu können</string>
+    <string name="gdpr_dialog_question_ads_info">\u0020als auch für personalisierte Werbung</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_info1">Wir nutzen folgende Drittanbieter Dienste in dieser Anwendung:</string>
@@ -29,13 +29,10 @@
     <string name="gdpr_dialog_back">Zurück</string>
     <string name="gdpr_dialog_disagree_no_ads">Bitte keine Werbung anzeigen</string>
     <string name="gdpr_dialog_disagree_info">Ich verstehe, dass ich trotzdem Werbung sehen werde, jedoch wird diese nicht so relevant für mich sein.</string>
-    <string name="gdpr_select_your_age">Wähle bitte dein Alter aus</string>
     <string name="gdpr_last_list_seperator">\u0020und\u0020</string>
     <string name="gdpr_buy_app">Anwendung kaufen</string>
     <string name="gdpr_withdraw_consent">Datenschutz Einwilligung zurückziehen</string>
     <string name="gdpr_age_not_confirmed">Bestätige bitte dein Alter bevor du fortfährst</string>
-    <string name="gdpr_not_all_services_accepted">Akzeptiere bitte alle Services bevor du fortfährst</string>
-    <string name="gdpr_link">Link</string>
     <string name="gdpr_free">kostenlos</string>
     <string name="gdpr_cheap">billig</string>
 

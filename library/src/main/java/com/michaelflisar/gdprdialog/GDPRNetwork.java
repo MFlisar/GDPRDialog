@@ -58,10 +58,6 @@ public class GDPRNetwork implements Parcelable {
         return "<a href=\"" + mLink + "\">" + mName + "</a>";
     }
 
-    public String getCheckboxHtmlLink(Context context) {
-        return mName + " (<a href=\"" + mLink + "\">" + context.getString(R.string.gdpr_link) + "</a>)";
-    }
-
     // ----------------
     // Parcelable
     // ----------------

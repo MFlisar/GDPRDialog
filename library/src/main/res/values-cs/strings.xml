@@ -19,7 +19,6 @@
     <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020a kliknutím na tento link zjistíte &lt;a href=\"%1$s\">naše zásady ochrany osobních údajů&lt;/a>.</string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">Nebudeme sbírat osobní data pro reklamy ušité přímo vám na míru. I když nejsou reklamy zacíleny přímo na vás osobně (čili nepoužívají osobní reklamní identifikátory ), stále používají identifikaci mobilního zařízení pro to, aby vám nezobrazovaly stále stejné reklamy, pro reportování a také pro boj proti zneužití reklamních systémů.</string>
 
-
     <!-- Dialog - BUTTONS AND SHORT INFOS -->
     <string name="gdpr_dialog_confirm_age">Tímto potvrzuji, že je mi nejméně 16 let.</string>
     <string name="gdpr_dialog_agree">Ano, souhlasím</string>
@@ -33,9 +32,6 @@
     <string name="gdpr_buy_app">Zakoupit aplikaci</string>
     <string name="gdpr_withdraw_consent">Zrušit GDPR souhlas</string>
     <string name="gdpr_age_not_confirmed">Než budeme pokračovat, prosím, potvrďte svůj věk</string>
-    <string name="gdpr_not_all_services_accepted">Prosím, odsouhlaste všechny služby, než budeme moci pokračovat.</string>
-    <string name="gdpr_link">Odkaz</string>
-
     <string name="gdpr_free">zdarma</string>
     <string name="gdpr_cheap">za dobrou cenu</string>
 

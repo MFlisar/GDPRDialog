@@ -33,8 +33,6 @@
     <string name="gdpr_buy_app">Compra app</string>
     <string name="gdpr_withdraw_consent">Annulla il consenso al trattamento dei dati</string>
     <string name="gdpr_age_not_confirmed">Per favore conferma la tua età prima di continuare</string>
-    <string name="gdpr_not_all_services_accepted">Per favore accetta tutti i servizi prima di continuare</string>
-    <string name="gdpr_link">Link</string>
     <string name="gdpr_free">gratuita</string>
     <string name="gdpr_cheap">economica</string>
 

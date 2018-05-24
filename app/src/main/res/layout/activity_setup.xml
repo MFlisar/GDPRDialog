@@ -1,122 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".DemoActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".DemoActivity">
 
-        <LinearLayout
-            android:padding="16dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Style" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <CheckBox
-                android:id="@+id/cbShowAsActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Use an activity instead of a dialog" />
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Style" />
 
-            <CheckBox
-                android:id="@+id/cbBottomSheet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Use a bottom sheet for the dialog style" />
+                <CheckBox
+                    android:id="@+id/cbShowAsActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Use an activity instead of a dialog" />
 
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Used services" />
+                <CheckBox
+                    android:id="@+id/cbBottomSheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Use a bottom sheet for the dialog style" />
 
-            <CheckBox
-                android:id="@+id/cbAdServiceOnly"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Only use ad service (deselect to use more services)" />
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Used services" />
 
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Paid version" />
+                <CheckBox
+                    android:id="@+id/cbAdServiceOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Only use ad service (deselect to use more services)" />
 
-            <CheckBox
-                android:id="@+id/cbHasPaidVersion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Has paid version" />
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Paid version" />
 
-            <CheckBox
-                android:id="@+id/cbAllowNonPersonalisedForPaidVersions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Allow to use non personalised data" />
+                <CheckBox
+                    android:id="@+id/cbHasPaidVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Has paid version" />
 
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No consent handling" />
+                <CheckBox
+                    android:id="@+id/cbAllowNonPersonalisedForPaidVersions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Allow to use non personalised data" />
 
-            <CheckBox
-                android:id="@+id/cbAllowNoConsent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Allow to use the app without any consent (either personal nor non personal)" />
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No consent handling" />
 
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Special settings" />
+                <CheckBox
+                    android:id="@+id/cbAllowNoConsent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Allow to use the app without any consent (either personal nor non personal)" />
 
-            <CheckBox
-                android:id="@+id/cbAskNonPersonalised"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Explicitly ask for consent for non personalised data usage" />
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Special settings" />
 
-            <CheckBox
-                android:id="@+id/cbAskForAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Explicitly ask for users age confirmation" />
+                <CheckBox
+                    android:id="@+id/cbAskNonPersonalised"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Explicitly ask for consent for non personalised data usage" />
 
-            <CheckBox
-                android:id="@+id/cbCheckRequestLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Check if request location is in EAA" />
+                <CheckBox
+                    android:id="@+id/cbAskForAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Explicitly ask for users age confirmation" />
 
-            <CheckBox
-                android:id="@+id/cbForceSelection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Force user to make a choice" />
+                <CheckBox
+                    android:id="@+id/cbCheckRequestLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Check if request location is in EAA" />
 
-        </LinearLayout>
+                <CheckBox
+                    android:id="@+id/cbCheckRequestLocationFallbackTelephonyManager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="Use TelephonyManager as fallback method to find out location" />
 
-    </ScrollView>
+                <CheckBox
+                    android:id="@+id/cbCheckRequestLocationFallbackTimeZone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="Use TimeZone as fallback method to find out location" />
 
-    <Button
-        android:id="@+id/btTest"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="Show test activity with above settings" />
+                <CheckBox
+                    android:id="@+id/cbForceSelection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Force user to make a choice" />
 
-</LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btTest"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Show test activity with above settings" />
+
+    </LinearLayout>
+
+</layout>

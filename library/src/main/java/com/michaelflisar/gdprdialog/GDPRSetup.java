@@ -1,6 +1,5 @@
 package com.michaelflisar.gdprdialog;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -20,6 +19,8 @@ public class GDPRSetup implements Parcelable {
     private boolean mExplicitNonPersonalisedConfirmation = false;
     private boolean mNoToolbarTheme = false;
     private boolean mCheckRequestLocation = false;
+    private boolean mUseLocationCheckTelephonyManagerFallback = false;
+    private boolean mUseLocationCheckTimezoneFallback = false;
     private boolean mUseBottomSheet = false;
     private boolean mForceSelection = false;
     private int mCustomDialogTheme = 0;
@@ -124,6 +125,22 @@ public class GDPRSetup implements Parcelable {
      */
     public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation) {
         mCheckRequestLocation = checkRequestLocation;
+        return this;
+    }
+
+    /**
+     * use this to check the user's location and check if it is within the EAA before requesting consent
+     * this uses a homepage form google and parses it's result
+     *
+     * @param checkRequestLocation true to check location, false otherwise
+     * @param useLocationCheckTelephonyManagerFallback true to check location via the {@link android.telephony.TelephonyManager} if main check fails, false otherwise
+     * @param useLocationCheckTimezoneFallback true to check location via the {@link java.util.TimeZone} if main check fails, false otherwise
+     * @return this
+     */
+    public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation, boolean useLocationCheckTelephonyManagerFallback, boolean useLocationCheckTimezoneFallback) {
+        mCheckRequestLocation = checkRequestLocation;
+        mUseLocationCheckTelephonyManagerFallback = useLocationCheckTelephonyManagerFallback;
+        mUseLocationCheckTimezoneFallback = useLocationCheckTimezoneFallback;
         return this;
     }
 
@@ -240,6 +257,14 @@ public class GDPRSetup implements Parcelable {
         return mShortQuestion;
     }
 
+    public boolean useLocationCheckTelephonyManagerFallback() {
+        return mUseLocationCheckTelephonyManagerFallback;
+    }
+
+    public boolean useLocationCheckTimezoneFallback() {
+        return mUseLocationCheckTimezoneFallback;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mAdNetworks) {
             if (network.isAdNetwork()) {
@@ -303,6 +328,8 @@ public class GDPRSetup implements Parcelable {
         mForceSelection = in.readByte() == 1;
         mCustomDialogTheme = in.readInt();
         mShortQuestion = in.readByte() == 1;
+        mUseLocationCheckTelephonyManagerFallback = in.readByte() == 1;
+        mUseLocationCheckTimezoneFallback = in.readByte() == 1;
     }
 
     @Override
@@ -325,6 +352,8 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mForceSelection ? (byte) 1 : 0);
         dest.writeInt(mCustomDialogTheme);
         dest.writeByte(mShortQuestion ? (byte) 1 : 0);
+        dest.writeByte(mUseLocationCheckTelephonyManagerFallback ? (byte) 1 : 0);
+        dest.writeByte(mUseLocationCheckTimezoneFallback ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

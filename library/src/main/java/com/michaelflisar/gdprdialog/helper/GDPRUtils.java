@@ -96,7 +96,7 @@ public class GDPRUtils
      * @param context context used to get {@link TelephonyManager}
      * @return true, if location is within EAA, false if not and null in case of an error
      */
-    public static boolean checkIsEAAWithTelephonyManager(Context context) {
+    public static boolean isRequestInEAAOrUnknownViaTelephonyManagerCheck(Context context) {
         boolean error = false;
 
         /* is eu sim */
@@ -138,7 +138,7 @@ public class GDPRUtils
      *
      * @return true, if location is within EAA, false if not and null in case of an error
      */
-    public static Boolean checkIsEAAWithTimezone() {
+    public static Boolean isRequestInEAAOrUnknownViaTimezoneCheck() {
         boolean error = false;
 
         /* is eu time zone id */

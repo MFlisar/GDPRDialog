@@ -6,22 +6,33 @@ import android.support.v7.app.AppCompatActivity;
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsentState;
 import com.michaelflisar.gdprdialog.GDPRLocation;
+import com.michaelflisar.gdprdialog.GDPRSetup;
 
 import java.lang.ref.WeakReference;
 
 public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallback> extends AsyncTask<Object, Void, Boolean> {
 
     private WeakReference<T> mActivity;
+    private GDPRSetup mSetup;
 
-    public CheckLocationAsyncTask(T activity) {
+    public CheckLocationAsyncTask(T activity, GDPRSetup setup) {
         mActivity = new WeakReference<>(activity);
+        mSetup = setup;
     }
 
     protected Boolean doInBackground(Object... ignored) {
         try {
             T activity = mActivity.get();
             if (activity != null) {
-                return GDPRUtils.isRequestInEAAOrUnknown(activity.getApplicationContext());
+                Boolean isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknown(activity.getApplicationContext());
+                // eventually use fallback methods
+                if (isInEAAOrUnkown == null && mSetup.useLocationCheckTelephonyManagerFallback()) {
+                    isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknownViaTelephonyManagerCheck(activity.getApplicationContext());
+                }
+                if (isInEAAOrUnkown == null && mSetup.useLocationCheckTimezoneFallback()) {
+                    isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknownViaTimezoneCheck();
+                }
+                return isInEAAOrUnkown;
             }
         } catch (Exception e) {
            e.printStackTrace();

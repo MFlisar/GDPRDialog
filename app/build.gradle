@@ -3,6 +3,10 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.michaelflisar.gdprdialog.demo"
         minSdkVersion 16

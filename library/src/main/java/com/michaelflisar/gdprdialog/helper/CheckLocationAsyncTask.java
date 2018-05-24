@@ -21,23 +21,28 @@ public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCall
     }
 
     protected Boolean doInBackground(Object... ignored) {
+        Boolean isInEAAOrUnkown = null;
         try {
             T activity = mActivity.get();
             if (activity != null) {
-                Boolean isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknown(activity.getApplicationContext());
-                // eventually use fallback methods
-                if (isInEAAOrUnkown == null && mSetup.useLocationCheckTelephonyManagerFallback()) {
-                    isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknownViaTelephonyManagerCheck(activity.getApplicationContext());
-                }
-                if (isInEAAOrUnkown == null && mSetup.useLocationCheckTimezoneFallback()) {
-                    isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknownViaTimezoneCheck();
-                }
-                return isInEAAOrUnkown;
+                isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknown(activity.getApplicationContext());
             }
         } catch (Exception e) {
            e.printStackTrace();
         }
-        return null;
+
+        // eventually use fallback methods
+        if (isInEAAOrUnkown == null && mSetup.useLocationCheckTelephonyManagerFallback()) {
+            T activity = mActivity.get();
+            if (activity != null) {
+                isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknownViaTelephonyManagerCheck(activity.getApplicationContext());
+            }
+        }
+        if (isInEAAOrUnkown == null && mSetup.useLocationCheckTimezoneFallback()) {
+            isInEAAOrUnkown = GDPRUtils.isRequestInEAAOrUnknownViaTimezoneCheck();
+        }
+
+        return isInEAAOrUnkown;
     }
 
     protected void onPostExecute(Boolean result) {

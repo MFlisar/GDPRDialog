@@ -29,7 +29,6 @@
     <string name="gdpr_dialog_back">Back</string>
     <string name="gdpr_dialog_disagree_no_ads">No ads at all, please</string>
     <string name="gdpr_dialog_disagree_info">I understand that I still see ads, but they may not be as relevant to my interests.</string>
-    <string name="gdpr_list_seperator" translatable="false">,\u0020</string>
     <string name="gdpr_last_list_seperator">\u0020and\u0020</string>
     <string name="gdpr_buy_app">Buy app</string>
     <string name="gdpr_withdraw_consent">Withdraw data protection consent</string>

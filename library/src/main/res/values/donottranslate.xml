@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- Strings that are shared across all languages. -->
+    <string name="gdpr_list_seperator" translatable="false">,\u0020</string>
+
+</resources>

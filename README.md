@@ -133,4 +133,4 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   
 ### TODO
 
-[Apache2](/license/blob/master/README.md)
+[Apache2](/license/blob/master/LICENSE.md)

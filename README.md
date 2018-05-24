@@ -88,9 +88,14 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
     }
 }
 ```
-4. optionally, after the user has given consent, you can retrieve the current consent from everywhere like following:
+4. Other usages
 ```groovy
+// get current consent anywhere in the app after user has given consent
 GDPRConsentState consent = GDPR.getInstance().getConsent();
+// get location, time, app version of given consent
+GDPRLocation location = consent.getLocation(); // where has the given consent been given
+long date = consent.getDate(); // when has the given consent been given
+int appVersion = consent.getVersion(); // in which app version has the consent been given
 ```
 
 Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) for a full working example

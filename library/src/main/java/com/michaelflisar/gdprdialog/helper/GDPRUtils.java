@@ -68,7 +68,7 @@ public class GDPRUtils
             sb.append(line + "\n");
         }
         br.close();
-        
+
         return new JSONObject(sb.toString());
     }
 }

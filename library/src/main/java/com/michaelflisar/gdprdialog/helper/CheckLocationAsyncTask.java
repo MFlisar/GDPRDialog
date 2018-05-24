@@ -39,7 +39,7 @@ public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCall
         } catch (Exception e) {
            e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     protected void onPostExecute(Boolean result) {
@@ -50,7 +50,7 @@ public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCall
         if (activity == null) {
             return;
         }
-        if (result != null && result) {
+        if (result != null) {
             activity.onConsentNeedsToBeRequested(result ? GDPRLocation.EAA : GDPRLocation.NOT_IN_EAA);
         } else {
             activity.onConsentInfoUpdate(mConsent, false);

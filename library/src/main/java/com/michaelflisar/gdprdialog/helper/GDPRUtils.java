@@ -27,9 +27,9 @@ public class GDPRUtils
         return -1;
     }
 
-    public static boolean isRequestInEAAOrUnknown(Context context) throws IOException, JSONException {
+    public static Boolean isRequestInEAAOrUnknown(Context context) throws IOException, JSONException {
         JSONObject jsonObject = getJSONAnswerFromGooglesIsInEAAOrUnknownCheck(context);
-        return jsonObject != null && jsonObject.getBoolean(context.getString(R.string.gdpr_googles_check_json_field_is_request_in_eea_or_unknown));
+        return jsonObject != null ? jsonObject.getBoolean(context.getString(R.string.gdpr_googles_check_json_field_is_request_in_eea_or_unknown)) : null;
     }
 
     public static JSONObject getJSONAnswerFromGooglesIsInEAAOrUnknownCheck(Context context) throws IOException, JSONException {

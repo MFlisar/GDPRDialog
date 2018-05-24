@@ -130,3 +130,7 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   * [ ] Slovenian
   * [ ] Spanish
   * [ ] Swedish
+  
+### TODO
+
+[Apache2](/license/blob/master/README.md)

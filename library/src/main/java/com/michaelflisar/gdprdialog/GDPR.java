@@ -32,6 +32,8 @@ public class GDPR {
 
     private GDPRConsentState mCachedConsent = null;
 
+    private CheckLocationAsyncTask mCheckLocationAsyncTask = null;
+
     // ------------------
     // GDPR - init
     // ------------------
@@ -80,7 +82,8 @@ public class GDPR {
 
         if (checkConsent) {
             if (setup.checkRequestLocation()) {
-                new CheckLocationAsyncTask(activity, consent).execute();
+                mCheckLocationAsyncTask = new CheckLocationAsyncTask(activity, consent);
+                mCheckLocationAsyncTask.execute();
             } else {
                 activity.onConsentNeedsToBeRequested(GDPRLocation.UNKNOWN);
             }
@@ -88,6 +91,13 @@ public class GDPR {
             // nothing to do, we already know the users decision!
             // simple forward this information to the listener
             activity.onConsentInfoUpdate(consent, false);
+        }
+    }
+
+    public void cancelRunningTasks() {
+        if (mCheckLocationAsyncTask != null) {
+            mCheckLocationAsyncTask.cancel(true);
+            mCheckLocationAsyncTask = null;
         }
     }
 

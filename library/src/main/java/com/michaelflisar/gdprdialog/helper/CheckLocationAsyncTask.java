@@ -16,34 +16,44 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CheckLocationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallback> extends AsyncTask<Object, Void, Boolean> {
 
     private GDPRConsentState mConsent;
-    private T mActivity;
+    private WeakReference<T> mActivity;
 
     public CheckLocationAsyncTask(T activity, GDPRConsentState consent) {
-        mActivity = activity;
+        mActivity = new WeakReference<>(activity);
         mConsent = consent;
     }
 
     protected Boolean doInBackground(Object... ignored) {
         try {
-            return GDPRUtils.isRequestInEAAOrUnknown(mActivity);
+            T activity = mActivity.get();
+            if (activity != null) {
+                return GDPRUtils.isRequestInEAAOrUnknown(activity);
+            }
         } catch (Exception e) {
-            return false;
+           e.printStackTrace();
         }
+        return false;
     }
 
     protected void onPostExecute(Boolean result) {
-        if (isCancelled())
+        if (isCancelled()) {
             return;
+        }
+        T activity = mActivity.get();
+        if (activity == null) {
+            return;
+        }
         if (result != null && result) {
-            mActivity.onConsentNeedsToBeRequested(result ? GDPRLocation.EAA : GDPRLocation.NOT_IN_EAA);
+            activity.onConsentNeedsToBeRequested(result ? GDPRLocation.EAA : GDPRLocation.NOT_IN_EAA);
         } else {
-            mActivity.onConsentInfoUpdate(mConsent, false);
+            activity.onConsentInfoUpdate(mConsent, false);
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.michaelflisar.gdprdialog;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,6 +37,7 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
 
     @Override
     public void onDestroy() {
+        GDPR.getInstance().cancelRunningTasks();
         onSaveConsentAndCloseActivity();
         super.onDestroy();
     }

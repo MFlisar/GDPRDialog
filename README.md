@@ -131,6 +131,6 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   * [ ] Spanish
   * [ ] Swedish
   
-### TODO
+### License
 
 [Apache2](/LICENSE)

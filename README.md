@@ -105,13 +105,13 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 ### TODO
 
-* [ ] translations to at least all languages within the european union
+* [ ] translations to at least all official languages within the european union
   * [ ] Bulgarian
   * [ ] Croatian
   * [x] Czech
   * [ ] Danish
   * [ ] Dutch
-  * [ ] English
+  * [x] English
   * [ ] Estonian
   * [ ] Finnish
   * [ ] French
@@ -130,5 +130,3 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
   * [ ] Slovenian
   * [ ] Spanish
   * [ ] Swedish
-* [ ] translations to other languages
-  * [x] english

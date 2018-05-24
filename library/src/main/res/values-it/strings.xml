@@ -6,7 +6,7 @@
 
     <string name="gdpr_dialog_text1">Ci teniamo alla tua privacy e alla sicurezza dei tuoi dati. Riusciamo a mantenere quest\'app %1$s usando servizi di terze parti.</string>
     <string name="gdpr_dialog_text2_singular">Usiamo %1$s in quest\'app. Questo servizio (inclusi i suoi partner) raccolgono identificatori univoci ed altri dati personali. Puoi cambiare la tua scelta in qualunque momento dalle impostazioni dell\'app. &lt;a href=\"\">Clicca qui per saperne di più su questo servizio e sui tuoi dati personali&lt;/a>.</string>
-    <string name="gdpr_dialog_text2_plural">Usaimo %1$s in quest\'app. Questi servizi (inclusi i loro partner) raccolgono identificatori univoci ed altri dati personali. Puoi cambiare la tua scelta in qualunque momento dalle impostazioni dell\'app. &lt;a href=\"\">Clicca qui per saperne di più su questi servizi e sui tuoi dati personali&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_plural">Usiamo %1$s in quest\'app. Questi servizi (inclusi i loro partner) raccolgono identificatori univoci ed altri dati personali. Puoi cambiare la tua scelta in qualunque momento dalle impostazioni dell\'app. &lt;a href=\"\">Clicca qui per saperne di più su questi servizi e sui tuoi dati personali&lt;/a>.</string>
     <string name="gdpr_dialog_text3">Accettando, confermi di avere almeno 16 anni.</string>
     <string name="gdpr_dialog_question">Possiamo continuare ad utilizzare i tuoi dati con questi scopi%1$s?</string>
     <string name="gdpr_dialog_question_ads_info">\u0020e per mostrare pubblicità personalizzata</string>

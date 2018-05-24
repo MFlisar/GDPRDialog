@@ -53,12 +53,11 @@ public class GDPR {
     /**
      * Checks if you must require consent from the user
      * <p>
-     * it will call the callback activity's::onConsentNeedsToBeRequested() function if the
-     * user should be asked for consent, otherwise it will directly call the onConsentInfoUpdate(consent, isNewState) function
+     * it will call the callback {@link IGDPRCallback#onConsentNeedsToBeRequested(GDPRLocation)} function if the
+     * user should be asked for consent, otherwise it will directly call the {@link IGDPRCallback#onConsentInfoUpdate(GDPRConsentState, boolean)} function
      *
      * @param activity the callback activity that implements the callback interface
      * @param setup    the setup
-     * @return
      */
     public <T extends AppCompatActivity & IGDPRCallback> void checkIfNeedsToBeShown(T activity, GDPRSetup setup) {
         checkIsInitialised();

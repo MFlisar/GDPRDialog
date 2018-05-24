@@ -11,7 +11,8 @@
     <string name="gdpr_dialog_text2_singular">V této aplikaci používáme %1$s. Tato služba (a její partneři) sbírá unikátní indentifikátory a další osobní data. Vaši volbu můžete kdykoliv změnit v nastavení aplikace. &lt;a href=\"\">Zde dozvíte více o této službě a tom, jak zpracovává osobní data&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">V této aplikaci používáme %1$s. Tyto služby (a jejich partneři) sbírají unikátní identifikátory a další osobní data. Vaši volbu můžete kdykoliv změnit v nastavení aplikace. &lt;a href=\"\">Zde dozvíte více o těchto službách a tom, jak zpracovávají osobní data&lt;/a>.</string>
     <string name="gdpr_dialog_text3">Svoji volbu můžete kdykoliv změnit v nastavení aplikace.</string>
-    <string name="gdpr_dialog_question">Můžeme pokračovat v použití dat pro tyto účely?</string>
+    <string name="gdpr_dialog_question">Můžeme pokračovat v použití dat pro tyto účely%1$s?</string>
+    <string name="gdpr_dialog_question_ads_info">\u0020 a stejně tak i pro zobrazení personalizovaných reklam</string>
 
     <!-- Dialog - SUB PAGE TEXTS -->
     <string name="gdpr_dialog_text_info1">V aplikaci používáme tyto knihovny třetích stran:</string>
@@ -42,5 +43,6 @@
     <string name="gdpr_type_ads">reklamy</string>
     <string name="gdpr_type_cloud_database">cloudové databáze</string>
     <string name="gdpr_type_crash">nástroje analýzy pádů aplikací</string>
+    <string name="gdpr_type_analytics">nástroje analýzy chování</string>
 
 </resources>

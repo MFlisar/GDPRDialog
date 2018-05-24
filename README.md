@@ -97,6 +97,8 @@ GDPRConsent consent = consentState.getConsent(); // the given constent
 GDPRLocation location = consentState.getLocation(); // where has the given consent been given
 long date = consentState.getDate(); // when has the given consent been given
 int appVersion = consentState.getVersion(); // in which app version has the consent been given
+// check if you can use personal informations or not
+boolean canCollectPersonalInformation = GDPR.getInstance().canCollectPersonalInformation(alwaysAllowOutsideEAA);
 ```
 
 Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) for a full working example

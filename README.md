@@ -86,8 +86,9 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
     }
 	
     @Override
-    public void onConsentInfoUpdate(GDPRConsent consentState, boolean isNewState) {
+    public void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState) {
         // handle consent here
+		
     }
 	
     @Override
@@ -96,6 +97,10 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
         GDPR.getInstance().showDialog(this, mSetup);
     }
 }
+```
+4. optionally, after the user has given consent, you can retrieve the current consent from everywhere like following:
+```groovy
+GDPRConsentState consent = GDPR.getInstance().getConsent();
 ```
 
 Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) for a full working example

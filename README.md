@@ -105,7 +105,7 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 ### TODO
 
-* [ ] [Localisation](https://img.shields.io/badge/Localisation-4%2F24%20(17%25)-blue.svg)
+* [ ] ![Localisation](https://img.shields.io/badge/Localisation-4%2F24%20(17%25)-blue.svg)
   
   At least translations for all official languages within the european union should be added
   * [ ] Bulgarian

@@ -78,9 +78,9 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
 
     @Override
     protected void onDestroy() {
-	    // necessary if you use setup.withCheckRequestLocation(true);
-		// this will cancel the location check which is a AsyncTask and holds a reference to this activity
-		// async task is using a WeakReference to gracefully handle the case where you forget this!
+        // necessary if you use setup.withCheckRequestLocation(true);
+        // this will cancel the location check which is a AsyncTask and holds a reference to this activity
+        // async task is using a WeakReference to gracefully handle the case where you forget this!
         GDPR.getInstance().cancelRunningChecks();
         super.onDestroy();
     }

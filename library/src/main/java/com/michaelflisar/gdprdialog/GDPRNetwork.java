@@ -15,26 +15,35 @@ public class GDPRNetwork implements Parcelable {
     private String mName;
     private String mLink;
     private String mType;
-    private boolean mIsCollection;
+    private boolean mIsIntermediatorWithSubNetworks;
     private boolean mIsAdNetwork;
     private ArrayList<GDPRSubNetwork> mSubNetworks;
+    private String mSubNetworksLink;
 
-    public GDPRNetwork(Context context, int name, int link, int type, boolean isCollection, boolean isAdNetwork) {
-        mName = context.getString(name);
-        mLink = context.getString(link);
+    public GDPRNetwork(Context context, String name, String link, int type, boolean isAdNetwork) {
+        mName = name;
+        mLink = link;
         mType = context.getString(type);
-        mIsCollection = isCollection;
+        mIsIntermediatorWithSubNetworks = false;
+        mSubNetworksLink = null;
         mIsAdNetwork = isAdNetwork;
         mSubNetworks = new ArrayList<>();
     }
 
-    public GDPRNetwork(String name, String link, String type, boolean isCollection, boolean isAdNetwork) {
+    public GDPRNetwork(String name, String link, String type, boolean isAdNetwork) {
         mName = name;
         mLink = link;
         mType = type;
-        mIsCollection = isCollection;
+        mIsIntermediatorWithSubNetworks = false;
+        mSubNetworksLink = null;
         mIsAdNetwork = isAdNetwork;
         mSubNetworks = new ArrayList<>();
+    }
+
+    public GDPRNetwork withIsIntermediator(String subNetworksLink) {
+        mIsIntermediatorWithSubNetworks = true;
+        mSubNetworksLink = subNetworksLink;
+        return this;
     }
 
     public GDPRNetwork addSubNetwork(GDPRSubNetwork network) {
@@ -48,8 +57,11 @@ public class GDPRNetwork implements Parcelable {
     }
 
     public GDPRNetwork copy() {
-        return new GDPRNetwork(mName, mLink, mType, mIsCollection, mIsAdNetwork)
+        GDPRNetwork copy = new GDPRNetwork(mName, mLink, mType, mIsAdNetwork)
                 .addSubNetworks(mSubNetworks);
+        copy.mIsIntermediatorWithSubNetworks = this.mIsIntermediatorWithSubNetworks;
+        copy.mSubNetworksLink = this.mSubNetworksLink;
+        return copy;
     }
 
     // ----------------
@@ -68,8 +80,8 @@ public class GDPRNetwork implements Parcelable {
         return mType;
     }
 
-    public boolean isCollection() {
-        return mIsCollection;
+    public boolean isIntermediatorWithSubNetworks() {
+        return mIsIntermediatorWithSubNetworks;
     }
 
     public boolean isAdNetwork() {
@@ -82,6 +94,9 @@ public class GDPRNetwork implements Parcelable {
 
     public String getHtmlLink(Context context, boolean withSubNetworks) {
         String link = "<a href=\"" + mLink + "\">" + mName + "</a>";
+        if (mIsIntermediatorWithSubNetworks && mSubNetworksLink != null) {
+            link += " (<a href=\"" + mSubNetworksLink + "\">" + context.getString(R.string.gdpr_show_me_partners) + "</a>)";
+        }
         if (withSubNetworks && mSubNetworks.size() > 0) {
             link += " (";
             List<String> values = new ArrayList<>();
@@ -115,7 +130,7 @@ public class GDPRNetwork implements Parcelable {
         mName = in.readString();
         mLink = in.readString();
         mType = in.readString();
-        mIsCollection = in.readByte() == 1;
+        mIsIntermediatorWithSubNetworks = in.readByte() == 1;
         mIsAdNetwork = in.readByte() == 1;
         mSubNetworks = new ArrayList<>();
         int subNetworks = in.readInt();
@@ -123,6 +138,7 @@ public class GDPRNetwork implements Parcelable {
             mSubNetworks.add(in.readParcelable(GDPRSubNetwork.class.getClassLoader()));
             subNetworks--;
         }
+        mSubNetworksLink = in.readString();
     }
 
     @Override
@@ -135,12 +151,13 @@ public class GDPRNetwork implements Parcelable {
         dest.writeString(mName);
         dest.writeString(mLink);
         dest.writeString(mType);
-        dest.writeByte(mIsCollection ? (byte) 1 : 0);
+        dest.writeByte(mIsIntermediatorWithSubNetworks ? (byte) 1 : 0);
         dest.writeByte(mIsAdNetwork ? (byte) 1 : 0);
         dest.writeInt(mSubNetworks.size());
         for (GDPRSubNetwork subNetwork : mSubNetworks) {
             dest.writeParcelable(subNetwork, 0);
         }
+        dest.writeString(mSubNetworksLink);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

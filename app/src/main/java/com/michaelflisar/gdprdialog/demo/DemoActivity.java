@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
 import com.michaelflisar.gdprdialog.GDPRConsentState;
+import com.michaelflisar.gdprdialog.GDPRDefinitions;
 import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.demo.app.App;
@@ -63,7 +64,7 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
         // we add it to the FIRST admob network we find...
         if (data.getSubNetworks().size() > 0) {
             for (int i = 0; i < mSetup.networks().length; i++) {
-                if (mSetup.networks()[i].getName().equals(getString(R.string.gdpr_network_admob))) {
+                if (mSetup.networks()[i].getName().equals(GDPRDefinitions.ADMOB.getName())) {
                     mSetup.networks()[i].addSubNetworks(data.getSubNetworks());
                     break;
                 }

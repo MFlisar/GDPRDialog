@@ -26,20 +26,23 @@ public class GDPRDefinitions {
     public static GDPRNetwork FIREBASE_ANALYTICS = null;
 
     public static void init(Context context) {
-
         // init ad networks
-        ADMOB = new GDPRNetwork(context, R.string.gdpr_network_admob, R.string.gdpr_network_admob_link, R.string.gdpr_type_ads, true, true);
-        AERSERV = new GDPRNetwork(context, R.string.gdpr_network_aerserv, R.string.gdpr_network_aerserv_link, R.string.gdpr_type_ads, true, true);
-        INMOBI = new GDPRNetwork(context, R.string.gdpr_network_inmobi, R.string.gdpr_network_inmobi_link, R.string.gdpr_type_ads, true, true);
-        MOPUB = new GDPRNetwork(context, R.string.gdpr_network_mopub, R.string.gdpr_network_mopub_link, R.string.gdpr_type_ads, true, true);
-        VUNGLE = new GDPRNetwork(context, R.string.gdpr_network_vungle, R.string.gdpr_network_vungle_link, R.string.gdpr_type_ads, true, true);
-        ADCOLONY = new GDPRNetwork(context, R.string.gdpr_network_adcolony, R.string.gdpr_network_adcolony_link, R.string.gdpr_type_ads, true, true);
-        UNITY = new GDPRNetwork(context, R.string.gdpr_network_unity, R.string.gdpr_network_unity_link, R.string.gdpr_type_ads, true, true);
-        APPLOVIN = new GDPRNetwork(context, R.string.gdpr_network_applovin, R.string.gdpr_network_applovin_link, R.string.gdpr_type_ads, true, true);
+        ADMOB = new GDPRNetwork(context, "AdMob", "https://policies.google.com/privacy", R.string.gdpr_type_ads, true)
+                .withIsIntermediator("https://support.google.com/admob/answer/9012903");
+        AERSERV = new GDPRNetwork(context, "AerServ", "https://www.aerserv.com/privacy-policy", R.string.gdpr_type_ads, true);
+        INMOBI = new GDPRNetwork(context, "InMobi", "https://www.inmobi.com/privacy-policy-for-eea", R.string.gdpr_type_ads, true);
+        MOPUB = new GDPRNetwork(context, "MoPub", "https://www.mopub.com/legal/privacy", R.string.gdpr_type_ads, true)
+                .withIsIntermediator("https://developers.mopub.com/docs/mediation/supported-mediation-partners");
+        VUNGLE = new GDPRNetwork(context, "InMobi", "https://vungle.com/privacy", R.string.gdpr_type_ads, true);
+        ADCOLONY = new GDPRNetwork(context, "AdColony", "https://www.adcolony.com/privacy-policy", R.string.gdpr_type_ads, true);
+        UNITY = new GDPRNetwork(context, "Unity", "https://unity3d.com/legal/privacy-policy", R.string.gdpr_type_ads, true);
+        APPLOVIN = new GDPRNetwork(context, "AppLovin", "https://www.applovin.com/privacy", R.string.gdpr_type_ads, true);
 
         // init othes
-        FIREBASE_DATABASE = new GDPRNetwork(context, R.string.gdpr_network_firebase, R.string.gdpr_network_firebase_link, R.string.gdpr_type_cloud_database, false, false);
-        FIREBASE_CRASH = new GDPRNetwork(context, R.string.gdpr_network_firebase, R.string.gdpr_network_firebase_link, R.string.gdpr_type_crash, false, false);
-        FIREBASE_ANALYTICS = new GDPRNetwork(context, R.string.gdpr_network_firebase, R.string.gdpr_network_firebase_link, R.string.gdpr_type_analytics, false, false);
+        String firebase = "Firebase";
+        String firebaseUrl = "https://firebase.google.com/support/privacy";
+        FIREBASE_DATABASE = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_cloud_database, false);
+        FIREBASE_CRASH = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_crash, false);
+        FIREBASE_ANALYTICS = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_analytics, false);
     }
 }

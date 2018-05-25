@@ -26,7 +26,6 @@ public class GDPRSetup implements Parcelable {
     private boolean mForceSelection = false;
     private int mCustomDialogTheme = 0;
     private boolean mShortQuestion = false;
-    private boolean mShowNetworksAsList = false;
     private ArrayList<String> mPublisherIds = new ArrayList<>();
 
     public GDPRSetup(GDPRNetwork... networks) {
@@ -206,23 +205,12 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
-    /**
-     * use this to show all networks as a list (each network on a seperate line)
-     *
-     * @param showNetworksAsList true to show networks as list, false otherwuse
-     * @return this
-     */
-    public GDPRSetup withShowNetworksAsList(boolean showNetworksAsList) {
-        mShowNetworksAsList = showNetworksAsList;
-        return this;
-    }
-
     // ----------------
     // Functions
     // ----------------
 
     public final String getNetworksCommaSeperated(Context context, boolean withLinks) {
-        return GDPRUtils.getNetworksString(mNetworks, context, withLinks, mShowNetworksAsList);
+        return GDPRUtils.getNetworksString(mNetworks, context, withLinks, true);
     }
 
     public final String policyLink() {
@@ -297,10 +285,6 @@ public class GDPRSetup implements Parcelable {
         return mUseLocationCheckTimezoneFallback;
     }
 
-    public boolean showNetworksAsList() {
-        return mShowNetworksAsList;
-    }
-
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mNetworks) {
             if (network.isAdNetwork()) {
@@ -346,7 +330,6 @@ public class GDPRSetup implements Parcelable {
         mShortQuestion = in.readByte() == 1;
         mUseLocationCheckTelephonyManagerFallback = in.readByte() == 1;
         mUseLocationCheckTimezoneFallback = in.readByte() == 1;
-        mShowNetworksAsList = in.readByte() == 1;
         in.readStringList(mPublisherIds);
     }
 
@@ -372,7 +355,6 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mShortQuestion ? (byte) 1 : 0);
         dest.writeByte(mUseLocationCheckTelephonyManagerFallback ? (byte) 1 : 0);
         dest.writeByte(mUseLocationCheckTimezoneFallback ? (byte) 1 : 0);
-        dest.writeByte(mShowNetworksAsList ? (byte) 1 : 0);
         dest.writeStringList(mPublisherIds);
     }
 

@@ -56,7 +56,6 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                         .withPrivacyPolicy(policyLink)
                         .withPaidVersion(false)
                         .withCheckRequestLocation(true)
-                        .withShowNetworksAsList(true)
                         .withLoadAdMobNetworks(publisherId);
                 break;
             case 3:
@@ -145,9 +144,6 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         }
         if (mBinding.cbAskNonPersonalised.isChecked()) {
             setup.withExplicitNonPersonalisedConfirmation(true);
-        }
-        if (mBinding.cbShowServicesAsList.isChecked()) {
-            setup.withShowNetworksAsList(true);
         }
         // our base theme has a toolbar, so wo do not need this
         // setup.withNoToolbarTheme(true);

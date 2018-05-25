@@ -109,8 +109,8 @@ public class GDPRPreperationData {
         URL url = new URL(context.getString(R.string.gdpr_googles_check_is_eaa_request_url, publisherIdsString));
         urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setRequestMethod("GET");
-        urlConnection.setReadTimeout(10000 /* milliseconds */);
-        urlConnection.setConnectTimeout(15000 /* milliseconds */);
+        urlConnection.setReadTimeout(10000 );
+        urlConnection.setConnectTimeout(15000);
         urlConnection.setDoOutput(true);
         urlConnection.connect();
 

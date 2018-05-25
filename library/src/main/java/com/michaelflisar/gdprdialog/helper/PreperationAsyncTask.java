@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
 import com.michaelflisar.gdprdialog.GDPR;
+import com.michaelflisar.gdprdialog.GDPRConsent;
+import com.michaelflisar.gdprdialog.GDPRConsentState;
 import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 
@@ -54,7 +56,14 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
         }
         T activity = mActivity.get();
         if (activity != null) {
-            activity.onConsentNeedsToBeRequested(result);
+            if (mSetup.checkRequestLocation() && result.getLocation() == GDPRLocation.NOT_IN_EAA) {
+                // user does want to not request consent and consider this as consent given, so we save this here
+                GDPRConsentState consentState = new GDPRConsentState(activity, GDPRConsent.AUTOMATIC_PERSONAL_CONSENT, result.getLocation());
+                GDPR.getInstance().setConsent(consentState);
+                activity.onConsentInfoUpdate(consentState, true);
+            } else {
+                activity.onConsentNeedsToBeRequested(result);
+            }
         }
     }
 }

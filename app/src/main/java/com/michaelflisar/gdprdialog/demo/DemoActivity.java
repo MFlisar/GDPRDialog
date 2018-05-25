@@ -95,8 +95,9 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                     onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
                     break;
                 case PERSONAL_CONSENT:
+                case AUTOMATIC_PERSONAL_CONSENT:
                     Toast.makeText(this, "User accepts PERSONAL ads", Toast.LENGTH_LONG).show();
-                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent().isPersonalConsent());
                     break;
             }
         } else {
@@ -109,8 +110,9 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case NON_PERSONAL_CONSENT_ONLY:
                 case PERSONAL_CONSENT:
+                case AUTOMATIC_PERSONAL_CONSENT:
                     // user restarted activity and consent was already given...
-                    onConsentKnown(consentState.getConsent() == GDPRConsent.PERSONAL_CONSENT);
+                    onConsentKnown(consentState.getConsent().isPersonalConsent());
                     break;
             }
         }

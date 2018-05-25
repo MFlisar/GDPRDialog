@@ -53,7 +53,7 @@ public class GDPRPreperationData {
                 String fieldIsRequestInEaaOrUnknown = context.getString(R.string.gdpr_googles_check_json_field_is_request_in_eea_or_unknown);
                 String fieldCompanies = context.getString(R.string.gdpr_googles_check_json_field_companies);
                 boolean isInEAAOrUnknown = jsonObject.getBoolean(fieldIsRequestInEaaOrUnknown);
-                mLocation = isInEAAOrUnknown ? GDPRLocation.IN_EAA_OR_UNKNOWN : GDPRLocation.NOT_IN_EAA;
+                mLocation = /*isInEAAOrUnknown ? GDPRLocation.IN_EAA_OR_UNKNOWN :*/ GDPRLocation.NOT_IN_EAA;
                 if (jsonObject.has(fieldCompanies)) {
                     String fieldCompanyName = context.getString(R.string.gdpr_googles_check_json_field_company_name);
                     String fieldPolicyUrl = context.getString(R.string.gdpr_googles_check_json_field_policy_url);

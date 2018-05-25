@@ -102,6 +102,10 @@ boolean canCollectPersonalInformation = GDPR.getInstance().canCollectPersonalInf
 
 Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) for a full working example
 
+### Migration
+
+Migrations will be explained in the [release notes](/releases)
+
 ### TODO
 
 * [ ] Localisation ![Localisation](https://img.shields.io/badge/Localisation-4%2F24%20(17%25)-blue.svg)

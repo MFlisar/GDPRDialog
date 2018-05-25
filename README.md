@@ -104,7 +104,7 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 ### Where can I add additional networks?
 
-You can simply do this here: [GDPRDefinitions](https://github.com/MFlisar/GDPRDialog/blob/master/library/src/main/java/com/michaelflisar/gdprdialog/GDPRDefinitions.java). Of course you can always define new networks in project only as well, but if you think you use a service many others do use as well, fell free to add it to the definitions.
+You can simply do this in the [GDPRDefinitions](https://github.com/MFlisar/GDPRDialog/blob/master/library/src/main/java/com/michaelflisar/gdprdialog/GDPRDefinitions.java). Of course you can always define new networks in project only as well, but if you think you use a service many others do use as well, fell free to add it to the definitions.
 
 ### Migration
 

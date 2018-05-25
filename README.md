@@ -100,7 +100,7 @@ int appVersion = consentState.getVersion(); // in which app version has the cons
 boolean canCollectPersonalInformation = GDPR.getInstance().canCollectPersonalInformation(alwaysAllowOutsideEAA);
 ```
 
-Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) for a full working example
+Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) and the [setup](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/SetupActivity.java) for a full working example
 
 ### Migration
 

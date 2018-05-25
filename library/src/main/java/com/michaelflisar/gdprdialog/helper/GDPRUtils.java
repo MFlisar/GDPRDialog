@@ -154,8 +154,8 @@ public class GDPRUtils
     public static String getNetworksString(GDPRNetwork[] networks, Context context, boolean withLinks, boolean showAsList) {
         if (!showAsList) {
             HashSet<String> uniqueNetworks = new HashSet<>();
-            for (GDPRNetwork network : networks) {
-                uniqueNetworks.add(withLinks ? network.getHtmlLink(context, true) : network.getName());
+            for (int i = 0; i < networks.length; i++) {
+                uniqueNetworks.add(withLinks ? networks[i].getHtmlLink(context, true) : networks[i].getName());
             }
             return GDPRUtils.getCommaSeperatedString(context, uniqueNetworks);
         } else {

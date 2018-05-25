@@ -102,6 +102,10 @@ boolean canCollectPersonalInformation = GDPR.getInstance().canCollectPersonalInf
 
 Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/DemoActivity.java) with the [example setups](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/main/java/com/michaelflisar/gdprdialog/demo/SetupActivity.java) for a full working example
 
+### Where can I add additional networks?
+
+You can simply do this here: [GDPRDefinitions](https://github.com/MFlisar/GDPRDialog/blob/master/library/src/main/java/com/michaelflisar/gdprdialog/GDPRDefinitions.java)
+
 ### Migration
 
 Migrations will be explained in the [release notes](https://github.com/MFlisar/GDPRDialog/releases)

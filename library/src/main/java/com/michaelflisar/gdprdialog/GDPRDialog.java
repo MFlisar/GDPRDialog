@@ -103,6 +103,9 @@ public class GDPRDialog extends AppCompatDialogFragment
                         @Override
                         public void onStateChanged(@NonNull View bottomSheet, int newState) {
                             if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                                while (mViewManager.getCurrentStep() != 0) {
+                                    mViewManager.handleBackPress();
+                                }
                                 dismiss();
                             }
                         }

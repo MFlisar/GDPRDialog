@@ -31,8 +31,7 @@ public class GDPRDefinitions {
                 .withIsIntermediator("https://support.google.com/admob/answer/9012903");
         AERSERV = new GDPRNetwork(context, "AerServ", "https://www.aerserv.com/privacy-policy", R.string.gdpr_type_ads, true);
         INMOBI = new GDPRNetwork(context, "InMobi", "https://www.inmobi.com/privacy-policy-for-eea", R.string.gdpr_type_ads, true);
-        MOPUB = new GDPRNetwork(context, "MoPub", "https://www.mopub.com/legal/privacy", R.string.gdpr_type_ads, true)
-                .withIsIntermediator("https://developers.mopub.com/docs/mediation/supported-mediation-partners");
+        MOPUB = new GDPRNetwork(context, "MoPub", "https://www.mopub.com/legal/privacy", R.string.gdpr_type_ads, true);
         VUNGLE = new GDPRNetwork(context, "InMobi", "https://vungle.com/privacy", R.string.gdpr_type_ads, true);
         ADCOLONY = new GDPRNetwork(context, "AdColony", "https://www.adcolony.com/privacy-policy", R.string.gdpr_type_ads, true);
         UNITY = new GDPRNetwork(context, "Unity", "https://unity3d.com/legal/privacy-policy", R.string.gdpr_type_ads, true);

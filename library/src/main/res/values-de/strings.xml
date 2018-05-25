@@ -39,6 +39,7 @@
     <string name="gdpr_age_not_confirmed">Bestätige bitte dein Alter bevor du fortfährst</string>
     <string name="gdpr_free">kostenlos</string>
     <string name="gdpr_cheap">billig</string>
+    <string name="gdpr_show_me_partners">Partner anzeigen</string>
 
     <!-- ************** -->
     <!-- Networks types -->

@@ -375,6 +375,10 @@ public class GDPRViewManager {
         }
     }
 
+    public int getCurrentStep() {
+        return mCurrentStep;
+    }
+
     private void justifyText(TextView textView) {
         // does not work good enough, check out this: https://github.com/MFlisar/GDPRDialog/issues/21
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

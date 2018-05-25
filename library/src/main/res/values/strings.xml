@@ -44,7 +44,7 @@
     <string name="gdpr_age_not_confirmed">Please confirm your age before continuing</string>
     <string name="gdpr_free">free</string>
     <string name="gdpr_cheap">cheap</string>
-    <string name="gdpr_show_me_partners">show me their partners</string>
+    <string name="gdpr_show_me_partners">Show partners</string>
 
     <!-- ************** -->
     <!-- Networks types -->

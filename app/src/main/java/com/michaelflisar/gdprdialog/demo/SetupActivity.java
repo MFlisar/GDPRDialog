@@ -70,6 +70,10 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                         .withCheckRequestLocation(true)
                         .withAllowNoConsent(true);
                 break;
+            case 6:
+                Intent intent = new Intent(this, MinimalDemoActivity.class);
+                startActivity(intent);
+                return;
         }
 
         Intent intent = new Intent(this, DemoActivity.class);

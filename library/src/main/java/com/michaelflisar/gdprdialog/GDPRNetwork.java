@@ -92,9 +92,9 @@ public class GDPRNetwork implements Parcelable {
         return mSubNetworks;
     }
 
-    public String getHtmlLink(Context context, boolean withSubNetworks) {
+    public String getHtmlLink(Context context, boolean withIntermediatorLink, boolean withSubNetworks) {
         String link = "<a href=\"" + mLink + "\">" + mName + "</a>";
-        if (mIsIntermediatorWithSubNetworks && mSubNetworksLink != null) {
+        if (withIntermediatorLink && mIsIntermediatorWithSubNetworks && mSubNetworksLink != null) {
             link += " (<a href=\"" + mSubNetworksLink + "\">" + context.getString(R.string.gdpr_show_me_partners) + "</a>)";
         }
         if (withSubNetworks && mSubNetworks.size() > 0) {

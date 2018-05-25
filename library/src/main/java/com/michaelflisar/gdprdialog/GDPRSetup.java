@@ -210,7 +210,7 @@ public class GDPRSetup implements Parcelable {
     // ----------------
 
     public final String getNetworksCommaSeperated(Context context, boolean withLinks) {
-        return GDPRUtils.getNetworksString(mNetworks, context, withLinks, true);
+        return GDPRUtils.getNetworksString(mNetworks, context, withLinks);
     }
 
     public final String policyLink() {

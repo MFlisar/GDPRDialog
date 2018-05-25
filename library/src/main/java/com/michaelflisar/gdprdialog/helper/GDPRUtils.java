@@ -151,34 +151,27 @@ public class GDPRUtils
         return types;
     }
 
-    public static String getNetworksString(GDPRNetwork[] networks, Context context, boolean withLinks, boolean showAsList) {
-        if (!showAsList) {
-            HashSet<String> uniqueNetworks = new HashSet<>();
-            for (int i = 0; i < networks.length; i++) {
-                uniqueNetworks.add(withLinks ? networks[i].getHtmlLink(context, true) : networks[i].getName());
-            }
-            return GDPRUtils.getCommaSeperatedString(context, uniqueNetworks);
-        } else {
-            StringBuilder sb = new StringBuilder("");
-            HashSet<String> uniqueNetworks = new HashSet<>();
-            for (int i = 0; i < networks.length; i++) {
-                String text = withLinks ? networks[i].getHtmlLink(context, true) : networks[i].getName();
-                if (uniqueNetworks.add(text)) {
-                    if (sb.length() > 0) {
-                        sb.append("<br>");
-                    }
+    public static String getNetworksString(GDPRNetwork[] networks, Context context, boolean withLinks) {
+        StringBuilder sb = new StringBuilder("");
+        HashSet<String> uniqueNetworks = new HashSet<>();
+        for (int i = 0; i < networks.length; i++) {
+            boolean addIntermediatorLink = networks[i].getSubNetworks().size() == 0;
+            String text = withLinks ? networks[i].getHtmlLink(context, addIntermediatorLink,true) : networks[i].getName();
+            if (uniqueNetworks.add(text)) {
+                if (sb.length() > 0) {
+                    sb.append("<br>");
+                }
+                sb
+                        .append("&#8226;&nbsp;")
+                        .append(withLinks ? networks[i].getHtmlLink(context, addIntermediatorLink, false) : networks[i].getName());
+                for (GDPRSubNetwork subNetwork : networks[i].getSubNetworks()) {
                     sb
-                            .append("&#8226;&nbsp;")
-                            .append(withLinks ? networks[i].getHtmlLink(context, false) : networks[i].getName());
-                    for (GDPRSubNetwork subNetwork : networks[i].getSubNetworks()) {
-                        sb
-                                .append("<br>")
-                                .append("&nbsp;&nbsp;&#9702;&nbsp;")
-                                .append(withLinks ? subNetwork.getHtmlLink() : subNetwork.getName());
-                    }
+                            .append("<br>")
+                            .append("&nbsp;&nbsp;&#9702;&nbsp;")
+                            .append(withLinks ? subNetwork.getHtmlLink() : subNetwork.getName());
                 }
             }
-            return sb.toString();
         }
+        return sb.toString();
     }
 }

@@ -11,12 +11,13 @@ This library offers following:
 
 * supports `DialogFragment` or `BottomSheetDialogFragment` style 
 * supports multiple services, already defined ones are AdMob and Firebase
+* supports intermediator services as well, also supports to load your ad providers from AdMob
 * supports custom service definitions
 * is set up via a setup class that allows you to select which possibilities you give the user - any combination of *personalised ads*, *non personalised ads* and *paid version*, depending on what you want. Examples:
   * allow *personalised ads* or *paid version* only
   * allow *personalised ads*, *non personalised ads* or *paid or free version*
   * combine whatever you want here...
-* optionally enable google's check if user is requesting consent form within the EAA (be careful when using this)
+* optionally enable google's check if user is requesting consent form within the EAA and even use fallback methods to using `TelephoneManager` and/or `TimeZone`
 * optionally adds a `Checkbox` for age confirmation
 * uses soft opt in by default if you offer e.g. a *personalised ads* vs *non personalised ads* version
 * it closes the app if the user did not give any consent (i.e if the user clicks the back button in the dialog)
@@ -27,10 +28,7 @@ This library offers following:
 
 Such dialogs must always be adjusted to the use case in general, although this one should be fine in most cases. 
 
-Checkout following to find out more:
-
-* Some infos I wrote together: [My GDPR ReadMe](README-GDPR.md)
-* Check out this page for more: [EU GDPR](https://www.eugdpr.org/)
+Checkout following to find out more: [EU GDPR](https://www.eugdpr.org/)
 
 *Just to make this clear, I'm no lawyer, so don't take anything I write for granted! It should be fine, but there is no guarantee.*
 

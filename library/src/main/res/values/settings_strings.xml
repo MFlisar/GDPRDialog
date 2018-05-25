@@ -15,7 +15,10 @@
     <!-- Google -->
     <!-- ****** -->
 
-    <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors</string>
+    <string name="gdpr_googles_check_is_eaa_request_url" translatable="false">http://adservice.google.com/getconfig/pubvendors?pubs=%1$s&amp;es=2</string>
     <string name="gdpr_googles_check_json_field_is_request_in_eea_or_unknown" translatable="false">is_request_in_eea_or_unknown</string>
+    <string name="gdpr_googles_check_json_field_companies" translatable="false">companies</string>
+    <string name="gdpr_googles_check_json_field_company_name" translatable="false">company_name</string>
+    <string name="gdpr_googles_check_json_field_policy_url" translatable="false">policy_url</string>
 
 </resources>

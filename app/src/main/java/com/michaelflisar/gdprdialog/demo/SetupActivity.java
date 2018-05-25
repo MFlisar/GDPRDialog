@@ -98,6 +98,10 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                     mBinding.cbCheckRequestLocationFallbackTelephonyManager.isChecked(),
                     mBinding.cbCheckRequestLocationFallbackTimeZone.isChecked());
         }
+        if (mBinding.cbLoadAdMobProviders.isChecked()) {
+            setup.withLoadAdMobNetworks(mBinding.etPublisherId.getText().toString());
+        }
+
         if (mBinding.cbBottomSheet.isChecked()) {
             setup.withBottomSheet(true);
         }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.michaelflisar.gdprdialog.helper.GDPRPreperationData;
 import com.michaelflisar.gdprdialog.helper.GDPRViewManager;
 
 public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGDPRCallback
@@ -59,7 +60,7 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
     }
 
     @Override
-    public void onConsentNeedsToBeRequested(GDPRLocation location) {
+    public void onConsentNeedsToBeRequested(GDPRPreperationData data) {
         // ignored in activity, must be checked before starting the activity!
     }
 

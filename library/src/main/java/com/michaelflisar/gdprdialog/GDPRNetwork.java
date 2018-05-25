@@ -3,6 +3,7 @@ package com.michaelflisar.gdprdialog;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import com.michaelflisar.gdprdialog.helper.GDPRUtils;
 
@@ -41,14 +42,14 @@ public class GDPRNetwork implements Parcelable {
         return this;
     }
 
-    public GDPRNetwork addSubNetworks(GDPRSubNetwork... networks) {
-        mSubNetworks.addAll(Arrays.asList(networks));
+    public GDPRNetwork addSubNetworks(List<GDPRSubNetwork> networks) {
+        mSubNetworks.addAll(networks);
         return this;
     }
 
     public GDPRNetwork copy() {
         return new GDPRNetwork(mName, mLink, mType, mIsCollection, mIsAdNetwork)
-                .addSubNetworks(mSubNetworks.toArray(new GDPRSubNetwork[mSubNetworks.size()]));
+                .addSubNetworks(mSubNetworks);
     }
 
     // ----------------
@@ -91,6 +92,19 @@ public class GDPRNetwork implements Parcelable {
             link += ")";
         }
         return link;
+    }
+
+    @Override
+    public String toString() {
+        String s = mName;
+        s += " [";
+        List<String> values = new ArrayList<>();
+        for (GDPRSubNetwork subNetwork : mSubNetworks) {
+            values.add(subNetwork.getName());
+        }
+        s += TextUtils.join(",", values);
+        s += "]";
+        return s;
     }
 
     // ----------------

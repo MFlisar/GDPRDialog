@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 import com.michaelflisar.gdprdialog.helper.GDPRUtils;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class GDPRSetup implements Parcelable {
@@ -15,7 +16,6 @@ public class GDPRSetup implements Parcelable {
     private boolean mAllowNonPersonalisedForPaidVersion = false;
     private boolean mAllowNoConsent = false;
     private GDPRNetwork mNetworks[];
-
     private boolean mExplicitAgeConfirmation = false;
     private boolean mExplicitNonPersonalisedConfirmation = false;
     private boolean mNoToolbarTheme = false;
@@ -27,6 +27,7 @@ public class GDPRSetup implements Parcelable {
     private int mCustomDialogTheme = 0;
     private boolean mShortQuestion = false;
     private boolean mShowNetworksAsList = false;
+    private ArrayList<String> mPublisherIds = new ArrayList<>();
 
     public GDPRSetup(GDPRNetwork... networks) {
         if (networks == null || networks.length == 0) {
@@ -147,6 +148,20 @@ public class GDPRSetup implements Parcelable {
     }
 
     /**
+     * ad some publisher ids to load your all your active AdMob networks from google
+     *
+     * @param publisherIds your publisher id(s)
+     * @return this
+     */
+    public GDPRSetup withLoadAdMobNetworks(String... publisherIds) {
+        mPublisherIds.clear();
+        for (int i = 0; i < publisherIds.length; i++) {
+            mPublisherIds.add(publisherIds[i]);
+        }
+        return this;
+    }
+
+    /**
      * use this to show the dialog as a bottom sheet
      *
      * @param useBottomSheet true to use the bottom sheet style, false otherwise
@@ -254,6 +269,14 @@ public class GDPRSetup implements Parcelable {
         return mCheckRequestLocation;
     }
 
+    public final boolean needsPreperation() {
+        return mCheckRequestLocation || mPublisherIds.size() > 0;
+    }
+
+    public final ArrayList<String> getPublisherIds() {
+        return mPublisherIds;
+    }
+
     public final boolean forceSelection() {
         return mForceSelection;
     }
@@ -324,6 +347,7 @@ public class GDPRSetup implements Parcelable {
         mUseLocationCheckTelephonyManagerFallback = in.readByte() == 1;
         mUseLocationCheckTimezoneFallback = in.readByte() == 1;
         mShowNetworksAsList = in.readByte() == 1;
+        in.readStringList(mPublisherIds);
     }
 
     @Override
@@ -349,6 +373,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mUseLocationCheckTelephonyManagerFallback ? (byte) 1 : 0);
         dest.writeByte(mUseLocationCheckTimezoneFallback ? (byte) 1 : 0);
         dest.writeByte(mShowNetworksAsList ? (byte) 1 : 0);
+        dest.writeStringList(mPublisherIds);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

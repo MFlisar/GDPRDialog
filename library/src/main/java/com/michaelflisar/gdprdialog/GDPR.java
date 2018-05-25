@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
-import com.michaelflisar.gdprdialog.helper.CheckLocationAsyncTask;
+import com.michaelflisar.gdprdialog.helper.PreperationAsyncTask;
+import com.michaelflisar.gdprdialog.helper.GDPRPreperationData;
 
 public class GDPR {
     // ------------------
@@ -32,7 +33,7 @@ public class GDPR {
 
     private GDPRConsentState mCachedConsent = null;
 
-    private CheckLocationAsyncTask mCheckLocationAsyncTask = null;
+    private PreperationAsyncTask mPreperationAsyncTask = null;
 
     // ------------------
     // GDPR - init
@@ -53,7 +54,7 @@ public class GDPR {
     /**
      * Checks if you must require consent from the user
      * <p>
-     * it will call the callback {@link IGDPRCallback#onConsentNeedsToBeRequested(GDPRLocation)} function if the
+     * it will call the callback {@link IGDPRCallback#onConsentNeedsToBeRequested(GDPRPreperationData)} function if the
      * user should be asked for consent, otherwise it will directly call the {@link IGDPRCallback#onConsentInfoUpdate(GDPRConsentState, boolean)} function
      *
      * @param activity the callback activity that implements the callback interface
@@ -80,11 +81,11 @@ public class GDPR {
         }
 
         if (checkConsent) {
-            if (setup.checkRequestLocation()) {
-                mCheckLocationAsyncTask = new CheckLocationAsyncTask(activity, setup);
-                mCheckLocationAsyncTask.execute();
+            if (setup.needsPreperation()) {
+                mPreperationAsyncTask = new PreperationAsyncTask(activity, setup);
+                mPreperationAsyncTask.execute();
             } else {
-                activity.onConsentNeedsToBeRequested(GDPRLocation.UNDEFINED);
+                activity.onConsentNeedsToBeRequested(new GDPRPreperationData().setManuallyUndefined());
             }
         } else {
             // nothing to do, we already know the users decision!
@@ -94,9 +95,9 @@ public class GDPR {
     }
 
     public void cancelRunningTasks() {
-        if (mCheckLocationAsyncTask != null) {
-            mCheckLocationAsyncTask.cancel(true);
-            mCheckLocationAsyncTask = null;
+        if (mPreperationAsyncTask != null) {
+            mPreperationAsyncTask.cancel(true);
+            mPreperationAsyncTask = null;
         }
     }
 
@@ -185,11 +186,11 @@ public class GDPR {
     public interface IGDPRCallback {
         /**
          * Callback to request consent
-         * Comes after the flag in settings have been checked and (depednign on the GDPRSetup), the users location has been checked
+         * Comes after the flag in settings have been checked and (depending on the GDPRSetup) the users location and other data has been checked
          *
-         * @param location location from where the request is comming from
+         * @param data location and other data
          */
-        void onConsentNeedsToBeRequested(GDPRLocation location);
+        void onConsentNeedsToBeRequested(GDPRPreperationData data);
 
         /**
          * Callback that will inform about which consent state the user has selected

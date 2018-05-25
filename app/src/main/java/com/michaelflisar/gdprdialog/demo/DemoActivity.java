@@ -14,6 +14,7 @@ import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.demo.app.App;
 import com.michaelflisar.gdprdialog.demo.gdpr.DemoGDPRActivity;
+import com.michaelflisar.gdprdialog.helper.GDPRPreperationData;
 
 public class DemoActivity extends AppCompatActivity implements View.OnClickListener, GDPR.IGDPRCallback
 {
@@ -56,12 +57,24 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     // --------------------
 
     @Override
-    public void onConsentNeedsToBeRequested(GDPRLocation location) {
+    public void onConsentNeedsToBeRequested(GDPRPreperationData data) {
+
+        // eventually add the admob providers to the AdMob network
+        // we add it to the FIRST admob network we find...
+        if (data.getSubNetworks().size() > 0) {
+            for (int i = 0; i < mSetup.networks().length; i++) {
+                if (mSetup.networks()[i].getName().equals(getString(R.string.gdpr_network_admob))) {
+                    mSetup.networks()[i].addSubNetworks(data.getSubNetworks());
+                    break;
+                }
+            }
+        }
+
         if (App.USE_ACTIVITY) {
-            DemoGDPRActivity.startActivityForResult(this, mSetup, location, DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
+            DemoGDPRActivity.startActivityForResult(this, mSetup, data.getLocation(), DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
         } else {
             // default: forward the result and show the dialog
-            GDPR.getInstance().showDialog(this, mSetup, location);
+            GDPR.getInstance().showDialog(this, mSetup, data.getLocation());
         }
     }
 

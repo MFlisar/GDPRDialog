@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize" />
+        android:minHeight="?attr/actionBarSize"/>
 
     <LinearLayout
         android:id="@+id/llPages"
@@ -46,7 +46,7 @@
                         android:text="@string/gdpr_dialog_text1"
                         android:textAlignment="center"
                         android:textSize="@dimen/gdpr_text_size_small"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvText2"
@@ -54,7 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/gdpr_dialog_text2_singular"
-                        android:textSize="@dimen/gdpr_text_size_normal" />
+                        android:textSize="@dimen/gdpr_text_size_normal"/>
 
                     <TextView
                         android:id="@+id/tvQuestion"
@@ -66,7 +66,7 @@
                         android:text="@string/gdpr_dialog_question"
                         android:textAlignment="center"
                         android:textSize="@dimen/gdpr_text_size_big"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvText3"
@@ -74,7 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/gdpr_dialog_text3"
-                        android:textSize="@dimen/gdpr_text_size_normal" />
+                        android:textSize="@dimen/gdpr_text_size_normal"/>
 
                 </LinearLayout>
 
@@ -85,12 +85,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/gdpr_small_padding"
-                android:text="@string/gdpr_dialog_confirm_age" />
+                android:text="@string/gdpr_dialog_confirm_age"/>
 
             <include
                 layout="@layout/gdpr_dialog_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -107,16 +107,24 @@
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_text_info1" />
+                android:text="@string/gdpr_dialog_text_info1"/>
 
-            <TextView
-                android:id="@+id/tvServiceInfo2"
-                style="@style/TextAppearance.AppCompat.Small"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginBottom="@dimen/gdpr_small_padding"
                 android:layout_marginTop="@dimen/gdpr_small_padding"
-                android:text="" />
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/tvServiceInfo2"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+
+            </ScrollView>
 
             <TextView
                 android:id="@+id/tvServiceInfo3"
@@ -124,14 +132,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/gdpr_small_padding"
-                android:text="@string/gdpr_dialog_text_info3" />
+                android:text="@string/gdpr_dialog_text_info3"/>
 
             <Button
                 android:id="@+id/btBack"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_back" />
+                android:text="@string/gdpr_dialog_back"/>
 
         </LinearLayout>
 
@@ -149,14 +157,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/gdpr_small_padding"
-                android:text="@string/gdpr_dialog_text_explicit_non_personalised_info1" />
+                android:text="@string/gdpr_dialog_text_explicit_non_personalised_info1"/>
 
             <Button
                 android:id="@+id/btAgreeNonPersonalised"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/gdpr_dialog_agree" />
+                android:text="@string/gdpr_dialog_agree"/>
 
         </LinearLayout>
 

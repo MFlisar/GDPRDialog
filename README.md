@@ -104,7 +104,7 @@ Check out the [demo](https://github.com/MFlisar/GDPRDialog/blob/master/app/src/m
 
 ### Migration
 
-Migrations will be explained in the [release notes](/releases)
+Migrations will be explained in the [release notes](https://github.com/MFlisar/GDPRDialog/releases)
 
 ### TODO
 

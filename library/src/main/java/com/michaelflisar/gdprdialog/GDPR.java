@@ -2,6 +2,7 @@ package com.michaelflisar.gdprdialog;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.michaelflisar.gdprdialog.helper.PreperationAsyncTask;
@@ -163,7 +164,12 @@ public class GDPR {
     }
 
     public void showDialog(AppCompatActivity activity, GDPRSetup setup, GDPRLocation location) {
-        if (activity.getSupportFragmentManager().findFragmentByTag(GDPRDialog.class.getName()) == null) {
+        FragmentManager fm = activity.getSupportFragmentManager();
+        if (fm.isStateSaved()) {
+            // in this case, activity will be destroyed, we ignore this call
+            return;
+        }
+        if (fm.findFragmentByTag(GDPRDialog.class.getName()) == null) {
             GDPRDialog dlg = GDPRDialog.newInstance(setup, location);
             dlg.show(activity.getSupportFragmentManager(), GDPRDialog.class.getName());
         }

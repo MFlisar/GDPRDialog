@@ -35,15 +35,12 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
 
         if (mSetup.checkRequestLocation()) {
             // eventually use fallback methods
-            if (result.hasError() && mSetup.useLocationCheckTelephonyManagerFallback())
-            {
-                if (activity != null)
-                {
+            if (result.hasError() && mSetup.useLocationCheckTelephonyManagerFallback()) {
+                if (activity != null) {
                     result.setManually(GDPRUtils.isRequestInEAAOrUnknownViaTelephonyManagerCheck(activity.getApplicationContext()));
                 }
             }
-            if (result.hasError() && mSetup.useLocationCheckTimezoneFallback())
-            {
+            if (result.hasError() && mSetup.useLocationCheckTimezoneFallback()) {
                 result.setManually(GDPRUtils.isRequestInEAAOrUnknownViaTimezoneCheck());
             }
         }

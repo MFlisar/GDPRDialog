@@ -36,8 +36,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GDPRViewManager {
+
     public static String ARG_SETUP = "ARG_SETUP";
     public static String ARG_LOCATION = "ARG_LOCATION";
+
+    public static Bundle createBundle(GDPRSetup setup, GDPRLocation location) {
+        Bundle args = new Bundle();
+        args.putParcelable(GDPRViewManager.ARG_SETUP, setup);
+        args.putInt(GDPRViewManager.ARG_LOCATION, location.ordinal());
+        return args;
+    }
 
     private static String KEY_STEP = "KEY_STEP";
     private static String KEY_AGE_CONFIRMED = "KEY_AGE_CONFIRMED";

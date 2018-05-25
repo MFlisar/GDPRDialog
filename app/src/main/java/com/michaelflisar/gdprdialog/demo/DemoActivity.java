@@ -58,7 +58,7 @@ public class DemoActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onConsentNeedsToBeRequested(GDPRLocation location) {
         if (App.USE_ACTIVITY) {
-            DemoGDPRActivity.startActivityForResult(this, mSetup, DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
+            DemoGDPRActivity.startActivityForResult(this, mSetup, location, DemoGDPRActivity.class, DEMO_GDPR_ACTIVITY_REQUEST_CODE);
         } else {
             // default: forward the result and show the dialog
             GDPR.getInstance().showDialog(this, mSetup, location);

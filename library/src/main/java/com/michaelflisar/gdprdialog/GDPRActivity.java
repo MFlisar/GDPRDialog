@@ -16,9 +16,9 @@ public abstract class GDPRActivity extends AppCompatActivity implements GDPR.IGD
 {
     private GDPRViewManager mViewManager;
 
-    public static <T extends  GDPRActivity> void startActivityForResult(Activity activity, GDPRSetup setup, Class<T> clazz, int requestCode) {
+    public static <T extends  GDPRActivity> void startActivityForResult(Activity activity, GDPRSetup setup, GDPRLocation location, Class<T> clazz, int requestCode) {
         Intent intent = new Intent(activity, clazz);
-        intent.putExtra(GDPRViewManager.ARG_SETUP, setup);
+        intent.replaceExtras(GDPRViewManager.createBundle(setup, location));
         activity.startActivityForResult(intent, requestCode);
     }
 

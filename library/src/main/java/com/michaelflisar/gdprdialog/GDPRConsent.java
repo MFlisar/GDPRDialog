@@ -18,7 +18,7 @@ public enum GDPRConsent {
      */
     PERSONAL_CONSENT,
     /**
-     * user consent automatically set because of request location: personal data usage is possible
+     * user consent automatically set because of request location was checked and location was outside of the EAA: personal data usage is possible
      */
     AUTOMATIC_PERSONAL_CONSENT;
 

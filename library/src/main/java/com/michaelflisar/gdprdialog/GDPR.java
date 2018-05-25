@@ -118,30 +118,12 @@ public class GDPR {
     /**
      * return whether we can use personal informations or not
      *
-     * @param alwaysAllowOutsideEAA if true, any user who's consent was requested from outside the EAA will implicitly be handled as a user who has given consent, otherwise we check the explicit user decision
      * @return true, if we can collect personal informations, false otherwise
      */
-    public boolean canCollectPersonalInformation(boolean alwaysAllowOutsideEAA) {
-        GDPRConsentState consentState = getConsentState();
-        GDPRConsent consent = consentState.getConsent();
-
+    public boolean canCollectPersonalInformation() {
         // if user has given consent for personal data usage, we can collect personal information
-        if (consent.isPersonalConsent()) {
+        if (getConsentState().getConsent().isPersonalConsent()) {
             return true;
-        }
-
-        // eventually check request location
-        if (alwaysAllowOutsideEAA) {
-            GDPRLocation location = consentState.getLocation();
-
-            // If we are not in a GDPR region, we can freely collect user data
-            if (location.equals(GDPRLocation.NOT_IN_EAA)) {
-                return true;
-            }
-            // in any other case (we don't know the location or request was from putside the EAA), we can not collect personal data
-            else {
-                return false;
-            }
         } else {
             return false;
         }

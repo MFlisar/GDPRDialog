@@ -1,166 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical"
         tools:context=".DemoActivity">
 
-        <ScrollView
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            app:tabMode="fixed"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/sv1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="match_parent">
 
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Style"/>
+                    android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/cbShowAsActivity"
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select your demo setup"/>
+
+                    <RadioGroup
+                        android:id="@+id/rgSelection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/rb1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="4dp"
+                            android:text="[1.1 - ADS OR PAY]\nOffer a freemium app with AdMob ads where ads can be removed by buying the app (no location check)"/>
+
+                        <RadioButton
+                            android:id="@+id/rb2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:text="[1.2 - ADS OR PAY]\nSame as 1.1 but WITH location check"/>
+
+                        <RadioButton
+                            android:id="@+id/rb3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:text="[1.3 - ADS OR PAY]\nSame as 1.2 but additionally all AdMob networks are loaded from server and are displayed as list instead of csv\nEnter a publisher ID to load ad networks from:"/>
+
+                        <EditText
+                            android:id="@+id/etPublisherIdCommon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Provide your publisher ID"/>
+
+                        <RadioButton
+                            android:id="@+id/rb4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:text="[2.1 - FREE]\nOffer a free app where the user can select between personalised ads or non personalised ads and location check is enabled"/>
+
+                        <RadioButton
+                            android:id="@+id/rb5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:text="[2.2 - FREE]\nSame as 2.1 but also allow the user to use the app without any consent (no ads)"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/sv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Use an activity instead of a dialog"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <CheckBox
-                    android:id="@+id/cbShowServicesAsList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Show all networks as a list in the details view"/>
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Style"/>
 
-                <CheckBox
-                    android:id="@+id/cbBottomSheet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Use a bottom sheet for the dialog style"/>
+                    <CheckBox
+                        android:id="@+id/cbShowAsActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Use an activity instead of a dialog"/>
 
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Used services"/>
+                    <CheckBox
+                        android:id="@+id/cbShowServicesAsList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Show all networks as a list in the details view"/>
 
-                <CheckBox
-                    android:id="@+id/cbAdServiceOnly"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Only use ad service (deselect to use more services)"/>
+                    <CheckBox
+                        android:id="@+id/cbBottomSheet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Use a bottom sheet for the dialog style"/>
 
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AdMob"/>
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Used services"/>
 
-                <CheckBox
-                    android:id="@+id/cbAddSomeSubNetworksToAdMob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Add a list of defined ad technology providers to AdMob service"/>
+                    <CheckBox
+                        android:id="@+id/cbAdServiceOnly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Only use ad service (deselect to use more services)"/>
 
-                <CheckBox
-                    android:id="@+id/cbLoadAdMobProviders"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Load ad technology providers for AdMob from Google"/>
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="AdMob"/>
 
-                <EditText
-                    android:id="@+id/etPublisherId"
-                    android:hint="Provide your publisher ID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <CheckBox
+                        android:id="@+id/cbAddSomeSubNetworksToAdMob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add a list of defined ad technology providers to AdMob service"/>
 
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Paid version"/>
+                    <CheckBox
+                        android:id="@+id/cbLoadAdMobProviders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Load ad technology providers for AdMob from Google"/>
 
-                <CheckBox
-                    android:id="@+id/cbHasPaidVersion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Has paid version"/>
+                    <EditText
+                        android:id="@+id/etPublisherId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Provide your publisher ID"/>
 
-                <CheckBox
-                    android:id="@+id/cbAllowNonPersonalisedForPaidVersions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="Allow to use non personalised data"/>
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Paid version"/>
 
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="No consent handling"/>
+                    <CheckBox
+                        android:id="@+id/cbHasPaidVersion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Has paid version"/>
 
-                <CheckBox
-                    android:id="@+id/cbAllowNoConsent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Allow to use the app without any consent (either personal nor non personal)"/>
+                    <CheckBox
+                        android:id="@+id/cbAllowNonPersonalisedForPaidVersions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:text="Allow to use non personalised data"/>
 
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Special settings"/>
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No consent handling"/>
 
-                <CheckBox
-                    android:id="@+id/cbAskNonPersonalised"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Explicitly ask for consent for non personalised data usage"/>
+                    <CheckBox
+                        android:id="@+id/cbAllowNoConsent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Allow to use the app without any consent (either personal nor non personal)"/>
 
-                <CheckBox
-                    android:id="@+id/cbAskForAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Explicitly ask for users age confirmation"/>
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Special settings"/>
 
-                <CheckBox
-                    android:id="@+id/cbCheckRequestLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Check if request location is in EAA"/>
+                    <CheckBox
+                        android:id="@+id/cbAskNonPersonalised"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Explicitly ask for consent for non personalised data usage"/>
 
-                <CheckBox
-                    android:id="@+id/cbCheckRequestLocationFallbackTelephonyManager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:enabled="false"
-                    android:text="Use TelephonyManager as fallback method to find out location"/>
+                    <CheckBox
+                        android:id="@+id/cbAskForAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Explicitly ask for users age confirmation"/>
 
-                <CheckBox
-                    android:id="@+id/cbCheckRequestLocationFallbackTimeZone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:enabled="false"
-                    android:text="Use TimeZone as fallback method to find out location"/>
+                    <CheckBox
+                        android:id="@+id/cbCheckRequestLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Check if request location is in EAA"/>
 
-                <CheckBox
-                    android:id="@+id/cbForceSelection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Force user to make a choice"/>
+                    <CheckBox
+                        android:id="@+id/cbCheckRequestLocationFallbackTelephonyManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:enabled="false"
+                        android:text="Use TelephonyManager as fallback method to find out location"/>
 
-            </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/cbCheckRequestLocationFallbackTimeZone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:enabled="false"
+                        android:text="Use TimeZone as fallback method to find out location"/>
 
-        </ScrollView>
+                    <CheckBox
+                        android:id="@+id/cbForceSelection"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Force user to make a choice"/>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </android.support.v4.view.ViewPager>
 
         <Button
             android:id="@+id/btTest"

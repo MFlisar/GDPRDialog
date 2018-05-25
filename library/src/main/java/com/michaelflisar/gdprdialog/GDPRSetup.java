@@ -108,7 +108,7 @@ public class GDPRSetup implements Parcelable {
     }
 
     /**
-     * use thsi if you use an app theme without a toolbar as actionbar
+     * use this if you use an app theme without a toolbar as actionbar
      *
      * @param noToolbarTheme true, if you use a theme without a toolbar, false otherwise
      * @return this

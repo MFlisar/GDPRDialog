@@ -30,7 +30,7 @@ Such dialogs must always be adjusted to the use case in general, although this o
 
 Checkout following to find out more: [EU GDPR](https://www.eugdpr.org/)
 
-*Just to make this clear, I'm no lawyer, so don't take anything I write for granted! It should be fine, but there is no guarantee.*
+*Just to make this clear, I'm no lawyer and I can't guarantee that you are save if you use this library.*
 
 ### Gradle (via [JitPack.io](https://jitpack.io/))
 

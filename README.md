@@ -63,7 +63,7 @@ GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB); // add all networks you 
     .withExplicitAgeConfirmation(true)
     .withCheckRequestLocation(true)
     .withCheckRequestLocationFallback(true /* fallback to TelephoneManager */, true /* fallback to TimeZone */)
-    .withCheckRequestLocationTimeouts(int readTimeout, int connectTimeout)
+    .withCheckRequestLocationTimeouts(readTimeout, connectTimeout)
     .withBottomSheet(true)
     .withForceSelection(true)
     .withCustomDialogTheme(theme)

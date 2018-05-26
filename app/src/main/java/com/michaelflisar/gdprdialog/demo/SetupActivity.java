@@ -71,6 +71,11 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                         .withAllowNoConsent(true);
                 break;
             case 6:
+                setup = new GDPRSetup(admob)
+                        .withCheckRequestLocation(true)
+                        .withPaidVersion(true);
+                break;
+            case 7:
                 Intent intent = new Intent(this, MinimalDemoActivity.class);
                 startActivity(intent);
                 return;

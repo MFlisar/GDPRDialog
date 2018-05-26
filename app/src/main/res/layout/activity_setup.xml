@@ -92,7 +92,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="4dp"
-                            android:text="[3 - MINIMUM EXAMPLE]\nStart the minimum example activity" />
+                            android:text="[3 - PERSONAL ADS OR ADS OR PAY]\nOffer a paid app with AdMob ads where ads can be removed by buying the app as well as you can opt out from personal ads to non personal ads (with location check)" />
+
+                        <RadioButton
+                            android:id="@+id/rb7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:text="[4 - MINIMUM EXAMPLE]\nStart the minimum example activity" />
 
                     </RadioGroup>
 

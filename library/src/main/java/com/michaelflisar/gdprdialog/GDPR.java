@@ -87,6 +87,7 @@ public class GDPR {
                 break;
             case NON_PERSONAL_CONSENT_ONLY:
             case PERSONAL_CONSENT:
+            case AUTOMATIC_PERSONAL_CONSENT:
                 break;
         }
 

@@ -35,13 +35,13 @@ Checkout following to find out more: [EU GDPR](https://www.eugdpr.org/)
 ### Gradle (via [JitPack.io](https://jitpack.io/))
 
 1. add jitpack to your project's `build.gradle`:
-```groovy
+```java
 repositories {
     maven { url "https://jitpack.io" }
 }
 ```
 2. add the compile statement to your module's `build.gradle`:
-```groovy
+```java
 dependencies {
      implementation 'com.github.MFlisar:GDPRDialog:1.0'
 }
@@ -50,11 +50,11 @@ dependencies {
 ### Usage
 
 1. Init the singleton in your application
-```groovy
+```java
 GDPR.getInstance().init(this);
 ```
 2. call following in your activities `onCreate`
-```groovy
+```java
 GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB); // add all networks you use to the constructor, signature is `GDPRSetup(GDPRNetwork... adNetworks)`
     // everything is optional, but you should at least provide your policy
     .withPrivacyPolicy("www.my-privacy-policy.com")
@@ -74,7 +74,7 @@ GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB); // add all networks you 
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity
-```groovy
+```java
 public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCallback {
     @Override
     public void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState) {
@@ -90,7 +90,7 @@ public class ExampleActivity extends AppCompatActivity implements GDPR.IGDPRCall
 }
 ```
 4. Other usages
-```groovy
+```java
 // get current consent anywhere in the app after user has given consent
 GDPRConsentState consentState = GDPR.getInstance().getConsentState();
 // get location, time, app version of given consent

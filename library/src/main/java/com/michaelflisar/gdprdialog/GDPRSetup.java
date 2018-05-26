@@ -28,6 +28,9 @@ public class GDPRSetup implements Parcelable {
     private boolean mShortQuestion = false;
     private ArrayList<String> mPublisherIds = new ArrayList<>();
 
+    private int mConnectionReadTimeout = 3000;
+    private int mConnectionConnectTimeout = 5000;
+
     public GDPRSetup(GDPRNetwork... networks) {
         if (networks == null || networks.length == 0) {
             throw new RuntimeException("At least one ad network must be provided, otherwise this setup does not make any sense.");
@@ -134,15 +137,28 @@ public class GDPRSetup implements Parcelable {
      * use this to check the user's location and check if it is within the EAA before requesting consent
      * this uses a homepage form google and parses it's result
      *
-     * @param checkRequestLocation                     true to check location, false otherwise
+     * does not have any effect if {@link GDPRSetup#withCheckRequestLocation(boolean)} was not enabled!
+     *
      * @param useLocationCheckTelephonyManagerFallback true to check location via the {@link android.telephony.TelephonyManager} if main check fails, false otherwise
      * @param useLocationCheckTimezoneFallback         true to check location via the {@link java.util.TimeZone} if main check fails, false otherwise
      * @return this
      */
-    public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation, boolean useLocationCheckTelephonyManagerFallback, boolean useLocationCheckTimezoneFallback) {
-        mCheckRequestLocation = checkRequestLocation;
+    public GDPRSetup withCheckRequestLocationFallbacks(boolean useLocationCheckTelephonyManagerFallback, boolean useLocationCheckTimezoneFallback) {
         mUseLocationCheckTelephonyManagerFallback = useLocationCheckTelephonyManagerFallback;
         mUseLocationCheckTimezoneFallback = useLocationCheckTimezoneFallback;
+        return this;
+    }
+
+    /**
+     * sets the connection timeouts for retrieving the location
+     *
+     * @param readTimeout timeout for reading
+     * @param connectTimeout timeout for connection
+     * @return this
+     */
+    public GDPRSetup withCheckRequestLocationTimeouts(int readTimeout, int connectTimeout) {
+        mConnectionReadTimeout = readTimeout;
+        mConnectionConnectTimeout = connectTimeout;
         return this;
     }
 
@@ -285,6 +301,14 @@ public class GDPRSetup implements Parcelable {
         return mUseLocationCheckTimezoneFallback;
     }
 
+    public int connectionReadTimeout() {
+        return mConnectionReadTimeout;
+    }
+
+    public int connectionConnectTimeout() {
+        return mConnectionConnectTimeout;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mNetworks) {
             if (network.isAdNetwork()) {
@@ -331,6 +355,8 @@ public class GDPRSetup implements Parcelable {
         mUseLocationCheckTelephonyManagerFallback = in.readByte() == 1;
         mUseLocationCheckTimezoneFallback = in.readByte() == 1;
         in.readStringList(mPublisherIds);
+        mConnectionReadTimeout = in.readInt();
+        mConnectionConnectTimeout = in.readInt();
     }
 
     @Override
@@ -356,6 +382,8 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mUseLocationCheckTelephonyManagerFallback ? (byte) 1 : 0);
         dest.writeByte(mUseLocationCheckTimezoneFallback ? (byte) 1 : 0);
         dest.writeStringList(mPublisherIds);
+        dest.writeInt(mConnectionReadTimeout);
+        dest.writeInt(mConnectionConnectTimeout);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

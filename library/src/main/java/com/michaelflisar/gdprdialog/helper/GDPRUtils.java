@@ -3,29 +3,22 @@ package com.michaelflisar.gdprdialog.helper;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
+import android.util.TypedValue;
 
 import com.michaelflisar.gdprdialog.GDPRNetwork;
 import com.michaelflisar.gdprdialog.GDPRSubNetwork;
 import com.michaelflisar.gdprdialog.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.TimeZone;
 
-public class GDPRUtils
-{
+public class GDPRUtils {
     /**
      * get the current app version code
      *
@@ -128,7 +121,7 @@ public class GDPRUtils
      * returns a comma seperated string of all items passed in; additioanlly it uses the seperator and last seperator defined in the resources
      *
      * @param context context used to get seperators
-     * @param values a list of values that should be concatenated
+     * @param values  a list of values that should be concatenated
      * @return the comma seperated string
      */
     public static String getCommaSeperatedString(Context context, Collection<String> values) {
@@ -156,7 +149,7 @@ public class GDPRUtils
         HashSet<String> uniqueNetworks = new HashSet<>();
         for (int i = 0; i < networks.length; i++) {
             boolean addIntermediatorLink = networks[i].getSubNetworks().size() == 0;
-            String text = withLinks ? networks[i].getHtmlLink(context, addIntermediatorLink,true) : networks[i].getName();
+            String text = withLinks ? networks[i].getHtmlLink(context, addIntermediatorLink, true) : networks[i].getName();
             if (uniqueNetworks.add(text)) {
                 if (sb.length() > 0) {
                     sb.append("<br>");
@@ -174,4 +167,24 @@ public class GDPRUtils
         }
         return sb.toString();
     }
+
+//    public static int getThemeColor(Context context, int attr) {
+//        TypedValue typedValue = new TypedValue();
+//        Resources.Theme theme = context.getTheme();
+//        theme.resolveAttribute(attr, typedValue, true);
+////        @ColorInt int color = typedValue.data;
+//        TypedArray arr = context.obtainStyledAttributes(typedValue.data, new int[]{attr});
+//        @ColorInt int color = arr.getColor(0, -1);
+//        arr.recycle();
+//        return color;
+//    }
+
+//    public static boolean isColorDark(int color) {
+//        double darkness = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255;
+//        if (darkness < 0.5) {
+//            return false; // It's a light color
+//        } else {
+//            return true; // It's a dark color
+//        }
+//    }
 }

@@ -44,11 +44,11 @@ public class GDPRPreperationData {
         return mError;
     }
 
-    public void load(Context context, ArrayList<String> publisherIds) {
+    public void load(Context context, ArrayList<String> publisherIds, int readTimeout, int connectTimeout) {
         reset();
         JSONObject jsonObject = null;
         try {
-            jsonObject = loadJSON(context, publisherIds);
+            jsonObject = loadJSON(context, publisherIds, readTimeout, connectTimeout);
             if (jsonObject != null) {
                 String fieldIsRequestInEaaOrUnknown = context.getString(R.string.gdpr_googles_check_json_field_is_request_in_eea_or_unknown);
                 String fieldCompanies = context.getString(R.string.gdpr_googles_check_json_field_companies);
@@ -102,15 +102,15 @@ public class GDPRPreperationData {
         mError = false;
     }
 
-    private JSONObject loadJSON(Context context, ArrayList<String> publisherIds) throws IOException, JSONException {
+    private JSONObject loadJSON(Context context, ArrayList<String> publisherIds, int readTimeout, int connectTimeout) throws IOException, JSONException {
         String publisherIdsString = TextUtils.join(",", publisherIds);
 
         HttpURLConnection urlConnection = null;
         URL url = new URL(context.getString(R.string.gdpr_googles_check_is_eaa_request_url, publisherIdsString));
         urlConnection = (HttpURLConnection) url.openConnection();
         urlConnection.setRequestMethod("GET");
-        urlConnection.setReadTimeout(10000 );
-        urlConnection.setConnectTimeout(15000);
+        urlConnection.setReadTimeout(readTimeout );
+        urlConnection.setConnectTimeout(connectTimeout);
         urlConnection.setDoOutput(true);
         urlConnection.connect();
 

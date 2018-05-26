@@ -9,6 +9,7 @@ import com.michaelflisar.gdprdialog.helper.PreperationAsyncTask;
 import com.michaelflisar.gdprdialog.helper.GDPRPreperationData;
 
 public class GDPR {
+
     // ------------------
     // Singleton
     // ------------------

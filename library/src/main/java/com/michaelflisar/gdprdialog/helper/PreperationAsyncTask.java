@@ -28,7 +28,7 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
         T activity = mActivity.get();
         if (activity != null) {
             GDPRPreperationData data = new GDPRPreperationData();
-            data.load(activity, mSetup.getPublisherIds());
+            data.load(activity, mSetup.getPublisherIds(), mSetup.connectionReadTimeout(), mSetup.connectionConnectTimeout());
             if (!mSetup.checkRequestLocation()) {
                 data.updateLocation(GDPRLocation.UNDEFINED);
             }

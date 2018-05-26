@@ -62,7 +62,8 @@ setup.withPrivacyPolicy("www.my-privacy-policy.com");   // provide your own priv
 // setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
 // setup.withExplicitAgeConfirmation(true);
 // setup.withCheckRequestLocation(true);
-// setup.withCheckRequestLocation(true, true /* fallback to TelephoneManager */, true /* fallback to TimeZone */);
+// setup.withCheckRequestLocationFallback(true /* fallback to TelephoneManager */, true /* fallback to TimeZone */);
+// setup.withCheckRequestLocationTimeouts(int readTimeout, int connectTimeout);
 // setup.withBottomSheet(true);
 // setup.withForceSelection(true);
 // setup.withCustomDialogTheme(theme);

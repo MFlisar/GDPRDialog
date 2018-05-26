@@ -131,10 +131,12 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
             setup.withExplicitAgeConfirmation(true);
         }
         if (mBinding.cbCheckRequestLocation.isChecked()) {
-            setup.withCheckRequestLocation(
-                    true,
-                    mBinding.cbCheckRequestLocationFallbackTelephonyManager.isChecked(),
-                    mBinding.cbCheckRequestLocationFallbackTimeZone.isChecked());
+            setup
+                    .withCheckRequestLocation(true)
+                    .withCheckRequestLocationFallbacks(
+                            mBinding.cbCheckRequestLocationFallbackTelephonyManager.isChecked(),
+                            mBinding.cbCheckRequestLocationFallbackTimeZone.isChecked()
+                    );
         }
         if (mBinding.cbLoadAdMobProviders.isChecked()) {
             setup.withLoadAdMobNetworks(mBinding.etPublisherId.getText().toString());
@@ -196,8 +198,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         mBinding.tabs.setupWithViewPager(mBinding.viewpager);
     }
 
-    class ViewPagerAdapter extends PagerAdapter
-    {
+    class ViewPagerAdapter extends PagerAdapter {
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             int resId = 0;
             switch (position) {

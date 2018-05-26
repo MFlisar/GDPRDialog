@@ -2,6 +2,8 @@ package com.michaelflisar.gdprdialog.helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -131,6 +133,7 @@ public class GDPRViewManager {
         mPages.add(view.findViewById(R.id.llPage2));
 
         // general page
+        Button btAgree = view.findViewById(R.id.btAgree);
         final Button btDisagree = view.findViewById(R.id.btDisagree);
         final Button btNoConsentAtAll = view.findViewById(R.id.btNoConsentAtAll);
         final TextView tvQuestion = view.findViewById(R.id.tvQuestion);
@@ -139,7 +142,8 @@ public class GDPRViewManager {
         final TextView tvText3 = view.findViewById(R.id.tvText3);
         final CheckBox cbAge = view.findViewById(R.id.cbAge);
 
-        initGeneralTexts(activity, tvQuestion, tvText1, tvText2, tvText3, cbAge, btDisagree, btNoConsentAtAll);
+        initGeneralTexts(activity, tvQuestion, tvText1, tvText2, tvText3, cbAge);
+        initButtons(activity, btAgree, btDisagree, btNoConsentAtAll, tvText1.getTextColors().getDefaultColor());
 
         // info page
         final TextView tvServiceInfo1 = view.findViewById(R.id.tvServiceInfo1);
@@ -154,7 +158,7 @@ public class GDPRViewManager {
         // Step 0 - general page
         // ------------------
 
-        view.findViewById(R.id.btAgree).setOnClickListener(v -> {
+        btAgree.setOnClickListener(v -> {
             if (!isAgeValid(view, true) || !isAllConsentGiven(view, true)) {
                 return;
             }
@@ -162,7 +166,7 @@ public class GDPRViewManager {
             onFinish(activity, onFinishViewListener);
         });
 
-        view.findViewById(R.id.btDisagree).setOnClickListener(v -> {
+        btDisagree.setOnClickListener(v -> {
             if (!isAgeValid(view, false) || !isAllConsentGiven(view, false)) {
                 return;
             }
@@ -218,7 +222,50 @@ public class GDPRViewManager {
         });
     }
 
-    private void initGeneralTexts(Activity activity, TextView tvQuestion, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge, Button btDisagree, Button btNoConsentAtAll) {
+    private void initButtons(Activity activity, Button btAgree, Button btDisagree, Button btNoConsentAtAll, int textColor) {
+
+        if (mSetup.hasPaidVersion()) {
+            if (!mSetup.allowNonPersonalisedForPaidVersion()) {
+                btDisagree.setText(R.string.gdpr_dialog_disagree_buy_app);
+            } else {
+                btNoConsentAtAll.setText(R.string.gdpr_dialog_disagree_buy_app);
+            }
+        }
+
+        boolean hideAdsInfo = !mSetup.containsAdNetwork();
+        if (mSetup.hasPaidVersion()) {
+            if (!mSetup.allowNonPersonalisedForPaidVersion()) {
+                btDisagree.setText(R.string.gdpr_dialog_disagree_buy_app);
+                hideAdsInfo = true;
+            }
+        }
+
+        if (!hideAdsInfo) {
+            // upper case + bold button style is removed and handled manually
+            String textButton = activity.getString(R.string.gdpr_dialog_disagree_no_thanks).toUpperCase() + "\n";
+            String textInfo = activity.getString(R.string.gdpr_dialog_disagree_info);
+            SpannableString spannableText = new SpannableString(textButton + textInfo);
+            spannableText.setSpan(new StyleSpan(Typeface.BOLD), 0, textButton.length(), 0);
+            spannableText.setSpan(new RelativeSizeSpan(0.8f), textButton.length(), spannableText.length(), 0);
+            spannableText.setSpan(new ForegroundColorSpan(textColor), textButton.length(), spannableText.length(), 0);
+            btDisagree.setAllCaps(false);
+            btDisagree.setTypeface(Typeface.DEFAULT);
+            btDisagree.setText(spannableText);
+        }
+
+//        int textColorPrimary = GDPRUtils.getThemeColor(context, android.R.attr.textColorPrimary);
+//        boolean textColorIsDark = GDPRUtils.isColorDark(textColorPrimary);
+//
+//        int btBackgorundColor = textColorIsDark ? Color.DKGRAY : Color.WHITE;
+//        int btForegorundColor = textColorIsDark ? Color.WHITE : Color.BLACK;
+//
+//        btDisagree.getBackground().setColorFilter(btForegorundColor, PorterDuff.Mode.MULTIPLY);
+//        btNoConsentAtAll.getBackground().setColorFilter(btForegorundColor, PorterDuff.Mode.MULTIPLY);
+//        btDisagree.setTextColor(btBackgorundColor);
+//        btNoConsentAtAll.setTextColor(btBackgorundColor);
+    }
+
+    private void initGeneralTexts(Activity activity, TextView tvQuestion, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge) {
 
         String question = activity.getString(R.string.gdpr_dialog_question, (mSetup.containsAdNetwork() && !mSetup.shortQuestion()) ? activity.getString(R.string.gdpr_dialog_question_ads_info) : "");
         tvQuestion.setText(Html.fromHtml(question));
@@ -255,28 +302,6 @@ public class GDPRViewManager {
             tvText3.setVisibility(View.GONE);
             cbAge.setChecked(mAgeConfirmed);
             cbAge.setOnCheckedChangeListener((buttonView, isChecked) -> mAgeConfirmed = isChecked);
-        }
-
-        if (mSetup.hasPaidVersion()) {
-            if (!mSetup.allowNonPersonalisedForPaidVersion()) {
-                btDisagree.setText(R.string.gdpr_dialog_disagree_buy_app);
-            } else {
-                btNoConsentAtAll.setText(R.string.gdpr_dialog_disagree_buy_app);
-            }
-        } else {
-            boolean hideAdsInfo = !mSetup.containsAdNetwork() || (mSetup.hasPaidVersion() && !mSetup.allowNonPersonalisedForPaidVersion());
-            if (!hideAdsInfo) {
-                // upper case + bold button style is removed and handled manually
-                String textButton = activity.getString(R.string.gdpr_dialog_disagree_no_thanks).toUpperCase() + "\n";
-                String textInfo = activity.getString(R.string.gdpr_dialog_disagree_info);
-                SpannableString spannableText = new SpannableString(textButton + textInfo);
-                spannableText.setSpan(new StyleSpan(Typeface.BOLD), 0, textButton.length(), 0);
-                spannableText.setSpan(new RelativeSizeSpan(0.8f), textButton.length(), spannableText.length(), 0);
-                spannableText.setSpan(new ForegroundColorSpan(tvText1.getTextColors().getDefaultColor()), textButton.length(), spannableText.length(), 0);
-                btDisagree.setAllCaps(false);
-                btDisagree.setTypeface(Typeface.DEFAULT);
-                btDisagree.setText(spannableText);
-            }
         }
 
         //GDPRUtils.justify(tvText1);

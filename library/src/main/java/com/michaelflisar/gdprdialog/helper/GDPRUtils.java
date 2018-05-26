@@ -10,6 +10,7 @@ import android.support.annotation.ColorInt;
 import android.telephony.TelephonyManager;
 import android.util.TypedValue;
 
+import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRNetwork;
 import com.michaelflisar.gdprdialog.GDPRSubNetwork;
 import com.michaelflisar.gdprdialog.R;
@@ -72,6 +73,7 @@ public class GDPRUtils {
             }
         } catch (Exception e) {
             error = true;
+            GDPR.getInstance().getLogger().error("GDPRUtils", "Could not get location from telephony manager via SimCountry", e);
         }
 
 
@@ -89,6 +91,7 @@ public class GDPRUtils {
             }
         } catch (Exception e) {
             error = true;
+            GDPR.getInstance().getLogger().error("GDPRUtils", "Could not load location from network via NetworkCountry", e);
         }
 
         return error ? null : false;
@@ -112,6 +115,7 @@ public class GDPRUtils {
             }
         } catch (Exception e) {
             error = true;
+            GDPR.getInstance().getLogger().error("GDPRUtils", "Could not get location from TimeZone", e);
         }
 
         return error ? null : false;

@@ -35,6 +35,8 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
             result = data;
         }
 
+        GDPR.getInstance().getLogger().debug("PreperationAsyncTask", String.format("GDPRPreperationData: %s", result.logString()));
+
         if (mSetup.checkRequestLocation()) {
             // eventually use fallback methods
             if (result.hasError() && mSetup.useLocationCheckTelephonyManagerFallback()) {

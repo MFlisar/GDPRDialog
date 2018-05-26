@@ -32,6 +32,7 @@ public class GDPR {
 
     private Context mContext = null;
     private SharedPreferences mPreferences = null;
+    private ILogger mLogger = new EmptyLogger();
 
     private GDPRConsentState mCachedConsent = null;
 
@@ -41,12 +42,19 @@ public class GDPR {
     // GDPR - init
     // ------------------
 
-    public void init(Context context) {
+    public GDPR init(Context context) {
         mContext = context.getApplicationContext();
         mPreferences = context.getSharedPreferences(context.getString(R.string.gdpr_preference_file), Context.MODE_PRIVATE);
 
         // Init networks
         GDPRDefinitions.init(context);
+
+        return this;
+    }
+
+    public GDPR initLogger(ILogger logger) {
+        mLogger = logger;
+        return this;
     }
 
     // ------------------
@@ -81,6 +89,8 @@ public class GDPR {
             case PERSONAL_CONSENT:
                 break;
         }
+
+        mLogger.debug("GDPR", String.format("CheckConsent: %b, Current consent: %s", checkConsent, consent));
 
         if (checkConsent) {
             if (setup.needsPreperation()) {
@@ -158,6 +168,10 @@ public class GDPR {
         }
     }
 
+    public ILogger getLogger() {
+        return mLogger;
+    }
+
     // ------------------
     // private helper functions
     // ------------------
@@ -169,7 +183,7 @@ public class GDPR {
     }
 
     // ------------------
-    // Callback interfaces
+    // Interfaces
     // ------------------
 
     public interface IGDPRCallback {
@@ -188,5 +202,29 @@ public class GDPR {
          * @param isNewState   flag that indicates if a old consent state was loaded or if this is the new consent state a user have just given
          */
         void onConsentInfoUpdate(GDPRConsentState consentState, boolean isNewState);
+    }
+
+    public interface ILogger {
+
+        void debug(String tag, String info);
+
+        void error(String tag, String msg, Throwable tr);
+    }
+
+    // ------------------
+    // classes
+    // ------------------
+
+    class EmptyLogger implements ILogger {
+
+        @Override
+        public void debug(String tag, String info) {
+
+        }
+
+        @Override
+        public void error(String tag, String msg, Throwable tr) {
+
+        }
     }
 }

@@ -68,6 +68,7 @@ public class GDPRViewManager {
     private final List<LinearLayout> mPages = new ArrayList<>();
 
     public GDPRViewManager(Bundle args, Bundle savedInstanceState) {
+        args.setClassLoader(GDPRSetup.class.getClassLoader());
         mSetup = args.getParcelable(ARG_SETUP);
         mLocation = GDPRLocation.values()[args.getInt(ARG_LOCATION)];
         if (savedInstanceState != null) {

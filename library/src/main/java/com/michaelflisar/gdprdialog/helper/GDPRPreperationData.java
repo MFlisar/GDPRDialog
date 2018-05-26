@@ -3,6 +3,7 @@ package com.michaelflisar.gdprdialog.helper;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSubNetwork;
 import com.michaelflisar.gdprdialog.R;
@@ -69,7 +70,7 @@ public class GDPRPreperationData {
         } catch (Exception e) {
             reset();
             mError = true;
-            e.printStackTrace();
+            GDPR.getInstance().getLogger().error("GDPRPreperationData::load", "Could not load location from network", e);
         }
     }
 
@@ -124,5 +125,9 @@ public class GDPRPreperationData {
         br.close();
 
         return new JSONObject(sb.toString());
+    }
+
+    public String logString() {
+        return String.format("{ %s - SubNetworks: %d | Error: %b | ManualSet: %b }", mLocation.name(), mSubNetworks.size(), mError, mManualSet);
     }
 }

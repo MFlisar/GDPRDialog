@@ -50,6 +50,6 @@ public class GDPRConsentState {
     }
 
     public String logString() {
-        return String.format("%s [Location: %s | Date: %s | Version: %d]", mConsent.name(), mLocation.name(), new Date(mDate).toLocaleString(), mVersion);
+        return String.format("{ %s [Location: %s | Date: %s | Version: %d]}", mConsent.name(), mLocation.name(), new Date(mDate).toLocaleString(), mVersion);
     }
 }

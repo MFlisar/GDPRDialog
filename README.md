@@ -55,7 +55,7 @@ GDPR.getInstance().init(this);
 ```
 2. call following in your activities `onCreate`
 ```java
-GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB); // add all networks you use to the constructor, signature is `GDPRSetup(GDPRNetwork... adNetworks)`
+GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB) // add all networks you use to the constructor, signature is `GDPRSetup(GDPRNetwork... adNetworks)`
     // everything is optional, but you should at least provide your policy
     .withPrivacyPolicy("www.my-privacy-policy.com")
     .withAllowNoConsent(true)

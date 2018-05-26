@@ -19,11 +19,19 @@ import com.michaelflisar.gdprdialog.helper.GDPRViewManager;
 
 public class GDPRDialog extends AppCompatDialogFragment
 {
+    public static String ARG_PARENT_MUST_IMPLEMENT_CALLBACK = "ARG_PARENT_MUST_IMPLEMENT_CALLBACK";
+
+    private boolean mForceActivityToImplementCallback;
     private GDPRViewManager mViewManager;
 
     public static GDPRDialog newInstance(GDPRSetup setup, GDPRLocation location) {
+        return newInstance(setup, location, true);
+    }
+
+    public static GDPRDialog newInstance(GDPRSetup setup, GDPRLocation location, boolean forceActivityToImplementCallback) {
         GDPRDialog dlg = new GDPRDialog();
         Bundle args = GDPRViewManager.createBundle(setup, location);
+        args.putBoolean(ARG_PARENT_MUST_IMPLEMENT_CALLBACK, forceActivityToImplementCallback);
         dlg.setArguments(args);
         return dlg;
     }
@@ -32,13 +40,14 @@ public class GDPRDialog extends AppCompatDialogFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setCancelable(false);
-        mViewManager.setCallback(getActivity());
+        mViewManager.setCallback(getActivity(), mForceActivityToImplementCallback);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewManager = new GDPRViewManager(getArguments(), savedInstanceState);
+        mForceActivityToImplementCallback = getArguments().getBoolean(ARG_PARENT_MUST_IMPLEMENT_CALLBACK);
     }
 
     @Override

@@ -96,10 +96,18 @@ public class GDPRViewManager {
     }
 
     public void setCallback(Object callback) {
+        setCallback(callback, true);
+    }
+
+    public void setCallback(Object callback, boolean forceActivityToImplementCallback) {
         try {
             mCallback = (GDPR.IGDPRCallback) callback;
         } catch (ClassCastException e) {
-            throw new ClassCastException("Parent activity must implement GDPR.IGDPRCallback interface!");
+            if (forceActivityToImplementCallback) {
+                throw new ClassCastException("Parent activity must implement GDPR.IGDPRCallback interface!");
+            } else {
+                GDPR.getInstance().getLogger().debug("GDPRViewManager", "Activity is not implementing callback, but this is explicitly demanded by the user");
+            }
         }
     }
 
@@ -362,7 +370,9 @@ public class GDPRViewManager {
         if (mSelectedConsent != null) {
             GDPRConsentState consentState = new GDPRConsentState(context, mSelectedConsent, mLocation);
             GDPR.getInstance().setConsent(consentState);
-            mCallback.onConsentInfoUpdate(consentState, true);
+            if (mCallback != null) {
+                mCallback.onConsentInfoUpdate(consentState, true);
+            }
         }
         onFinishView.onFinishView();
     }

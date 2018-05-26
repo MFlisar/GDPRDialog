@@ -90,7 +90,7 @@ public class GDPR {
                 break;
         }
 
-        mLogger.debug("GDPR", String.format("CheckConsent: %b, Current consent: %s", checkConsent, consent));
+        mLogger.debug("GDPR", String.format("CheckConsent: %b, Current consent: %s", checkConsent, consent.logString()));
 
         if (checkConsent) {
             if (setup.needsPreperation()) {

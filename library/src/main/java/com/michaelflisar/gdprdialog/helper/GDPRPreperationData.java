@@ -128,6 +128,6 @@ public class GDPRPreperationData {
     }
 
     public String logString() {
-        return String.format("{ %s - SubNetworks: %d | Error: %b | ManualSet: %b }", mLocation.name(), mSubNetworks.size(), mError, mManualSet);
+        return String.format("{ Location: %s | SubNetworks: %d | Error: %b | ManualSet: %b }", mLocation.name(), mSubNetworks.size(), mError, mManualSet);
     }
 }

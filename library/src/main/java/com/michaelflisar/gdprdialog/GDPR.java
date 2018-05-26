@@ -164,14 +164,30 @@ public class GDPR {
 
     public void showDialog(AppCompatActivity activity, GDPRSetup setup, GDPRLocation location) {
         FragmentManager fm = activity.getSupportFragmentManager();
-        if (fm.isStateSaved()) {
-            // in this case, activity will be destroyed, we ignore this call
+        if (fm.findFragmentByTag(GDPRDialog.class.getName()) != null) {
+            // dialog already exists, it either is already shown or will be shown automatically if activity is recreated
             return;
         }
-        if (fm.findFragmentByTag(GDPRDialog.class.getName()) == null) {
-            GDPRDialog dlg = GDPRDialog.newInstance(setup, location);
-            dlg.show(activity.getSupportFragmentManager(), GDPRDialog.class.getName());
+        try {
+            if (fm.isStateSaved()) {
+                // in this case, activity will be destroyed, we ignore this call
+                return;
+            }
+            showDialog(fm, activity, setup, location);
+        } catch (NoSuchMethodError e) {
+            // Support Library Version < 26.1.0 is used, isStateSaved is not yet existing...
+            // we just catch the exception and ignore it
+            try {
+                showDialog(fm, activity, setup, location);
+            } catch (IllegalStateException e2) {
+                // ignored, activity is probably just being destroyed...
+            }
         }
+    }
+
+    private void showDialog(FragmentManager fm, AppCompatActivity activity, GDPRSetup setup, GDPRLocation location) {
+        GDPRDialog dlg = GDPRDialog.newInstance(setup, location);
+        dlg.show(fm, GDPRDialog.class.getName());
     }
 
     public ILogger getLogger() {

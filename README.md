@@ -56,20 +56,21 @@ GDPR.getInstance().init(this);
 2. call following in your activities `onCreate`
 ```groovy
 GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB); // add all networks you use to the constructor, signature is `GDPRSetup(GDPRNetwork... adNetworks)`
-setup.withPrivacyPolicy("www.my-privacy-policy.com");   // provide your own privacy policy, optional but very recommended
-// optionally change setup (read their java docs for more detailed explanations if necessary)
-// setup.withAllowNoConsent(true);
-// setup.withPaidVersion(allowNonPersonalisedOptionAsWell);
-// setup.withExplicitAgeConfirmation(true);
-// setup.withCheckRequestLocation(true);
-// setup.withCheckRequestLocationFallback(true /* fallback to TelephoneManager */, true /* fallback to TimeZone */);
-// setup.withCheckRequestLocationTimeouts(int readTimeout, int connectTimeout);
-// setup.withBottomSheet(true);
-// setup.withForceSelection(true);
-// setup.withCustomDialogTheme(theme);
-// setup.withShortQuestion(true);
-// setup.withLoadAdMobNetworks(publisherId(s))
-// setup.withNoToolbarTheme(noToolbarTheme)
+    // everything is optional, but you should at least provide your policy
+    .withPrivacyPolicy("www.my-privacy-policy.com")
+    .withAllowNoConsent(true)
+    .withPaidVersion(allowNonPersonalisedOptionAsWell)
+    .withExplicitAgeConfirmation(true)
+    .withCheckRequestLocation(true)
+    .withCheckRequestLocationFallback(true /* fallback to TelephoneManager */, true /* fallback to TimeZone */)
+    .withCheckRequestLocationTimeouts(int readTimeout, int connectTimeout)
+    .withBottomSheet(true)
+    .withForceSelection(true)
+    .withCustomDialogTheme(theme)
+    .withShortQuestion(true)
+    .withLoadAdMobNetworks(publisherId(s))
+    .withNoToolbarTheme(noToolbarTheme)
+;
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);
 ```
 3. implement the `GDPR.IGDPRCallback` in your activity

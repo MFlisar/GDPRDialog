@@ -90,7 +90,7 @@ public class GDPR {
                 break;
         }
 
-        mLogger.debug("GDPR", String.format("CheckConsent: %b, Current consent: %s", checkConsent, consent.logString()));
+        mLogger.debug("GDPR", String.format("consent check needed: %b, current consent: %s", checkConsent, consent.logString()));
 
         if (checkConsent) {
             if (setup.needsPreperation()) {
@@ -147,13 +147,18 @@ public class GDPR {
 
     public boolean setConsent(GDPRConsentState consentState) {
         mCachedConsent = consentState;
-        return mPreferences
+
+        boolean success = mPreferences
                 .edit()
                 .putInt(mContext.getString(R.string.gdpr_preference), consentState.getConsent().ordinal())
                 .putInt(mContext.getString(R.string.gdpr_preference_is_in_eea_or_unknown), consentState.getLocation().ordinal())
                 .putLong(mContext.getString(R.string.gdpr_preference_date), consentState.getDate())
                 .putInt(mContext.getString(R.string.gdpr_preference_app_version), consentState.getVersion())
                 .commit();
+
+        mLogger.debug("GDPR", String.format("consent saved: %s, success: %b", consentState.logString(), success));
+
+        return success;
     }
 
     public void showDialog(AppCompatActivity activity, GDPRSetup setup, GDPRLocation location) {

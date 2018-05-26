@@ -107,6 +107,9 @@ public class GDPR {
         }
     }
 
+    /**
+     * cancels running task, i.e. the task that checks the location and/or loads the admob networks from the internet
+     */
     public void cancelRunningTasks() {
         if (mPreperationAsyncTask != null) {
             mPreperationAsyncTask.cancel(true);
@@ -114,6 +117,11 @@ public class GDPR {
         }
     }
 
+    /**
+     * returns the current consent state, i.e. the last one given by the user or the default unknown consent state
+     *
+     * @return the consent state
+     */
     public GDPRConsentState getConsentState() {
         checkIsInitialised();
 
@@ -141,11 +149,20 @@ public class GDPR {
         }
     }
 
+    /**
+     * resets the current consent state to the undefined consent state
+     */
     public void resetConsent() {
         checkIsInitialised();
         setConsent(new GDPRConsentState());
     }
 
+    /**
+     * sets the current consent state and persists it in the preferences
+     *
+     * @param consentState the consent state to save
+     * @return true, if consent state was saved successfully, false otherwise
+     */
     public boolean setConsent(GDPRConsentState consentState) {
         mCachedConsent = consentState;
 
@@ -162,6 +179,13 @@ public class GDPR {
         return success;
     }
 
+    /**
+     * shows the consent dialog
+     *
+     * @param activity the parent activity of the dialog
+     * @param setup the setup for the dialog
+     * @param location the request location
+     */
     public void showDialog(AppCompatActivity activity, GDPRSetup setup, GDPRLocation location) {
         FragmentManager fm = activity.getSupportFragmentManager();
         if (fm.findFragmentByTag(GDPRDialog.class.getName()) != null) {
@@ -190,6 +214,11 @@ public class GDPR {
         dlg.show(fm, GDPRDialog.class.getName());
     }
 
+    /**
+     * the logger implementation
+     *
+     * @return the logger
+     */
     public ILogger getLogger() {
         return mLogger;
     }
@@ -227,7 +256,7 @@ public class GDPR {
     }
 
     public interface ILogger {
-
+        
         void debug(String tag, String info);
 
         void error(String tag, String msg, Throwable tr);

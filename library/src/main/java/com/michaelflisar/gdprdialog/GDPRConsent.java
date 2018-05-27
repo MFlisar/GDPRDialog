@@ -6,7 +6,7 @@ public enum GDPRConsent {
      */
     UNKNOWN,
     /**
-     * user consent given: he does not accept any usage of personal data
+     * user consent given: he does not accept any usage of personal data nor non personal data
      */
     NO_CONSENT,
     /**

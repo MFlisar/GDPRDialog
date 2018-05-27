@@ -25,6 +25,7 @@ public class GDPRDefinitions {
     public static GDPRNetwork APPBRAIN = null;
     public static GDPRNetwork STARTAPP = null;
     public static GDPRNetwork IRONSOURCE = null;
+    public static GDPRNetwork APPODEAL = null;
 
     // -------------------
     // Others
@@ -35,6 +36,10 @@ public class GDPRDefinitions {
     public static GDPRNetwork FIREBASE_ANALYTICS = null;
     public static GDPRNetwork FLURRY_CRASH = null;
     public static GDPRNetwork FLURRY_ANALYTICS = null;
+    public static GDPRNetwork FIREBASE_CLOUD_MESSAGING = null;
+    public static GDPRNetwork FABRIC_CRASHLYTICS = null;
+    public static GDPRNetwork ONESIGNAL = null;
+    public static GDPRNetwork FABRIC_ANSWERS = null;
 
     public static void init(Context context) {
         // init ad networks
@@ -57,6 +62,8 @@ public class GDPRDefinitions {
         APPBRAIN = new GDPRNetwork(context, "AppBrain", "https://www.appbrain.com/info/help/privacy/index.html", R.string.gdpr_type_ads, true);
         STARTAPP = new GDPRNetwork(context, "StartApp", "https://www.startapp.com/policy/privacy-policy/", R.string.gdpr_type_ads, true);
         IRONSOURCE = new GDPRNetwork(context, "ironSource", "https://developers.ironsrc.com/ironsource-mobile/air/ironsource-mobile-privacy-policy/", R.string.gdpr_type_ads, true);
+        APPODEAL = new GDPRNetwork(context, "Appodeal", "https://www.appodeal.com/privacy-policy", R.string.gdpr_type_ads, true)
+                .withIsIntermediator("https://www.appodeal.com/home/partners-privacy-policies/");
 
         // init others
         String firebase = "Firebase";
@@ -66,5 +73,9 @@ public class GDPRDefinitions {
         FIREBASE_ANALYTICS = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_analytics, false);
         FLURRY_ANALYTICS = new GDPRNetwork(context, "Flurry Analytics", "https://policies.oath.com/us/en/oath/privacy/index.html", R.string.gdpr_type_analytics, false);
         FLURRY_CRASH = new GDPRNetwork(context, "Flurry Crash", "https://policies.oath.com/us/en/oath/privacy/index.html", R.string.gdpr_type_crash, false);
+        FIREBASE_CLOUD_MESSAGING = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_notifications, false);
+        FABRIC_CRASHLYTICS = new GDPRNetwork(context, "Fabric Crashlytics", "https://fabric.io/terms", R.string.gdpr_type_crash, false);
+        ONESIGNAL = new GDPRNetwork(context, "OneSignal", "https://onesignal.com/privacy_policy", R.string.gdpr_type_notifications, false);
+        FABRIC_ANSWERS = new GDPRNetwork(context, "Fabric Answers", "https://fabric.io/terms", R.string.gdpr_type_analytics, false);
     }
 }

@@ -256,7 +256,7 @@ public class GDPR {
     }
 
     public interface ILogger {
-        
+
         void debug(String tag, String info);
 
         void error(String tag, String msg, Throwable tr);

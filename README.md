@@ -43,7 +43,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```java
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:1.2'
+     implementation 'com.github.MFlisar:GDPRDialog:1.2.1'
 }
 ```
 

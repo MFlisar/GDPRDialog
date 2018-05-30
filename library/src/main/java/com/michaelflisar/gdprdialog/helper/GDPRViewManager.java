@@ -420,20 +420,21 @@ public class GDPRViewManager {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //            textView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
 //        } else
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            // not perfect, but better than nothing
-            textView.setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED);
-            // wrap content is not working with this strategy, so we wait for the layout
-            // and find the longest line and use it's width for the textview and then center the layout
-            textView.post(() -> {
-                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams)textView.getLayoutParams();
-                lp.width = (int)getMaxLineWidth(textView); //LinearLayout.LayoutParams.WRAP_CONTENT;
-                lp.gravity = Gravity.CENTER_HORIZONTAL;
-                textView.setLayoutParams(lp);
-            });
-        } else {
-            // sorry, not supported...
-        }
+        // does not work good enough either, check out this: https://github.com/MFlisar/GDPRDialog/issues/43
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            // not perfect, but better than nothing
+//            textView.setBreakStrategy(Layout.BREAK_STRATEGY_BALANCED);
+//            // wrap content is not working with this strategy, so we wait for the layout
+//            // and find the longest line and use it's width for the textview and then center the layout
+//            textView.post(() -> {
+//                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams)textView.getLayoutParams();
+//                lp.width = (int)getMaxLineWidth(textView); //LinearLayout.LayoutParams.WRAP_CONTENT;
+//                lp.gravity = Gravity.CENTER_HORIZONTAL;
+//                textView.setLayoutParams(lp);
+//            });
+//        } else {
+//            // sorry, not supported...
+//        }
     }
 
     private float getMaxLineWidth(TextView textView) {

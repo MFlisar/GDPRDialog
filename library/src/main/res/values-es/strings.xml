@@ -1,0 +1,59 @@
+<resources>
+
+    <!-- ************************ -->
+    <!-- Dialog - MAIN PAGE TEXTS -->
+    <!-- ************************ -->
+
+    <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
+    <string name="gdpr_dialog_text1">Tu privacidad y la seguridad de tus datos son importantes para nosotros. Mantenemos esta aplicación %1$s usando servicios de terceros.</string>
+    <!-- %1$s is replaced with ONE service's name -->
+    <string name="gdpr_dialog_text2_singular">Usamos %1$s en esta aplicación. Este servicio (incluyendo sus socios) recoge identificadores únicos y otra información personal. Puede cambiar su elección en cualquier momento en la configuración de la aplicación. &lt;a href=\"\">Obtenga más información sobre éste servicio y sus datos personales&lt;/a>.</string>
+    <!-- %1$s is replaced with a LIST of service name -->
+    <string name="gdpr_dialog_text2_plural">Usamos %1$s en esta aplicación. Esos servicios (incluidos sus socios) recopilan identificadores únicos y otros datos personales. Puede cambiar su elección en cualquier momento en la configuración de la aplicación. &lt;a href=\"\">Obtenga más información sobre estos servicio y sus datos personales&lt;/a>.</string>
+    <string name="gdpr_dialog_text3">Al aceptar, usted confirma que es mayor de 16 años.</string>
+    <!-- %1$s is replaced with 'gdpr_dialog_question_ads_info' string if the setup contains an ad network, otherwise with an empty string -->
+    <string name="gdpr_dialog_question">¿Podemos continuar usando sus datos para estos propósitos%1$s?</string>
+    <string name="gdpr_dialog_question_ads_info">\u0020así como también para mostrar anuncios personalizados</string>
+
+    <!-- *********************** -->
+    <!-- Dialog - SUB PAGE TEXTS -->
+    <!-- *********************** -->
+
+    <string name="gdpr_dialog_text_info1">Usamos los siguientes servicios de terceros en esta aplicación:</string>
+    <!-- %1$s is replaced with 'gdpr_dialog_text_info3_privacy_policy_part' if a policy is provided, otherwise with an empty string -->
+    <string name="gdpr_dialog_text_info3">Haga clic en un servicio para verificar su política de privacidad%1$s.</string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020o haz click para ver &lt;a href=\"%1$s\">nuestra política de privacidad&lt;/a></string>
+    <string name="gdpr_dialog_text_explicit_non_personalised_info1">No recopilaremos sus datos para publicidad personalizada. Aunque los anuncios no personalizados no usan identificadores de anuncios móviles para la orientación de anuncios, aún usan identificadores móviles para el límite de frecuencia y los informes agregados de anuncios, así como para combatir el fraude y el abuso.</string>
+
+    <!-- ******************************** -->
+    <!-- Dialog - BUTTONS AND SHORT INFOS -->
+    <!-- ******************************** -->
+
+    <string name="gdpr_dialog_title">Protección de datos</string>
+    <string name="gdpr_dialog_confirm_age">Confirmo que tengo 16 años o más</string>
+    <string name="gdpr_dialog_agree">De acuerdo</string>
+    <string name="gdpr_dialog_disagree_no_thanks">No, gracias</string>
+    <string name="gdpr_dialog_disagree_buy_app">No gracias, quiero comprar la aplicación</string>
+    <string name="gdpr_dialog_close">Cerrar</string>
+    <string name="gdpr_dialog_back">Atrás</string>
+    <string name="gdpr_dialog_disagree_no_ads">Sin anuncios, por favor</string>
+    <string name="gdpr_dialog_disagree_info">Entiendo que aún veré anuncios, pero pueden no ser tan relevantes para mis intereses.</string>
+    <string name="gdpr_last_list_seperator">\u0020y\u0020</string>
+    <string name="gdpr_buy_app">Comprar aplicación</string>
+    <string name="gdpr_withdraw_consent">Retirar consentimiento de protección de datos</string>
+    <string name="gdpr_age_not_confirmed">Por favor confirma tu edad antes de continuar</string>
+    <string name="gdpr_free">gratis</string>
+    <string name="gdpr_cheap">económica</string>
+    <string name="gdpr_show_me_partners">Ver socios</string>
+
+    <!-- ************** -->
+    <!-- Networks types -->
+    <!-- ************** -->
+
+    <string name="gdpr_type_ads">anuncios</string>
+    <string name="gdpr_type_cloud_database">base de datos en la nube</string>
+    <string name="gdpr_type_crash">reporte de fallos</string>
+    <string name="gdpr_type_analytics">reportes analíticos</string>
+    <string name="gdpr_type_notifications">enviar notificaciones</string>
+
+</resources>

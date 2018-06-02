@@ -34,12 +34,15 @@ public class GDPRDefinitions {
     public static GDPRNetwork FIREBASE_DATABASE = null;
     public static GDPRNetwork FIREBASE_CRASH = null;
     public static GDPRNetwork FIREBASE_ANALYTICS = null;
+    public static GDPRNetwork FIREBASE_CLOUD_MESSAGING = null;
     public static GDPRNetwork FLURRY_CRASH = null;
     public static GDPRNetwork FLURRY_ANALYTICS = null;
-    public static GDPRNetwork FIREBASE_CLOUD_MESSAGING = null;
     public static GDPRNetwork FABRIC_CRASHLYTICS = null;
-    public static GDPRNetwork ONESIGNAL = null;
     public static GDPRNetwork FABRIC_ANSWERS = null;
+    public static GDPRNetwork LOCALYTICS_ANALYTICS = null;
+    public static GDPRNetwork LOCALYTICS_MESSAGING = null;
+    public static GDPRNetwork ADOBE_ID = null;
+    public static GDPRNetwork ONESIGNAL = null;
 
     public static void init(Context context) {
         // init ad networks
@@ -71,11 +74,27 @@ public class GDPRDefinitions {
         FIREBASE_DATABASE = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_cloud_database, false);
         FIREBASE_CRASH = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_crash, false);
         FIREBASE_ANALYTICS = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_analytics, false);
-        FLURRY_ANALYTICS = new GDPRNetwork(context, "Flurry Analytics", "https://policies.oath.com/us/en/oath/privacy/index.html", R.string.gdpr_type_analytics, false);
-        FLURRY_CRASH = new GDPRNetwork(context, "Flurry Crash", "https://policies.oath.com/us/en/oath/privacy/index.html", R.string.gdpr_type_crash, false);
         FIREBASE_CLOUD_MESSAGING = new GDPRNetwork(context, firebase, firebaseUrl, R.string.gdpr_type_notifications, false);
-        FABRIC_CRASHLYTICS = new GDPRNetwork(context, "Fabric Crashlytics", "https://fabric.io/terms", R.string.gdpr_type_crash, false);
+
+        String flurry = "Flurry";
+        String flurryUrl = "https://policies.oath.com/us/en/oath/privacy/index.html";
+        FLURRY_ANALYTICS = new GDPRNetwork(context, flurry, flurryUrl, R.string.gdpr_type_analytics, false);
+        FLURRY_CRASH = new GDPRNetwork(context, flurry, flurryUrl, R.string.gdpr_type_crash, false);
+
+        String fabric = "Fabric";
+        String fabricUrl = "https://fabric.io/terms";
+        FABRIC_CRASHLYTICS = new GDPRNetwork(context, fabric, fabricUrl, R.string.gdpr_type_crash, false);
+        FABRIC_ANSWERS = new GDPRNetwork(context, fabric, fabricUrl, R.string.gdpr_type_analytics, false);
+
+        String localytics = "Localytics";
+        String localyticsUrl = "https://www.localytics.com/privacy-policy/";
+        LOCALYTICS_ANALYTICS = new GDPRNetwork(context, localytics, localyticsUrl, R.string.gdpr_type_analytics, false);
+        LOCALYTICS_MESSAGING = new GDPRNetwork(context, localytics, localyticsUrl, R.string.gdpr_type_notifications, false);
+
+        String adobe = "Adobe";
+        String adobeUrl = "https://www.adobe.com/privacy/policy.html";
+        ADOBE_ID = new GDPRNetwork(context, adobe, adobeUrl, R.string.gdpr_type_authorization, false);
+
         ONESIGNAL = new GDPRNetwork(context, "OneSignal", "https://onesignal.com/privacy_policy", R.string.gdpr_type_notifications, false);
-        FABRIC_ANSWERS = new GDPRNetwork(context, "Fabric Answers", "https://fabric.io/terms", R.string.gdpr_type_analytics, false);
     }
 }

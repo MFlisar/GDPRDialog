@@ -68,7 +68,7 @@ GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB) // add all networks you u
     .withForceSelection(true)
     .withCustomDialogTheme(theme)
     .withShortQuestion(true)
-    .withLoadAdMobNetworks(publisherId(s))
+    .withLoadAdMobNetworks(publisherId(s)) // e.g. "pub-0123456789012345"
     .withNoToolbarTheme(noToolbarTheme)
 ;
 GDPR.getInstance().checkIfNeedsToBeShown(this /* extends AppCompatActivity & GDPR.IGDPRCallback */, setup);

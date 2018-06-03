@@ -50,5 +50,6 @@
     <string name="gdpr_type_crash">Absturzberichte</string>
     <string name="gdpr_type_analytics">Analytikberichte</string>
     <string name="gdpr_type_notifications">Benachrichtigungen zu senden</string>
+    <string name="gdpr_type_authorization">Autorisation</string>
 
 </resources>

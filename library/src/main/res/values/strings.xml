@@ -55,5 +55,6 @@
     <string name="gdpr_type_crash">crash reporting</string>
     <string name="gdpr_type_analytics">analytics reporting</string>
     <string name="gdpr_type_notifications">sending notifications</string>
+    <string name="gdpr_type_authorization">authorization</string>
 
 </resources>

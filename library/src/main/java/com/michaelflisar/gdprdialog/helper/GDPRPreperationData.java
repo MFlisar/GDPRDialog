@@ -23,7 +23,6 @@ import java.util.List;
 public class GDPRPreperationData {
     private GDPRLocation mLocation = GDPRLocation.UNDEFINED;
     private List<GDPRSubNetwork> mSubNetworks = new ArrayList<>();
-    private boolean mManualSet = false;
     private boolean mError = false;
 
     public GDPRPreperationData() {
@@ -35,10 +34,6 @@ public class GDPRPreperationData {
 
     public List<GDPRSubNetwork> getSubNetworks() {
         return mSubNetworks;
-    }
-
-    public boolean isManualSet() {
-        return mManualSet;
     }
 
     public boolean hasError() {
@@ -80,7 +75,6 @@ public class GDPRPreperationData {
 
     public GDPRPreperationData setManually(Boolean isInEAAOrUnknown) {
         reset();
-        mManualSet = true;
         if (isInEAAOrUnknown != null) {
             mLocation = isInEAAOrUnknown ? GDPRLocation.IN_EAA_OR_UNKNOWN : GDPRLocation.NOT_IN_EAA;
         } else {
@@ -89,15 +83,13 @@ public class GDPRPreperationData {
         return this;
     }
 
-    public GDPRPreperationData setManuallyUndefined() {
+    public GDPRPreperationData setUndefined() {
         reset();
-        mManualSet = true;
         mLocation = GDPRLocation.UNDEFINED;
         return this;
     }
 
     private void reset() {
-        mManualSet = false;
         mLocation = GDPRLocation.UNDEFINED;
         mSubNetworks.clear();
         mError = false;
@@ -128,6 +120,6 @@ public class GDPRPreperationData {
     }
 
     public String logString() {
-        return String.format("{ Location: %s | SubNetworks: %d | Error: %b | ManualSet: %b }", mLocation.name(), mSubNetworks.size(), mError, mManualSet);
+        return String.format("{ Location: %s | SubNetworks: %d | Error: %b }", mLocation.name(), mSubNetworks.size(), mError);
     }
 }

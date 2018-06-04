@@ -19,9 +19,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mExplicitAgeConfirmation = false;
     private boolean mExplicitNonPersonalisedConfirmation = false;
     private boolean mNoToolbarTheme = false;
-    private boolean mCheckRequestLocation = false;
-    private boolean mUseLocationCheckTelephonyManagerFallback = false;
-    private boolean mUseLocationCheckTimezoneFallback = false;
+    private GDPRLocationCheck mRequestLocationChecks[];
     private boolean mUseBottomSheet = false;
     private boolean mForceSelection = false;
     private int mCustomDialogTheme = 0;
@@ -36,6 +34,7 @@ public class GDPRSetup implements Parcelable {
             throw new RuntimeException("At least one ad network must be provided, otherwise this setup does not make any sense.");
         }
         mNetworks = networks;
+        mRequestLocationChecks = new GDPRLocationCheck[0];
     }
 
     /**
@@ -125,27 +124,14 @@ public class GDPRSetup implements Parcelable {
      * use this to check the user's location and check if it is within the EAA before requesting consent
      * this uses a homepage form google and parses it's result
      *
-     * @param checkRequestLocation true to check location, false otherwise
+     * @param locationChecks the {@link GDPRLocationCheck} that should be used to check locations ordered by their priority - use {@link GDPRLocationCheck#INTERNET} for the default online location check
      * @return this
      */
-    public GDPRSetup withCheckRequestLocation(boolean checkRequestLocation) {
-        mCheckRequestLocation = checkRequestLocation;
-        return this;
-    }
-
-    /**
-     * use this to check the user's location and check if it is within the EAA before requesting consent
-     * this uses a homepage form google and parses it's result
-     *
-     * does not have any effect if {@link GDPRSetup#withCheckRequestLocation(boolean)} was not enabled!
-     *
-     * @param useLocationCheckTelephonyManagerFallback true to check location via the {@link android.telephony.TelephonyManager} if main check fails, false otherwise
-     * @param useLocationCheckTimezoneFallback         true to check location via the {@link java.util.TimeZone} if main check fails, false otherwise
-     * @return this
-     */
-    public GDPRSetup withCheckRequestLocationFallbacks(boolean useLocationCheckTelephonyManagerFallback, boolean useLocationCheckTimezoneFallback) {
-        mUseLocationCheckTelephonyManagerFallback = useLocationCheckTelephonyManagerFallback;
-        mUseLocationCheckTimezoneFallback = useLocationCheckTimezoneFallback;
+    public GDPRSetup withCheckRequestLocation(GDPRLocationCheck... locationChecks) {
+        if (locationChecks == null) {
+            locationChecks = new GDPRLocationCheck[0];
+        }
+        mRequestLocationChecks = locationChecks;
         return this;
     }
 
@@ -269,12 +255,12 @@ public class GDPRSetup implements Parcelable {
         return mUseBottomSheet;
     }
 
-    public final boolean checkRequestLocation() {
-        return mCheckRequestLocation;
+    public final GDPRLocationCheck[] requestLocationChecks() {
+        return mRequestLocationChecks;
     }
 
     public final boolean needsPreperation() {
-        return mCheckRequestLocation || mPublisherIds.size() > 0;
+        return mRequestLocationChecks.length > 0 || mPublisherIds.size() > 0;
     }
 
     public final ArrayList<String> getPublisherIds() {
@@ -291,14 +277,6 @@ public class GDPRSetup implements Parcelable {
 
     public boolean shortQuestion() {
         return mShortQuestion;
-    }
-
-    public boolean useLocationCheckTelephonyManagerFallback() {
-        return mUseLocationCheckTelephonyManagerFallback;
-    }
-
-    public boolean useLocationCheckTimezoneFallback() {
-        return mUseLocationCheckTimezoneFallback;
     }
 
     public int connectionReadTimeout() {
@@ -347,13 +325,18 @@ public class GDPRSetup implements Parcelable {
         mExplicitAgeConfirmation = in.readByte() == 1;
         mExplicitNonPersonalisedConfirmation = in.readByte() == 1;
         mNoToolbarTheme = in.readByte() == 1;
-        mCheckRequestLocation = in.readByte() == 1;
+        int requestLocationsCount = in.readInt();
+        mRequestLocationChecks = new GDPRLocationCheck[requestLocationsCount];
+        int[] requestLocations = new int[requestLocationsCount];
+        if (requestLocationsCount > 0)
+            in.readIntArray(requestLocations);
+        for (int i = 0; i < requestLocationsCount; i++) {
+           mRequestLocationChecks[i] = GDPRLocationCheck.values()[requestLocations[i]];
+        }
         mUseBottomSheet = in.readByte() == 1;
         mForceSelection = in.readByte() == 1;
         mCustomDialogTheme = in.readInt();
         mShortQuestion = in.readByte() == 1;
-        mUseLocationCheckTelephonyManagerFallback = in.readByte() == 1;
-        mUseLocationCheckTimezoneFallback = in.readByte() == 1;
         in.readStringList(mPublisherIds);
         mConnectionReadTimeout = in.readInt();
         mConnectionConnectTimeout = in.readInt();
@@ -374,13 +357,17 @@ public class GDPRSetup implements Parcelable {
         dest.writeByte(mExplicitAgeConfirmation ? (byte) 1 : 0);
         dest.writeByte(mExplicitNonPersonalisedConfirmation ? (byte) 1 : 0);
         dest.writeByte(mNoToolbarTheme ? (byte) 1 : 0);
-        dest.writeByte(mCheckRequestLocation ? (byte) 1 : 0);
+        dest.writeInt(mRequestLocationChecks.length);
+        if (mRequestLocationChecks.length > 0) {
+            int[] requestLocations = new int[mRequestLocationChecks.length];
+            for (int i = 0; i < mRequestLocationChecks.length; i++)
+                requestLocations[i] = mRequestLocationChecks[i].ordinal();
+            dest.writeIntArray(requestLocations);
+        }
         dest.writeByte(mUseBottomSheet ? (byte) 1 : 0);
         dest.writeByte(mForceSelection ? (byte) 1 : 0);
         dest.writeInt(mCustomDialogTheme);
         dest.writeByte(mShortQuestion ? (byte) 1 : 0);
-        dest.writeByte(mUseLocationCheckTelephonyManagerFallback ? (byte) 1 : 0);
-        dest.writeByte(mUseLocationCheckTimezoneFallback ? (byte) 1 : 0);
         dest.writeStringList(mPublisherIds);
         dest.writeInt(mConnectionReadTimeout);
         dest.writeInt(mConnectionConnectTimeout);

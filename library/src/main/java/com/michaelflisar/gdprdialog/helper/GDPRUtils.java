@@ -17,6 +17,7 @@ import com.michaelflisar.gdprdialog.R;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class GDPRUtils {
@@ -58,7 +59,7 @@ public class GDPRUtils {
      * @param context context used to get {@link TelephonyManager}
      * @return true, if location is within EAA, false if not and null in case of an error
      */
-    public static boolean isRequestInEAAOrUnknownViaTelephonyManagerCheck(Context context) {
+    public static Boolean isRequestInEAAOrUnknownViaTelephonyManagerCheck(Context context) {
         boolean error = false;
 
         /* is eu sim */
@@ -111,6 +112,29 @@ public class GDPRUtils {
             if (tz.length() < 10) {
                 error = true;
             } else if (tz.contains("euro")) {
+                return true;
+            }
+        } catch (Exception e) {
+            error = true;
+            GDPR.getInstance().getLogger().error("GDPRUtils", "Could not get location from TimeZone", e);
+        }
+
+        return error ? null : false;
+    }
+
+    /**
+     * checks the location via {@link Locale}
+     *
+     * @return true, if location is within EAA, false if not and null in case of an error
+     */
+    public static Boolean isRequestInEAAOrUnknownViaLocaleCheck() {
+        boolean error = false;
+
+        /* is eu time zone id */
+        try {
+            Locale locale = Locale.getDefault();
+            String localeCountry = locale.getCountry();
+            if (EUCountry.contains(localeCountry)) {
                 return true;
             }
         } catch (Exception e) {

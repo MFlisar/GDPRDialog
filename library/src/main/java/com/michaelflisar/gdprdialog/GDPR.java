@@ -98,7 +98,7 @@ public class GDPR {
                 mPreperationAsyncTask = new PreperationAsyncTask(activity, setup);
                 mPreperationAsyncTask.execute();
             } else {
-                activity.onConsentNeedsToBeRequested(new GDPRPreperationData().setManuallyUndefined());
+                activity.onConsentNeedsToBeRequested(new GDPRPreperationData().setUndefined());
             }
         } else {
             // nothing to do, we already know the users decision!

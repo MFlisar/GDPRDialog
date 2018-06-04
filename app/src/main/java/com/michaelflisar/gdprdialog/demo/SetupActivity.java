@@ -11,11 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.michaelflisar.gdprdialog.GDPRDefinitions;
+import com.michaelflisar.gdprdialog.GDPRLocationCheck;
 import com.michaelflisar.gdprdialog.GDPRNetwork;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.GDPRSubNetwork;
 import com.michaelflisar.gdprdialog.demo.app.App;
 import com.michaelflisar.gdprdialog.demo.databinding.ActivitySetupBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SetupActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivitySetupBinding mBinding;
@@ -42,9 +46,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                 setup = new GDPRSetup(admob)
                         .withPrivacyPolicy(policyLink)
                         .withPaidVersion(false)
-                        // checkout this function to find out how to enable location check fallback methodes
-                        //.withCheckRequestLocation(true, true, true)
-                        .withCheckRequestLocation(true);
+                        .withCheckRequestLocation(GDPRLocationCheck.DEFAULT);
                 break;
             case 2:
                 String publisherId = mBinding.etPublisherIdCommon.getText().toString();
@@ -55,7 +57,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                 setup = new GDPRSetup(admob)
                         .withPrivacyPolicy(policyLink)
                         .withPaidVersion(false)
-                        .withCheckRequestLocation(true)
+                        .withCheckRequestLocation(GDPRLocationCheck.DEFAULT)
                         .withLoadAdMobNetworks(publisherId);
                 break;
             case 3:
@@ -63,16 +65,16 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case 4:
                 setup = new GDPRSetup(admob)
-                        .withCheckRequestLocation(true);
+                        .withCheckRequestLocation(GDPRLocationCheck.DEFAULT);
                 break;
             case 5:
                 setup = new GDPRSetup(admob)
-                        .withCheckRequestLocation(true)
+                        .withCheckRequestLocation(GDPRLocationCheck.DEFAULT)
                         .withAllowNoConsent(true);
                 break;
             case 6:
                 setup = new GDPRSetup(admob)
-                        .withCheckRequestLocation(true)
+                        .withCheckRequestLocation(GDPRLocationCheck.DEFAULT)
                         .withPaidVersion(true);
                 break;
             case 7:
@@ -136,12 +138,16 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
             setup.withExplicitAgeConfirmation(true);
         }
         if (mBinding.cbCheckRequestLocation.isChecked()) {
+            List<GDPRLocationCheck> checks = new ArrayList<>();
+            checks.add(GDPRLocationCheck.INTERNET);
+            if (mBinding.cbCheckRequestLocationFallbackTelephonyManager.isChecked()) {
+                checks.add(GDPRLocationCheck.TELEPHONY_MANAGER);
+            }
+            if (mBinding.cbCheckRequestLocationFallbackTimeZone.isChecked()) {
+                checks.add(GDPRLocationCheck.TIMEZONE);
+            }
             setup
-                    .withCheckRequestLocation(true)
-                    .withCheckRequestLocationFallbacks(
-                            mBinding.cbCheckRequestLocationFallbackTelephonyManager.isChecked(),
-                            mBinding.cbCheckRequestLocationFallbackTimeZone.isChecked()
-                    );
+                    .withCheckRequestLocation(checks.toArray(new GDPRLocationCheck[checks.size()]));
         }
         if (mBinding.cbLoadAdMobProviders.isChecked()) {
             setup.withLoadAdMobNetworks(mBinding.etPublisherId.getText().toString());

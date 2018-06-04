@@ -28,7 +28,7 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
         GDPRLocationCheck[] checks = mSetup.requestLocationChecks();
         T activity = mActivity.get();
 
-        // preperation
+        // 1) preperation
         boolean loadAdNetworks = mSetup.getPublisherIds().size() > 0;
         boolean checkLocationViaInternet = false;
         for (int i = 0; i < checks.length; i++) {
@@ -38,6 +38,7 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
             }
         }
 
+        // 2) checks
         if (activity != null) {
 
             // load networks and location from internet
@@ -77,28 +78,6 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
                 }
             }
         }
-
-        // OLD CODE
-//        if (activity != null) {
-//            GDPRPreperationData data = new GDPRPreperationData();
-//            data.load(activity, mSetup.getPublisherIds(), mSetup.connectionReadTimeout(), mSetup.connectionConnectTimeout());
-//            if (!mSetup.checkRequestLocation()) {
-//                data.updateLocation(GDPRLocation.UNDEFINED);
-//            }
-//            result = data;
-//        }
-//
-//        if (mSetup.checkRequestLocation()) {
-//            // eventually use fallback methods
-//            if (result.hasError() && mSetup.useLocationCheckTelephonyManagerFallback()) {
-//                if (activity != null) {
-//                    result.setManually(GDPRUtils.isRequestInEAAOrUnknownViaTelephonyManagerCheck(activity.getApplicationContext()));
-//                }
-//            }
-//            if (result.hasError() && mSetup.useLocationCheckTimezoneFallback()) {
-//                result.setManually(GDPRUtils.isRequestInEAAOrUnknownViaTimezoneCheck());
-//            }
-//        }
 
         GDPR.getInstance().getLogger().debug("PreperationAsyncTask", String.format("GDPRPreperationData: %s", result.logString()));
 

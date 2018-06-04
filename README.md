@@ -43,7 +43,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```java
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:1.2.2'
+     implementation 'com.github.MFlisar:GDPRDialog:1.2.3'
 }
 ```
 
@@ -61,8 +61,7 @@ GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB) // add all networks you u
     .withAllowNoConsent(true)
     .withPaidVersion(allowNonPersonalisedOptionAsWell)
     .withExplicitAgeConfirmation(true)
-    .withCheckRequestLocation(true)
-    .withCheckRequestLocationFallbacks(true /* fallback to TelephoneManager */, true /* fallback to TimeZone */)
+	.withCheckRequestLocation(GDPRLocationCheck.DEFAULT) // pass in an array of location check methods, predefined arrays like `DEFAULT` and `DEFAULT_WITH_FALLBACKS` do exists
     .withCheckRequestLocationTimeouts(readTimeout, connectTimeout)
     .withBottomSheet(true)
     .withForceSelection(true)

@@ -61,7 +61,7 @@ GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB) // add all networks you u
     .withAllowNoConsent(true)
     .withPaidVersion(allowNonPersonalisedOptionAsWell)
     .withExplicitAgeConfirmation(true)
-	.withCheckRequestLocation(GDPRLocationCheck.DEFAULT) // pass in an array of location check methods, predefined arrays like `DEFAULT` and `DEFAULT_WITH_FALLBACKS` do exists
+    .withCheckRequestLocation(GDPRLocationCheck.DEFAULT) // pass in an array of location check methods, predefined arrays like `DEFAULT` and `DEFAULT_WITH_FALLBACKS` do exists
     .withCheckRequestLocationTimeouts(readTimeout, connectTimeout)
     .withBottomSheet(true)
     .withForceSelection(true)

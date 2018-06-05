@@ -130,7 +130,7 @@ public class GDPRUtils {
     public static Boolean isRequestInEAAOrUnknownViaLocaleCheck() {
         boolean error = false;
 
-        /* is eu time zone id */
+        /* is eu locale id */
         try {
             Locale locale = Locale.getDefault();
             String localeCountry = locale.getCountry();
@@ -139,7 +139,7 @@ public class GDPRUtils {
             }
         } catch (Exception e) {
             error = true;
-            GDPR.getInstance().getLogger().error("GDPRUtils", "Could not get location from TimeZone", e);
+            GDPR.getInstance().getLogger().error("GDPRUtils", "Could not get location from Locale", e);
         }
 
         return error ? null : false;

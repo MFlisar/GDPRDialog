@@ -89,7 +89,7 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
             return;
         }
         T activity = mActivity.get();
-        if (activity != null) {
+        if (activity != null && !activity.isFinishing()) {
             if (mSetup.requestLocationChecks().length > 0 && result.getLocation() == GDPRLocation.NOT_IN_EAA) {
                 // user does want to not request consent and consider this as consent given, so we save this here
                 GDPRConsentState consentState = new GDPRConsentState(activity, GDPRConsent.AUTOMATIC_PERSONAL_CONSENT, result.getLocation());

@@ -25,6 +25,7 @@ public class GDPRSetup implements Parcelable {
     private int mCustomDialogTheme = 0;
     private boolean mShortQuestion = false;
     private ArrayList<String> mPublisherIds = new ArrayList<>();
+    private boolean mShowPaidOrFreeInfoText = true;
 
     private int mConnectionReadTimeout = 3000;
     private int mConnectionConnectTimeout = 5000;
@@ -207,6 +208,17 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    /**
+     * use this to remove the info in the main dialog that the app is kept free / cheap by using the networks
+     *
+     * @param show true to show the free / cheap information, false to not show it
+     * @return this
+     */
+    public GDPRSetup withShowPaidOrFreeInfoText(boolean show) {
+        mShowPaidOrFreeInfoText = show;
+        return this;
+    }
+
     // ----------------
     // Functions
     // ----------------
@@ -287,6 +299,10 @@ public class GDPRSetup implements Parcelable {
         return mConnectionConnectTimeout;
     }
 
+    public boolean showPaidOrFreeInfoText() {
+        return mShowPaidOrFreeInfoText;
+    }
+
     public final boolean containsAdNetwork() {
         for (GDPRNetwork network : mNetworks) {
             if (network.isAdNetwork()) {
@@ -340,6 +356,7 @@ public class GDPRSetup implements Parcelable {
         in.readStringList(mPublisherIds);
         mConnectionReadTimeout = in.readInt();
         mConnectionConnectTimeout = in.readInt();
+        mShowPaidOrFreeInfoText = in.readByte() == 1;
     }
 
     @Override
@@ -371,6 +388,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeStringList(mPublisherIds);
         dest.writeInt(mConnectionReadTimeout);
         dest.writeInt(mConnectionConnectTimeout);
+        dest.writeByte(mShowPaidOrFreeInfoText ? (byte) 1 : 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

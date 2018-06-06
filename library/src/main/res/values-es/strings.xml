@@ -4,8 +4,9 @@
     <!-- Dialog - MAIN PAGE TEXTS -->
     <!-- ************************ -->
 
+    <string name="gdpr_dialog_text1_part1">Tu privacidad y la seguridad de tus datos son importantes para nosotros.</string>
     <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
-    <string name="gdpr_dialog_text1">Tu privacidad y la seguridad de tus datos son importantes para nosotros. Mantenemos esta aplicación %1$s usando servicios de terceros.</string>
+    <string name="gdpr_dialog_text1_part2">Mantenemos esta aplicación %1$s usando servicios de terceros.</string>
     <!-- %1$s is replaced with ONE service's name -->
     <string name="gdpr_dialog_text2_singular">Usamos %1$s en esta aplicación. Este servicio (incluyendo sus socios) recoge identificadores únicos y otra información personal. Puede cambiar su elección en cualquier momento en la configuración de la aplicación. &lt;a href=\"\">Obtenga más información sobre éste servicio y sus datos personales&lt;/a>.</string>
     <!-- %1$s is replaced with a LIST of service name -->

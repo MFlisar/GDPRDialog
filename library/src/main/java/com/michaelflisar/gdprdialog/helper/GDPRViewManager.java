@@ -280,7 +280,10 @@ public class GDPRViewManager {
         tvQuestion.setText(Html.fromHtml(question));
 
         String cheapOrFree = activity.getString(mSetup.hasPaidVersion() ? R.string.gdpr_cheap : R.string.gdpr_free);
-        String text1 = activity.getString(R.string.gdpr_dialog_text1, cheapOrFree);
+        String text1 = activity.getString(R.string.gdpr_dialog_text1_part1);
+        if (mSetup.showPaidOrFreeInfoText()) {
+            text1 += " " + activity.getString(R.string.gdpr_dialog_text1_part2, cheapOrFree);
+        }
         tvText1.setText(Html.fromHtml(text1));
         tvText1.setMovementMethod(LinkMovementMethod.getInstance());
 

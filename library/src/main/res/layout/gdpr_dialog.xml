@@ -43,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/gdpr_big_padding"
-                        android:text="@string/gdpr_dialog_text1"
+                        android:text="@string/gdpr_dialog_text1_part1"
                         android:textAlignment="center"
                         android:textSize="@dimen/gdpr_text_size_small"
                         android:textStyle="bold"/>

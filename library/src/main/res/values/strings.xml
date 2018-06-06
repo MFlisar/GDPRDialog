@@ -4,8 +4,9 @@
     <!-- Dialog - MAIN PAGE TEXTS -->
     <!-- ************************ -->
 
+    <string name="gdpr_dialog_text1_part1">We care about your privacy and data security.</string>
     <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
-    <string name="gdpr_dialog_text1">We care about your privacy and data security. We keep this app %1$s by using third party services.</string>
+    <string name="gdpr_dialog_text1_part2"> We keep this app %1$s by using third party services.</string>
     <!-- %1$s is replaced with ONE service's name -->
     <string name="gdpr_dialog_text2_singular">We use %1$s in this app. This service (including it\'s partners) collects unique identifiers and other personal data. You can change your choice at any time in the app settings. &lt;a href=\"\">Learn more about this service and your personal data&lt;/a>.</string>
     <!-- %1$s is replaced with a LIST of service name -->

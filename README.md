@@ -17,7 +17,7 @@ This library offers following:
   * allow *personalised ads* or *paid version* only
   * allow *personalised ads*, *non personalised ads* or *paid or free version*
   * combine whatever you want here...
-* optionally enable google's check if user is requesting consent form within the EAA and even use fallback methods to using `TelephoneManager` and/or `TimeZone`
+* optionally enable location checks (supports google's check from the SDK via the internet, `TelephoneManager`, `TimeZone`, `Locale`) and also allows to define to use fallback methods, by providing your own list of checks sorted by their priority
 * optionally adds a `Checkbox` for age confirmation
 * uses soft opt in by default if you offer e.g. a *personalised ads* vs *non personalised ads* version
 * it closes the app if the user did not give any consent (i.e if the user clicks the back button in the dialog)

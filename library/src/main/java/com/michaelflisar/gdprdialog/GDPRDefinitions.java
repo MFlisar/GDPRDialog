@@ -52,7 +52,7 @@ public class GDPRDefinitions {
         INMOBI = new GDPRNetwork(context, "InMobi", "https://www.inmobi.com/privacy-policy-for-eea", R.string.gdpr_type_ads, true);
         MOPUB = new GDPRNetwork(context, "MoPub", "https://www.mopub.com/legal/privacy", R.string.gdpr_type_ads, true)
                 .withIsIntermediator("https://www.mopub.com/legal/partners/");
-        VUNGLE = new GDPRNetwork(context, "InMobi", "https://vungle.com/privacy", R.string.gdpr_type_ads, true);
+        VUNGLE = new GDPRNetwork(context, "Vungle", "https://vungle.com/privacy", R.string.gdpr_type_ads, true);
         ADCOLONY = new GDPRNetwork(context, "AdColony", "https://www.adcolony.com/privacy-policy", R.string.gdpr_type_ads, true);
         UNITY = new GDPRNetwork(context, "Unity", "https://unity3d.com/legal/privacy-policy", R.string.gdpr_type_ads, true);
         APPLOVIN = new GDPRNetwork(context, "AppLovin", "https://www.applovin.com/privacy", R.string.gdpr_type_ads, true);

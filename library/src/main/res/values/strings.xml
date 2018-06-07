@@ -23,7 +23,7 @@
     <string name="gdpr_dialog_text_info1">We use the following third party services in this app:</string>
     <!-- %1$s is replaced with 'gdpr_dialog_text_info3_privacy_policy_part' if a policy is provided, otherwise with an empty string -->
     <string name="gdpr_dialog_text_info3">Click on a service to check out its privacy policy%1$s.</string>
-    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020or click following to check out &lt;a href=\"%1$s\">our app\'s privacy policy&lt;/a></string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020or click the following to check out &lt;a href=\"%1$s\">our app\'s privacy policy&lt;/a></string>
     <string name="gdpr_dialog_text_explicit_non_personalised_info1">We won\'t collect your data for personalized advertising. Although non-personalized ads don\'t use mobile ad identifiers for ad targeting, they do still use mobile identifiers for frequency capping and aggregated ad reporting as well as for combating fraud and abuse."</string>
 
     <!-- ******************************** -->

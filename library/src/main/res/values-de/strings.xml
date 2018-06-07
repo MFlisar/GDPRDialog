@@ -5,7 +5,7 @@
     <!-- ************************ -->
 
     <string name="gdpr_dialog_text1_part1">Wir sorgen uns um deine Privatsphäre und Datensicherheit.</string>
-    <string name="gdpr_dialog_text1_part2"> Wir bemühen uns diese Anwendung %1$s zu halten durch Nutzung gewisser Drittanbieter Dienste.</string>
+    <string name="gdpr_dialog_text1_part2">Wir bemühen uns diese Anwendung %1$s zu halten durch Nutzung gewisser Drittanbieter Dienste.</string>
     <string name="gdpr_dialog_text2_singular">Wir benutzen %1$s in dieser Anwendung. Dieser Dienst (inkl. seiner Partner) sammelt eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über diesen Dienst und deine persönlichen Daten&lt;/a>.</string>
     <string name="gdpr_dialog_text2_plural">Wir benutzen %1$s in dieser Anwendung. Diese Dienste (inkl. deren Partner) sammeln eindeutige Identifizierungsmerkmale sowie auch weitere persönliche Daten. Du kannst deine Zustimmung in den Einstellungen jederzeit ändern. &lt;a href=\"\">Erfahre mehr über diese Dienste und deine persönlichen Daten&lt;/a>.</string>
     <string name="gdpr_dialog_text3">Durch deine Zustimmung bestätigst du, dass du über 16 Jahre alt bist.</string>

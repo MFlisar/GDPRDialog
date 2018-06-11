@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="gdpr_age_not_confirmed">Merci de confirmer votre âge avant de continuer</string>
+    <string name="gdpr_buy_app">Acheter l\'application</string>
+    <string name="gdpr_cheap">abordable</string>
+    <string name="gdpr_dialog_agree">Oui, je suis d\'accord</string>
+    <string name="gdpr_dialog_back">Retour</string>
+    <string name="gdpr_dialog_close">Fermer</string>
+    <string name="gdpr_dialog_confirm_age">Je confirme avoir au moins 16 ans</string>
+    <string name="gdpr_dialog_disagree_buy_app">Non merci, je veux acheter cette application</string>
+    <string name="gdpr_dialog_disagree_info">Je comprends qu\'il y ait des publicités, mais elles ne correspondent pas à mes intérêts</string>
+    <string name="gdpr_dialog_disagree_no_ads">Aucune publicité s\'il vous plaît</string>
+    <string name="gdpr_dialog_disagree_no_thanks">Non, merci</string>
+    <string name="gdpr_dialog_question">Pouvons nous continuer à utiliser vos données à ces propos%1$s ?</string>
+    <string name="gdpr_dialog_question_ads_info">\u0020ainsi que pour vous proposer des publicités personnalisées</string>
+    <string name="gdpr_dialog_text1_part1">Votre intimité et la sécurité de vos données sont primordiaux.</string>
+    <string name="gdpr_dialog_text1_part2">Nous gardons cette application %1$s en utilisant des services tiers.</string>
+    <string name="gdpr_dialog_text2_plural">Dans cette application, il y a des publicités. Ces services (y compris leurs partenaires) collectent les identifiants ainsi que d\'autres informations personnelles. Vous pouvez changer votre choix à tout moment dans les paramètres de l\'application. &lt;a href=\"\">En savoir plus sur ces services et vos données personnelles.&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_singular">Dans cette application, il y a des publicités. Ce service (y compris ses partenaires) collecte les identifiants ainsi que d\'autres informations personnelles. Vous pouvez changer votre choix à tout moment dans les paramètres de l\'application. &lt;a href=\"\">En savoir plus sur ces services et vos données personnelles&lt;/a>.</string>
+    <string name="gdpr_dialog_text3">En acceptant, vous confirmez avoir au moins l\'âge de 16 ans.</string>
+    <string name="gdpr_dialog_text_explicit_non_personalised_info1">Nous ne collecterons pas vos données pour vous proposer des publicités personnalisées. Bien que les publicités non personnalisées n\'utilisent pas les identifiants d\'annonces pour mobile pour le ciblage des publicités, elles les utilisent tout de même pour le plafonnement des fréquences, les rapports de publicités ainsi que pour la lutte contre la fraude et les abus."</string>
+    <string name="gdpr_dialog_text_info1">Dans cette application, nous utilisons les services tiers suivants :</string>
+    <string name="gdpr_dialog_text_info3">Cliquez sur un service pour consulter sa politique de confidentialité%1$s.</string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020ou cliquez sur suivant pour consulter &lt;a href=\"%1$s\">notre politique de confidentialité&lt;/a></string>
+    <string name="gdpr_dialog_title">Consentement à la protection des données</string>
+    <string name="gdpr_free">gratuite</string>
+    <string name="gdpr_last_list_seperator">\u0020and\u0020</string>
+    <string name="gdpr_show_me_partners">Afficher nos partenaires</string>
+    <string name="gdpr_type_ads">publicités</string>
+    <string name="gdpr_type_analytics">rapport d\'analyse</string>
+    <string name="gdpr_type_authorization">authorisation</string>
+    <string name="gdpr_type_cloud_database">une base de données dans le cloud</string>
+    <string name="gdpr_type_crash">rapport d\'incident</string>
+    <string name="gdpr_type_notifications">envoi de notifications</string>
+    <string name="gdpr_withdraw_consent">Retirer le consentement à la protection des données</string>
+
+</resources>

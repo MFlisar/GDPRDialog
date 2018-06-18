@@ -26,6 +26,7 @@ public class GDPRDefinitions {
     public static GDPRNetwork STARTAPP = null;
     public static GDPRNetwork IRONSOURCE = null;
     public static GDPRNetwork APPODEAL = null;
+    public static GDPRNetwork MOBFOX = null;
 
     // -------------------
     // Others
@@ -67,6 +68,7 @@ public class GDPRDefinitions {
         IRONSOURCE = new GDPRNetwork(context, "ironSource", "https://developers.ironsrc.com/ironsource-mobile/air/ironsource-mobile-privacy-policy/", R.string.gdpr_type_ads, true);
         APPODEAL = new GDPRNetwork(context, "Appodeal", "https://www.appodeal.com/privacy-policy", R.string.gdpr_type_ads, true)
                 .withIsIntermediator("https://www.appodeal.com/home/partners-privacy-policies/");
+        MOBFOX = new GDPRNetwork(context, "Mobfox", "https://www.mobfox.com/privacy-policy/", R.string.gdpr_type_ads, true);
 
         // init others
         String firebase = "Firebase";

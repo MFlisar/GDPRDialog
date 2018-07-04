@@ -223,6 +223,15 @@ public class GDPR {
         return mLogger;
     }
 
+    /**
+     * the logger implementation
+     *
+     * @return true, if {@link GDPR#init(Context)} was called, false otherwise
+     */
+    public boolean isInitialised() {
+        return mPreferences != null;
+    }
+
     // ------------------
     // private helper functions
     // ------------------

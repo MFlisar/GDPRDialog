@@ -224,7 +224,7 @@ public class GDPR {
     }
 
     /**
-     * the logger implementation
+     * check if GDPR was initialised or not
      *
      * @return true, if {@link GDPR#init(Context)} was called, false otherwise
      */

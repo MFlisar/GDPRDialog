@@ -48,6 +48,8 @@ public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallba
                 if (!checkLocationViaInternet) {
                     data.updateLocation(GDPRLocation.UNDEFINED);
                 }
+                result.getSubNetworks().clear();
+                result.getSubNetworks().addAll(data.getSubNetworks());
             }
 
             // check location until a method succeeds

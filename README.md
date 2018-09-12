@@ -1,4 +1,4 @@
-### GDPRDialog [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog) ![Localisation](https://img.shields.io/badge/Localisation-7%2F24%20(29%25)-blue.svg)
+### GDPRDialog [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog) ![Localisation](https://img.shields.io/badge/Localisation-8%2F24%20(33%25)-blue.svg)
 
 Simple reusable `DialogFragment`.
 
@@ -43,7 +43,7 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```java
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:1.2.4'
+     implementation 'com.github.MFlisar:GDPRDialog:1.2.5'
 }
 ```
 
@@ -114,7 +114,7 @@ Migrations will be explained in the [release notes](https://github.com/MFlisar/G
 
 ### TODO
 
-* [ ] Localisation ![Localisation](https://img.shields.io/badge/Localisation-7%2F24%20(29%25)-blue.svg)
+* [ ] Localisation ![Localisation](https://img.shields.io/badge/Localisation-8%2F24%20(33%25)-blue.svg)
   
   At least translations for all official languages within the european union should be added
   * [ ] Bulgarian
@@ -134,7 +134,7 @@ Migrations will be explained in the [release notes](https://github.com/MFlisar/G
   * [ ] Latvian
   * [ ] Lithuanian
   * [ ] Maltese
-  * [ ] Polish
+  * [x] Polish
   * [x] Portuguese
   * [ ] Romanian
   * [ ] Slovak

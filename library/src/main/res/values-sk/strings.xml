@@ -1,0 +1,54 @@
+<resources>
+
+	<!-- ************************ -->
+    <!-- Dialog - MAIN PAGE TEXTS -->
+	<!-- ************************ -->
+
+	<string name="gdpr_dialog_text1_part1">Záleží nám na vašom súkromia a bezpečnosti vašich dát.</string>
+	<string name="gdpr_dialog_text1_part2">Aby tako aplikácie mohla byť poskytovaná %1$s, potrebuje používať služby ďalších firiem.</string>
+	<string name="gdpr_dialog_text2_singular">V tejto aplikácii používame %1$s. Táto služba (a jej partneri) zbiera unikátny identifikátory a ďalšie osobné údaje. Vašu voľbu môžete kedykoľvek zmeniť v nastaveniach aplikácie. &lt;a href=\"\">Tu dozviete viac o tejto službe a tom, ako spracováva osobné dáta&lt;/a>.</string>
+	<string name="gdpr_dialog_text2_plural">V tejto aplikácii používame %1$s. Tieto služby (a ich partneri) zbierajú unikátny identifikátory a ďalšie osobné údaje. Vašu voľbu môžete kedykoľvek zmeniť v nastaveniach aplikácie. &lt;a href=\"\">Tu dozviete viac o týchto službách a tom, ako spracúvajú osobné údaje&lt;/a>.</string>
+	<string name="gdpr_dialog_text3">Svoju voľbu môžete kedykoľvek zmeniť v nastaveniach aplikácie.</string>
+	<string name="gdpr_dialog_question">Môžeme pokračovať v použití dát pre tieto účely%1$s?</string>
+	<string name="gdpr_dialog_question_ads_info">\u0020 a rovnako tak aj pre zobrazenie prispôsobených reklám</string>
+
+	<!-- *********************** -->
+	<!-- Dialog - SUB PAGE TEXTS -->
+	<!-- *********************** -->
+
+	<string name="gdpr_dialog_text_info1">V aplikácii používame tieto knižnice tretích strán:</string>
+	<string name="gdpr_dialog_text_info3">Kliknutím na názov služby sa pozriete na jej zásady ochrany osobných údajov%1$s</string>
+	<string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020a kliknutím na tento link zistíte &lt;a href=\"%1$s\">naše zásady ochrany osobných údajov&lt;/a>.</string>
+	<string name="gdpr_dialog_text_explicit_non_personalised_info1">Nebudeme zbierať osobné dáta pre reklamy ušité priamo vám na mieru.Aj keď nie sú reklamy zacielené priamo na vás osobne (čiže nepoužívajú osobné reklamné identifikátory), stále používajú identifikáciu mobilného zariadenia pre to, aby vám nezobrazovali stále rovnaké reklamy, pre reportovanie a tiež pre boj proti zneužitiu reklamných systémov.</string>
+
+	<!-- ******************************** -->
+	<!-- Dialog - BUTTONS AND SHORT INFOS -->
+	<!-- ******************************** -->
+
+	<string name="gdpr_dialog_title">Súhlas ohľadom GDPR</string>
+	<string name="gdpr_dialog_confirm_age">Týmto potvrdzujem, že je mi najmenej 16 rokov.</string>
+	<string name="gdpr_dialog_agree">Áno, súhlasím</string>
+	<string name="gdpr_dialog_disagree_no_thanks">Nie, ďakujem</string>
+	<string name="gdpr_dialog_disagree_buy_app">Nie, ďakujem, radšej kúpim platenú verziu</string>
+	<string name="gdpr_dialog_close">Zavrieť</string>
+	<string name="gdpr_dialog_back">Späť</string>
+	<string name="gdpr_dialog_disagree_no_ads">Prosím, vôbec žiadne reklamy</string>
+	<string name="gdpr_dialog_disagree_info">Beriem na vedomie, že stále uvidím reklamy, len pravdepodobne nebudú zodpovedať tomu, čo by ma mohlo zaujímať.</string>
+	<string name="gdpr_last_list_seperator">\u00A0a\u00A0</string>
+	<string name="gdpr_buy_app">Zakúpiť aplikáciu</string>
+	<string name="gdpr_withdraw_consent">Zrušiť GDPR súhlas</string>
+	<string name="gdpr_age_not_confirmed">Než budeme pokračovať, prosím, potvrďte svoj vek</string>
+	<string name="gdpr_free">zadarmo</string>
+	<string name="gdpr_cheap">za dobrú cenu</string>
+	<string name="gdpr_show_me_partners">Zobraziť partnermi</string>
+
+	<!-- ************** -->
+	<!-- Networks types -->
+	<!-- ************** -->
+
+	<string name="gdpr_type_ads">reklamy</string>
+	<string name="gdpr_type_cloud_database">cloudové databázy</string>
+	<string name="gdpr_type_crash">nástroje analýzy pádov aplikácií</string>
+	<string name="gdpr_type_analytics">nástroje analýzy správania</string>
+
+</resources>

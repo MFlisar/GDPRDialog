@@ -39,7 +39,7 @@
     <string name="gdpr_dialog_back">Voltar</string>
     <string name="gdpr_dialog_disagree_no_ads">Sem anúncios, por favor</string>
     <string name="gdpr_dialog_disagree_info">Entendo que mesmo assim irei ver anúncios, mas eles podem não ser tão relevantes para os meus interesses.</string>
-    <string name="gdpr_last_list_seperator">\u0020and\u0020</string>
+    <string name="gdpr_last_list_seperator">\u0020e\u0020</string>
     <string name="gdpr_buy_app">Comprar aplicação</string>
     <string name="gdpr_withdraw_consent">Retirar consentimento de proteção de dados</string>
     <string name="gdpr_age_not_confirmed">Por favor confirme a idade antes de continuar</string>

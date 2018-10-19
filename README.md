@@ -45,8 +45,9 @@ repositories {
 dependencies {
      implementation 'com.github.MFlisar:GDPRDialog:<LATEST-VERSION>'
 }
-https://jitpack.io/v/MFlisar/GDPRDialog.svg)
 ```
+
+LATEST-VERSION: [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog)
 
 ### Usage
 

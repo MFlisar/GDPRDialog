@@ -43,8 +43,9 @@ repositories {
 2. add the compile statement to your module's `build.gradle`:
 ```java
 dependencies {
-     implementation 'com.github.MFlisar:GDPRDialog:1.2.6'
+     implementation 'com.github.MFlisar:GDPRDialog:<LATEST-VERSION>'
 }
+https://jitpack.io/v/MFlisar/GDPRDialog.svg)
 ```
 
 ### Usage

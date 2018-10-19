@@ -24,7 +24,7 @@
     <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020ou cliquez sur suivant pour consulter &lt;a href=\"%1$s\">notre politique de confidentialité&lt;/a></string>
     <string name="gdpr_dialog_title">Consentement à la protection des données</string>
     <string name="gdpr_free">gratuite</string>
-    <string name="gdpr_last_list_seperator">\u0020and\u0020</string>
+    <string name="gdpr_last_list_seperator">\u0020et\u0020</string>
     <string name="gdpr_show_me_partners">Afficher nos partenaires</string>
     <string name="gdpr_type_ads">publicités</string>
     <string name="gdpr_type_analytics">rapport d\'analyse</string>

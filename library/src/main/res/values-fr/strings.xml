@@ -11,7 +11,7 @@
     <string name="gdpr_dialog_disagree_info">Je comprends qu\'il y ait des publicités, mais elles ne correspondent pas à mes intérêts</string>
     <string name="gdpr_dialog_disagree_no_ads">Aucune publicité s\'il vous plaît</string>
     <string name="gdpr_dialog_disagree_no_thanks">Non, merci</string>
-    <string name="gdpr_dialog_question">Pouvons nous continuer à utiliser vos données à ces propos%1$s ?</string>
+    <string name="gdpr_dialog_question">Pouvons-nous continuer à utiliser vos données à ces propos%1$s ?</string>
     <string name="gdpr_dialog_question_ads_info">\u0020ainsi que pour vous proposer des publicités personnalisées</string>
     <string name="gdpr_dialog_text1_part1">Votre intimité et la sécurité de vos données sont primordiaux.</string>
     <string name="gdpr_dialog_text1_part2">Nous gardons cette application %1$s en utilisant des services tiers.</string>
@@ -28,7 +28,7 @@
     <string name="gdpr_show_me_partners">Afficher nos partenaires</string>
     <string name="gdpr_type_ads">publicités</string>
     <string name="gdpr_type_analytics">rapport d\'analyse</string>
-    <string name="gdpr_type_authorization">authorisation</string>
+    <string name="gdpr_type_authorization">autorisation</string>
     <string name="gdpr_type_cloud_database">une base de données dans le cloud</string>
     <string name="gdpr_type_crash">rapport d\'incident</string>
     <string name="gdpr_type_notifications">envoi de notifications</string>

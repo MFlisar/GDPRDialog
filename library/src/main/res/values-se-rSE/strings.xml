@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- ************************ -->
+    <!-- Dialog - MAIN PAGE TEXTS -->
+    <!-- ************************ -->
+
+    <string name="gdpr_dialog_text1_part1">Vi bryr oss om din integritet och dataskydd</string>
+    <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
+    <string name="gdpr_dialog_text1_part2">Vi håller denna appen %1$ genom att använda tjänster från tredje part.</string>
+    <!-- %1$s is replaced with ONE service's name -->
+    <string name="gdpr_dialog_text2_singular">Vi använder %1$s i denna app. Denna tjänsten (samt deras partners) samlar in unikt identifierbar och annan personlig data. Du kan ändra ditt val när som helst i appens inställningar. &lt;a href=\"\">Läs mer om tjänsten och din personliga data&lt;/a>.</string>
+    <!-- %1$s is replaced with a LIST of service name -->
+    <string name="gdpr_dialog_text2_plural">Vi använder %1$s i denna app. Denna tjänsten (samt deras partners) samlar in unikt identifierbar och annan personlig data. Du kan ändra ditt val när som helst i appens inställningar. &lt;a href=\"\">Läs mer om dessa tjänster och din personliga data&lt;/a>.</string>
+    <string name="gdpr_dialog_text3">Genom detta medgivande så bekräftar du att du är över 16 års ålder.</string>
+    <!-- %1$s is replaced with 'gdpr_dialog_question_ads_info' string if the setup contains an ad network, otherwise with an empty string -->
+    <string name="gdpr_dialog_question">Kan vi fortsätta att använda din data för dessa ändamål%1$s?</string>
+    <string name="gdpr_dialog_question_ads_info">\u0020såväl som att visa personligt anpassad reklam</string>
+
+    <!-- *********************** -->
+    <!-- Dialog - SUB PAGE TEXTS -->
+    <!-- *********************** -->
+
+    <string name="gdpr_dialog_text_info1">Vi använder följande tjänster från tredjepart i denna app:</string>
+    <!-- %1$s is replaced with 'gdpr_dialog_text_info3_privacy_policy_part' if a policy is provided, otherwise with an empty string -->
+    <string name="gdpr_dialog_text_info3">Klicka på en tjänst för att kontrollera dess integritetspolicy%1$s.</string>
+    <string name="gdpr_dialog_text_info3_privacy_policy_part">\u0020eller klicka här för att kolla &lt;a href=\"%1$s\">vår app\'s integritetspolicy&lt;/a></string>
+    <string name="gdpr_dialog_text_explicit_non_personalised_info1">Vi kommer inte att samla in data för personlig reklam. Icke-personlig reklam använder inte mobil reklamidentifiering för riktad reklam, men de använder ändå mobilidentifiering för att frekvensbegränsa, samlad reklamrapportering samt för att motverka bedrägeri och missbruk."</string>
+
+    <!-- ******************************** -->
+    <!-- Dialog - BUTTONS AND SHORT INFOS -->
+    <!-- ******************************** -->
+
+    <string name="gdpr_dialog_title">Dataskyddsmedgivande</string>
+    <string name="gdpr_dialog_confirm_age">Jag bekräftar att jag är 16 år eller äldre</string>
+    <string name="gdpr_dialog_agree">Ja, Jag samtycker</string>
+    <string name="gdpr_dialog_disagree_no_thanks">Nej, tack</string>
+    <string name="gdpr_dialog_disagree_buy_app">Nej tack, jag vill köpa appen.</string>
+    <string name="gdpr_dialog_close">Stäng</string>
+    <string name="gdpr_dialog_back">Bakåt</string>
+    <string name="gdpr_dialog_disagree_no_ads">Ingen reklam överhuvudtaget, tack.</string>
+    <string name="gdpr_dialog_disagree_info">Jag förstår att jag kommer se reklam, men det är kanske inte är direkt relevant för mina intressen.</string>
+    <string name="gdpr_last_list_seperator">\u0020and\u0020</string>
+    <string name="gdpr_buy_app">Köp appen</string>
+    <string name="gdpr_withdraw_consent">Annulera medgivande för dataskydd</string>
+    <string name="gdpr_age_not_confirmed">Vänligen bekräfta din ålder innan du fortsätter</string>
+    <string name="gdpr_free">gratis</string>
+    <string name="gdpr_cheap">billig</string>
+    <string name="gdpr_show_me_partners">Visa parter</string>
+
+    <!-- ************** -->
+    <!-- Networks types -->
+    <!-- ************** -->
+
+    <string name="gdpr_type_ads">reklam</string>
+    <string name="gdpr_type_cloud_database">en molnbaserad databas</string>
+    <string name="gdpr_type_crash">krashrapportering</string>
+    <string name="gdpr_type_analytics">användningsrapportering</string>
+    <string name="gdpr_type_notifications">skickar notifikationer</string>
+    <string name="gdpr_type_authorization">tillstånd</string>
+
+</resources>

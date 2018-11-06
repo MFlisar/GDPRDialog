@@ -1,4 +1,4 @@
-### GDPRDialog [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog) ![Localisation](https://img.shields.io/badge/Localisation-9%2F24%20(38%25)-blue.svg)
+### GDPRDialog [![Release](https://jitpack.io/v/MFlisar/GDPRDialog.svg)](https://jitpack.io/#MFlisar/GDPRDialog) ![Localisation](https://img.shields.io/badge/Localisation-10%2F24%20(42%25)-blue.svg)
 
 Simple reusable `DialogFragment`.
 
@@ -116,7 +116,7 @@ Migrations will be explained in the [release notes](https://github.com/MFlisar/G
 
 ### TODO
 
-* [ ] Localisation ![Localisation](https://img.shields.io/badge/Localisation-9%2F24%20(38%25)-blue.svg)
+* [ ] Localisation ![Localisation](https://img.shields.io/badge/Localisation-10%2F24%20(42%25)-blue.svg)
   
   At least translations for all official languages within the european union should be added
   * [ ] Bulgarian
@@ -142,7 +142,7 @@ Migrations will be explained in the [release notes](https://github.com/MFlisar/G
   * [x] Slovak
   * [ ] Slovenian
   * [x] Spanish
-  * [ ] Swedish
+  * [x] Swedish
   
 ### License
 

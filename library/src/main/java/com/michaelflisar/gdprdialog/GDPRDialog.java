@@ -4,12 +4,12 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatDialog;
-import android.support.v7.app.AppCompatDialogFragment;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,7 +100,7 @@ public class GDPRDialog extends AppCompatDialogFragment
             };
             dlg.setOnShowListener(dialog -> {
                 BottomSheetDialog d = (BottomSheetDialog) dialog;
-                FrameLayout bottomSheet = d.findViewById(android.support.design.R.id.design_bottom_sheet);
+                FrameLayout bottomSheet = d.findViewById(R.id.design_bottom_sheet);
                 BottomSheetBehavior behaviour = BottomSheetBehavior.from(bottomSheet);
                 // fully expand sheet and disable collapse state
                 behaviour.setState(BottomSheetBehavior.STATE_EXPANDED);

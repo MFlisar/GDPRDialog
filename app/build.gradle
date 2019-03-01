@@ -1,16 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-
-    dataBinding {
-        enabled = true
-    }
+    compileSdkVersion setup.compileSdk
+    dataBinding.enabled = setup.enableDataBinding
 
     defaultConfig {
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
         applicationId "com.michaelflisar.gdprdialog.demo"
-        minSdkVersion 16
-        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -29,8 +26,17 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
+
+    // ------------------------
+    // AndroidX
+    // ------------------------
+
+    implementation "androidx.appcompat:appcompat:${androidx.appcompat}"
+    implementation "com.google.android.material:material:${androidx.material}"
+
+    // ------------------------
+    // Library
+    // ------------------------
 
     implementation project(':library')
 //    implementation 'com.github.MFlisar:GDPRDialog:-SNAPSHOT'

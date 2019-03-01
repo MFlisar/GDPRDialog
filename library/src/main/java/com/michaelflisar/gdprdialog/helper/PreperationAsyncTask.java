@@ -1,7 +1,7 @@
 package com.michaelflisar.gdprdialog.helper;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
@@ -11,7 +11,6 @@ import com.michaelflisar.gdprdialog.GDPRLocationCheck;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
 public class PreperationAsyncTask<T extends AppCompatActivity & GDPR.IGDPRCallback> extends AsyncTask<Object, Void, GDPRPreperationData> {
 

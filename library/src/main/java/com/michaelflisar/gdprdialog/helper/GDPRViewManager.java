@@ -2,13 +2,11 @@ package com.michaelflisar.gdprdialog.helper;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.widget.Toolbar;
+
 import android.text.Html;
 import android.text.Layout;
 import android.text.SpannableString;
@@ -19,7 +17,6 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -152,7 +149,7 @@ public class GDPRViewManager {
         final CheckBox cbAge = view.findViewById(R.id.cbAge);
 
         initGeneralTexts(activity, tvQuestion, tvText1, tvText2, tvText3, cbAge);
-        initButtons(activity, btAgree, btDisagree, btNoConsentAtAll, tvText1.getTextColors().getDefaultColor());
+        initButtons(activity, btAgree, btDisagree, btNoConsentAtAll);
 
         // info page
         final TextView tvServiceInfo1 = view.findViewById(R.id.tvServiceInfo1);
@@ -231,7 +228,7 @@ public class GDPRViewManager {
         });
     }
 
-    private void initButtons(Activity activity, Button btAgree, Button btDisagree, Button btNoConsentAtAll, int textColor) {
+    private void initButtons(Activity activity, Button btAgree, Button btDisagree, Button btNoConsentAtAll) {
 
         if (mSetup.hasPaidVersion()) {
             if (!mSetup.allowNonPersonalisedForPaidVersion()) {
@@ -256,7 +253,7 @@ public class GDPRViewManager {
             SpannableString spannableText = new SpannableString(textButton + textInfo);
             spannableText.setSpan(new StyleSpan(Typeface.BOLD), 0, textButton.length(), 0);
             spannableText.setSpan(new RelativeSizeSpan(0.8f), textButton.length(), spannableText.length(), 0);
-            spannableText.setSpan(new ForegroundColorSpan(textColor), textButton.length(), spannableText.length(), 0);
+            spannableText.setSpan(new ForegroundColorSpan(btDisagree.getTextColors().getDefaultColor()), textButton.length(), spannableText.length(), 0);
             btDisagree.setAllCaps(false);
             btDisagree.setTypeface(Typeface.DEFAULT);
             btDisagree.setText(spannableText);

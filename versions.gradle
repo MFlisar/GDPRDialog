@@ -1,0 +1,19 @@
+ext {
+
+    setup = [
+            compileSdk       : 28,
+            enableDataBinding: true,
+            minSdk           : 21,
+            targetSdk        : 28
+    ]
+
+    androidx = [
+            appcompat   : "1.0.2",
+            material    : "1.0.0"
+    ]
+
+    versions = [
+            gradlePlugin: "3.3.1",
+            mavenVersion: "2.1"
+    ]
+}

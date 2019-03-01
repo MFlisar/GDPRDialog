@@ -3,12 +3,9 @@ package com.michaelflisar.gdprdialog.helper;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
+
+import androidx.annotation.ColorInt;
 import android.telephony.TelephonyManager;
-import android.util.TypedValue;
 
 import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRNetwork;

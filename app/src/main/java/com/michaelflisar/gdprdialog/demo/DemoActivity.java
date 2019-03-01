@@ -2,7 +2,7 @@ package com.michaelflisar.gdprdialog.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +11,6 @@ import com.michaelflisar.gdprdialog.GDPR;
 import com.michaelflisar.gdprdialog.GDPRConsent;
 import com.michaelflisar.gdprdialog.GDPRConsentState;
 import com.michaelflisar.gdprdialog.GDPRDefinitions;
-import com.michaelflisar.gdprdialog.GDPRLocation;
 import com.michaelflisar.gdprdialog.GDPRSetup;
 import com.michaelflisar.gdprdialog.demo.app.App;
 import com.michaelflisar.gdprdialog.demo.gdpr.DemoGDPRActivity;

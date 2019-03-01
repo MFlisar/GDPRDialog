@@ -3,7 +3,7 @@ ext {
     setup = [
             compileSdk       : 28,
             enableDataBinding: true,
-            minSdk           : 21,
+            minSdk           : 14,
             targetSdk        : 28
     ]
 

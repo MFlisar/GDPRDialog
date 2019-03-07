@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btAgree"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/gdpr_dialog_agree"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btDisagree"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/gdpr_dialog_disagree_no_thanks"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btNoConsentAtAll"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/gdpr_dialog_disagree_no_ads"/>

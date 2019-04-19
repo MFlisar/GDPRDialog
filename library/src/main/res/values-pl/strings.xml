@@ -7,7 +7,7 @@
 
     <string name="gdpr_dialog_text1_part1">Dbamy o twoją prywatność i bezpieczeństwo danych.</string>
     <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
-    <string name="gdpr_dialog_text1_part2">Ta aplikacja jest 1$s dzięki używaniu usług firm trzecich.</string>
+    <string name="gdpr_dialog_text1_part2">Ta aplikacja jest %1$s dzięki używaniu usług firm trzecich.</string>
     <!-- %1$s is replaced with ONE service's name -->
     <string name="gdpr_dialog_text2_singular">Używamy %1$s w tej aplikacji. Ta usługa (i jej partnerzy) zbiera unikalne idenetyfikatorikatory i inne dane personalne. Możesz zmienić swoją decyzję w każdym momencie w ustawieniach aplikacji. &lt;a href=\"\">Dowiedz się więcej o tej usłudze i twoich danych personalnych&lt;/a>.</string>
     <!-- %1$s is replaced with a LIST of service name -->

@@ -6,7 +6,7 @@
 
     <string name="gdpr_dialog_text1_part1">Vi bryr oss om din integritet och dataskydd</string>
     <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
-    <string name="gdpr_dialog_text1_part2">Vi håller denna appen %1$ genom att använda tjänster från tredje part.</string>
+    <string name="gdpr_dialog_text1_part2">Vi håller denna appen %1$s genom att använda tjänster från tredje part.</string>
     <!-- %1$s is replaced with ONE service's name -->
     <string name="gdpr_dialog_text2_singular">Vi använder %1$s i denna app. Denna tjänsten (samt deras partners) samlar in unikt identifierbar och annan personlig data. Du kan ändra ditt val när som helst i appens inställningar. &lt;a href=\"\">Läs mer om tjänsten och din personliga data&lt;/a>.</string>
     <!-- %1$s is replaced with a LIST of service name -->

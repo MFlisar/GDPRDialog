@@ -8,9 +8,9 @@
     <!-- %1$s is replaced with 'gdpr_free'/'gdpr_cheap' string -->
     <string name="gdpr_dialog_text1_part2">Nous gardons cette application %1$s en utilisant des services tiers.</string>
     <!-- %1$s is replaced with ONE service's name -->
-    <string name="gdpr_dialog_text2_singular">Dans cette application, il y a des publicités. Ce service (y compris ses partenaires) collecte les identifiants ainsi que d\'autres informations personnelles. Vous pouvez changer votre choix à tout moment dans les paramètres de l\'application. &lt;a href=\"\">En savoir plus sur ces services et vos données personnelles&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_singular">Nous utilisons %1$s dans cette application, il y a des publicités. Ce service (y compris ses partenaires) collecte les identifiants ainsi que d\'autres informations personnelles. Vous pouvez changer votre choix à tout moment dans les paramètres de l\'application. &lt;a href=\"\">En savoir plus sur ces services et vos données personnelles&lt;/a>.</string>
     <!-- %1$s is replaced with a LIST of service name -->
-    <string name="gdpr_dialog_text2_plural">Dans cette application, il y a des publicités. Ces services (y compris leurs partenaires) collectent les identifiants ainsi que d\'autres informations personnelles. Vous pouvez changer votre choix à tout moment dans les paramètres de l\'application. &lt;a href=\"\">En savoir plus sur ces services et vos données personnelles.&lt;/a>.</string>
+    <string name="gdpr_dialog_text2_plural">Nous utilisons %1$s dans cette application, il y a des publicités. Ces services (y compris leurs partenaires) collectent les identifiants ainsi que d\'autres informations personnelles. Vous pouvez changer votre choix à tout moment dans les paramètres de l\'application. &lt;a href=\"\">En savoir plus sur ces services et vos données personnelles.&lt;/a>.</string>
     <string name="gdpr_dialog_text3">En acceptant, vous confirmez avoir au moins l\'âge de 16 ans.</string>
     <!-- %1$s is replaced with 'gdpr_dialog_question_ads_info' string if the setup contains an ad network, otherwise with an empty string -->
     <string name="gdpr_dialog_question">Pouvons-nous continuer à utiliser vos données à ces propos%1$s ?</string>

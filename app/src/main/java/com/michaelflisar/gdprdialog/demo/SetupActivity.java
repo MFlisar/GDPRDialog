@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.michaelflisar.gdprdialog.GDPRCustomTexts;
 import com.michaelflisar.gdprdialog.GDPRDefinitions;
 import com.michaelflisar.gdprdialog.GDPRLocationCheck;
 import com.michaelflisar.gdprdialog.GDPRNetwork;
@@ -164,6 +165,27 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         }
         // our base theme has a toolbar, so wo do not need this
         // setup.withNoToolbarTheme(true);
+
+        GDPRCustomTexts customTexts = new GDPRCustomTexts();
+        if (mBinding.etCustomTitle.getText().length() > 0) {
+            customTexts.withTitle(mBinding.etCustomTitle.getText().toString());
+        }
+        if (mBinding.etCustomQuestion.getText().length() > 0) {
+            customTexts.withQuestion(mBinding.etCustomQuestion.getText().toString());
+        }
+        if (mBinding.etCustomMainMsg.getText().length() > 0) {
+            customTexts.withMainText(mBinding.etCustomMainMsg.getText().toString());
+        }
+        if (mBinding.etCustomTopMsg.getText().length() > 0) {
+            customTexts.withTopText(mBinding.etCustomTopMsg.getText().toString());
+        }
+        if (mBinding.etCustomAgeMsg.getText().length() > 0) {
+            customTexts.withAgeMsg(mBinding.etCustomAgeMsg.getText().toString());
+        }
+
+        // this call is optional, if you do not use any custom texts this function can be skipped
+        setup.withCustomTexts(customTexts);
+
         intent.putExtra("setup", setup);
         startActivity(intent);
     }

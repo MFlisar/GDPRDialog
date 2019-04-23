@@ -26,6 +26,7 @@ public class GDPRSetup implements Parcelable {
     private boolean mShortQuestion = false;
     private ArrayList<String> mPublisherIds = new ArrayList<>();
     private boolean mShowPaidOrFreeInfoText = true;
+    private GDPRCustomTexts mCustomTexts = new GDPRCustomTexts();
 
     private int mConnectionReadTimeout = 3000;
     private int mConnectionConnectTimeout = 5000;
@@ -219,6 +220,17 @@ public class GDPRSetup implements Parcelable {
         return this;
     }
 
+    /**
+     * use this to use your own texts - only overwritten texts will be replaced!
+     *
+     * @param customTexts custom texts provider class
+     * @return this
+     */
+    public GDPRSetup withCustomTexts(GDPRCustomTexts customTexts) {
+        mCustomTexts = customTexts;
+        return this;
+    }
+
     // ----------------
     // Functions
     // ----------------
@@ -324,6 +336,10 @@ public class GDPRSetup implements Parcelable {
         return GDPRUtils.getCommaSeperatedString(context, getNetworkTypes());
     }
 
+    public GDPRCustomTexts getCustomTexts() {
+        return mCustomTexts;
+    }
+
     // ----------------
     // Parcelable
     // ----------------
@@ -357,6 +373,7 @@ public class GDPRSetup implements Parcelable {
         mConnectionReadTimeout = in.readInt();
         mConnectionConnectTimeout = in.readInt();
         mShowPaidOrFreeInfoText = in.readByte() == 1;
+        mCustomTexts = in.readParcelable(GDPRCustomTexts.class.getClassLoader());
     }
 
     @Override
@@ -389,6 +406,7 @@ public class GDPRSetup implements Parcelable {
         dest.writeInt(mConnectionReadTimeout);
         dest.writeInt(mConnectionConnectTimeout);
         dest.writeByte(mShowPaidOrFreeInfoText ? (byte) 1 : 0);
+        dest.writeParcelable(mCustomTexts, 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

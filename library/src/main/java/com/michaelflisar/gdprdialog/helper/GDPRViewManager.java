@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.Html;
@@ -132,7 +134,10 @@ public class GDPRViewManager {
     public void init(Activity activity, View view, IOnFinishView onFinishViewListener) {
         final Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setVisibility((shouldUseBottomSheet() || mSetup.noToolbarTheme()) ? View.VISIBLE : View.GONE);
-        toolbar.setTitle(R.string.gdpr_dialog_title);
+        if (mSetup.getCustomTexts().hasTitle())
+            toolbar.setTitle(mSetup.getCustomTexts().getTitle(view.getContext()));
+        else
+            toolbar.setTitle(R.string.gdpr_dialog_title);
 
         mPages.add(view.findViewById(R.id.llPage0));
         mPages.add(view.findViewById(R.id.llPage1));
@@ -228,6 +233,13 @@ public class GDPRViewManager {
         });
     }
 
+    public void initActionBar(Activity activity, ActionBar supportActionBar) {
+        if (mSetup.getCustomTexts().hasTitle())
+            supportActionBar.setTitle(mSetup.getCustomTexts().getTitle(activity));
+        else
+            supportActionBar.setTitle(R.string.gdpr_dialog_title);
+    }
+
     private void initButtons(Activity activity, Button btAgree, Button btDisagree, Button btNoConsentAtAll) {
 
         if (mSetup.hasPaidVersion()) {
@@ -273,36 +285,55 @@ public class GDPRViewManager {
 
     private void initGeneralTexts(Activity activity, TextView tvQuestion, TextView tvText1, TextView tvText2, TextView tvText3, CheckBox cbAge) {
 
-        String question = activity.getString(R.string.gdpr_dialog_question, (mSetup.containsAdNetwork() && !mSetup.shortQuestion()) ? activity.getString(R.string.gdpr_dialog_question_ads_info) : "");
-        tvQuestion.setText(Html.fromHtml(question));
-
-        String cheapOrFree = activity.getString(mSetup.hasPaidVersion() ? R.string.gdpr_cheap : R.string.gdpr_free);
-        String text1 = activity.getString(R.string.gdpr_dialog_text1_part1);
-        if (mSetup.showPaidOrFreeInfoText()) {
-            text1 += " " + activity.getString(R.string.gdpr_dialog_text1_part2, cheapOrFree);
+        if (mSetup.getCustomTexts().hasQuestion()) {
+            tvQuestion.setText(mSetup.getCustomTexts().getQuestion(activity));
+        } else {
+            String question = activity.getString(R.string.gdpr_dialog_question, (mSetup.containsAdNetwork() && !mSetup.shortQuestion()) ? activity.getString(R.string.gdpr_dialog_question_ads_info) : "");
+            tvQuestion.setText(Html.fromHtml(question));
         }
-        tvText1.setText(Html.fromHtml(text1));
+
+        if (mSetup.getCustomTexts().hasTopText()) {
+            tvText1.setText(Html.fromHtml(mSetup.getCustomTexts().getTopText(activity)));
+        } else {
+            String cheapOrFree = activity.getString(mSetup.hasPaidVersion() ? R.string.gdpr_cheap : R.string.gdpr_free);
+            String text1 = activity.getString(R.string.gdpr_dialog_text1_part1);
+            if (mSetup.showPaidOrFreeInfoText())
+            {
+                text1 += " " + activity.getString(R.string.gdpr_dialog_text1_part2, cheapOrFree);
+            }
+            tvText1.setText(Html.fromHtml(text1));
+        }
         tvText1.setMovementMethod(LinkMovementMethod.getInstance());
 
-        int typesCount = mSetup.getNetworkTypes().size();
-        String types = mSetup.getNetworkTypesCommaSeperated(activity);
-        String text2 = typesCount == 1 ?
-                activity.getString(R.string.gdpr_dialog_text2_singular, types) :
-                activity.getString(R.string.gdpr_dialog_text2_plural, types);
-        CharSequence sequence2 = Html.fromHtml(text2);
-        SpannableStringBuilder strBuilder2 = new SpannableStringBuilder(sequence2);
-        URLSpan[] urls = strBuilder2.getSpans(0, sequence2.length(), URLSpan.class);
-        for(URLSpan span : urls) {
-            makeLinkClickable(strBuilder2, span, () -> {
-                mCurrentStep = 1;
-                updateSelectedPage();
-            });
+        if (mSetup.getCustomTexts().hasMainText()) {
+            tvText2.setText(mSetup.getCustomTexts().getMainText(activity));
+        } else {
+            int typesCount = mSetup.getNetworkTypes().size();
+            String types = mSetup.getNetworkTypesCommaSeperated(activity);
+            String text2 = typesCount == 1 ?
+                    activity.getString(R.string.gdpr_dialog_text2_singular, types) :
+                    activity.getString(R.string.gdpr_dialog_text2_plural, types);
+            CharSequence sequence2 = Html.fromHtml(text2);
+            SpannableStringBuilder strBuilder2 = new SpannableStringBuilder(sequence2);
+            URLSpan[] urls = strBuilder2.getSpans(0, sequence2.length(), URLSpan.class);
+            for (URLSpan span : urls)
+            {
+                makeLinkClickable(strBuilder2, span, () -> {
+                    mCurrentStep = 1;
+                    updateSelectedPage();
+                });
+            }
+            tvText2.setText(strBuilder2);
         }
-        tvText2.setText(strBuilder2);
         tvText2.setMovementMethod(LinkMovementMethod.getInstance());
 
-        String text3 = activity.getString(R.string.gdpr_dialog_text3);
-        tvText3.setText(Html.fromHtml(text3));
+        if (mSetup.getCustomTexts().hasAgeMsg()) {
+            tvText3.setText(mSetup.getCustomTexts().getAgeMsg(activity));
+        } else {
+
+            String text3 = activity.getString(R.string.gdpr_dialog_text3);
+            tvText3.setText(Html.fromHtml(text3));
+        }
         tvText3.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (!mSetup.explicitAgeConfirmation()) {

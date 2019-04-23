@@ -263,6 +263,42 @@
                         android:layout_height="wrap_content"
                         android:text="Force user to make a choice" />
 
+                    <TextView
+                        style="?android:attr/listSeparatorTextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Custom texts (resources and strings are supported - leave empty to use default texts)" />
+
+                    <EditText
+                        android:id="@+id/etCustomTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Custom title" />
+
+                    <EditText
+                        android:id="@+id/etCustomQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Custom question" />
+
+                    <EditText
+                        android:id="@+id/etCustomMainMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Custom main message" />
+
+                    <EditText
+                        android:id="@+id/etCustomTopMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Custom top message" />
+
+                    <EditText
+                        android:id="@+id/etCustomAgeMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Custom age message" />
+
                 </LinearLayout>
 
             </ScrollView>

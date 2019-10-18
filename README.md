@@ -70,7 +70,7 @@ GDPRSetup setup = new GDPRSetup(GDPRDefinitions.ADMOB) // add all networks you u
     .withCustomDialogTheme(theme)
     .withShortQuestion(true)
     .withLoadAdMobNetworks(publisherId(s)) // e.g. "pub-0123456789012345"
-    .withNoToolbarTheme(noToolbarTheme)
+    .withNoToolbarTheme(noToolbarTheme) // true, if you use a theme without a toolbar, false otherwise
     .withShowPaidOrFreeInfoText(true) // show the info that this app is cheap/free based on the networks or hide it
     .withCustomTexts(customTexts) // provide custom texts (title, top message, main message, question text, age confirmation text) by resource or string
 ;

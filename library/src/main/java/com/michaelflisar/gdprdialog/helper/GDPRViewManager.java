@@ -234,10 +234,11 @@ public class GDPRViewManager {
     }
 
     public void initActionBar(Activity activity, ActionBar supportActionBar) {
-        if (mSetup.getCustomTexts().hasTitle())
-            supportActionBar.setTitle(mSetup.getCustomTexts().getTitle(activity));
-        else
-            supportActionBar.setTitle(R.string.gdpr_dialog_title);
+        if (supportActionBar != null)
+            if (mSetup.getCustomTexts().hasTitle())
+                supportActionBar.setTitle(mSetup.getCustomTexts().getTitle(activity));
+            else
+                supportActionBar.setTitle(R.string.gdpr_dialog_title);
     }
 
     private void initButtons(Activity activity, Button btAgree, Button btDisagree, Button btNoConsentAtAll) {

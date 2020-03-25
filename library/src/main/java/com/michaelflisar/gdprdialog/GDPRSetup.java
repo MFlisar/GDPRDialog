@@ -112,7 +112,8 @@ public class GDPRSetup implements Parcelable {
     }
 
     /**
-     * use this if you use an app theme without a toolbar as actionbar
+     * use this if you use an app theme without a toolbar as actionbar only!
+     * use this to show a toolbar when launching {@link GDPRActivity}
      *
      * @param noToolbarTheme true, if you use a theme without a toolbar, false otherwise
      * @return this

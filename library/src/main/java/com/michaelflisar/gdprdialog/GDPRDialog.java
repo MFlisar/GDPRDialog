@@ -10,6 +10,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.DialogFragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +50,12 @@ public class GDPRDialog extends AppCompatDialogFragment
         super.onCreate(savedInstanceState);
         mViewManager = new GDPRViewManager(getArguments(), savedInstanceState);
         mForceActivityToImplementCallback = getArguments().getBoolean(ARG_PARENT_MUST_IMPLEMENT_CALLBACK);
+        GDPRCustomTexts customTexts = mViewManager.getSetup().getCustomTexts();
+        if (customTexts.hasTitle() && customTexts.getTitle(getContext()).isEmpty()) {
+            setStyle(DialogFragment.STYLE_NO_TITLE, mViewManager.getSetup().customDialogTheme());
+        } else {
+            setStyle(DialogFragment.STYLE_NORMAL, mViewManager.getSetup().customDialogTheme());
+        }
     }
 
     @Override
@@ -71,12 +79,11 @@ public class GDPRDialog extends AppCompatDialogFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = initView(inflater, container);
-        if (!mViewManager.getSetup().noToolbarTheme()) {
-            if (mViewManager.getSetup().getCustomTexts().hasTitle())
-                getDialog().setTitle(mViewManager.getSetup().getCustomTexts().getTitle(view.getContext()));
-            else
-                getDialog().setTitle(R.string.gdpr_dialog_title);
-        }
+        GDPRCustomTexts customTexts = mViewManager.getSetup().getCustomTexts();
+        if (customTexts.hasTitle())
+            getDialog().setTitle(customTexts.getTitle(getContext()));
+        else
+            getDialog().setTitle(R.string.gdpr_dialog_title);
         return view;
     }
 
@@ -90,7 +97,7 @@ public class GDPRDialog extends AppCompatDialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         if (mViewManager.shouldUseBottomSheet()) {
-            BottomSheetDialog dlg = new BottomSheetDialog(getContext(), mViewManager.getSetup().customDialogTheme()){
+            BottomSheetDialog dlg = new BottomSheetDialog(getContext(), getTheme()){
                 @Override
                 public void onBackPressed() {
                     if (mViewManager.handleBackPress()) {
@@ -131,7 +138,7 @@ public class GDPRDialog extends AppCompatDialogFragment
             });
             return dlg;
         } else {
-            return new AppCompatDialog(getContext(), mViewManager.getSetup().customDialogTheme()) {
+            return new AppCompatDialog(getContext(), getTheme()) {
                 @Override
                 public void onBackPressed() {
                     if (mViewManager.handleBackPress()) {

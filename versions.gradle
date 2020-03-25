@@ -8,12 +8,12 @@ ext {
     ]
 
     androidx = [
-            appcompat   : "1.0.2",
-            material    : "1.0.0"
+            appcompat: "1.1.0",
+            material : "1.1.0"
     ]
 
     versions = [
-            gradlePlugin: "3.3.2",
+            gradlePlugin: "3.4.2",
             mavenVersion: "2.1"
     ]
 }

@@ -1,7 +1,6 @@
 package com.michaelflisar.gdprdialog.demo;
 
 import android.content.Intent;
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.snackbar.Snackbar;
@@ -196,7 +195,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onDestroy() {
-        mBinding.unbind();
+        //mBinding.unbind();
         super.onDestroy();
     }
 
@@ -210,7 +209,8 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initViews() {
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_setup);
+        mBinding = ActivitySetupBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
 
         mBinding.cbAllowNonPersonalisedForPaidVersions.setEnabled(mBinding.cbHasPaidVersion.isChecked());
         mBinding.cbHasPaidVersion.setOnCheckedChangeListener((buttonView, isChecked) -> mBinding.cbAllowNonPersonalisedForPaidVersions.setEnabled(isChecked));

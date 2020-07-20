@@ -307,7 +307,7 @@ public class GDPRViewManager {
         tvText1.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (mSetup.getCustomTexts().hasMainText()) {
-            tvText2.setText(mSetup.getCustomTexts().getMainText(activity));
+            tvText2.setText(Html.fromHtml(mSetup.getCustomTexts().getMainText(activity)));
         } else {
             int typesCount = mSetup.getNetworkTypes().size();
             String types = mSetup.getNetworkTypesCommaSeperated(activity);

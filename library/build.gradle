@@ -6,6 +6,7 @@ group = 'com.github.MFlisar'
 android {
 
     compileSdkVersion setup.compileSdk
+
     defaultConfig {
         minSdkVersion setup.minSdk
         targetSdkVersion setup.targetSdk

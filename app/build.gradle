@@ -2,7 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion setup.compileSdk
-    dataBinding.enabled = setup.enableDataBinding
+
+    buildFeatures {
+        viewBinding setup.enableViewBinding
+    }
 
     defaultConfig {
         minSdkVersion setup.minSdk

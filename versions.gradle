@@ -1,10 +1,10 @@
 ext {
 
     setup = [
-            compileSdk       : 28,
-            enableDataBinding: true,
+            compileSdk       : 29,
+            enableViewBinding: true,
             minSdk           : 14,
-            targetSdk        : 28
+            targetSdk        : 29
     ]
 
     androidx = [
@@ -13,7 +13,7 @@ ext {
     ]
 
     versions = [
-            gradlePlugin: "3.4.2",
+            gradlePlugin: "4.0.1",
             mavenVersion: "2.1"
     ]
 }

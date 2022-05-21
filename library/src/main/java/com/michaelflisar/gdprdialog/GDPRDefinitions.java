@@ -28,6 +28,9 @@ public class GDPRDefinitions {
     public static GDPRNetwork APPODEAL = null;
     public static GDPRNetwork MOBFOX = null;
     public static GDPRNetwork MINTEGRAL = null;
+    public static GDPRNetwork FYBER = null;
+    public static GDPRNetwork TAPDAQ = null;
+
 
     // -------------------
     // Others
@@ -71,6 +74,8 @@ public class GDPRDefinitions {
                 .withIsIntermediator("https://www.appodeal.com/home/partners-privacy-policies/");
         MOBFOX = new GDPRNetwork(context, "Mobfox", "https://www.mobfox.com/privacy-policy/", R.string.gdpr_type_ads, true);
         MINTEGRAL = new GDPRNetwork(context, "Mintegral", "https://www.mintegral.com/en/privacy", R.string.gdpr_type_ads, true);
+        FYBER = new GDPRNetwork(context, "Fyber", "https://www.fyber.com/privacy-policy/", R.string.gdpr_type_ads, true);
+        TAPDAQ = new GDPRNetwork(context, "Tapdaq", "https://www.tapdaq.com/privacy-policy", R.string.gdpr_type_ads, true);
 
         // init others
         String firebase = "Firebase";

@@ -1,4 +1,4 @@
-# DEPRECATED
+# DEPRECATED (REPLACED BY A NEW LIBRARY)
 
 This library is deprecated in favour of my [MaterialDialogs](https://github.com/MFlisar/MaterialDialogs) library - it's a very modularised library so switching to it won't add a lot of unnecessary overload if you don't want it.
 
@@ -6,7 +6,11 @@ This library is deprecated in favour of my [MaterialDialogs](https://github.com/
 
 Read the readme(s) over there if you want a full insight, but here's a short example how it works after switching:
 
-**Side Note:** after switching, you do not need to implement any interface in an activity anymore - the dialogs use a more convenient alternative solution.
+**Side Note:** 
+
+* after switching, you do not need to implement any interface in an activity anymore - the dialogs use a more convenient alternative solution.
+* the other dialog uses material 3 theme
+* all the benefits of the other dialog library which can be found inside its readme
 
 **Usage:**
 

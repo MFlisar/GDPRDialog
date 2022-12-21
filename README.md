@@ -2,11 +2,11 @@
 
 This library is deprecated in favour of my [MaterialDialogs](https://github.com/MFlisar/MaterialDialogs) library - it's a very modularised library so switching to it won't add a lot of unnecessary overload if you don't want it.
 
-*Switching is easy, because I've based the GDPR Dialog module completely on this library, so after switching the new library will reuse any given consent retrieved from this library.*
+**Switching is easy, because I've based the GDPR Dialog module completely on this library, so after switching to new library the new library will reuse the settings from this library automatically (it will reuse any already given consent)**
 
 Read the readme(s) over there if you want a full insight, but here's a short example how it works after switching:
 
-Good news: after switching, you do not need to implement any interface in an activity anymore!
+**Side Note:** after switching, you do not need to implement any interface in an activity anymore - the dialogs use a more convenient alternative solution.
 
 **Usage:**
 

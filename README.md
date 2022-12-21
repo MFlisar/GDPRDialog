@@ -32,8 +32,6 @@ val setup = GDPRSetup(
 
 ```kotlin
 val shouldAskForConsent = GDPR.shouldAskForConsent(activity, setup)
-L.d { "currentConsent = $currentConsent | shouldAskForConsent = $shouldAskForConsent" }
-// we always show the dialog in this demo so we comment out the if!
 if (shouldAskForConsent) {
     DialogGDPR(
     	1100, // some id for identification
@@ -52,7 +50,7 @@ The ID parameter is optional, you can listen to ALL events of a specific type as
 onMaterialDialogEvent<DialogGDPR.Event>(id = 1100) { event ->
     // handle the event including cancels...
 }
-// handle 
+// handle specific state event only
 onMaterialDialogEvent<DialogGDPR.Event.Result>(id = 1100) { event ->
     // handle successful events only...
 	val state = event.consent

@@ -41,13 +41,15 @@ if (shouldAskForConsent) {
 
 ### 3) handle the dialog result
 
+The ID parameter is optional, you can listen to ALL events of a specific type as well, but check out the other library for more details.
+
 ```kotlin
 // handle ALL events
-onMaterialDialogEvent<DialogGDPR.Event> { event ->
+onMaterialDialogEvent<DialogGDPR.Event>(1100) { event ->
     // handle the event including cancels...
 }
 // handle 
-onMaterialDialogEvent<DialogGDPR.Event.Result> { event ->
+onMaterialDialogEvent<DialogGDPR.Event.Result>(1100) { event ->
     // handle successful events only...
 	val state = event.consent
 }

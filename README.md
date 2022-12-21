@@ -49,11 +49,11 @@ The ID parameter is optional, you can listen to ALL events of a specific type as
 
 ```kotlin
 // handle ALL events
-onMaterialDialogEvent<DialogGDPR.Event>(1100) { event ->
+onMaterialDialogEvent<DialogGDPR.Event>(id = 1100) { event ->
     // handle the event including cancels...
 }
 // handle 
-onMaterialDialogEvent<DialogGDPR.Event.Result>(1100) { event ->
+onMaterialDialogEvent<DialogGDPR.Event.Result>(id = 1100) { event ->
     // handle successful events only...
 	val state = event.consent
 }
